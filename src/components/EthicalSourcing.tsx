@@ -78,7 +78,7 @@ export default function EthicalSourcing() {
           <h2 className="text-5xl font-serif font-semibold mb-6 text-coffee-brown text-center fade-in-text">
             Ethical Sourcing Strip
           </h2>
-          <p className="text-[#61714D] text-2xl italic  max-w-4xl mx-auto text-left fade-in-text">
+          <p className="text-[#61714D] lg:text-2xl text-lg italic  max-w-4xl mx-auto text-left fade-in-text">
             We prioritize responsible sourcing by partnering only with growers
             who practice sustainable agriculture and uphold ethical labor
             standards — protecting biodiversity, soil health, and the well-being

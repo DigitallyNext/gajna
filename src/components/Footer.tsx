@@ -160,7 +160,7 @@ export default function Footer() {
             <div className="flex justify-start items-center flex-row mb-3">
               <IoIosMailOpen className="mr-2 text-4xl" />
              <div className="flex flex-col">
-                <h3 className="font-medium  text-3xl">Mail Us</h3>
+                <h3 className="font-medium  text-2xl">Mail Us</h3>
               <p className="flex items-center">
                 
                 mshrujofficial@gmail.com
@@ -170,14 +170,14 @@ export default function Footer() {
             <div className="flex justify-start items-center flex-row mb-3">
               <IoCall className="mr-2 text-4xl" />
               <div className="flex flex-col">
-                <h3 className="font-medium mb-2 text-3xl">Call Us</h3>
+                <h3 className="font-medium mb-2 text-2xl">Call Us</h3>
                 <p className="flex items-center">+91 99109 99168</p>
               </div>
             </div>
             <div className="flex justify-start items-center flex-row">
               <FaLocationDot className="mr-2 text-4xl" />
               <div className="flex flex-col">
-                <h3 className="font-medium mb-2 text-3xl">Address</h3>
+                <h3 className="font-medium mb-2 text-2xl">Address</h3>
                 <p className="">Mumbai</p>
               </div>
             </div>

@@ -4,6 +4,7 @@ import Image from 'next/image';
 import bannerData, { BannerSlide } from '../data/bannerData';
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { BiSolidCoffeeBean } from "react-icons/bi";
+import { useMediaQuery } from 'react-responsive';
 
 
 // SVG component for the check icon
@@ -22,9 +23,16 @@ const CoffeeBeanIcon = ({ active }: { active: boolean }) => (
 
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
+  const isMobile = useMediaQuery({ maxWidth: 767 });
   
   // Using banner data from the data file
   const slides = bannerData;
+
+  // Handle client-side mounting
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Auto-rotate slides
   useEffect(() => {
@@ -44,18 +52,15 @@ export default function Hero() {
 
   return (
     <section className="relative bg-black text-white overflow-hidden h-[600px] z-0">
-      <Image
-        src="/blog-bg.webp"
-        alt="Knowledge Hub Background"
-        fill
-        className="absolute top-0 left-0 h-full w-full object-cover"
-      />
+    
       {/* Background image with transition effect and gradient overlay */}
       {slides.map((slide, index) => (
         <div 
           key={index}
           className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${index === currentSlide ? 'opacity-60' : 'opacity-0'}`}
-          style={{ backgroundImage: `url(${slide.background})` }}
+          style={{ 
+            backgroundImage: isMounted ? `url(${isMobile ? slide.mobileBackground : slide.background})` : 'none'
+          }}
         >
           {/* Gradient overlay for better text visibility */}
           <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black opacity-70"></div>
@@ -68,7 +73,7 @@ export default function Hero() {
         <div className="flex">
           <div className="md:w-1/2 w-full">
             {/* Title with animation */}
-            <h1 className="text-6xl font-serif font-semibold mb-6 text-coffee-gold">
+            <h1 className="lg:text-6xl text-4xl text-center lg:text-left font-serif font-semibold mb-6 text-coffee-gold">
               {currentSlideData.title.split('\n').map((line, i) => (
                 <span key={i} className="block transition-all duration-500 animate-fadeIn">{line}</span>
               ))}
@@ -77,7 +82,7 @@ export default function Hero() {
         </div>
         
         {/* Bottom section with points */}
-        <div className="flex justify-end">
+        <div className="flex lg:justify-end lg:items-center items-end lg:mt-0 mt-32">
           <div className="md:w-1/2 w-full">
             {/* Coffee bean icon above points */}
             <div className="flex justify-center mb-4">
@@ -87,11 +92,11 @@ export default function Hero() {
             </div>
             
             {/* Points with animation */}
-            <div className="space-y-4 ml-[16vw]">
+            <div className="space-y-4 lg:ml-[16vw]">
               {currentSlideData.points.map((point, index) => (
                 <div key={index} className="flex items-start animate-slideIn" style={{ animationDelay: `${index * 200}ms` }}>
                   <CheckIcon />
-                  <p className="text-2xl">{point}</p>
+                  <p className="lg:text-2xl text-base">{point}</p>
                 </div>
               ))}
             </div>
@@ -99,7 +104,7 @@ export default function Hero() {
         </div>
         
         {/* Slide indicators */}
-        <div className="flex justify-center items-center mb-8">
+        <div className="flex justify-center items-center my-8">
           {slides.map((_, index) => (
             <button 
               key={index} 
