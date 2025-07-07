@@ -1,10 +1,24 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Update body overflow style when mobile menu state changes
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    
+    // Cleanup function to reset overflow when component unmounts
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [mobileMenuOpen]);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -36,7 +50,7 @@ export default function Header() {
           </nav>
           {/* Mobile Menu Button */}
           <button 
-            className="md:hidden absolute right-4 top-4 text-white bg-coffee-brown rounded-full p-2"
+            className="md:hidden fixed right-4 top-4 text-white bg-coffee-brown rounded-full p-2 z-50"
             onClick={toggleMobileMenu}
             aria-label="Toggle mobile menu"
           >
@@ -54,17 +68,8 @@ export default function Header() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="fixed inset-0 bg-white z-50 pt-20 md:hidden">
-            <button 
-              className="absolute right-4 top-4 text-white bg-coffee-brown rounded-full p-2"
-              onClick={toggleMobileMenu}
-              aria-label="Close mobile menu"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-            <div className="flex flex-col items-center text-center space-y-6 p-4">
+          <div className="fixed inset-0 bg-white z-40 pt-16 md:hidden overflow-y-auto h-screen w-full">
+            <div className="flex flex-col items-center text-center space-y-6 p-4 min-h-screen pb-20 pt-12">
               <h2 className="text-2xl font-bold text-coffee-brown mb-8">Our Coffee Grades</h2>
               <Link href="/about" className="text-coffee-brown text-xl font-medium">About Us</Link>
               <Link href="/contact" className="text-coffee-brown text-xl font-medium">Contact Us</Link>
