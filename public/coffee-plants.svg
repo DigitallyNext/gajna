@@ -1,0 +1,53 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <rect width="1200" height="800" fill="url(#paint0_linear)" />
+  
+  <!-- Coffee plants -->
+  <g opacity="0.8">
+    <!-- Plant 1 -->
+    <path d="M200 700C200 700 250 500 300 450C350 400 400 350 450 400C500 450 550 500 600 450C650 400 700 350 750 400C800 450 850 500 900 450C950 400 1000 350 1050 400C1100 450 1150 500 1200 450" stroke="#61714D" stroke-width="8" />
+    
+    <!-- Plant 2 -->
+    <path d="M100 750C100 750 150 550 200 500C250 450 300 400 350 450C400 500 450 550 500 500C550 450 600 400 650 450C700 500 750 550 800 500C850 450 900 400 950 450C1000 500 1050 550 1100 500" stroke="#90AE94" stroke-width="8" />
+    
+    <!-- Coffee beans scattered -->
+    <circle cx="300" cy="600" r="15" fill="#562F23" />
+    <circle cx="350" cy="650" r="12" fill="#562F23" />
+    <circle cx="400" cy="620" r="10" fill="#562F23" />
+    <circle cx="450" cy="670" r="14" fill="#562F23" />
+    <circle cx="500" cy="630" r="11" fill="#562F23" />
+    <circle cx="550" cy="680" r="13" fill="#562F23" />
+    <circle cx="600" cy="640" r="9" fill="#562F23" />
+    <circle cx="650" cy="690" r="15" fill="#562F23" />
+    <circle cx="700" cy="650" r="12" fill="#562F23" />
+    <circle cx="750" cy="700" r="10" fill="#562F23" />
+    <circle cx="800" cy="660" r="14" fill="#562F23" />
+    <circle cx="850" cy="710" r="11" fill="#562F23" />
+    <circle cx="900" cy="670" r="13" fill="#562F23" />
+    <circle cx="950" cy="720" r="9" fill="#562F23" />
+    
+    <!-- Coffee leaves -->
+    <ellipse cx="300" cy="500" rx="30" ry="15" transform="rotate(30 300 500)" fill="#61714D" />
+    <ellipse cx="350" cy="480" rx="25" ry="12" transform="rotate(-20 350 480)" fill="#90AE94" />
+    <ellipse cx="400" cy="520" rx="28" ry="14" transform="rotate(15 400 520)" fill="#61714D" />
+    <ellipse cx="450" cy="490" rx="22" ry="11" transform="rotate(-25 450 490)" fill="#90AE94" />
+    <ellipse cx="500" cy="530" rx="26" ry="13" transform="rotate(20 500 530)" fill="#61714D" />
+    <ellipse cx="550" cy="500" rx="24" ry="12" transform="rotate(-15 550 500)" fill="#90AE94" />
+    <ellipse cx="600" cy="540" rx="27" ry="13.5" transform="rotate(25 600 540)" fill="#61714D" />
+    <ellipse cx="650" cy="510" rx="23" ry="11.5" transform="rotate(-10 650 510)" fill="#90AE94" />
+    <ellipse cx="700" cy="550" rx="29" ry="14.5" transform="rotate(30 700 550)" fill="#61714D" />
+    <ellipse cx="750" cy="520" rx="25" ry="12.5" transform="rotate(-20 750 520)" fill="#90AE94" />
+    <ellipse cx="800" cy="560" rx="28" ry="14" transform="rotate(15 800 560)" fill="#61714D" />
+    <ellipse cx="850" cy="530" rx="22" ry="11" transform="rotate(-25 850 530)" fill="#90AE94" />
+    <ellipse cx="900" cy="570" rx="26" ry="13" transform="rotate(20 900 570)" fill="#61714D" />
+    <ellipse cx="950" cy="540" rx="24" ry="12" transform="rotate(-15 950 540)" fill="#90AE94" />
+  </g>
+  
+  <!-- Gradient definition -->
+  <defs>
+    <linearGradient id="paint0_linear" x1="600" y1="0" x2="600" y2="800" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#000000" />
+      <stop offset="1" stop-color="#1A1A1A" />
+    </linearGradient>
+  </defs>
+</svg>
