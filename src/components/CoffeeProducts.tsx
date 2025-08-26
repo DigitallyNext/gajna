@@ -88,7 +88,7 @@ export default function CoffeeProducts() {
                     alt="Arabica Coffee"
                     width={200}
                     height={200}
-                    className=""
+                    className="mb-4"
                   />
                 </motion.div>
 
@@ -161,7 +161,7 @@ export default function CoffeeProducts() {
                     alt="Arabica Coffee"
                     width={225}
                     height={200}
-                    className=""
+                    className="mb-4"
                   />
                 </motion.div>
 

@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import certificationsData from "../data/certificationsData";
@@ -9,6 +9,11 @@ import Link from "next/link";
 export default function EthicalSourcing() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const logosRef = useRef<HTMLDivElement>(null);
+  const [selectedCertificate, setSelectedCertificate] = useState<{
+    name: string;
+    images: string[];
+    currentIndex: number;
+  } | null>(null);
 
   useEffect(() => {
     // Register the ScrollTrigger plugin
@@ -101,7 +106,7 @@ export default function EthicalSourcing() {
           >
             {certificationsData.map((cert, index) => (
               <div key={index} className="logo-item flex flex-col items-center mx-4">
-                <div className="w-40 h-40 relative mb-4">
+                <div className="w-32 h-32 relative mb-4">
                   <Image
                     src={cert.logo}
                     alt={cert.alt}
@@ -109,18 +114,130 @@ export default function EthicalSourcing() {
                     className="object-contain"
                   />
                 </div>
-                <p className="text-center text-xs text-black max-w-72">{cert.desc}</p>
+                <p className="text-center text-xs text-black max-w-72 mb-3">{cert.desc}</p>
+                {cert.hasViewButton && cert.certificateImages && cert.certificateImages.length > 0 && (
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      console.log('Button clicked for:', cert.name);
+                      setSelectedCertificate({
+                        name: cert.name,
+                        images: cert.certificateImages!,
+                        currentIndex: 0
+                      });
+                    }}
+                    className="bg-transparent text-coffee-brown text-xs hover:bg-amber-700 transition-colors duration-300 underline cursor-pointer"
+                    type="button"
+                  >
+                    View Certificate{cert.certificateImages.length > 1 ? 's' : ''}
+                  </button>
+                )}
               </div>
             ))}
           </div>
 
-          <div className="text-center">
+          {/* <div className="text-center">
             <Link href="/certifications" className="certificates-button hover:shadow-xl bg-[#61714D] text-white px-8 py-3 rounded-full hover:bg-[#4D5A3E] transition-colors duration-300">
               Click to view certificates
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
+
+      {/* Certificate Modal with Carousel */}
+      {selectedCertificate && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-[60] p-2"
+          onClick={() => setSelectedCertificate(null)}
+        >
+          <div 
+            className="relative max-w-lg max-h-[50vh] w-full flex items-center  mt-36"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Certificate Image Container */}
+            <div className="bg-white rounded-lg overflow-hidden shadow-2xl flex-1 mr-4">
+            
+              <div className="relative w-full h-[70vh]">
+                <Image
+                  src={selectedCertificate.images[selectedCertificate.currentIndex]}
+                  alt={`${selectedCertificate.name} Certificate ${selectedCertificate.currentIndex + 1}`}
+                  fill
+                  className="object-contain p-4"
+                  onError={() => {
+                    console.log('Image failed to load:', selectedCertificate.images[selectedCertificate.currentIndex]);
+                  }}
+                />
+                
+                {/* Navigation Arrows */}
+                {selectedCertificate.images.length > 1 && (
+                  <>
+                    {/* Previous Button */}
+                    <button
+                      onClick={() => setSelectedCertificate(prev => prev ? {
+                        ...prev,
+                        currentIndex: prev.currentIndex > 0 ? prev.currentIndex - 1 : prev.images.length - 1
+                      } : null)}
+                      className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-2 rounded-full transition-all duration-200"
+                      type="button"
+                    >
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                      </svg>
+                    </button>
+                    
+                    {/* Next Button */}
+                    <button
+                      onClick={() => setSelectedCertificate(prev => prev ? {
+                        ...prev,
+                        currentIndex: prev.currentIndex < prev.images.length - 1 ? prev.currentIndex + 1 : 0
+                      } : null)}
+                      className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-2 rounded-full transition-all duration-200"
+                      type="button"
+                    >
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  </>
+                )}
+              </div>
+              
+              {/* Dots Indicator */}
+              {selectedCertificate.images.length > 1 && (
+                <div className="flex justify-center space-x-2 p-4 bg-gray-5 mt-[-2vw]">
+                  {selectedCertificate.images.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setSelectedCertificate(prev => prev ? {
+                        ...prev,
+                        currentIndex: index
+                      } : null)}
+                      className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                        index === selectedCertificate.currentIndex 
+                          ? 'bg-coffee-brown' 
+                          : 'bg-gray-300 hover:bg-gray-400'
+                      }`}
+                      type="button"
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+            
+            {/* Close Button - Right Side */}
+            <button
+              onClick={() => setSelectedCertificate(null)}
+              className="bg-white hover:bg-gray-100 text-gray-800 p-3 rounded-full shadow-lg transition-all duration-200 ml-4"
+              type="button"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

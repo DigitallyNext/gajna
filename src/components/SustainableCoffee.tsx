@@ -101,7 +101,7 @@ export default function SustainableCoffee() {
             </div>
 
             {/* Slide Indicators */}
-            <div className="flex space-x-2 mt-8">
+            {/* <div className="flex space-x-2 mt-8">
               {sustainabilityData.map((_, index) => (
                 <button
                   key={index}
@@ -114,7 +114,7 @@ export default function SustainableCoffee() {
                   aria-label={`Go to slide ${index + 1}`}
                 />
               ))}
-            </div>
+            </div> */}
           </motion.div>
         </div>
 
@@ -122,26 +122,26 @@ export default function SustainableCoffee() {
         <div className="flex justify-center items-center mt-12 space-x-8">
           <motion.button
             onClick={prevSlide}
-            className="p-3 rounded-full bg-amber-700 hover:bg-amber-600 transition-colors duration-300 shadow-lg"
+            className="transition-colors duration-300 "
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             aria-label="Previous slide"
           >
-            <ChevronLeft className="w-6 h-6 text-white" />
+            <ChevronLeft className="w-10 h-10 text-white" />
           </motion.button>
 
-          <div className="text-amber-200 font-medium">
+          {/* <div className="text-amber-200 font-medium">
             {currentSlide + 1} / {sustainabilityData.length}
-          </div>
+          </div> */}
 
           <motion.button
             onClick={nextSlide}
-            className="p-3 rounded-full bg-amber-700 hover:bg-amber-600 transition-colors duration-300 shadow-lg"
+            className=" transition-colors duration-300 "
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             aria-label="Next slide"
           >
-            <ChevronRight className="w-6 h-6 text-white" />
+            <ChevronRight className="w-10 h-10 text-white" />
           </motion.button>
         </div>
       </div>

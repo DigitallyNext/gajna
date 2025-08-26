@@ -36,7 +36,6 @@ const Preloader: React.FC<PreloaderProps> = ({ onLoadingComplete, contentLoaded 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center ">
       {/* Background Pattern */}
-     
 
       {/* Preloader Content */}
       <div className="relative z-10 flex flex-col items-center justify-center">

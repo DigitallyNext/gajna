@@ -84,10 +84,10 @@ export default function WhyChooseUs() {
               </div>
               
               {/* Card content */}
-              <div className="bg-[#572F22] rounded-2xl shadow-lg p-6 pt-44 pb-8 text-white mt-16 h-[500px] flex flex-col transition-all duration-500 ease-in-out group-hover:shadow-2xl">
+              <div className="bg-[#572F22] rounded-2xl shadow-lg p-6 pt-44 pb-8 text-white mt-16 h-[450px] flex flex-col transition-all duration-500 ease-in-out group-hover:shadow-2xl">
                 <h3 className="text-2xl font-serif mb-3">{benefit.title}</h3>
                 <div className="overflow-y-auto flex-grow pr-2">
-                  <p className="text-sm">{benefit.description}</p>
+                  <p className="text-xs">{benefit.description}</p>
                 </div>
               </div>
             </div>

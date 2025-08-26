@@ -5,6 +5,7 @@ import { useState } from "react";
 
 export default function Magazine() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [clickedIndex, setClickedIndex] = useState<number | null>(null);
 
   // Generate magazine data from the available images with extracted information
   const magazineImages = [
@@ -164,13 +165,90 @@ export default function Magazine() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-6">
-          {magazineImages.map((magazine, index) => (
+    <div className="flex flex-wrap justify-center gap-6">
+  {magazineImages.map((magazine, index) => (
+    <motion.div
+      key={magazine.id}
+      className="relative cursor-pointer group overflow-hidden w-48"
+      onHoverStart={() => setHoveredIndex(index)}
+      onHoverEnd={() => setHoveredIndex(null)}
+      onClick={() => {
+        // Toggle click state for mobile
+        if (window.innerWidth < 1024) {
+          setClickedIndex(clickedIndex === index ? null : index);
+        }
+      }}
+      whileHover={{ scale: 1.05 }}
+      transition={{ duration: 0.3 }}
+    >
+      {/* Card Container */}
+      <div className="relative w-full aspect-[3/4] rounded-lg shadow-lg overflow-hidden">
+        
+        {/* Content Card (Behind) */}
+        <div className="absolute inset-0 w-full h-full bg-white border border-gray-200 rounded-lg">
+          <div className="p-4 h-full flex flex-col justify-center items-center text-center">
+            <h4 className="text-sm font-bold text-coffee-brown mb-3">
+              {magazine.title}
+            </h4>
+            <div className="text-xs font-bold text-gray-600 space-y-1 text-left">
+              <p>Elevation:<span className="font-medium"> {magazine.elevation}</span></p>
+              <p>Rainfall:<span className="font-medium"> {magazine.rainfall}</span></p>
+              <p>Coffee Type:<span className="font-medium"> {magazine.coffeeType}</span></p>
+              <p>Main Varieties:<span className="font-medium"> {magazine.varieties}</span></p>
+              <p>Main intercrops : <span className="font-medium"> {magazine.harvest}</span></p>
+            </div>
+          </div>
+        </div>
+
+        {/* Cover Card (Front) */}
+        <motion.div
+          className="absolute inset-0 w-full h-full rounded-lg shadow-lg overflow-hidden bg-white"
+          animate={{
+            x: (hoveredIndex === index || (clickedIndex === index && window.innerWidth < 1024)) ? "-100%" : "0%"
+          }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+        >
+          <Image
+            src={magazine.src}
+            alt={magazine.title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 20vw"
+          />
+          
+          {/* Title overlay when not hovered */}
+          <motion.div
+            className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2 rounded-b-lg"
+            animate={{
+              opacity: (hoveredIndex === index || (clickedIndex === index && window.innerWidth < 1024)) ? 0 : 1
+            }}
+            transition={{ duration: 0.3 }}
+          >
+            {/* <h3 className="text-white text-xs font-medium text-center">
+              {magazine.title}
+            </h3> */}
+          </motion.div>
+        </motion.div>
+      </div>
+    </motion.div>
+  ))}
+</div>
+
+
+        {/* Last 3 cards centered */}
+        <div className="grid grid-cols-3 gap-6 mt-6 w-full max-w-4xl mx-auto justify-items-center place-content-center">
+          {magazineImages.slice(10).map((magazine, index) => (
             <motion.div
               key={magazine.id}
               className="relative cursor-pointer group overflow-hidden"
-              onHoverStart={() => setHoveredIndex(index)}
+              onHoverStart={() => setHoveredIndex(index + 10)}
               onHoverEnd={() => setHoveredIndex(null)}
+              onClick={() => {
+                // Toggle click state for mobile
+                if (window.innerWidth < 1024) {
+                  setClickedIndex(clickedIndex === (index + 10) ? null : (index + 10));
+                }
+              }}
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
             >
@@ -197,7 +275,7 @@ export default function Magazine() {
                 <motion.div
                   className="absolute inset-0 w-full h-full rounded-lg shadow-lg overflow-hidden bg-white"
                   animate={{
-                    x: hoveredIndex === index ? "-100%" : "0%"
+                    x: (hoveredIndex === (index + 10) || (clickedIndex === (index + 10) && window.innerWidth < 1024)) ? "-100%" : "0%"
                   }}
                   transition={{ duration: 0.5, ease: "easeInOut" }}
                 >
@@ -213,7 +291,7 @@ export default function Magazine() {
                   <motion.div
                     className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2 rounded-b-lg"
                     animate={{
-                      opacity: hoveredIndex === index ? 0 : 1
+                      opacity: (hoveredIndex === (index + 10) || (clickedIndex === (index + 10) && window.innerWidth < 1024)) ? 0 : 1
                     }}
                     transition={{ duration: 0.3 }}
                   >
@@ -228,7 +306,7 @@ export default function Magazine() {
         </div>
 
         {/* Call to action */}
-        <div className="text-center mt-12">
+        {/* <div className="text-center mt-12">
           <motion.button
             className="bg-coffee-brown text-white px-8 py-3 rounded-full font-medium hover:bg-coffee-brown/90 transition-colors duration-300 shadow-lg"
             whileHover={{ scale: 1.05 }}
@@ -236,7 +314,7 @@ export default function Magazine() {
           >
             Explore All Regions
           </motion.button>
-        </div>
+        </div> */}
       </div>
     </section>
   );
