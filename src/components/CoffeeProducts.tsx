@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 
 export default function CoffeeProducts() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -71,20 +71,15 @@ export default function CoffeeProducts() {
             className="flex flex-col items-center h-full"
             style={{ visibility: "visible", opacity: 1 }}
           >
-            <motion.div
+            <div
               className="overflow-hidden group w-full max-w-sm cursor-pointer flex-1 flex flex-col"
-              whileHover="hover"
-              initial="initial"
+              
             >
               <div className="relative flex flex-col items-center h-full">
                 {/* Coffee bean image */}
-                <motion.div
+                <div
                   className="relative z-20 mt-6 flex-shrink-0"
-                  variants={{
-                    initial: { y: 0, scale: 1 },
-                    hover: { y: -20, scale: 1.1 },
-                  }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                
                 >
                   <Image
                     src="/coffee-beans/arabica.png"
@@ -93,54 +88,35 @@ export default function CoffeeProducts() {
                     height={200}
                     className="mb-4"
                   />
-                </motion.div>
+                </div>
 
                 {/* Card with content */}
-                <motion.div
+                <div
                   className="bg-[#7D4B3C] text-white px-6 py-4 rounded-2xl w-full shadow-lg mt-[-80px] relative overflow-hidden"
-                  variants={{
-                    initial: { height: "200px" },
-                    hover: { height: "300px" },
-                  }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                
                 >
                   <div className="text-center pt-12 h-full flex flex-col justify-start">
                     {/* Title */}
-                    <motion.h3
-                      className="text-3xl font-serif mt-3"
-                      variants={{
-                        initial: { y: 0 },
-                        hover: { y: -10 },
-                      }}
-                      transition={{ duration: 0.4, ease: "easeInOut" }}
+                    <h3
+                      className="text-3xl font-serif my-4"
+               
                     >
                       Arabica
-                    </motion.h3>
-
-                    {/* Description - hidden initially, visible on hover */}
-                    <motion.p
-                      className="text-base mb-3 px-2 leading-relaxed text-left"
-                      variants={{
-                        initial: { opacity: 0, y: 20 },
-                        hover: { opacity: 1, y: 0 },
-                      }}
-                      transition={{
-                        duration: 0.4,
-                        ease: "easeInOut",
-                        delay: 0.1,
-                      }}
-                    >
+                    </h3>
+                    <p className="text-base mb-3 px-2 leading-relaxed text-left">
                       • Slightly larger than Robusta<br/>
                       • Elliptical-shaped beans<br/>
                       • Grown at higher altitudes<br/>
                       • Higher acidity compared to Robusta<br/>
                       • Distinctive S-shaped cut in the center<br/>
                       • Known for elegant, fruity aroma
-                    </motion.p>
+                    </p>
+
+                   
                   </div>
-                </motion.div>
+                </div>
               </div>
-            </motion.div>
+            </div>
             <div className="text-center mt-6">
               <Link
                 href="/coffee/arabica"
@@ -157,20 +133,15 @@ export default function CoffeeProducts() {
             className="flex flex-col items-center h-full"
             style={{ visibility: "visible", opacity: 1 }}
           >
-            <motion.div
+            <div
               className="overflow-hidden group w-full max-w-sm cursor-pointer flex-1 flex flex-col"
-              whileHover="hover"
-              initial="initial"
+            
             >
               <div className="relative flex flex-col items-center h-full">
                 {/* Coffee bean image */}
-                <motion.div
+                <div
                   className="relative z-20 mt-6 flex-shrink-0"
-                  variants={{
-                    initial: { y: 0, scale: 1 },
-                    hover: { y: -20, scale: 1.1 },
-                  }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
+  
                 >
                   <Image
                     src="/coffee-beans/Robusta.webp"
@@ -179,42 +150,26 @@ export default function CoffeeProducts() {
                     height={200}
                     className="mb-4"
                   />
-                </motion.div>
+                </div>
 
                 {/* Card with content */}
-                <motion.div
+                <div
                   className="bg-[#7D4B3C] text-white px-6 py-4 rounded-2xl w-full shadow-lg mt-[-80px] relative overflow-hidden"
-                  variants={{
-                    initial: { height: "200px" },
-                    hover: { height: "300px" },
-                  }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
+      
                 >
                   <div className="text-center pt-12  flex flex-col justify-start">
                     {/* Title */}
-                    <motion.h3
-                      className="text-3xl font-serif mt-5"
-                      variants={{
-                        initial: { y: 0 },
-                        hover: { y: -10 },
-                      }}
-                      transition={{ duration: 0.4, ease: "easeInOut" }}
+                    <h3
+                      className="text-3xl font-serif my-5"
+                    
                     >
                       Robusta
-                    </motion.h3>
+                    </h3>
 
                     {/* Description - hidden initially, visible on hover */}
-                    <motion.p
+                    <p
                       className="text-base mb-3 px-2 leading-relaxed text-left"
-                      variants={{
-                        initial: { opacity: 0, y: 20 },
-                        hover: { opacity: 1, y: 0 },
-                      }}
-                      transition={{
-                        duration: 0.4,
-                        ease: "easeInOut",
-                        delay: 0.1,
-                      }}
+                    
                     >
                       • Slightly smaller than Arabica<br/>
                       • Rounder-shaped beans<br/>
@@ -222,11 +177,11 @@ export default function CoffeeProducts() {
                       • Higher caffeine content than Arabica<br/>
                       • Features a straight cut in the center<br/>
                       • Earthy, slightly bitter flavor profile
-                    </motion.p>
+                    </p>
                   </div>
-                </motion.div>
+                </div>
               </div>
-            </motion.div>
+            </div>
             <div className="text-center mt-6">
               <Link
                 href="/coffee/robusta"

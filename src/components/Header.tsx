@@ -48,7 +48,7 @@ export default function Header() {
             </Link>
           </div>
           <nav className="">
-            <h2 className="md:text-4xl text-sm  lg:mr-0 mr-10">
+            <h2 className="md:text-4xl text-sm font-serif lg:mr-0 mr-10">
               Exporter of Green coffee Beans of Indian Origin
             </h2>
           </nav>
@@ -96,13 +96,13 @@ export default function Header() {
 
         {/* Desktop Navigation */}
         <div className="hidden md:block border-t border-gray-200">
-          <nav className="flex items-center justify-between px-6 py-3 bg-coffee-brown text-white">
+          <nav className="flex items-center justify-between px-6 py-1 bg-black text-white">
             {/* Hamburger Menu Button */}
             
             
             {/* Contact Links */}
             <div className="flex justify-center items-center space-x-8 flex-1">
-              <button 
+              {/* <button 
               className="text-white hover:text-amber-200 p-2"
               onClick={toggleMobileMenu}
               aria-label="Toggle menu"
@@ -116,7 +116,7 @@ export default function Header() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               )}
-            </button>
+            </button> */}
               <span className="text-white font-medium">
                 Physical Location
               </span>
@@ -138,38 +138,17 @@ export default function Header() {
             </div>
           </nav>
         </div>
-        {/* <nav className="hidden md:flex justify-center space-x-8 py-3 font-semibold">
-          <Link
-            href="/coffee-grades"
-            className="text-coffee-brown hover:text-coffee-lightGreen"
-          >
-            Our Coffee Grades
-          </Link>
-          <Link
-            href="/about"
-            className="text-coffee-brown hover:text-coffee-lightGreen"
-          >
-            About Us
-          </Link>
-          <Link
-            href="/contact"
-            className="text-coffee-brown hover:text-coffee-lightGreen"
-          >
-            Contact Us
-          </Link>
-          <Link
-            href="/trade"
-            className="text-coffee-brown hover:text-coffee-lightGreen"
-          >
-            Trade Enquiry
-          </Link>
-          <Link
-            href="/certificates"
-            className="text-coffee-brown hover:text-coffee-lightGreen"
-          >
-            Registrations & Certificates
-          </Link>
-        </nav> */}
+        <nav className="hidden md:flex justify-center space-x-8  font-semibold">
+          <div className="flex justify-center items-center gap-10 py-1">
+              <Link href="/products" className="block text-black text-sm font-medium ">Products</Link>
+              <Link href="/certificates" className="block text-black text-sm font-medium ">Registrations & Certificates</Link>
+              <Link href="/blog" className="block text-black text-sm font-medium ">Blogs</Link>
+              <Link href="/trade-enquiry" className="block text-black text-sm font-medium ">Trade Enquiry</Link>
+              <Link href="/about" className="block text-black text-sm font-medium">About Us</Link>
+              <Link href="/become-supplier" className="block text-black text-sm font-medium ">Becomes a Supplier with us</Link>
+              <Link href="/careers" className="block text-black text-sm font-medium  ">Careers</Link>
+            </div>
+        </nav>
       </div>
     </header>
   );

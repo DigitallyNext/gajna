@@ -100,42 +100,55 @@ export default function EthicalSourcing() {
           </h2>
 
 
-          <div
-            ref={logosRef}
-            className="grid grid-cols-2 md:grid-cols-5 gap-6 mb-10 max-w-6xl mx-auto"
+        <div
+  ref={logosRef}
+  className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-10 max-w-6xl mx-auto"
+>
+  {certificationsData.map((cert, index) => (
+    <div
+      key={index}
+      className="flex flex-col items-center"
+    >
+      {/* Card Box with equal height */}
+      <div className="logo-item flex flex-col items-center justify-between mx-0 border-2 border-coffee-brown shadow-lg rounded-2xl p-4 h-60 w-full">
+        <div className="w-32 h-32 relative mb-4">
+          <Image
+            src={cert.logo}
+            alt={cert.alt}
+            fill
+            className="object-contain"
+          />
+        </div>
+        <p className="text-center text-xs text-black max-w-72 mb-3 line-clamp-3">
+          {cert.desc}
+        </p>
+      </div>
+
+      {/* View Certificate Button (outside border box) */}
+      {cert.hasViewButton &&
+        cert.certificateImages &&
+        cert.certificateImages.length > 0 && (
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setSelectedCertificate({
+                name: cert.name,
+                images: cert.certificateImages!,
+                currentIndex: 0,
+              });
+            }}
+            className="my-5 bg-transparent  text-coffee-brown text-xs transition-colors duration-300 underline cursor-pointer"
+            type="button"
           >
-            {certificationsData.map((cert, index) => (
-              <div key={index} className="logo-item flex flex-col items-center mx-4">
-                <div className="w-32 h-32 relative mb-4">
-                  <Image
-                    src={cert.logo}
-                    alt={cert.alt}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-                <p className="text-center text-xs text-black max-w-72 mb-3">{cert.desc}</p>
-                {cert.hasViewButton && cert.certificateImages && cert.certificateImages.length > 0 && (
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      console.log('Button clicked for:', cert.name);
-                      setSelectedCertificate({
-                        name: cert.name,
-                        images: cert.certificateImages!,
-                        currentIndex: 0
-                      });
-                    }}
-                    className="bg-transparent text-coffee-brown text-xs transition-colors duration-300 underline cursor-pointer"
-                    type="button"
-                  >
-                    View Certificate{cert.certificateImages.length > 1 ? 's' : ''}
-                  </button>
-                )}
-              </div>
-            ))}
-          </div>
+            View Certificate
+            {cert.certificateImages.length > 1 ? "s" : ""}
+          </button>
+        )}
+    </div>
+  ))}
+</div>
+
 
           {/* <div className="text-center">
             <Link href="/certifications" className="certificates-button hover:shadow-xl bg-[#61714D] text-white px-8 py-3 rounded-full hover:bg-[#4D5A3E] transition-colors duration-300">

@@ -51,12 +51,12 @@ const bannerData: BannerSlide[] = [
     mobileBackground: "/banners/b6.webp",
     description: "Eco-friendly cultivation techniques"
    },
-   {
-    title: "Flavor Profile",
-    background: "/banners/b7.webp", // Using placeholder until proper image is added
-    mobileBackground: "/banners/b7.webp",
-    description: "Grown under India's forest canopy"
-   },
+  //  {
+  //   title: "Flavor Profile",
+  //   background: "/banners/b7.webp", // Using placeholder until proper image is added
+  //   mobileBackground: "/banners/b7.webp",
+  //   description: "Grown under India's forest canopy"
+  //  },
    
 
 

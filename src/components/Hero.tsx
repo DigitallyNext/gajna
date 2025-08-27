@@ -43,7 +43,7 @@ export default function Hero() {
   const currentSlideData = slides[currentSlide];
 
   return (
-    <section className="relative bg-black text-white overflow-hidden h-[120vh] z-0 mt-[-2vw]">
+    <section className="relative bg-black text-white overflow-hidden h-[100vh] z-0 ">
     
       {/* Background image with transition effect and gradient overlay */}
       {slides.map((slide, index) => (
@@ -54,16 +54,17 @@ export default function Hero() {
     backgroundImage: isMounted ? `url(${isMobile ? slide.mobileBackground : slide.background})` : 'none',
     backgroundSize: "100% 100%"
   }}
-></div>
+>        <h1 className='text-2xl font-serif font-bold mx-20 py-10 bg-black/20 text-center w-[28%] h-[20px] rounded-full mt-[-2vw]'>Uniqueness of Indian Coffee Bean</h1></div>
 
       ))}
       
       <div className="container mx-auto px-4 py-20 relative z-10 h-full flex flex-col justify-center">
+
         {/* Main content section */}
         <div className="flex flex-col lg:flex-row lg:items-center">
           <div className="lg:w-1/2 w-full mb-8 lg:mb-0">
             {/* Title with enhanced animation */}
-            <h1 className="lg:text-6xl text-4xl text-center lg:text-left font-semibold mb-6 text-white">
+            <h2 className="lg:text-6xl text-4xl text-center lg:text-left font-serif font-semibold mb-6 text-white">
               <AnimatePresence mode="wait">
                 {currentSlideData.title.split('\n').map((line, i) => (
                   <motion.span 
@@ -82,7 +83,7 @@ export default function Hero() {
                   </motion.span>
                 ))}
               </AnimatePresence>
-            </h1>
+            </h2>
             
             {/* Description paragraph with right-to-left animation */}
             <AnimatePresence mode="wait">
