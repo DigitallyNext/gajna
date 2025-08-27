@@ -7,18 +7,18 @@ import { FaLocationDot } from "react-icons/fa6";
 
 export default function Footer() {
   return (
-    <footer className="bg-coffee-brown text-white py-16">
+    <footer className="bg-coffee-brown text-white py-12 md:py-16">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Logo and Tagline */}
-          <div className="mb-6 md:mb-0">
-            <Link href="/" className="text-white font-bold text-2xl mb-2 flex flex-row justify-center items-center">
+          <div className="col-span-1 md:col-span-2 lg:col-span-1">
+            <Link href="/" className="text-white font-bold text-xl md:text-2xl mb-4 flex justify-center md:justify-start items-center">
               <Image
                 src="/logo.webp"
                 alt="Gaina Overseas Logo"
-                width={200}
-                height={200}
-                className="w-48 h-20 rounded-2xl p-2 bg-white mb-6"
+                width={180}
+                height={80}
+                className="w-40 md:w-48 h-auto rounded-2xl p-2 bg-white mb-4"
               />
               {/* <Image
                 src="/slogo.webp"
@@ -36,11 +36,11 @@ export default function Footer() {
               <br />
               Let wisdom guide, let happiness flow.
             </p> */}
-            <div className="flex space-x-4">
-              <Link href="https://facebook.com" aria-label="Facebook">
+            <div className="flex justify-center md:justify-start space-x-4">
+              <Link href="https://facebook.com" aria-label="Facebook" className="hover:text-coffee-gold transition-colors">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
+                  className="h-6 w-6"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -81,8 +81,8 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="mb-6 md:mb-0">
-            <h3 className="font-bold mb-4 text-2xl">Quick Links</h3>
+          <div>
+            <h3 className="font-bold mb-4 text-xl md:text-2xl text-center md:text-left">Quick Links</h3>
             <ul className="space-y-2">
               <li className="flex items-center">
                 <FaCheck className="mr-2" />
@@ -118,8 +118,9 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Disclaimer and Other Links */}
-          <div className="mb-6 md:mb-0">
+          {/* Other Links */}
+          <div>
+            <h3 className="font-bold mb-4 text-xl md:text-2xl text-center md:text-left">Services</h3>
             <ul className="space-y-2">
               <li className="flex items-center">
                 <FaCheck className="mr-2" />
@@ -159,29 +160,35 @@ export default function Footer() {
           </div>
 
           {/* Contact Information */}
-          <div className="">
-            <div className="flex justify-start items-center flex-row mb-3">
-              <IoIosMailOpen className="mr-2 text-4xl" />
-             <div className="flex flex-col">
-                <h3 className="font-medium  text-2xl">Mail Us</h3>
-              <p className="flex items-center">
-                
-               info@gajnaoverseas.com
-              </p>
+          <div>
+            <h3 className="font-bold mb-4 text-xl md:text-2xl text-center md:text-left">Contact Us</h3>
+            <div className="space-y-4">
+              <div className="flex items-start space-x-3">
+                <IoIosMailOpen className="text-2xl md:text-3xl text-coffee-gold flex-shrink-0 mt-1" />
+                <div>
+                  <h4 className="font-medium text-lg">Mail Us</h4>
+                  <p className="text-sm md:text-base text-gray-200">
+                    info@gajnaoverseas.com
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="flex justify-start items-center flex-row mb-3">
-              <IoCall className="mr-2 text-4xl" />
-              <div className="flex flex-col">
-                <h3 className="font-medium mb-2 text-2xl">Call Us</h3>
-                <p className="flex items-center">+91 9811789665</p>
+              <div className="flex items-start space-x-3">
+                <IoCall className="text-2xl md:text-3xl text-coffee-gold flex-shrink-0 mt-1" />
+                <div>
+                  <h4 className="font-medium text-lg">Call Us</h4>
+                  <p className="text-sm md:text-base text-gray-200">+91 9811789665</p>
+                </div>
               </div>
-            </div>
-            <div className="flex justify-start items-center flex-row">
-              <FaLocationDot className="mr-2 text-4xl" />
-              <div className="flex flex-col">
-                <h3 className="font-medium mb-2 text-2xl">Address</h3>
-                <p className="">505, Park Royal Apartments, <br/>GH-80, Sector -56, <br/>Gurugram, Haryana, India</p>
+              <div className="flex items-start space-x-3">
+                <FaLocationDot className="text-2xl md:text-3xl text-coffee-gold flex-shrink-0 mt-1" />
+                <div>
+                  <h4 className="font-medium text-lg">Address</h4>
+                  <p className="text-sm md:text-base text-gray-200 leading-relaxed">
+                    505, Park Royal Apartments,<br/>
+                    GH-80, Sector -56,<br/>
+                    Gurugram, Haryana, India
+                  </p>
+                </div>
               </div>
             </div>
           </div>

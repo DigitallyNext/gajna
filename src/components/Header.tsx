@@ -31,8 +31,8 @@ export default function Header() {
   return (
     <header className="bg-white sticky top-0 z-50">
       <div className="">
-        {/* Desktop Header */}
-        <div className="flex justify-center lg:gap-20 gap-4 items-center py-4 px-6">
+        {/* Header */}
+        <div className="flex justify-between lg:justify-center lg:gap-20 items-center py-3 md:py-4 px-4 md:px-6">
           <div className="flex items-center justify-center flex-col">
             <Link
               href="/"
@@ -41,24 +41,24 @@ export default function Header() {
               <Image
                 src="/logo.webp"
                 alt="Gaina Overseas Logo"
-                width={180}
-                height={100}
-                className="lg:w-full lg:h-full w-56 h-full"
+                width={150}
+                height={80}
+                className="w-32 h-auto md:w-40 lg:w-48 xl:w-56"
               />
             </Link>
           </div>
-          <nav className="">
-            <h2 className="md:text-4xl text-sm font-serif lg:mr-0 mr-10">
+          <nav className="hidden md:block flex-1 text-center">
+            <h2 className="text-lg md:text-2xl lg:text-3xl xl:text-4xl font-serif text-coffee-brown">
               Exporter of Green coffee Beans of Indian Origin
             </h2>
           </nav>
-          <div>
+          <div className="hidden lg:block">
              <Image
                 src="/slogo.webp"
                 alt="Gaina Overseas Logo"
                 width={50}
                 height={50}
-                className="lg:w-full lg:h-full w-52 h-full"
+                className="w-12 h-12 lg:w-16 lg:h-16"
               />
           </div>
           {/* Mobile Menu Button */}

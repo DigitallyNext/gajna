@@ -54,17 +54,24 @@ export default function Hero() {
     backgroundImage: isMounted ? `url(${isMobile ? slide.mobileBackground : slide.background})` : 'none',
     backgroundSize: "100% 100%"
   }}
->        <h1 className='text-2xl font-serif font-bold mx-20 py-10 bg-black/20 text-center w-[28%] h-[20px] rounded-full mt-[-2vw]'>Uniqueness of Indian Coffee Bean</h1></div>
+>
+          {/* Header text with responsive design */}
+          <div className="absolute top-4 left-80 transform -translate-x-1/2 w-full max-w-md px-4">
+            <h1 className='text-lg md:text-2xl font-serif font-bold py-3 md:py-4 bg-black/30 text-center text-white rounded-full backdrop-blur-sm'>
+              Uniqueness of Indian Coffee Bean
+            </h1>
+          </div>
+        </div>
 
       ))}
       
-      <div className="container mx-auto px-4 py-20 relative z-10 h-full flex flex-col justify-center">
+      <div className="container mx-auto px-4 py-16 md:py-20 relative z-10 h-full flex flex-col justify-center">
 
         {/* Main content section */}
-        <div className="flex flex-col lg:flex-row lg:items-center">
-          <div className="lg:w-1/2 w-full mb-8 lg:mb-0">
+        <div className="flex flex-col lg:flex-row lg:items-center mt-16 md:mt-0">
+          <div className="lg:w-1/2 w-full mb-8 lg:mb-0 px-2 md:px-0">
             {/* Title with enhanced animation */}
-            <h2 className="lg:text-6xl text-4xl text-center lg:text-left font-serif font-semibold mb-6 text-white">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center lg:text-left font-serif font-semibold mb-4 md:mb-6 text-white leading-tight">
               <AnimatePresence mode="wait">
                 {currentSlideData.title.split('\n').map((line, i) => (
                   <motion.span 
@@ -89,7 +96,7 @@ export default function Hero() {
             <AnimatePresence mode="wait">
               <motion.p 
                 key={`${currentSlide}-description`}
-                className="lg:text-xl text-lg text-center lg:text-left text-gray-200 leading-relaxed"
+                className="text-base sm:text-lg md:text-xl text-center lg:text-left text-gray-200 leading-relaxed px-2 md:px-0"
                 initial={{ opacity: 0, x: 100 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -50 }}
