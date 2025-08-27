@@ -34,7 +34,7 @@ const bannerData: BannerSlide[] = [
     description: "Intercropped with spices and fruits"
    },
    {
-    title: "High Grown (Above 1000m)",
+    title: "High Grown",
     background: "/banners/b4.webp", // Using placeholder until proper image is added
     mobileBackground: "/banners/b4.webp",
     description: "Mostly high grown at altitudes above 1000m"
