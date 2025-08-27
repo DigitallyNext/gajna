@@ -339,10 +339,10 @@ export default function ContactPage() {
                     <Phone className="w-8 h-8 text-white" />
                   </div>
                   <div className="flex-1 select-text">
-                     <h3 className="text-xl font-bold text-gray-800 mb-2 select-text">Priyavrat Singh</h3>
+                     <h3 className="text-xl font-bold text-gray-800 mb-2 select-text">Priyavirat Singh</h3>
                      <p className="text-gray-600 mb-3 select-text">Founder & Coffee Export Lead</p>
-                     <a href="tel:+919811798569" className="text-coffee-brown font-semibold text-lg hover:text-amber-700 transition-colors select-text">
-                       +91-9811798569
+                     <a href="tel: +91 9811789665" className="text-coffee-brown font-semibold text-lg hover:text-amber-700 transition-colors select-text">
+                      +91 9811789665
                      </a>
                    </div>
                 </motion.div>
@@ -358,7 +358,7 @@ export default function ContactPage() {
                    <div className="flex-1 select-text">
                      <h3 className="text-xl font-bold text-gray-800 mb-2 select-text">Email Us</h3>
                      <a href="mailto:info@gajnacoffee.com" className="text-coffee-brown font-semibold text-lg hover:text-amber-700 transition-colors select-text">
-                       info@gajnacoffee.com
+                       info@gajnaoverseas.com
                      </a>
                    </div>
                  </motion.div>
@@ -399,9 +399,7 @@ export default function ContactPage() {
                     <div className="select-text">
                        <h4 className="font-bold text-gray-800 mb-2 select-text">Gajna Overseas Pvt Ltd</h4>
                        <p className="text-gray-600 leading-relaxed select-text">
-                         1st Floor, Royal Apartments, Opp. RK<br />
-                         Sector-7K, Gurugram, Haryana, India<br />
-                         PIN: 122001
+                         505, Park Royal Apartments,<br/> GH-80, Sector -56, Gurugram, Haryana, India
                        </p>
                      </div>
                   </div>

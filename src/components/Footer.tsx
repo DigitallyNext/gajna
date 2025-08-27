@@ -18,7 +18,7 @@ export default function Footer() {
                 alt="Gaina Overseas Logo"
                 width={200}
                 height={200}
-                className="w-48 h-20 rounded-2xl p-2 bg-white"
+                className="w-48 h-20 rounded-2xl p-2 bg-white mb-6"
               />
               {/* <Image
                 src="/slogo.webp"
@@ -29,13 +29,13 @@ export default function Footer() {
               /> */}
               {/* Gaina Overseas */}
             </Link>
-            <p className="text-sm my-4">
+            {/* <p className="text-sm my-4">
               In breath, find peace; in stillness, grow,
               <br />
               Through ancient roots and modern glow,
               <br />
               Let wisdom guide, let happiness flow.
-            </p>
+            </p> */}
             <div className="flex space-x-4">
               <Link href="https://facebook.com" aria-label="Facebook">
                 <svg
