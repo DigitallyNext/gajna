@@ -43,7 +43,7 @@ export default function Hero() {
   const currentSlideData = slides[currentSlide];
 
   return (
-    <section className="relative bg-black text-white overflow-hidden h-[100vh] z-0 ">
+    <section className="relative bg-black text-white overflow-hidden lg:h-[100vh] h-[60vh] z-0 ">
     
       {/* Background image with transition effect and gradient overlay */}
       {slides.map((slide, index) => (
@@ -56,7 +56,7 @@ export default function Hero() {
   }}
 >
           {/* Header text with responsive design */}
-          <div className="absolute top-4 left-80 transform -translate-x-1/2 w-full max-w-md px-4">
+          <div className="absolute top-4 left-80 transform lg:-translate-x-1/2 -translate-x-80 w-full max-w-md px-4">
             <h1 className='text-lg md:text-2xl font-serif font-bold py-3 md:py-4 bg-black/30 text-center text-white rounded-full backdrop-blur-sm'>
               Uniqueness of Indian Coffee Bean
             </h1>
