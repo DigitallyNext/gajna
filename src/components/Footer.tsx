@@ -29,13 +29,25 @@ export default function Footer() {
               /> */}
               {/* Gaina Overseas */}
             </Link>
-            {/* <p className="text-sm my-4">
-              In breath, find peace; in stillness, grow,
-              <br />
-              Through ancient roots and modern glow,
-              <br />
-              Let wisdom guide, let happiness flow.
-            </p> */}
+            
+            {/* Newsletter Section */}
+            <div className="mb-6">
+              <h3 className="font-bold text-lg mb-2">Newsletter</h3>
+              <p className="text-sm text-gray-200 mb-3">
+                Sign up with your email to join our mailing list
+              </p>
+              <div className="flex flex-col sm:flex-row gap-2">
+                <input
+                  type="email"
+                  placeholder="Enter your email address"
+                  className="flex-1 px-3 py-2 text-sm text-gray-800 bg-white rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-coffee-gold focus:border-transparent"
+                />
+                <button className="px-4 py-2 text-sm bg-coffee-gold text-coffee-brown font-medium rounded hover:bg-amber-400 transition-colors duration-200">
+                  Subscribe
+                </button>
+              </div>
+            </div>
+            
             <div className="flex justify-center md:justify-start space-x-4">
               <Link href="https://facebook.com" aria-label="Facebook" className="hover:text-coffee-gold transition-colors">
                 <svg
@@ -109,12 +121,6 @@ export default function Footer() {
                 </Link>
               </li>
               
-              <li className="flex items-center">
-                <FaCheck className="mr-2" />
-                <Link href="/trade-enquire" className="hover:text-coffee-gold">
-                  Trade enquiry
-                </Link>
-              </li>
             </ul>
           </div>
 
