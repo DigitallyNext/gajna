@@ -73,18 +73,16 @@ export default function CoffeeProducts() {
           >
             <div
               className="overflow-hidden group w-full max-w-sm cursor-pointer flex-1 flex flex-col"
-              
             >
               <div className="relative flex flex-col items-center h-full">
                 {/* Coffee bean image */}
                 <div
-                  className="relative z-20 mt-6 flex-shrink-0"
-                
+                  className="relative z-20 mt-6 flex-shrink-0 h-[200px] flex items-center justify-center"
                 >
                   <Image
                     src="/coffee-beans/arabica.png"
                     alt="Arabica Coffee"
-                    width={200}
+                    width={150}
                     height={200}
                     className="mb-4"
                   />
@@ -92,14 +90,12 @@ export default function CoffeeProducts() {
 
                 {/* Card with content */}
                 <div
-                  className="bg-[#7D4B3C] text-white px-6 py-4 rounded-2xl w-full shadow-lg mt-[-80px] relative overflow-hidden"
-                
+                  className="bg-[#7D4B3C] text-white px-6 py-4 rounded-2xl w-full shadow-lg mt-[-80px] relative overflow-hidden min-h-[280px]"
                 >
                   <div className="text-center pt-12 h-full flex flex-col justify-start">
                     {/* Title */}
                     <h3
                       className="text-3xl font-serif my-4"
-               
                     >
                       Arabica
                     </h3>
@@ -111,8 +107,6 @@ export default function CoffeeProducts() {
                       • Distinctive S-shaped cut in the center<br/>
                       • Known for elegant, fruity aroma
                     </p>
-
-                   
                   </div>
                 </div>
               </div>
@@ -129,24 +123,22 @@ export default function CoffeeProducts() {
 
           {/* Robusta Coffee */}
           <div
-            ref={arabicaRef}
+            ref={robustaRef}
             className="flex flex-col items-center h-full"
             style={{ visibility: "visible", opacity: 1 }}
           >
             <div
               className="overflow-hidden group w-full max-w-sm cursor-pointer flex-1 flex flex-col"
-            
             >
               <div className="relative flex flex-col items-center h-full">
                 {/* Coffee bean image */}
                 <div
-                  className="relative z-20 mt-6 flex-shrink-0"
-  
+                  className="relative z-20 mt-6 flex-shrink-0 h-[200px] flex items-center justify-center"
                 >
                   <Image
                     src="/coffee-beans/Robusta.webp"
-                    alt="Arabica Coffee"
-                    width={225}
+                    alt="Robusta Coffee"
+                    width={170}
                     height={200}
                     className="mb-4"
                   />
@@ -154,22 +146,19 @@ export default function CoffeeProducts() {
 
                 {/* Card with content */}
                 <div
-                  className="bg-[#7D4B3C] text-white px-6 py-4 rounded-2xl w-full shadow-lg mt-[-80px] relative overflow-hidden"
-      
+                  className="bg-[#7D4B3C] text-white px-6 py-4 rounded-2xl w-full shadow-lg mt-[-80px] relative overflow-hidden min-h-[280px]"
                 >
-                  <div className="text-center pt-12  flex flex-col justify-start">
+                  <div className="text-center pt-12 h-full flex flex-col justify-start">
                     {/* Title */}
                     <h3
-                      className="text-3xl font-serif my-5"
-                    
+                      className="text-3xl font-serif my-4"
                     >
                       Robusta
                     </h3>
 
-                    {/* Description - hidden initially, visible on hover */}
+                    {/* Description */}
                     <p
                       className="text-base mb-3 px-2 leading-relaxed text-left"
-                    
                     >
                       • Slightly smaller than Arabica<br/>
                       • Rounder-shaped beans<br/>
