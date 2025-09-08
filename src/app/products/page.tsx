@@ -14,7 +14,7 @@ export default function ProductsIndexPage() {
       </section>
 
       <section className="py-10">
-        <div className="max-w-6xl mx-auto px-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="max-w-6xl mx-auto px-4 grid sm:grid-cols-1 lg:grid-cols-3 gap-8">
           {allProducts.map((p) => (
             <Link key={p.slug} href={`/products/${p.slug}`} className="group  hover:shadow-md transition-shadow rounded-2xl border-2 ">
               <div className="relative aspect-[16/9] ">
