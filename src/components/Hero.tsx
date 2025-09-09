@@ -62,16 +62,21 @@ export default function Hero() {
             backgroundSize: "100% 100%",
           }}
         >
-          {/* Header text with responsive design */}
-          <div className="absolute top-4 right-0  px-10">
+
+        </div>
+      ))}
+
+      <div className="container mx-auto px-4 py-16 md:py-20 relative z-10 h-full flex flex-col justify-center">
+                  {/* Header text with responsive design */}
+          <div className="absolute top-4  lg:-right-60 right-12 px-4 lg:px-10">
             <div className="relative flex items-center justify-center">
               {/* Heading pill */}
-              <h1 className="text-lg font-bold py-2 md:py-3 px-6 bg-white text-center text-[#61714D] rounded-full backdrop-blur-sm">
+              <h1 className="lg:text-lg text-xs sm:text-sm font-bold py-2 md:py-3 px-3 lg:px-6 bg-white text-center text-[#61714D] rounded-full whitespace-nowrap">
                 Uniqueness of Indian Coffee Bean
               </h1>
 
-              {/* Overlapping Icon */}
-              <div className="absolute left-0 -translate-x-6">
+              {/* Overlapping Icon - hidden on mobile to prevent overflow */}
+              <div className="absolute left-0 -translate-x-6 mt-3 lg:mt-0">
                 <Image
                   src="/coffee-bean.webp"
                   alt="beans"
@@ -82,10 +87,6 @@ export default function Hero() {
               </div>
             </div>
           </div>
-        </div>
-      ))}
-
-      <div className="container mx-auto px-4 py-16 md:py-20 relative z-10 h-full flex flex-col justify-center">
         {/* Main content section */}
         <div className="flex flex-col lg:flex-row lg:items-center mt-16 md:mt-0">
           <div className="lg:w-1/2 w-full mb-8 lg:mb-0 px-2 md:px-0">

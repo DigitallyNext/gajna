@@ -58,7 +58,7 @@ export default function SustainableCoffee() {
                 their environment. They are grown in natural forests, without
                 cutting down shade trees
               </p>
-              <p className="text-lg leading-relaxed text-black opacity-90 p-4 bg-[#F9C977] lg:ml-[-6vw] ml-0 rounded-xl">
+              <p className="text-lg leading-relaxed text-black opacity-90 p-4 bg-[#F9C977] lg:ml-[-6vw] ml-0 rounded-xl overflow-hidden">
                 In all Indian coffee estates, our coffees are grown under a
                 two-tier mixed shade canopy. Some of these shade trees produce
                 fruits and vegetables, which become an additional source of
@@ -71,7 +71,7 @@ export default function SustainableCoffee() {
                 Coffee estates have replaced the earlier custom of shifting
                 cultivation, which had left these Hills denuded
               </p>
-              <p className="text-lg leading-relaxed text-black opacity-90 p-4 bg-[#F9C977] lg:ml-[-6vw] ml-0 rounded-xl">
+              <p className="text-lg leading-relaxed text-black opacity-90 p-4 bg-[#F9C977] lg:ml-[-6vw] ml-0 rounded-xl overflow-hidden">
                 In India, the coffee estates also provide a livelihood to
                 economically marginalised individuals by offering local tribes a
                 sustainable income. The coffee estates also provide healthcare,

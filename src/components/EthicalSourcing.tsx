@@ -154,8 +154,8 @@ export default function EthicalSourcing() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="-left-12" />
-              <CarouselNext className="-right-12" />
+              <CarouselPrevious className="-left-4 lg:-left-12" />
+              <CarouselNext className="-right-4 lg:-right-12" />
             </Carousel>
           </div>
 

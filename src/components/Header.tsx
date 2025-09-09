@@ -29,7 +29,7 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-white sticky top-0 z-50">
+    <header className="bg-white sticky top-0 z-50 overflow-hidden">
       <div className="">
         {/* Header */}
         <div className="flex justify-between lg:justify-center lg:gap-20 items-center py-3 md:py-4 px-4 md:px-6">
@@ -63,7 +63,7 @@ export default function Header() {
           </div>
           {/* Mobile Menu Button */}
           <button 
-            className="md:hidden fixed right-4 top-4 text-white bg-coffee-brown rounded-full p-2 z-50"
+            className="md:hidden fixed right-4 top-4 text-white bg-coffee-brown rounded-full p-2 z-50 "
             onClick={toggleMobileMenu}
             aria-label="Toggle mobile menu"
           >
