@@ -37,7 +37,7 @@ export const products: Record<string, Product> = {
       { label: 'Processing', value: 'Washed Arabica – “Plantation” (Wet Processed)' },
       { label: 'Sieve Standards', value: 'No sieve requirement' },
       { label: 'Grading Status', value: 'Clean Garbled' },
-      { label: 'Tolerance (PB%)', value: '2% by weight' },
+      { label: 'Tolerance - Flats', value: '2% by weight' },
       { label: 'PB Triage', value: '3% by weight' },
       { label: 'Moisture Standard', value: '12.5% maximum' },
       { label: 'Loadability in 20-ft container', value: '60 kg bags, 19.2 Tons, or 19,200 kg' },
