@@ -39,6 +39,28 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
     "Plantation A": "plantation-a",
     "Plantation B": "plantation-b",
     "Plantation C": "plantation-c",
+    "Monsooned Malabar Robusta Triage -  Unwashed": "monsooned-malabar-robusta-triage",
+    "Liberia Bulk (Bulk Coffee from Liberia)": "liberia-bulk",
+    "Excelsia Bulk (Bulk Coffee from Excelsia)": "excelsia-bulk",
+    "Arabica Cherry Blacks/Browns": "arabica-cherry-blacks-browns",
+    "Robusta Parchment Blacks/Browns": "robusta-parchment-blacks-browns",
+    "Robusta Cherry Blacks/Browns": "robusta-cherry-blacks-browns",
+    "Plantation AA": "plantation-aa",
+    "Plantation PB Bold": "plantation-pb-bold",
+    "Arabica Cherry AA": "arabica-cherry-aa",
+    "Arabica Cherry A": "arabica-cherry-a",
+    "Arabica Cherry PB Bold": "arabica-cherry-pb-bold",
+    "Robusta Parchment A": "robusta-parchment-a",
+    "Robusta Parchment PB Bold": "robusta-parchment-pb-bold",
+    "Robusta Cherry AA": "robusta-cherry-aa",
+    "Robusta Cherry A": "robusta-cherry-a",
+    "Robusta Cherry PB Bold": "robusta-cherry-pb-bold",
+    "Mysore Nuggets Extra bold- Washed": "mysore-nuggets-extra-bold",
+    "Monsooned Malabar AAA -  Unwashed": "monsooned-malabar-aaa",
+    "Monsooned Malabar AA -  unwashed": "monsooned-malabar-aa",
+    "Monsooned Malabar arabica Triage -  Unwashed": "monsooned-malabar-arabica-triage",
+    "Robusta Kaapi Royale- Washed Coffee": "robusta-kaapi-royale",
+    "Monsooned Malabar Robusta PR -  Unwashed": "monsooned-malabar-robusta-pr",
   };
 
   // Fallback: generate a URL-friendly slug from a grade name so each item can have its own page
@@ -70,9 +92,10 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
           heading: "Arabica",
           groups: [
             {
-              subheading: "Washed Arabica Plantation",
+              subheading: "Washed Arabica (Arabica Parchment)",
               variety: "Arabica",
               items: [
+                "Plantation PB",
                 "Plantation A",
                 "Plantation B",
                 "Plantation C",
@@ -82,13 +105,13 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
               ],
             },
             {
-              subheading: "Unwashed Arabica Cherry",
+              subheading: "Unwashed Arabica (Arabica Cherry)",
               variety: "Arabica",
               items: [
                 "Arabica Cherry PB",
                 "Arabica Cherry AB",
                 "Arabica Cherry C",
-                "Arabica Cherry Blacks/Brown",
+                "Arabica Cherry Blacks/Browns",
                 "Arabica Cherry Bits",
                 "Arabica Cherry Bulk",
               ],
@@ -99,7 +122,7 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
           heading: "Robusta",
           groups: [
             {
-              subheading: "Washed Robusta Parchment",
+              subheading: "Washed Robusta (Robusta Parchment)",
               variety: "Robusta",
               items: [
                 "Robusta Parchment PB",
@@ -111,7 +134,7 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
               ],
             },
             {
-              subheading: "Unwashed Robusta Cherry",
+              subheading: "Unwashed Robusta (Robusta Cherry)",
               variety: "Robusta",
               items: [
                 "Robusta Cherry PB",
@@ -120,7 +143,7 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
                 "Robusta Cherry Blacks/Browns",
                 "Robusta Cherry Bits",
                 "Robusta Cherry Bulk",
-                "Robusta Cherry Clean Bulk",
+                "Robusta Cherry Clean/Bulk",
               ],
             },
           ],
@@ -141,7 +164,7 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
             {
               subheading: "Unwashed Arabica Cherry",
               variety: "Arabica",
-              items: ["Arabica Cherry AA", "Arabica Cherry AB", "Arabica Cherry PB Bold"],
+              items: ["Arabica Cherry AA", "Arabica Cherry A", "Arabica Cherry PB Bold"],
             },
           ],
         },
@@ -151,12 +174,12 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
             {
               subheading: "Washed Robusta Parchment",
               variety: "Robusta",
-              items: ["Robusta Parchment A", "Robusta Parchment PB  Bold"],
+              items: ["Robusta Parchment A", "Robusta Parchment PB Bold"],
             },
             {
               subheading: "Unwashed Robusta Cherry",
               variety: "Robusta",
-              items: ["Robusta Cherry AA", "Robusta Cherry A", "Robusta Cherry PB  Bold"],
+              items: ["Robusta Cherry AA", "Robusta Cherry A", "Robusta Cherry PB Bold"],
             },
           ],
         },
@@ -179,6 +202,7 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
               items: [
                 "Monsooned Malabar AAA -  Unwashed",
                 "Monsooned Malabar AA -  unwashed",
+                "Monsooned Malabar A -  unwashed",
                 "Monsooned Malabar arabica Triage -  Unwashed",
               ],
             },
@@ -196,7 +220,7 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
               subheading: "Robusta Cherry",
               variety: "Robusta",
               items: [
-                "Monsooned Malabar Robusta PR-  Unwashed",
+                "Monsooned Malabar Robusta PR -  Unwashed",
                 "Monsooned Malabar Robusta Triage -  Unwashed",
               ],
             },

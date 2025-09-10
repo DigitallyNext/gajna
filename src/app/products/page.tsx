@@ -18,7 +18,11 @@ export default function ProductsIndexPage() {
           {allProducts.map((p) => (
             <Link key={p.slug} href={`/products/${p.slug}`} className="group  hover:shadow-md transition-shadow rounded-2xl border-2 ">
               <div className="relative aspect-[16/9] ">
-                <Image src={p.heroImage} alt={p.name} width={1200} height={100} className="object-contain p-8 rounded-2xl" />
+                {p.heroImage ? (
+                  <Image src={p.heroImage} alt={p.name} width={1200} height={100} className="object-contain p-8 rounded-2xl" />
+                ) : (
+                  <div className="w-full h-full bg-[#FFF7F2] rounded-2xl" />
+                )}
               </div>
               <div className="p-4">
                 <h3 className="text-xl mb-4 text-[#562F23]">{p.name}</h3>

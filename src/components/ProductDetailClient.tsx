@@ -84,7 +84,9 @@ export default function ProductDetailClient({ product }: Props) {
               height={100}
               className="object-contain p-2 w-[100%] h-auto"
             />
-          ) : null}
+          ) : (
+            <div className="w-full h-full bg-[#FFF7F2]" />
+          )}
         </div>
 
         {product.gallery?.length ? (
@@ -103,13 +105,17 @@ export default function ProductDetailClient({ product }: Props) {
                   }`}
                   aria-label={`Show image ${idx + 1}`}
                 >
-                  <Image
-                    src={src}
-                    alt={`${product.name} ${idx + 1}`}
-                    fill
-                    className="object-cover"
-                    sizes="80px"
-                  />
+                  {src ? (
+                    <Image
+                      src={src}
+                      alt={`${product.name} ${idx + 1}`}
+                      fill
+                      className="object-cover"
+                      sizes="80px"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-[#FFF7F2]" />
+                  )}
                 </button>
               );
             })}
