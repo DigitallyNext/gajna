@@ -24,10 +24,17 @@ export default function ProductDetailClient({ product }: Props) {
   const iTolCombined = product.specs.findIndex(
     (s) => /^(tolerance)$/i.test(s.label) && s.value.includes("|")
   );
-  const iFlats = product.specs.findIndex((s) => /tolerance\s*flats|flats\s*\(ab\)/i.test(s.label));
+  const iFlats = product.specs.findIndex((s) =>
+    /tolerance\s*flats|flats\s*\(ab\)/i.test(s.label)
+  );
   const iPB = product.specs.findIndex((s) => /pb\s*triage/i.test(s.label));
 
-  type TolData = { flatsLabel: string; flatsValue: string; pbLabel: string; pbValue: string };
+  type TolData = {
+    flatsLabel: string;
+    flatsValue: string;
+    pbLabel: string;
+    pbValue: string;
+  };
   let toleranceBlockAt = -1 as number;
   let tolData: TolData | null = null;
 
@@ -69,16 +76,16 @@ export default function ProductDetailClient({ product }: Props) {
       {/* Left: hero image and gallery thumbnails */}
       <div>
         <div className="relative aspect-[16/9]">
-  {selectedImage ? (
-    <Image
-      src={selectedImage}
-      alt={product.name}
-      width={1200}
-      height={100}
-      className="object-contain p-2 w-[100%] h-auto"
-    />
-  ) : null}
-</div>
+          {selectedImage ? (
+            <Image
+              src={selectedImage}
+              alt={product.name}
+              width={1200}
+              height={100}
+              className="object-contain p-2 w-[100%] h-auto"
+            />
+          ) : null}
+        </div>
 
         {product.gallery?.length ? (
           <div className="flex gap-3 mt-4 ml-4">
@@ -118,26 +125,34 @@ export default function ProductDetailClient({ product }: Props) {
             if (i === toleranceBlockAt && tolData) {
               return (
                 <div key="tolerance-block" className="px-4 py-3">
-                  <div className="text-base  text-gray-500 mb-2">Tolerance</div>
+                  <div className="text-base  text-gray-700 mb-2">Tolerance</div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="flex flex-col">
-                      <span className="text-gray-600">{tolData.flatsLabel || "Flats (AB)"}</span>
-                      <span className="text-black font-medium text-base ">{tolData.flatsValue}</span>
+                      <span className="text-gray-600 text-sm">
+                        {tolData.flatsLabel || "Flats (AB)"}
+                      </span>
+                      <span className="text-black font-medium text-sm ">
+                        {tolData.flatsValue}
+                      </span>
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-gray-600">{tolData.pbLabel || "PB Triage"}</span>
-                      <span className="text-black font-medium text-base ">{tolData.pbValue}</span>
+                      <span className="text-gray-600 text-sm">
+                        {tolData.pbLabel || "PB Triage"}
+                      </span>
+                      <span className="text-black font-medium text-sm ">
+                        {tolData.pbValue}
+                      </span>
                     </div>
                   </div>
                 </div>
               );
             }
-            
+
             // Skip individual specs if they are part of the tolerance block
             if (tolData && (i === iTolCombined || i === iFlats || i === iPB)) {
               return null;
             }
-            
+
             return (
               <div
                 key={i}
@@ -155,28 +170,28 @@ export default function ProductDetailClient({ product }: Props) {
         {/* CTA */}
         <div className="mt-6 flex items-center gap-3 flex-col md:flex-row">
           <div>
-          <button
-            type="button"
-            onClick={dec}
-            disabled={qty === 0}
-            className="px-4 py-2 rounded-full border border-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
-            aria-label="Decrease quantity"
-          >
-            -
-          </button>
-          <span className="px-4" aria-live="polite" aria-atomic="true">
-            {qty}
-          </span>
-       
-          <button
-            type="button"
-            onClick={inc}
-            className="px-4 py-2 rounded-full border border-gray-300"
-            aria-label="Increase quantity"
-          >
-            +
-          </button>
-             </div>
+            <button
+              type="button"
+              onClick={dec}
+              disabled={qty === 0}
+              className="px-4 py-2 rounded-full border border-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              aria-label="Decrease quantity"
+            >
+              -
+            </button>
+            <span className="px-4" aria-live="polite" aria-atomic="true">
+              {qty}
+            </span>
+
+            <button
+              type="button"
+              onClick={inc}
+              className="px-4 py-2 rounded-full border border-gray-300"
+              aria-label="Increase quantity"
+            >
+              +
+            </button>
+          </div>
           <button
             className="ml-4 px-6 py-3 bg-[#7D4B3C] text-white rounded-full hover:bg-[#6e4236]"
             type="button"

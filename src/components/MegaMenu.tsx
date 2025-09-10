@@ -383,7 +383,7 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
 
   // ✅ Desktop version
   return (
-    <div className="absolute top-full translate-x-[-15%] w-screen md:w-[90vw] max-h-[80vh] overflow-y-auto bg-white shadow-lg border-t border-gray-200 z-[9999] hidden md:block">
+    <div className="absolute top-full w-[70vw]  max-h-[80vh] overflow-y-auto bg-white shadow-lg border-t border-gray-200 z-[9999] hidden md:block">
       <div ref={menuRef} className="max-w-7xl mx-auto p-8">
         <div className="grid grid-cols-12 gap-8">
 
