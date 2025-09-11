@@ -72,9 +72,9 @@ export default function ProductDetailClient({ product }: Props) {
   // No component-level grouping; data (products.ts) provides final presentation shape.
 
   return (
-    <div className="grid md:grid-cols-2 gap-8 ">
+    <div className="">
       {/* Left: hero image and gallery thumbnails */}
-      <div>
+      {/* <div>
         <div className="relative aspect-[16/9]">
           {selectedImage ? (
             <Image
@@ -121,16 +121,16 @@ export default function ProductDetailClient({ product }: Props) {
             })}
           </div>
         ) : null}
-      </div>
+      </div> */}
 
       {/* Right: specs */}
-      <div className="mx-4">
+      <div className="mx-4 ">
         <div className="divide-y border rounded-xl ">
           {product.specs.map((s, i) => {
             // Render special tolerance block once at the correct position
             if (i === toleranceBlockAt && tolData) {
               return (
-                <div key="tolerance-block" className="px-4 py-3">
+                <div key="tolerance-block" className="px-4 py-3 ">
                   <div className="text-base  text-gray-700 mb-2">Tolerance</div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="flex flex-col">
@@ -174,7 +174,7 @@ export default function ProductDetailClient({ product }: Props) {
         </div>
 
         {/* CTA */}
-        <div className="mt-6 flex items-center gap-3 flex-col md:flex-row">
+        <div className="mt-6 flex items-center justify-end gap-3 flex-col md:flex-row">
           <div>
             <button
               type="button"

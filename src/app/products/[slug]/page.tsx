@@ -18,15 +18,22 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
   return (
     <main className="bg-white  ">
       {/* Hero + breadcrumb-like heading */}
-      <section className="bg-[#F7F2EE] py-6 md:py-10">
+      <section className="bg-[#F7F2EE] py-6 md:pt-56">
         <div className="max-w-6xl mx-auto px-4">
-          <p className="text-sm text-black mb-6">Home › Products › {product.category} › {product.variety} › {product.subtitle || product.name}</p>
+          <p className="text-sm text-black mb-6">
+            <Link href="/" className="hover:underline">Home </Link> › 
+            <Link href="/products" className="hover:underline"> Products</Link> › 
+            <Link href={`/products?category=${encodeURIComponent(product.category)}`} className="hover:underline"> {product.category}</Link> › 
+            <Link href={`/products?variety=${encodeURIComponent(product.variety)}`} className="hover:underline"> {product.variety}</Link> › 
+            <span> {product.subtitle || product.name}</span>
+          </p>
           <h1 className="text-3xl md:text-5xl font-semibold text-[#562F23]">{product.name}</h1>
         </div>
       </section>
 
       {/* Main Content */}
-      <section className="max-w-6xl mx-auto px-4 pt-10 lg:py-24 py-12">
+      <section className="max-w-7xl mx-auto px-4 pt-10 lg:py-24 py-12">
+
         <ProductDetailClient product={product} />
       </section>
 
