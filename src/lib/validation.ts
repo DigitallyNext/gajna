@@ -31,6 +31,13 @@ export const contactFormSchema = z.object({
     .min(2, "Country must be at least 2 characters")
     .max(100, "Country must be at most 100 characters")
     .optional(),
+  postalCode: z
+    .string()
+    .trim()
+    .min(3, "Postal code must be at least 3 characters")
+    .max(20, "Postal code must be at most 20 characters")
+    .regex(/^[A-Za-z0-9\s-]+$/, "Please enter a valid postal code")
+    .optional(),
   linkedin: z
     .string()
     .url("Please enter a valid LinkedIn profile URL")

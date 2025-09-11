@@ -95,7 +95,7 @@ export default function WhyChooseUs() {
   ];
 
   return (
-    <section ref={sectionRef} className="py-16 bg-[#E1A694] relative z-10">
+    <section ref={sectionRef} className="py-16  relative z-10">
       <div className="max-w-7xl mx-auto px-4">
         {/* Title */}
         <div className="text-center mb-16">
@@ -137,15 +137,15 @@ export default function WhyChooseUs() {
 
         {/* Features Grid */}
         <div className="relative">
-          <div className="grid md:grid-cols-3 gap-8 md:gap-12 max-w-6xl mx-auto relative">
+          <div className="grid md:grid-cols-3 gap-8 md:gap-12 max-w-6xl mx-auto relative items-center">
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="feature-card text-center relative z-10"
+                className="feature-card text-center relative z-10 shadow-lg px-6 py-4 rounded-2xl border-coffee-brown border-[1px]"
               >
                 {/* Title and Subtitle */}
                 <div className="mb-6">
-                  <h3 className="text-lg md:text-xl font-bold text-[#562F23] mb-3 whitespace-pre-line">
+                  <h3 className="text-lg md:text-2xl font-bold text-[#562F23] mb-3 whitespace-pre-line">
                     {feature.title}
                   </h3>
                   <p className="text-base md:text-lg text-[#562F23] whitespace-pre-line">
@@ -167,19 +167,19 @@ export default function WhyChooseUs() {
                 </div>
 
                 {/* Description */}
-                <p className="text-sm md:text-base text-black leading-relaxed max-w-xs mx-auto">
+                <p className="text-base  text-black leading-relaxed max-w-xs mx-auto">
                   {feature.description}
                 </p>
               </div>
             ))}
 
             {/* Connecting Lines */}
-            <div className="hidden md:block absolute top-56 left-1/2 transform -translate-x-1/2 w-full max-w-7xl z-0">
+            {/* <div className="hidden md:block absolute top-56 left-1/2 transform -translate-x-1/2 w-full max-w-7xl z-0">
               <div className="relative">
                 <div className="absolute top-0 left-1/4 w-1/4 h-0 border-t-2 border-dashed border-[#7D4B3C]"></div>
                 <div className="absolute top-0 right-1/4 w-1/4 h-0 border-t-2 border-dashed border-[#7D4B3C]"></div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

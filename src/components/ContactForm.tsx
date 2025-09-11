@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { z } from "zod";
 import { contactFormSchema, type ContactFormInput } from "@/lib/validation";
 
@@ -18,6 +18,7 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
     message: "",
     phone: "",
     country: "",
+    postalCode: "",
     linkedin: "",
     product: "",
     grade: "",
@@ -29,6 +30,19 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [serverError, setServerError] = useState<string | null>(null);
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
+  const [toastType, setToastType] = useState<"success" | "error">("success");
+
+  // Auto-hide toast after 5 seconds
+  useEffect(() => {
+    if (showToast) {
+      const timer = setTimeout(() => {
+        setShowToast(false);
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [showToast]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -77,11 +91,22 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
         throw new Error(json.error || "Submission failed");
       }
       setStatus("success");
-      setValues({ name: "", email: "", subject: "", message: "", phone: "", country: "", linkedin: "", product: "", grade: "", quantity: undefined, consent: false } as ContactFormInput);
+      setValues({ name: "", email: "", subject: "", message: "", phone: "", country: "", postalCode: "", linkedin: "", product: "", grade: "", quantity: undefined, consent: false } as ContactFormInput);
+      
+      // Show success toast
+      setToastType("success");
+      setToastMessage("✅ Message sent successfully! We'll get back to you soon.");
+      setShowToast(true);
+      
       onSuccess?.();
     } catch (err: any) {
       setServerError(err.message || "Something went wrong");
       setStatus("error");
+      
+      // Show error toast
+      setToastType("error");
+      setToastMessage(`❌ Failed to send message: ${err.message || "Please try again later."}`);
+      setShowToast(true);
     }
   };
 
@@ -176,6 +201,19 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
           />
           {errors.country && <p className="text-sm text-red-600 mt-1">{errors.country}</p>}
         </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Postal Code / ZIP Code</label>
+          <input
+            type="text"
+            name="postalCode"
+            value={values.postalCode || ""}
+            onChange={handleChange}
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-600 focus:ring-amber-600"
+            placeholder="110001"
+          />
+          {errors.postalCode && <p className="text-sm text-red-600 mt-1">{errors.postalCode}</p>}
+        </div>
       </div>
 
       <div>
@@ -237,15 +275,54 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="w-full rounded-full bg-[#61714D] px-6 py-3 text-white font-medium hover:bg-[#4D5A3E] transition-colors disabled:opacity-70"
+        className="w-full rounded-full bg-[#61714D] px-6 py-3 text-white font-medium hover:bg-[#4D5A3E] transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
       >
+        {status === "submitting" && (
+          <svg className="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+            <path className="opacity-75" fill="currentColor" d="m4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+        )}
         {status === "submitting" ? "Sending..." : submitLabel}
       </button>
 
-      {status === "success" && (
+      {/* Toast Notification */}
+      {showToast && (
+        <div className={`fixed top-4 right-4 z-50 max-w-sm w-full transform transition-all duration-300 ease-in-out ${
+          showToast ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
+        }`}>
+          <div className={`rounded-lg shadow-lg p-4 border-l-4 ${
+            toastType === 'success' 
+              ? 'bg-green-50 border-green-400 text-green-800' 
+              : 'bg-red-50 border-red-400 text-red-800'
+          }`}>
+            <div className="flex items-start">
+              <div className="flex-1">
+                <p className="text-sm font-medium">{toastMessage}</p>
+              </div>
+              <button
+                onClick={() => setShowToast(false)}
+                className={`ml-3 inline-flex rounded-md p-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2 ${
+                  toastType === 'success'
+                    ? 'text-green-500 hover:bg-green-100 focus:ring-green-600'
+                    : 'text-red-500 hover:bg-red-100 focus:ring-red-600'
+                }`}
+              >
+                <span className="sr-only">Dismiss</span>
+                <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Legacy status messages (keeping as fallback) */}
+      {status === "success" && !showToast && (
         <p className="text-green-700 text-sm">Thank you! Your message has been sent.</p>
       )}
-      {status === "error" && serverError && (
+      {status === "error" && serverError && !showToast && (
         <p className="text-red-700 text-sm">{serverError}</p>
       )}
     </form>

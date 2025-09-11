@@ -34,7 +34,7 @@ export default function Footer() {
             </Link>
             
             {/* Newsletter Section */}
-            <div className="mb-6">
+            {/* <div className="mb-6">
               <h3 className="font-bold text-lg mb-2">Newsletter</h3>
               <p className="text-sm text-gray-200 mb-3">
                 Sign up with your email to join our mailing list
@@ -49,7 +49,7 @@ export default function Footer() {
                   Subscribe
                 </button>
               </div>
-            </div>
+            </div> */}
             
            <div className="flex justify-center md:justify-start space-x-4">
   <motion.div 
@@ -97,12 +97,12 @@ export default function Footer() {
                   Home
                 </Link>
               </li>
-              <li className="flex items-center">
+              {/* <li className="flex items-center">
                 <FaCheck className="mr-2" />
                 <Link href="/about" className="hover:text-coffee-gold">
                   About Us
                 </Link>
-              </li>
+              </li> */}
               <li className="flex items-center">
                 <FaCheck className="mr-2" />
                 <Link href="/contact" className="hover:text-coffee-gold">

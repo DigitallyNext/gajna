@@ -60,7 +60,7 @@ export async function POST(req: NextRequest) {
     </style>
   `;
 
-  const plainText = `New contact form submission\n\nName: ${data.name}\nEmail: ${data.email}${data.phone ? `\nPhone: ${data.phone}` : ''}${data.country ? `\nCountry: ${data.country}` : ''}${data.linkedin ? `\nLinkedIn: ${data.linkedin}` : ''}\nSubject: ${data.subject}\nMessage: ${data.message}${data.product ? `\n\nProduct Enquiry:\nProduct: ${data.product}` : ''}${data.grade ? `\nGrade: ${data.grade}` : ''}${data.quantity ? `\nQuantity: ${data.quantity} MT` : ''}\nConsent: ${data.consent ? "Yes" : "No"}`;
+  const plainText = `New contact form submission\n\nName: ${data.name}\nEmail: ${data.email}${data.phone ? `\nPhone: ${data.phone}` : ''}${data.country ? `\nCountry: ${data.country}` : ''}${data.postalCode ? `\nPostal Code: ${data.postalCode}` : ''}${data.linkedin ? `\nLinkedIn: ${data.linkedin}` : ''}\nSubject: ${data.subject}\nMessage: ${data.message}${data.product ? `\n\nProduct Enquiry:\nProduct: ${data.product}` : ''}${data.grade ? `\nGrade: ${data.grade}` : ''}${data.quantity ? `\nQuantity: ${data.quantity} MT` : ''}\nConsent: ${data.consent ? "Yes" : "No"}`;
 
   const adminHtml = `
     ${baseStyles}
@@ -81,8 +81,9 @@ export async function POST(req: NextRequest) {
             <div class="row"><div class="label">Name:</div><div class="value">${data.name}</div></div>
             <div class="row"><div class="label">Email:</div><div class="value">${data.email}</div></div>
             ${data.phone ? `<div class="row"><div class="label">Phone:</div><div class="value">${data.phone}</div></div>` : ''}
-            ${data.country ? `<div class="row"><div class="label">Country:</div><div class="value">${data.country}</div></div>` : ''}
-            ${data.linkedin ? `<div class="row"><div class="label">LinkedIn:</div><div class="value">${data.linkedin}</div></div>` : ''}
+             ${data.country ? `<div class="row"><div class="label">Country:</div><div class="value">${data.country}</div></div>` : ''}
+             ${data.postalCode ? `<div class="row"><div class="label">Postal Code:</div><div class="value">${data.postalCode}</div></div>` : ''}
+             ${data.linkedin ? `<div class="row"><div class="label">LinkedIn:</div><div class="value">${data.linkedin}</div></div>` : ''}
           </div>
           
           <div class="section">
