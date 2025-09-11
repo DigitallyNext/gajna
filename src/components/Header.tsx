@@ -206,6 +206,12 @@ export default function Header() {
               <a href="sms:+919811789665" className="hover:text-amber-200">
                 Send Us SMS
               </a>
+              <Link
+                href="/contact"
+                className="hover:text-amber-200"
+              >
+                Contact Us
+              </Link>
             </div>
             <div className="pl-6">
               <LanguageSwitcher />

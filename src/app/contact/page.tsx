@@ -2,7 +2,8 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Phone, Mail, MapPin, Linkedin, Instagram, Facebook, MessageCircle, Send, Youtube } from "lucide-react";
+import { Phone, Mail, MapPin, Linkedin, Instagram, Facebook, MessageCircle, Send, Youtube,  } from "lucide-react";
+import { BsWhatsapp } from "react-icons/bs";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -32,7 +33,7 @@ export default function ContactPage() {
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-[80vh] bg-gradient-to-br from-coffee-brown to-amber-900 flex items-center justify-center overflow-hidden">
+      <section className="relative h-[60vh] bg-gradient-to-br from-coffee-brown to-amber-900 flex items-center justify-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
@@ -46,7 +47,7 @@ export default function ContactPage() {
 
         {/* Hero Content */}
         <motion.div 
-          className="relative z-10 text-center text-white px-4"
+          className="relative z-10 text-center text-white px-4 mt-32"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -57,13 +58,7 @@ export default function ContactPage() {
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             Whether you&apos;re a roaster, trader, or importer, we&apos;d love to hear from you
           </p>
-          <motion.button
-            className="bg-white text-coffee-brown px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Request a Sample
-          </motion.button>
+         
         </motion.div>
       </section>
 
@@ -72,18 +67,18 @@ export default function ContactPage() {
         <div className="max-w-7xl gap-10 mx-auto px-4 flex justify-center items-center lg:flex-row flex-col">
            {/* Left Side - Quote Card */}
             <motion.div 
-              className="bg-gradient-to-br from-green-800 to-green-900 rounded-2xl p-8 text-white relative overflow-hidden h-[100vh] lg:w-[40%] w-full"
+              className="bg-gradient-to-br from-green-800 to-green-900 rounded-2xl p-8 text-white relative overflow-hidden h-[70vh] lg:w-[40%] w-full"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
               {/* Background Pattern */}
-              <div className="absolute inset-0 ">
+              <div className="">
                 <Image
                   src="/contactform.webp"
                   alt="Coffee plants pattern"
                   fill
-                  className="object-cover"
+                  className="object-cover "
                 />
                 <div className="absolute inset-0 bg-black/50"></div>
               </div>
@@ -458,18 +453,17 @@ export default function ContactPage() {
             </h2>
             <div className="flex justify-center space-x-4 flex-wrap gap-4">
                {[
-                 { icon: 'linkedin', component: Linkedin },
-                 { icon: 'instagram', component: Instagram },
-                 { icon: 'facebook', component: Facebook },
-                 { icon: 'whatsapp', component: MessageCircle },
-                 { icon: 'telegram', component: Send },
+                 { icon: 'linkedin', component: Linkedin, href: 'https://www.linkedin.com/company/gaina-overseas-private-limited/' },
+
+                 { icon: 'whatsapp', component: BsWhatsapp, href: 'https://wa.me/9811789665' },
+
                  { icon: 'youtube', component: Youtube }
                ].map((social, index) => {
                  const IconComponent = social.component;
                  return (
                    <motion.a
                      key={social.icon}
-                     href="#"
+                     href={social.href}
                      className="w-14 h-14 bg-coffee-brown hover:bg-amber-700 rounded-full flex items-center justify-center text-white transition-all duration-300 shadow-lg"
                      whileHover={{ scale: 1.1, y: -2 }}
                      whileTap={{ scale: 0.95 }}
