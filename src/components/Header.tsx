@@ -162,8 +162,8 @@ export default function Header() {
 
         {/* Desktop Top Info Bar */}
         <div className="hidden md:block border-t border-gray-200">
-          <nav className="flex items-center justify-between px-6 py-2 bg-[#434d35]">
-            <div className="flex justify-center items-center space-x-6 font-semibold flex-1">
+          <nav className="flex items-center justify-center px-6 py-2 bg-[#434d35]">
+            <div className="flex flex-wrap justify-center items-center gap-2 lg:gap-4 xl:gap-6 font-semibold max-w-7xl mx-auto">
               <Link
                 href="https://maps.google.com/?q=Gajna+Overseas"
                 target="_blank"
@@ -218,7 +218,9 @@ export default function Header() {
               >
                 Send Us SMS
               </Link>
-              <LanguageSwitcher />
+              <div className="ml-2">
+                <LanguageSwitcher />
+              </div>
             </div>
           </nav>
         </div>
