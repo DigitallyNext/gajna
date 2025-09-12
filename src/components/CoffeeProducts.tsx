@@ -111,10 +111,11 @@ export default function CoffeeProducts() {
                 </div>
               </div>
             </div>
-            <div className="text-center mt-6">
+            <div className="text-center mt-6 relative z-30">
               <Link
-                href="/coffee/arabica"
-                className="inline-block py-3 px-6 border border-coffee-gold text-black font-medium rounded-full hover:bg-coffee-gold hover:text-coffee-brown transition duration-300 text-sm"
+                href="/arabica"
+                className="inline-block py-3 px-6 border border-coffee-gold text-black font-medium rounded-full hover:bg-coffee-gold hover:text-coffee-brown transition duration-300 text-sm cursor-pointer"
+                style={{ pointerEvents: 'auto' }}
               >
                 Explore Indian Grade Arabica
               </Link>
@@ -171,10 +172,11 @@ export default function CoffeeProducts() {
                 </div>
               </div>
             </div>
-            <div className="text-center mt-6">
+            <div className="text-center mt-6 relative z-30">
               <Link
-                href="/coffee/robusta"
-                className="inline-block py-3 px-6 border border-coffee-gold text-black font-medium rounded-full hover:bg-coffee-gold hover:text-coffee-brown transition duration-300 text-sm"
+                href="/robusta"
+                className="inline-block py-3 px-6 border border-coffee-gold text-black font-medium rounded-full hover:bg-coffee-gold hover:text-coffee-brown transition duration-300 text-sm cursor-pointer"
+                style={{ pointerEvents: 'auto' }}
               >
                 Explore Indian Grade Robusta
               </Link>

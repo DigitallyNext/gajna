@@ -52,7 +52,7 @@ export default function Header() {
 
           {/* Center Title (hidden on small) */}
           <nav className="hidden md:block flex-1 text-center">
-            <h2 className="text-lg md:text-2xl lg:text-3xl xl:text-4xl font-serif text-coffee-brown">
+            <h2 className="text-lg md:text-2xl lg:text-3xl  font-serif text-coffee-brown">
               Exporter of Green Coffee Beans of Indian Origin
             </h2>
           </nav>
@@ -124,7 +124,6 @@ export default function Header() {
                 className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 w-full text-left"
               >
                 Products
-              
               </button>
               <Link
                 href="/certificates"
@@ -169,60 +168,63 @@ export default function Header() {
         {/* Desktop Top Info Bar */}
         <div className="hidden md:block border-t border-gray-200">
           <nav className="flex items-center justify-between px-6 py-2 bg-[#434d35]">
-            <div className="flex justify-center items-center space-x-3 flex-1">
-              <a
+            <div className="flex justify-center items-center space-x-6 font-semibold flex-1">
+              <Link
                 href="https://maps.google.com/?q=Gajna+Overseas"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50 transition-colors"
               >
                 Visit Us
-              </a>
-              <a href="tel:+919811789665" className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50 transition-colors">
+              </Link>
+              <Link
+                href="tel:+919811789665"
+                className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50 transition-colors"
+              >
                 Call Us
-              </a>
-              <a href="tel:+919811789665" className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50 transition-colors">
+              </Link>
+              <Link
+                href="tel:+919811789665"
+                className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50 transition-colors"
+              >
                 Mobile
-              </a>
-              <a
+              </Link>
+              <Link
                 href="mailto:info@gajnaoverseas.com"
                 className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50 transition-colors"
               >
                 Send Us Email
-              </a>
-              <a
+              </Link>
+              <Link
                 href="https://meet.google.com/new"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50 transition-colors"
               >
                 Video Conferencing
-              </a>
-              <button
-                onClick={() => setQuickEnquiryOpen(true)}
+              </Link>
+              <Link
+                href="https://trae.ai/login?redirect_url=https://trae.ai/account-setting?user_id=7540946285680296967&username=Shivam%2520Shukla253#usage"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50 transition-colors"
               >
                 Quick Enquiry
-              </button>
-              <a
+              </Link>
+              <Link
                 href="https://wa.me/919811789665"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50 transition-colors"
               >
                 Chat With Us
-              </a>
-              <a href="sms:+919811789665" className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50 transition-colors">
-                Send Us SMS
-              </a>
+              </Link>
               <Link
-                href="/contact"
+                href="sms:+919811789665"
                 className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50 transition-colors"
               >
-                Contact Us
+                Send Us SMS
               </Link>
-            </div>
-            <div className="pl-6">
               <LanguageSwitcher />
             </div>
           </nav>
@@ -244,7 +246,7 @@ export default function Header() {
                 className=" text-black text-base font-medium hover:text-[#7D4B3C] transition-colors flex flex-row"
               >
                 Products
-                  <ChevronDown className="text-coffee-brown " />
+                <ChevronDown className="text-coffee-brown " />
               </Link>
               {megaMenuOpen && (
                 <MegaMenu
@@ -285,11 +287,8 @@ export default function Header() {
             >
               Become a Supplier with us
             </Link>
-            <Link
-              href="/careers"
-              className="block text-black text-base font-medium hover:text-[#7D4B3C] transition-colors"
-            >
-              Careers
+            <Link href="/contact" className="block text-black text-base font-medium hover:text-[#7D4B3C] transition-colors">
+              Contact Us
             </Link>
           </div>
         </nav>
@@ -306,7 +305,9 @@ export default function Header() {
           <div className="fixed inset-0 bg-black bg-opacity-50 z-[10000] flex items-center justify-center p-4">
             <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
               <div className="flex items-center justify-between p-6 border-b">
-                <h2 className="text-xl font-semibold text-gray-900">Quick Enquiry</h2>
+                <h2 className="text-xl font-semibold text-gray-900">
+                  Quick Enquiry
+                </h2>
                 <button
                   onClick={() => setQuickEnquiryOpen(false)}
                   className="text-gray-400 hover:text-gray-600 transition-colors"

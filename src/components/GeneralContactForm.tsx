@@ -1,7 +1,8 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { z } from "zod";
 import toast, { Toaster } from 'react-hot-toast';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 // Simplified schema for general contact forms (no product/grade fields)
 const generalContactSchema = z.object({
@@ -75,6 +76,8 @@ export default function GeneralContactForm({ initial, submitLabel = "Send Messag
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [serverError, setServerError] = useState<string | null>(null);
+  const [captchaValue, setCaptchaValue] = useState<string | null>(null);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   // Add validation feedback on field blur
   const handleBlur = (fieldName: string) => {
@@ -166,6 +169,21 @@ export default function GeneralContactForm({ initial, submitLabel = "Send Messag
       return;
     }
     
+    // Check CAPTCHA
+    if (!captchaValue) {
+      toast.error('❌ Please complete the CAPTCHA verification', {
+        duration: 4000,
+        position: 'top-right',
+        style: {
+          background: '#EF4444',
+          color: '#fff',
+          fontWeight: '500'
+        }
+      });
+      setStatus("error");
+      return;
+    }
+    
     console.log('General form validation passed, sending request');
 
     try {
@@ -186,6 +204,8 @@ export default function GeneralContactForm({ initial, submitLabel = "Send Messag
       console.log('General form submitted successfully');
       setStatus("success");
       setValues({ name: "", email: "", subject: "", message: "", phone: "", country: "", postalCode: "", linkedin: "", consent: false } as GeneralContactInput);
+      setCaptchaValue(null);
+      recaptchaRef.current?.reset();
       
       // Show success toast
       toast.success('✅ Message sent successfully! We\'ll get back to you soon.', {
@@ -367,6 +387,16 @@ export default function GeneralContactForm({ initial, submitLabel = "Send Messag
         </label>
       </div>
       {errors.consent && <p className="text-sm text-red-600 mt-1 flex items-center"><span className="mr-1">⚠️</span>{errors.consent}</p>}
+
+      {/* CAPTCHA */}
+      <div className="flex justify-center">
+        <ReCAPTCHA
+          ref={recaptchaRef}
+          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"}
+          onChange={(value) => setCaptchaValue(value)}
+          onExpired={() => setCaptchaValue(null)}
+        />
+      </div>
 
       <button
         type="submit"

@@ -1,7 +1,8 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { z } from "zod";
 import toast, { Toaster } from 'react-hot-toast';
+import ReCAPTCHA from 'react-google-recaptcha';
 import { contactFormSchema, type ContactFormInput } from "@/lib/validation";
 
 type ContactFormProps = {
@@ -31,6 +32,8 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [serverError, setServerError] = useState<string | null>(null);
+  const [captchaValue, setCaptchaValue] = useState<string | null>(null);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   // Add validation feedback on field blur
   const handleBlur = (fieldName: string) => {
@@ -134,6 +137,21 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
       setStatus("error");
       return;
     }
+    
+    // Check CAPTCHA
+    if (!captchaValue) {
+      toast.error('❌ Please complete the CAPTCHA verification', {
+        duration: 4000,
+        position: 'top-right',
+        style: {
+          background: '#EF4444',
+          color: '#fff',
+          fontWeight: '500'
+        }
+      });
+      setStatus("error");
+      return;
+    }
 
     try {
       const res = await fetch("/api/contact", {
@@ -147,6 +165,8 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
       }
       setStatus("success");
       setValues({ name: "", email: "", subject: "", message: "", phone: "", country: "", postalCode: "", linkedin: "", product: "", grade: "", quantity: undefined, consent: false } as ContactFormInput);
+      setCaptchaValue(null);
+      recaptchaRef.current?.reset();
       
       // Show success toast
       toast.success('✅ Message sent successfully! We\'ll get back to you soon.', {
@@ -362,6 +382,16 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
         </label>
       </div>
       {errors.consent && <p className="text-sm text-red-600 mt-1 flex items-center"><span className="mr-1">⚠️</span>{errors.consent}</p>}
+
+      {/* CAPTCHA */}
+      <div className="flex justify-center">
+        <ReCAPTCHA
+          ref={recaptchaRef}
+          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"}
+          onChange={(value) => setCaptchaValue(value)}
+          onExpired={() => setCaptchaValue(null)}
+        />
+      </div>
 
       <button
         type="submit"

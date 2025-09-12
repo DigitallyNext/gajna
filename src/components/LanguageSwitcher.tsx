@@ -153,7 +153,7 @@ export default function LanguageSwitcher() {
         aria-label="Select Language"
         value={selected || ""}
         onChange={(e) => e.target.value && changeLanguage(e.target.value)}
-        className="px-2 py-1 rounded border border-gray-300 text-sm text-black"
+        className="px-2 py-1 font-bold rounded border bg-coffee-brown border-white text-sm text-white"
       >
         <option value="" disabled>
           Select Language

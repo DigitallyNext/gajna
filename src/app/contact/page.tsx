@@ -1,406 +1,464 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useState } from "react";
-import { Phone, Mail, MapPin, Linkedin, Instagram, Facebook, MessageCircle, Send, Youtube,  } from "lucide-react";
+import { useState, useRef } from "react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  MessageCircle,
+  Send,
+  Video,
+  Smartphone,
+} from "lucide-react";
 import { BsWhatsapp } from "react-icons/bs";
+import ReCAPTCHA from "react-google-recaptcha";
 import GeneralContactForm from "@/components/GeneralContactForm";
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    message: ''
-  });
-
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
+  const contactMethods = [
+    {
+      icon: MapPin,
+      title: "Location",
+      subtitle: "Visit Us",
+      description:
+        "505, Park Royal Apartments, GH-80, Sector-56, Gurugram, Haryana, India",
+      action: "Get Directions",
+      href: "https://www.google.com/maps/dir/?api=1&destination=Sector+56,+Gurugram,+Haryana,+India",
+    },
+    {
+      icon: Phone,
+      title: "Phone",
+      subtitle: "Call Us",
+      description: "+91 9811789665",
+      action: "Call Now",
+      href: "tel:+919811789665",
+    },
+    {
+      icon: Mail,
+      title: "Email",
+      subtitle: "Email Us",
+      description: "info@gajnaoverseas.com",
+      action: "Send Email",
+      href: "mailto:info@gajnaoverseas.com",
+    },
+    {
+      icon: MessageCircle,
+      title: "Enquiry Form",
+      subtitle: "Quick Contact",
+      description: "Fill out our contact form for detailed inquiries",
+      action: "Fill Form",
+      href: "#contact-form",
+    },
+    {
+      icon: Smartphone,
+      title: "SMS",
+      subtitle: "Text Us",
+      description: "Send us a text message for quick queries",
+      action: "Send SMS",
+      href: "sms:+919811789665",
+    },
+    {
+      icon: Video,
+      title: "Video Conferencing",
+      subtitle: "Meet Online",
+      description: "Schedule a video call for detailed discussions",
+      action: "Schedule Call",
+      href: "mailto:info@gajnaoverseas.com?subject=Video Call Request",
+    },
+    {
+      icon: BsWhatsapp,
+      title: "WhatsApp",
+      subtitle: "Chat With Us",
+      description: "Connect with us on WhatsApp for instant support",
+      action: "Chat Now",
+      href: "https://wa.me/919811789665",
+    },
+  ];
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
-  };
+  const faqs = [
+    {
+      question: "What is your minimum order quantity (MOQ)?",
+      answer:
+        "Our MOQ varies by product and destination. For most coffee grades, it's typically 1 container (19.2 MT). Please contact us for specific requirements.",
+    },
+    {
+      question: "How do I request samples?",
+      answer:
+        "You can request samples by filling out our contact form or calling us directly. We provide samples for serious buyers to evaluate quality before placing orders.",
+    },
+    {
+      question: "What coffee grades do you export?",
+      answer:
+        "We export various grades including Arabica (Plantation PB, A, B, C) and Robusta (Cherry, Parchment) varieties. Check our product catalog for complete details.",
+    },
+    {
+      question: "What are your payment terms?",
+      answer:
+        "We offer flexible payment terms including LC at sight, advance payment, and other mutually agreed terms based on the buyer's profile and order value.",
+    },
+    {
+      question: "How long does shipping take?",
+      answer:
+        "Shipping time depends on the destination. Typically, it takes 15-30 days for sea freight and 5-7 days for air freight from the port of loading.",
+    },
+    {
+      question: "Do you provide quality certificates?",
+      answer:
+        "Yes, we provide all necessary quality certificates including ICO certificates, phytosanitary certificates, and third-party quality analysis reports.",
+    },
+  ];
 
   return (
-    <main className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative h-[60vh] bg-gradient-to-br from-coffee-brown to-amber-900 flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <Image
-            src="/contactbg.webp"
-            alt="Coffee beans background"
-            fill
-            className="object-cover opacity-50"
-          />
-          <div className="absolute inset-0 bg-black/50"></div>
-        </div>
-
-        {/* Hero Content */}
-        <motion.div 
-          className="relative z-10 text-center text-white px-4 mt-32"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h1 className="text-6xl  font-bold mb-4">
-            Let&apos;s Talk Coffee
-          </h1>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Whether you&apos;re a roaster, trader, or importer, we&apos;d love to hear from you
-          </p>
-         
-        </motion.div>
-      </section>
-
-      {/* Contact Form Section */}
-      <section className="py-16 bg-gradient-to-br from-orange-100 to-pink-100 ">
-        <div className="max-w-7xl gap-10 mx-auto px-4 flex justify-center items-center lg:flex-row flex-col">
-           {/* Left Side - Quote Card */}
-            <motion.div 
-              className="bg-gradient-to-br from-green-800 to-green-900 rounded-2xl p-8 text-white relative overflow-hidden h-[70vh] lg:w-[40%] w-full"
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              {/* Background Pattern */}
-              <div className="">
-                <Image
-                  src="/contactform.webp"
-                  alt="Coffee plants pattern"
-                  fill
-                  className="object-cover "
-                />
-                <div className="absolute inset-0 bg-black/50"></div>
+    <main className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-orange-50">
+      {/* Clean Contact Us Layout */}
+      <section className="py-16 mt-40 bg-white">
+        <main className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row ">
+          {/* column 1  */}
+          <div className="flex flex-col">
+            <div className="w-[15vw] h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center">
+              <div className="flex items-center justify-center text-[#6F4E37] ">
+                <MapPin className="w-[28px] h-[28px] md:w-[2vw] md:h-[2vw]" />
               </div>
-
-              <div className="relative z-10">
-                <h2 className="text-5xl font-bold mb-4">
-                  Get Your Instant Free Quote Now
-                </h2>
-                <p className="text-sm mb-6 opacity-90">
-                  Get our worry-related to Indian origin green coffee beans delivered with us.
-                </p>
-                
-   
-                
-              </div>
-            </motion.div>
-            {/* Right Side - Form */}
-          <motion.div 
-            className="bg-white rounded-3xl p-8 shadow-xl lg:w-[40%] w-full"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <GeneralContactForm />
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Sourcing Section */}
-      <section className="py-10 bg-gradient-to-r from-[#B0D1B4] to-[#B0D1B4] relative">
-         <div className="absolute inset-0">
-          <Image
-            src="/contactmask.webp"
-            alt="Coffee beans background"
-            fill
-            className="object-cover "
-          />
-          {/* <div className="absolute inset-0 bg-black/50"></div> */}
-        </div>
-        <div className="max-w-7xl  px-4 lg:w-[50%] w-full">
-          <motion.div 
-            className=" p-8 flex items-center justify-between "
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="">
-              <h2 className="text-5xl  font-normal text-gray-800 mb-2">
-                Sourcing Indian origin green coffee?
-              </h2>
-              <p className="text-xl text-gray-900 my-5">
-                Start with our full product catalogue
-              </p>
-              <motion.button
-              className="bg-transparent border-coffee-brown border-2 text-coffee-brown cursor-pointer px-8 py-3 rounded-full font-semibold hover:bg-coffee-brown/90 transition-colors duration-300" 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Download Product Catalogue
-            </motion.button>
+              <span className="mt-[12px] block text-[14px] md:text-[1.5vw] font-medium text-[#6F4E37] text-center">
+                Location
+              </span>
             </div>
-            
-          </motion.div>
-        </div>
+            <div className="w-[15vw] h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center">
+              <div className="flex items-center justify-center text-[#6F4E37] ">
+                <Smartphone className="w-[28px] h-[28px] md:w-[2vw] md:h-[2vw]" />
+              </div>
+              <span className="mt-[12px] block text-[14px] md:text-[1.5vw] font-medium text-[#6F4E37] text-center">
+                SMS
+              </span>
+            </div>
+          </div>
+          {/* column 2  */}
+          <div>
+            <div className="flex flex-row ">
+              <div className="p-6 h-[20vh] w-full bg-white border-2 border-gray-300 flex flex-col justify-center items-center">
+                <div className="flex items-center justify-center text-[#6F4E37] ">
+                  <Phone className="w-[28px] h-[28px] md:w-[2vw] md:h-[2vw]" />
+                </div>
+                <span className="mt-[12px] block text-[14px] md:text-[1.5vw] font-medium text-[#6F4E37] text-center">
+                  Phone
+                </span>
+              </div>
+              <div className="p-6 w-full  bg-white border-2 border-gray-300 flex flex-col justify-center items-center">
+                {" "}
+                <div className=" flex items-center justify-center text-[#6F4E37] ">
+                  <Mail className="w-[28px] h-[28px] md:w-[2vw] md:h-[2vw]" />
+                </div>
+                <span className="mt-[12px] block text-[14px] md:text-[1.5vw] font-medium text-[#6F4E37] text-center">
+                  Email
+                </span>
+              </div>
+            </div>
+            <div className="p-6 h-[20vh] w-[40vw] bg-white border-2 border-gray-300 flex flex-col justify-center items-center">
+              <h1 className="text-7xl leading-[70px] font-bold text-[#562F23] text-center font-serif">
+                Contact Us
+              </h1>
+            </div>
+            <div className="h-[20vh] p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center">
+              {" "}
+              <div className="">
+                <div className=" flex items-center justify-center text-[#6F4E37] ">
+                  <Video className="w-[28px] h-[28px] md:w-[2vw] md:h-[2vw]" />
+                </div>
+                <span className="mt-[12px] block text-[14px] md:text-[1.5vw] font-medium text-[#6F4E37] text-center">
+                  Video Conferencing
+                </span>
+              </div>
+            </div>
+          </div>
+          {/* column 3  */}
+          <div className="flex flex-col justify-center items-center">
+            <div className="w-[15vw] h-[30vh]  p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center">
+              <div className="  flex items-center justify-center text-[#6F4E37] ">
+                <MessageCircle className="w-[28px] h-[28px] md:w-[2vw] md:h-[2vw]" />
+              </div>
+              <span className="mt-[12px] block text-[14px] md:text-[1.5vw] font-medium text-[#6F4E37] text-center">
+                Enquiry Form
+              </span>
+            </div>
+            <div className="w-[15vw] h-[30vh]  p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center">
+              <div className="  flex items-center justify-center text-[#6F4E37] ">
+                <BsWhatsapp className="w-[28px] h-[28px] md:w-[2vw] md:h-[2vw]" />
+              </div>
+              <span className="mt-[12px] block text-[14px]  md:text-[1.5vw] font-medium text-[#6F4E37] text-center">
+                WhatsApp
+              </span>
+            </div>
+          </div>
+        </main>
       </section>
 
-
-
-      {/* Contact Details & Location */}
-      <section className="py-16 bg-white relative">
-        <div className="absolute inset-0">
-          <Image
-            src="/blog-bg.webp"
-            alt="Coffee beans background"
-            fill
-            className="object-cover opacity-40 "
-          />
-
-        </div>
+      {/* Main Contact Section */}
+      <section className="py-16 bg-gradient-to-br from-orange-50 to-pink-50">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Contact Details */}
-            <motion.div 
+          <div className="text-center mb-12">
+            <motion.h2
+              className="text-4xl md:text-5xl font-bold text-gray-800 mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              Contact Us
+            </motion.h2>
+            <motion.p
+              className="text-xl text-gray-600 max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              Send us your queries for any query related to Indian Origin Green
+              Coffee Beans. Please connect with us.
+            </motion.p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            {/* Left Side - Contact Details */}
+            <motion.div
               className="space-y-8"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <div>
-                <h2 className="text-4xl  font-bold text-gray-800 mb-6">
+              <div className="bg-white rounded-2xl p-8 shadow-lg">
+                <h3 className="text-2xl font-bold text-gray-800 mb-6">
                   Contact Details
-                </h2>
-                <p className="text-xl text-gray-600 mb-8">Overseas Operations</p>
+                </h3>
+
+                <div className="space-y-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-coffee-brown rounded-lg flex items-center justify-center">
+                      <Phone className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-800">
+                        Company Name
+                      </h4>
+                      <p className="text-gray-600">Gajna Overseas Pvt Ltd</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-coffee-brown rounded-lg flex items-center justify-center">
+                      <MapPin className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-800">
+                        Registered Address
+                      </h4>
+                      <p className="text-gray-600">
+                        505, Park Royal Apartments, GH-80, Sector-56, Gurugram,
+                        Haryana, India
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-coffee-brown rounded-lg flex items-center justify-center">
+                      <Mail className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Email</h4>
+                      <p className="text-gray-600">info@gajnaoverseas.com</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-coffee-brown rounded-lg flex items-center justify-center">
+                      <Phone className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Mobile No</h4>
+                      <p className="text-gray-600">+91 9811789665</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-coffee-brown rounded-lg flex items-center justify-center">
+                      <BsWhatsapp className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Website</h4>
+                      <p className="text-gray-600">www.gajnaoverseas.com</p>
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              <div className="space-y-8">
-                <motion.div 
-                  className="flex items-start space-x-6 p-6 bg-gradient-to-r from-coffee-brown/5 to-amber-50 rounded-2xl border border-coffee-brown/10"
-                  whileHover={{ scale: 1.02, boxShadow: "0 10px 30px rgba(0,0,0,0.1)" }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="w-16 h-16 bg-gradient-to-br from-coffee-brown to-amber-700 rounded-xl flex items-center justify-center shadow-lg">
-                    <Phone className="w-8 h-8 text-white" />
-                  </div>
-                  <div className="flex-1 select-text">
-                     <h3 className="text-xl font-bold text-gray-800 mb-2 select-text">Priyavirat Singh</h3>
-                     <p className="text-gray-600 mb-3 select-text">Founder & Coffee Export Lead</p>
-                     <a href="tel: +91 9811789665" className="text-coffee-brown font-semibold text-lg hover:text-amber-700 transition-colors select-text">
-                      +91 9811789665
-                     </a>
-                   </div>
-                </motion.div>
-
-                <motion.div 
-                   className="flex items-start space-x-6 p-6 bg-gradient-to-r from-coffee-brown/5 to-amber-50 rounded-2xl border border-coffee-brown/10"
-                   whileHover={{ scale: 1.02, boxShadow: "0 10px 30px rgba(0,0,0,0.1)" }}
-                   transition={{ duration: 0.3 }}
-                 >
-                   <div className="w-16 h-16 bg-gradient-to-br from-coffee-brown to-amber-700 rounded-xl flex items-center justify-center shadow-lg">
-                     <Mail className="w-8 h-8 text-white" />
-                   </div>
-                   <div className="flex-1 select-text">
-                     <h3 className="text-xl font-bold text-gray-800 mb-2 select-text">Email Us</h3>
-                     <a href="mailto:info@gajnacoffee.com" className="text-coffee-brown font-semibold text-lg hover:text-amber-700 transition-colors select-text">
-                       info@gajnaoverseas.com
-                     </a>
-                   </div>
-                 </motion.div>
-
-                <motion.div 
-                   className="flex items-start space-x-6 p-6 bg-gradient-to-r from-coffee-brown/5 to-amber-50 rounded-2xl border border-coffee-brown/10"
-                   whileHover={{ scale: 1.02, boxShadow: "0 10px 30px rgba(0,0,0,0.1)" }}
-                   transition={{ duration: 0.3 }}
-                 >
-                   <div className="w-16 h-16 bg-gradient-to-br from-coffee-brown to-amber-700 rounded-xl flex items-center justify-center shadow-lg">
-                     <MapPin className="w-8 h-8 text-white" />
-                   </div>
-                   <div className="flex-1 select-text">
-                     <h3 className="text-xl font-bold text-gray-800 mb-2 select-text">Business Registration</h3>
-                     <p className="text-gray-600 select-text">CIN: U01909RJ2021OPC078757</p>
-                   </div>
-                 </motion.div>
+              {/* Connect With Us */}
+              <div className="bg-white rounded-2xl p-8 shadow-lg">
+                <h3 className="text-2xl font-bold text-gray-800 mb-6">
+                  Connect With Us
+                </h3>
+                <div className="grid grid-cols-2 gap-4">
+                  <a
+                    href="mailto:info@gajnaoverseas.com"
+                    className="flex flex-col items-center p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
+                  >
+                    <Send className="w-8 h-8 text-blue-600 mb-2" />
+                    <span className="text-sm font-medium text-gray-700">
+                      Send Us Email
+                    </span>
+                  </a>
+                  <a
+                    href="tel:+919811789665"
+                    className="flex flex-col items-center p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors"
+                  >
+                    <Phone className="w-8 h-8 text-green-600 mb-2" />
+                    <span className="text-sm font-medium text-gray-700">
+                      Call Us
+                    </span>
+                  </a>
+                  <a
+                    href="sms:+919811789665"
+                    className="flex flex-col items-center p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors"
+                  >
+                    <Smartphone className="w-8 h-8 text-purple-600 mb-2" />
+                    <span className="text-sm font-medium text-gray-700">
+                      Send Us SMS
+                    </span>
+                  </a>
+                  <a
+                    href="mailto:info@gajnaoverseas.com?subject=Video Call Request"
+                    className="flex flex-col items-center p-4 bg-orange-50 rounded-lg hover:bg-orange-100 transition-colors"
+                  >
+                    <Video className="w-8 h-8 text-orange-600 mb-2" />
+                    <span className="text-sm font-medium text-gray-700">
+                      Video Conferencing
+                    </span>
+                  </a>
+                  <a
+                    href="https://wa.me/919811789665"
+                    className="flex flex-col items-center p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors"
+                  >
+                    <BsWhatsapp className="w-8 h-8 text-green-600 mb-2" />
+                    <span className="text-sm font-medium text-gray-700">
+                      Chat With Us
+                    </span>
+                  </a>
+                </div>
               </div>
             </motion.div>
 
-            {/* Location & Map */}
-            <motion.div 
-              className="space-y-8"
+            {/* Right Side - Contact Form */}
+            <motion.div
+              id="contact-form"
+              className="bg-white rounded-2xl p-8 shadow-lg"
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <div>
-                <h3 className="text-5xl  font-bold text-gray-800 mb-6">
-                  Our Location
-                </h3>
-                
-                <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded-2xl border border-amber-100 mb-8">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-amber-600 to-orange-600 rounded-lg flex items-center justify-center">
-                      <MapPin className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="select-text">
-                       <h4 className="font-bold text-gray-800 mb-2 select-text">Gajna Overseas Pvt Ltd</h4>
-                       <p className="text-gray-600 leading-relaxed select-text">
-                         505, Park Royal Apartments,<br/> GH-80, Sector -56, Gurugram, Haryana, India
-                       </p>
-                     </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Google Map */}
-              <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
-                <div className="h-80 bg-gray-100 relative">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.2319!2d77.0688!3d28.4595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d19d582e38859%3A0x2cf5d8c0b3bdf1e!2sSector%207%2C%20Gurugram%2C%20Haryana%20122001!5e0!3m2!1sen!2sin!4v1635789012345!5m2!1sen!2sin"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    className="rounded-2xl"
-                  />
-                </div>
-                <div className="p-4 bg-gradient-to-r from-coffee-brown to-amber-700">
-                   <div className="flex items-center justify-between text-white">
-                     <div className="select-text">
-                       <p className="font-semibold select-text">Gurugram, Haryana</p>
-                       <p className="text-sm opacity-90 select-text">India</p>
-                     </div>
-                    <motion.a
-                       href="https://www.google.com/maps/dir/?api=1&destination=Sector+7K,+Gurugram,+Haryana+122001,+India"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       className="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-300 inline-block"
-                       whileHover={{ scale: 1.05 }}
-                       whileTap={{ scale: 0.95 }}
-                     >
-                       Get Directions
-                     </motion.a>
-                  </div>
-                </div>
-              </div>
+              <h3 className="text-2xl font-bold text-gray-800 mb-6">
+                Send Your Message
+              </h3>
+              <GeneralContactForm />
             </motion.div>
           </div>
         </div>
       </section>
-            {/* Social Media & FAQ Section */}
-      <section className="py-16 bg-gradient-to-br from-pink-50 to-orange-50">
-        <div className="max-w-7xl mx-auto px-4">
-          {/* Social Media Links */}
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
+
+      {/* FAQ Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
           >
-            <h2 className="text-5xl  font-bold text-gray-800 mb-8">
-              Connect with Us
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">
+              Frequently Asked Questions
             </h2>
-            <div className="flex justify-center space-x-4 flex-wrap gap-4">
-               {[
-                 { icon: 'linkedin', component: Linkedin, href: 'https://www.linkedin.com/company/gaina-overseas-private-limited/' },
-
-                 { icon: 'whatsapp', component: BsWhatsapp, href: 'https://wa.me/9811789665' },
-
-                 { icon: 'youtube', component: Youtube }
-               ].map((social, index) => {
-                 const IconComponent = social.component;
-                 return (
-                   <motion.a
-                     key={social.icon}
-                     href={social.href}
-                     className="w-14 h-14 bg-coffee-brown hover:bg-amber-700 rounded-full flex items-center justify-center text-white transition-all duration-300 shadow-lg"
-                     whileHover={{ scale: 1.1, y: -2 }}
-                     whileTap={{ scale: 0.95 }}
-                     initial={{ opacity: 0, y: 20 }}
-                     animate={{ opacity: 1, y: 0 }}
-                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                   >
-                     <IconComponent className="w-6 h-6" />
-                   </motion.a>
-                 );
-               })}
-            </div>
+            <p className="text-xl text-gray-600">
+              Find answers to common questions about our coffee export services
+            </p>
           </motion.div>
 
-          {/* FAQ Section */}
-          <motion.div 
-            className="bg-white rounded-3xl p-8 shadow-xl"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            <h2 className="text-5xl  font-bold text-gray-800 mb-8 text-center">
-              Need Help Before You Reach Out?
-            </h2>
-            
-            <div className="space-y-4">
-               {[
-                 {
-                   question: "How do I request a sample?",
-                   answer: "Click on 'Request a sample' in our banner and fill a form."
-                 },
-                 {
-                   question: "What is your MOQ for export?",
-                   answer: "Our minimum order quantity varies by product and destination. Please contact us for specific MOQ requirements."
-                 },
-                 {
-                   question: "Which grades of coffee do you offer?",
-                   answer: "We offer various grades including Arabica (AA, A, B, C) and Robusta (Cherry, Parchment, Plantation) grades."
-                 }
-               ].map((faq, index) => {
-                 const isOpen = openFaqIndex === index;
-                 return (
-                   <motion.div 
-                     key={index}
-                     className="border border-gray-200 rounded-lg overflow-hidden"
-                     initial={{ opacity: 0, x: -20 }}
-                     animate={{ opacity: 1, x: 0 }}
-                     transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                   >
-                     <button 
-                       onClick={() => setOpenFaqIndex(isOpen ? null : index)}
-                       className={`w-full px-6 py-4 text-left flex justify-between items-center ${
-                         isOpen ? 'bg-coffee-brown text-white' : 'bg-gray-50 text-gray-800 hover:bg-gray-100'
-                       } transition-colors duration-300`}
-                     >
-                       <span className="font-medium">{faq.question}</span>
-                       <svg 
-                         className={`w-5 h-5 transform transition-transform duration-300 ${
-                           isOpen ? 'rotate-180' : ''
-                         }`} 
-                         fill="currentColor" 
-                         viewBox="0 0 20 20"
-                       >
-                         <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                       </svg>
-                     </button>
-                     <motion.div
-                       initial={false}
-                       animate={{
-                         height: isOpen ? 'auto' : 0,
-                         opacity: isOpen ? 1 : 0
-                       }}
-                       transition={{ duration: 0.3, ease: 'easeInOut' }}
-                       className="overflow-hidden"
-                     >
-                       {isOpen && (
-                         <div className="px-6 py-4 bg-amber-50 border-t border-amber-100">
-                           <p className="text-gray-700">{faq.answer}</p>
-                         </div>
-                       )}
-                     </motion.div>
-                   </motion.div>
-                 );
-               })}
-            </div>
-          </motion.div>
+          <div className="space-y-4">
+            {faqs.map((faq, index) => {
+              const isOpen = openFaqIndex === index;
+              return (
+                <motion.div
+                  key={index}
+                  className="border border-gray-200 rounded-lg overflow-hidden shadow-sm"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <button
+                    onClick={() => setOpenFaqIndex(isOpen ? null : index)}
+                    className={`w-full px-6 py-4 text-left flex justify-between items-center transition-colors duration-300 ${
+                      isOpen
+                        ? "bg-coffee-brown text-white"
+                        : "bg-gray-50 text-gray-800 hover:bg-gray-100"
+                    }`}
+                  >
+                    <span className="font-medium">{faq.question}</span>
+                    <svg
+                      className={`w-5 h-5 transform transition-transform duration-300 ${
+                        isOpen ? "rotate-180" : ""
+                      }`}
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                  <motion.div
+                    initial={false}
+                    animate={{
+                      height: isOpen ? "auto" : 0,
+                      opacity: isOpen ? 1 : 0,
+                    }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="overflow-hidden"
+                  >
+                    {isOpen && (
+                      <div className="px-6 py-4 bg-amber-50 border-t border-amber-100">
+                        <p className="text-gray-700 leading-relaxed">
+                          {faq.answer}
+                        </p>
+                      </div>
+                    )}
+                  </motion.div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Follow Us Section */}
+      <section className="py-16 bg-gradient-to-r from-coffee-brown to-amber-800 text-white">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-8">Follow Us On Social Media</h2>
+          <div className="flex justify-center space-x-6">
+            <a
+              href="https://www.linkedin.com/company/gaina-overseas-private-limited/"
+              className="w-12 h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors"
+            >
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg>
+            </a>
+            <a
+              href="https://wa.me/919811789665"
+              className="w-12 h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors"
+            >
+              <BsWhatsapp className="w-6 h-6" />
+            </a>
+          </div>
         </div>
       </section>
     </main>
