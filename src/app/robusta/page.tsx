@@ -26,17 +26,10 @@ export default function RobustaPage() {
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-red-900 via-orange-800 to-red-900 py-20 md:py-32 overflow-hidden">
         <div className="absolute inset-0 bg-black/20"></div>
-        <div className="absolute inset-0 bg-[url('/coffee-beans/robusta.webp')] bg-cover bg-center opacity-10"></div>
+
+
         
-        {/* Floating coffee beans animation */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-8 h-8 bg-orange-200 rounded-full opacity-20 animate-bounce" style={{animationDelay: '0s'}}></div>
-          <div className="absolute top-40 right-20 w-6 h-6 bg-red-300 rounded-full opacity-30 animate-bounce" style={{animationDelay: '1s'}}></div>
-          <div className="absolute bottom-32 left-1/4 w-10 h-10 bg-orange-100 rounded-full opacity-15 animate-bounce" style={{animationDelay: '2s'}}></div>
-          <div className="absolute bottom-20 right-1/3 w-7 h-7 bg-red-200 rounded-full opacity-25 animate-bounce" style={{animationDelay: '0.5s'}}></div>
-        </div>
-        
-        <div className="relative max-w-7xl mx-auto px-4 text-center text-white">
+        <div className="relative max-w-7xl mt-36 mx-auto px-4 text-center text-white">
           <div className="mb-8">
             <Image 
               src="/coffee-beans/robusta.webp" 
@@ -52,24 +45,7 @@ export default function RobustaPage() {
           <p className="text-xl md:text-2xl mb-4 text-orange-100 max-w-4xl mx-auto leading-relaxed">
             Discover India&apos;s robust Robusta coffee grades - from commercial parchment varieties to premium specialty coffees
           </p>
-          <div className="flex flex-wrap justify-center gap-4 text-sm md:text-base text-orange-200">
-            <span className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-orange-300 rounded-full"></span>
-              Slightly smaller than Arabica
-            </span>
-            <span className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-orange-300 rounded-full"></span>
-              Rounder-shaped beans
-            </span>
-            <span className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-orange-300 rounded-full"></span>
-              Grown at lower altitudes
-            </span>
-            <span className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-orange-300 rounded-full"></span>
-              Earthy, slightly bitter flavor
-            </span>
-          </div>
+
         </div>
       </section>
 
@@ -111,25 +87,7 @@ export default function RobustaPage() {
               {parchmentGrades.map((product) => (
                 <Link key={product.slug} href={`/products/${product.slug}`}>
                   <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-orange-100">
-                    <div className="relative h-48 bg-gradient-to-br from-orange-100 to-orange-200">
-                      {product.heroImage ? (
-                        <Image
-                          src={product.heroImage}
-                          alt={product.name}
-                          fill
-                          className="object-cover group-hover:scale-110 transition-transform duration-300"
-                        />
-                      ) : (
-                        <div className="flex items-center justify-center h-full">
-                          <div className="w-20 h-20 bg-coffee-brown rounded-full flex items-center justify-center">
-                            <span className="text-white text-2xl font-bold">{product.name.charAt(0)}</span>
-                          </div>
-                        </div>
-                      )}
-                      <div className="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                        Commercial
-                      </div>
-                    </div>
+
                     <div className="p-6">
                       <h3 className="text-xl font-bold text-coffee-brown mb-2 group-hover:text-orange-600 transition-colors">
                         {product.name}
@@ -172,25 +130,7 @@ export default function RobustaPage() {
               {cherryGrades.map((product) => (
                 <Link key={product.slug} href={`/products/${product.slug}`}>
                   <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-red-100">
-                    <div className="relative h-48 bg-gradient-to-br from-red-100 to-red-200">
-                      {product.heroImage ? (
-                        <Image
-                          src={product.heroImage}
-                          alt={product.name}
-                          fill
-                          className="object-cover group-hover:scale-110 transition-transform duration-300"
-                        />
-                      ) : (
-                        <div className="flex items-center justify-center h-full">
-                          <div className="w-20 h-20 bg-coffee-brown rounded-full flex items-center justify-center">
-                            <span className="text-white text-2xl font-bold">{product.name.charAt(0)}</span>
-                          </div>
-                        </div>
-                      )}
-                      <div className="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                        Commercial
-                      </div>
-                    </div>
+
                     <div className="p-6">
                       <h3 className="text-xl font-bold text-coffee-brown mb-2 group-hover:text-red-600 transition-colors">
                         {product.name}
@@ -233,25 +173,7 @@ export default function RobustaPage() {
               {otherCommercial.map((product) => (
                 <Link key={product.slug} href={`/products/${product.slug}`}>
                   <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-yellow-100">
-                    <div className="relative h-48 bg-gradient-to-br from-yellow-100 to-yellow-200">
-                      {product.heroImage ? (
-                        <Image
-                          src={product.heroImage}
-                          alt={product.name}
-                          fill
-                          className="object-cover group-hover:scale-110 transition-transform duration-300"
-                        />
-                      ) : (
-                        <div className="flex items-center justify-center h-full">
-                          <div className="w-20 h-20 bg-coffee-brown rounded-full flex items-center justify-center">
-                            <span className="text-white text-2xl font-bold">{product.name.charAt(0)}</span>
-                          </div>
-                        </div>
-                      )}
-                      <div className="absolute top-4 right-4 bg-yellow-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                        Commercial
-                      </div>
-                    </div>
+                
                     <div className="p-6">
                       <h3 className="text-xl font-bold text-coffee-brown mb-2 group-hover:text-yellow-600 transition-colors">
                         {product.name}
@@ -294,25 +216,7 @@ export default function RobustaPage() {
               {premiumGrade.map((product) => (
                 <Link key={product.slug} href={`/products/${product.slug}`}>
                   <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-indigo-100">
-                    <div className="relative h-56 bg-gradient-to-br from-indigo-100 to-indigo-200">
-                      {product.heroImage ? (
-                        <Image
-                          src={product.heroImage}
-                          alt={product.name}
-                          fill
-                          className="object-cover group-hover:scale-110 transition-transform duration-300"
-                        />
-                      ) : (
-                        <div className="flex items-center justify-center h-full">
-                          <div className="w-24 h-24 bg-coffee-brown rounded-full flex items-center justify-center">
-                            <span className="text-white text-3xl font-bold">{product.name.charAt(0)}</span>
-                          </div>
-                        </div>
-                      )}
-                      <div className="absolute top-4 right-4 bg-indigo-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                        Premium
-                      </div>
-                    </div>
+               
                     <div className="p-6">
                       <h3 className="text-2xl font-bold text-coffee-brown mb-2 group-hover:text-indigo-600 transition-colors">
                         {product.name}
@@ -356,25 +260,7 @@ export default function RobustaPage() {
                 <Link key={product.slug} href={`/products/${product.slug}`}>
                   <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-teal-100 relative">
                     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-teal-500 to-cyan-500"></div>
-                    <div className="relative h-56 bg-gradient-to-br from-teal-100 to-teal-200">
-                      {product.heroImage ? (
-                        <Image
-                          src={product.heroImage}
-                          alt={product.name}
-                          fill
-                          className="object-cover group-hover:scale-110 transition-transform duration-300"
-                        />
-                      ) : (
-                        <div className="flex items-center justify-center h-full">
-                          <div className="w-24 h-24 bg-gradient-to-br from-teal-600 to-cyan-600 rounded-full flex items-center justify-center">
-                            <span className="text-white text-3xl font-bold">{product.name.charAt(0)}</span>
-                          </div>
-                        </div>
-                      )}
-                      <div className="absolute top-4 right-4 bg-gradient-to-r from-teal-500 to-cyan-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                        Specialty
-                      </div>
-                    </div>
+                   
                     <div className="p-6">
                       <h3 className="text-2xl font-bold text-coffee-brown mb-2 group-hover:text-teal-600 transition-colors">
                         {product.name}
