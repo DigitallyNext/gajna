@@ -6,6 +6,7 @@ import {
   Phone,
   Mail,
   MapPin,
+  Map,
   MessageCircle,
   Send,
   Video,
@@ -14,6 +15,7 @@ import {
 import { BsWhatsapp } from "react-icons/bs";
 import ReCAPTCHA from "react-google-recaptcha";
 import GeneralContactForm from "@/components/GeneralContactForm";
+import Link from "next/link";
 
 export default function ContactPage() {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
@@ -80,11 +82,7 @@ export default function ContactPage() {
   ];
 
   const faqs = [
-    {
-      question: "What is your minimum order quantity (MOQ)?",
-      answer:
-        "Our MOQ varies by product and destination. For most coffee grades, it's typically 1 container (19.2 MT). Please contact us for specific requirements.",
-    },
+
     {
       question: "How do I request samples?",
       answer:
@@ -95,16 +93,8 @@ export default function ContactPage() {
       answer:
         "We export various grades including Arabica (Plantation PB, A, B, C) and Robusta (Cherry, Parchment) varieties. Check our product catalog for complete details.",
     },
-    {
-      question: "What are your payment terms?",
-      answer:
-        "We offer flexible payment terms including LC at sight, advance payment, and other mutually agreed terms based on the buyer's profile and order value.",
-    },
-    {
-      question: "How long does shipping take?",
-      answer:
-        "Shipping time depends on the destination. Typically, it takes 15-30 days for sea freight and 5-7 days for air freight from the port of loading.",
-    },
+
+
     {
       question: "Do you provide quality certificates?",
       answer:
@@ -116,107 +106,115 @@ export default function ContactPage() {
     <main className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-orange-50">
       {/* Clean Contact Us Layout */}
       <section className="py-16 mt-40 bg-white">
-        <main className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row ">
-          {/* column 1  */}
-          <div className="flex flex-col">
-            <div className="w-[15vw] h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center">
+        <main className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-center items-center ">
+          {/* column 1 */}
+          <div className="flex flex-col ">
+            <Link
+              href="/location"
+              className="w-full md:w-[15vw] h-[200px] md:h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
+            >
               <div className="flex items-center justify-center text-[#6F4E37] ">
-                <MapPin className="w-[28px] h-[28px] md:w-[2vw] md:h-[2vw]" />
+                <MapPin className="w-[32px] h-[32px] md:w-[2vw] md:h-[2vw]" />
               </div>
-              <span className="mt-[12px] block text-[14px] md:text-[1.5vw] font-medium text-[#6F4E37] text-center">
+              <span className="mt-3 block text-sm md:text-[1.2vw] font-medium text-[#6F4E37] text-center">
                 Location
               </span>
-            </div>
-            <div className="w-[15vw] h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center">
+            </Link>
+
+            <Link
+              href="/sms"
+              className="w-full md:w-[15vw] h-[200px] md:h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
+            >
               <div className="flex items-center justify-center text-[#6F4E37] ">
-                <Smartphone className="w-[28px] h-[28px] md:w-[2vw] md:h-[2vw]" />
+                <Smartphone className="w-[32px] h-[32px] md:w-[2vw] md:h-[2vw]" />
               </div>
-              <span className="mt-[12px] block text-[14px] md:text-[1.5vw] font-medium text-[#6F4E37] text-center">
+              <span className="mt-3 block text-sm md:text-[1.2vw] font-medium text-[#6F4E37] text-center">
                 SMS
               </span>
-            </div>
+            </Link>
           </div>
-          {/* column 2  */}
-          <div>
-            <div className="flex flex-row ">
-              <div className="p-6 h-[20vh] w-full bg-white border-2 border-gray-300 flex flex-col justify-center items-center">
-                <div className="flex items-center justify-center text-[#6F4E37] ">
-                  <Phone className="w-[28px] h-[28px] md:w-[2vw] md:h-[2vw]" />
-                </div>
-                <span className="mt-[12px] block text-[14px] md:text-[1.5vw] font-medium text-[#6F4E37] text-center">
+
+          {/* column 2 */}
+          <div className="flex flex-col ">
+            <div className="flex flex-col md:flex-row ">
+              <Link
+                href="/phone"
+                className="p-6 h-[150px] md:h-[20vh] w-full md:w-[20vw] bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
+              >
+                <Phone className="w-[32px] h-[32px] md:w-[2vw] md:h-[2vw] text-[#6F4E37]" />
+                <span className="mt-3 block text-sm md:text-[1.2vw] font-medium text-[#6F4E37] text-center">
                   Phone
                 </span>
-              </div>
-              <div className="p-6 w-full  bg-white border-2 border-gray-300 flex flex-col justify-center items-center">
-                {" "}
-                <div className=" flex items-center justify-center text-[#6F4E37] ">
-                  <Mail className="w-[28px] h-[28px] md:w-[2vw] md:h-[2vw]" />
-                </div>
-                <span className="mt-[12px] block text-[14px] md:text-[1.5vw] font-medium text-[#6F4E37] text-center">
+              </Link>
+
+              <Link
+                href="/email"
+                className="p-6 h-[150px] md:h-[20vh] w-full md:w-[20vw] bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
+              >
+                <Mail className="w-[32px] h-[32px] md:w-[2vw] md:h-[2vw] text-[#6F4E37]" />
+                <span className="mt-3 block text-sm md:text-[1.2vw] font-medium text-[#6F4E37] text-center">
                   Email
                 </span>
-              </div>
+              </Link>
             </div>
-            <div className="p-6 h-[20vh] w-[40vw] bg-white border-2 border-gray-300 flex flex-col justify-center items-center">
-              <h1 className="text-7xl leading-[70px] font-bold text-[#562F23] text-center font-serif">
+
+            <Link
+              href="/contact"
+              className="p-6 h-[150px] md:h-[20vh] w-full md:w-[40vw] bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
+            >
+              <h1 className="text-4xl md:text-7xl leading-tight font-bold text-[#562F23] text-center font-serif">
                 Contact Us
               </h1>
-            </div>
-            <div className="h-[20vh] p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center">
-              {" "}
-              <div className="">
-                <div className=" flex items-center justify-center text-[#6F4E37] ">
-                  <Video className="w-[28px] h-[28px] md:w-[2vw] md:h-[2vw]" />
-                </div>
-                <span className="mt-[12px] block text-[14px] md:text-[1.5vw] font-medium text-[#6F4E37] text-center">
-                  Video Conferencing
-                </span>
-              </div>
-            </div>
+            </Link>
+
+            <Link
+              href="/video-conferencing"
+              className="h-[150px] md:h-[20vh] w-full bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
+            >
+              <Video className="w-[32px] h-[32px] md:w-[2vw] md:h-[2vw] text-[#6F4E37]" />
+              <span className="mt-3 block text-sm md:text-[1.2vw] font-medium text-[#6F4E37] text-center">
+                Video Conferencing
+              </span>
+            </Link>
           </div>
-          {/* column 3  */}
-          <div className="flex flex-col justify-center items-center">
-            <div className="w-[15vw] h-[30vh]  p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center">
-              <div className="  flex items-center justify-center text-[#6F4E37] ">
-                <MessageCircle className="w-[28px] h-[28px] md:w-[2vw] md:h-[2vw]" />
-              </div>
-              <span className="mt-[12px] block text-[14px] md:text-[1.5vw] font-medium text-[#6F4E37] text-center">
+
+          {/* column 3 */}
+          <div className="flex flex-col ">
+            <Link
+              href="/enquiry"
+              className="w-full md:w-[15vw] h-[200px] md:h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
+            >
+              <MessageCircle className="w-[32px] h-[32px] md:w-[2vw] md:h-[2vw] text-[#6F4E37]" />
+              <span className="mt-3 block text-sm md:text-[1.2vw] font-medium text-[#6F4E37] text-center">
                 Enquiry Form
               </span>
-            </div>
-            <div className="w-[15vw] h-[30vh]  p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center">
-              <div className="  flex items-center justify-center text-[#6F4E37] ">
-                <BsWhatsapp className="w-[28px] h-[28px] md:w-[2vw] md:h-[2vw]" />
-              </div>
-              <span className="mt-[12px] block text-[14px]  md:text-[1.5vw] font-medium text-[#6F4E37] text-center">
+            </Link>
+
+            <Link
+              href="/whatsapp"
+              className="w-full md:w-[15vw] h-[200px] md:h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
+            >
+              <BsWhatsapp className="w-[32px] h-[32px] md:w-[2vw] md:h-[2vw] text-[#6F4E37]" />
+              <span className="mt-3 block text-sm md:text-[1.2vw] font-medium text-[#6F4E37] text-center">
                 WhatsApp
               </span>
-            </div>
+            </Link>
           </div>
         </main>
       </section>
 
       {/* Main Contact Section */}
-      <section className="py-16 bg-gradient-to-br from-orange-50 to-pink-50">
+      <section className="py-16 bg-[url('/blog-bg.webp')] bg-cover bg-no-repeat">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <motion.h2
-              className="text-4xl md:text-5xl font-bold text-gray-800 mb-4"
+              className="text-4xl md:text-6xl font-bold text-gray-900 mb-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              Contact Us
+              Contact With Us
             </motion.h2>
-            <motion.p
-              className="text-xl text-gray-600 max-w-3xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              Send us your queries for any query related to Indian Origin Green
-              Coffee Beans. Please connect with us.
-            </motion.p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
@@ -259,6 +257,15 @@ export default function ContactPage() {
                       </p>
                     </div>
                   </div>
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-coffee-brown rounded-lg flex items-center justify-center">
+                      <Map className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Pin Code</h4>
+                      <p className="text-gray-600">122011.</p>
+                    </div>
+                  </div>
 
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-coffee-brown rounded-lg flex items-center justify-center">
@@ -297,8 +304,8 @@ export default function ContactPage() {
                 <h3 className="text-2xl font-bold text-gray-800 mb-6">
                   Connect With Us
                 </h3>
-                <div className="grid grid-cols-2 gap-4">
-                  <a
+                <div className="grid gap-4">
+                  <Link
                     href="mailto:info@gajnaoverseas.com"
                     className="flex flex-col items-center p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
                   >
@@ -306,8 +313,9 @@ export default function ContactPage() {
                     <span className="text-sm font-medium text-gray-700">
                       Send Us Email
                     </span>
-                  </a>
-                  <a
+                  </Link>
+
+                  <Link
                     href="tel:+919811789665"
                     className="flex flex-col items-center p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors"
                   >
@@ -315,8 +323,9 @@ export default function ContactPage() {
                     <span className="text-sm font-medium text-gray-700">
                       Call Us
                     </span>
-                  </a>
-                  <a
+                  </Link>
+
+                  <Link
                     href="sms:+919811789665"
                     className="flex flex-col items-center p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors"
                   >
@@ -324,8 +333,9 @@ export default function ContactPage() {
                     <span className="text-sm font-medium text-gray-700">
                       Send Us SMS
                     </span>
-                  </a>
-                  <a
+                  </Link>
+
+                  <Link
                     href="mailto:info@gajnaoverseas.com?subject=Video Call Request"
                     className="flex flex-col items-center p-4 bg-orange-50 rounded-lg hover:bg-orange-100 transition-colors"
                   >
@@ -333,16 +343,18 @@ export default function ContactPage() {
                     <span className="text-sm font-medium text-gray-700">
                       Video Conferencing
                     </span>
-                  </a>
-                  <a
+                  </Link>
+
+                  <Link
                     href="https://wa.me/919811789665"
+                    target="_blank"
                     className="flex flex-col items-center p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors"
                   >
                     <BsWhatsapp className="w-8 h-8 text-green-600 mb-2" />
                     <span className="text-sm font-medium text-gray-700">
                       Chat With Us
                     </span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </motion.div>
@@ -356,8 +368,17 @@ export default function ContactPage() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <h3 className="text-2xl font-bold text-gray-800 mb-6">
-                Send Your Message
+                Send Us Your Queries
               </h3>
+              <motion.p
+                className="text-base text-gray-600 max-w-3xl mx-auto pb-6"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                For any queries related to Indian Origin Green Coffee Beans.
+                Please connect with us.
+              </motion.p>
               <GeneralContactForm />
             </motion.div>
           </div>
@@ -445,7 +466,7 @@ export default function ContactPage() {
           <h2 className="text-3xl font-bold mb-8">Follow Us On Social Media</h2>
           <div className="flex justify-center space-x-6">
             <a
-              href="https://www.linkedin.com/company/gaina-overseas-private-limited/"
+              href="https://www.linkedin.com/in/priyaviratsingh/"
               className="w-12 h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors"
             >
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">

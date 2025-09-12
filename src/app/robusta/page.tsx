@@ -50,7 +50,7 @@ export default function RobustaPage() {
             Robusta Coffee
           </h1>
           <p className="text-xl md:text-2xl mb-4 text-orange-100 max-w-4xl mx-auto leading-relaxed">
-            Discover India's robust Robusta coffee grades - from commercial parchment varieties to premium specialty coffees
+            Discover India&apos;s robust Robusta coffee grades - from commercial parchment varieties to premium specialty coffees
           </p>
           <div className="flex flex-wrap justify-center gap-4 text-sm md:text-base text-orange-200">
             <span className="flex items-center gap-2">

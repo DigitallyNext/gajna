@@ -60,7 +60,7 @@ export default function Footer() {
   >
     <div className="flex justify-center space-x-2 flex-wrap gap-2">
       {[
-        { icon: 'linkedin', component: Linkedin, href: 'https://www.linkedin.com/company/gaina-overseas-private-limited/' },
+        { icon: 'linkedin', component: Linkedin, href: 'https://www.linkedin.com/in/priyaviratsingh/' },
         { icon: 'whatsapp', component: BsWhatsapp, href: 'https://wa.me/9811789665' },
       ].map((social, index) => {
         const IconComponent = social.component;

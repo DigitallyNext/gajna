@@ -49,7 +49,7 @@ export default function ArabicaPage() {
             Arabica Coffee
           </h1>
           <p className="text-xl md:text-2xl mb-4 text-amber-100 max-w-4xl mx-auto leading-relaxed">
-            Discover India's finest Arabica coffee grades - from commercial plantation varieties to premium specialty coffees
+            Discover India&apos;s finest Arabica coffee grades - from commercial plantation varieties to premium specialty coffees
           </p>
           <div className="flex flex-wrap justify-center gap-4 text-sm md:text-base text-amber-200">
             <span className="flex items-center gap-2">

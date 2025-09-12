@@ -1,427 +1,498 @@
-"use client";
-import { useState, useRef } from "react";
-import { z } from "zod";
-import toast, { Toaster } from 'react-hot-toast';
+'use client';
+
+import React, { useState, useRef } from 'react';
+import { z } from 'zod';
+import { toast } from 'react-hot-toast';
 import ReCAPTCHA from 'react-google-recaptcha';
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
+import { contactFormSchema } from '@/lib/validation';
+import { CountryDropdown } from '@/components/CountryDropdown';
 
-// Simplified schema for general contact forms (no product/grade fields)
-const generalContactSchema = z.object({
-  name: z
-    .string({ message: "Name is required" })
-    .min(2, "Name must be at least 2 characters")
-    .max(100, "Name must be at most 100 characters"),
-  email: z
-    .string({ message: "Email is required" })
-    .email("Please enter a valid email address"),
-  subject: z
-    .string({ message: "Subject is required" })
-    .min(3, "Subject must be at least 3 characters")
-    .max(150, "Subject must be at most 150 characters"),
-  message: z
-    .string({ message: "Message is required" })
-    .min(10, "Message must be at least 10 characters")
-    .max(5000, "Message is too long"),
-  phone: z
-    .string()
-    .trim()
-    .min(7, "Phone number seems too short")
-    .max(20, "Phone number seems too long")
-    .regex(/^[+\d\s().-]+$/, "Please enter a valid phone number")
-    .optional(),
-  country: z
-    .string()
-    .trim()
-    .min(2, "Country must be at least 2 characters")
-    .max(100, "Country must be at most 100 characters")
-    .optional(),
-  postalCode: z
-    .string()
-    .trim()
-    .min(3, "Postal code must be at least 3 characters")
-    .max(20, "Postal code must be at most 20 characters")
-    .regex(/^[A-Za-z0-9\s-]+$/, "Please enter a valid postal code")
-    .optional(),
-  linkedin: z
-    .string()
-    .url("Please enter a valid LinkedIn profile URL")
-    .optional(),
-  consent: z.boolean().refine(val => val === true, {
-    message: "You must consent to data processing"
-  }),
-});
+type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
 
-type GeneralContactInput = z.infer<typeof generalContactSchema>;
-
-type GeneralContactFormProps = {
-  initial?: Partial<GeneralContactInput>;
+interface GeneralContactFormProps {
+  initial?: Partial<{
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    country: string;
+    postalCode: string;
+    linkedin: string;
+    subject: string;
+    message: string;
+    consent: boolean;
+  }>;
   submitLabel?: string;
   onSuccess?: () => void;
   isModal?: boolean;
-};
+}
 
-export default function GeneralContactForm({ initial, submitLabel = "Send Message", onSuccess, isModal = false }: GeneralContactFormProps) {
-  const [values, setValues] = useState<GeneralContactInput>({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-    phone: "",
-    country: "",
-    postalCode: "",
-    linkedin: "",
+export default function GeneralContactForm({
+  initial = {},
+  submitLabel = 'Submit Enquiry',
+  onSuccess,
+  isModal = false
+}: GeneralContactFormProps) {
+  // Form state
+  const [values, setValues] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    country: '',
+    postalCode: '',
+    linkedin: '',
+    subject: '',
+    message: '',
     consent: false,
-    ...(initial as any),
-  } as GeneralContactInput);
+    ...initial
+  });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [status, setStatus] = useState<FormStatus>('idle');
   const [serverError, setServerError] = useState<string | null>(null);
   const [captchaValue, setCaptchaValue] = useState<string | null>(null);
+  const [captchaError, setCaptchaError] = useState<string | null>(null);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
-  // Add validation feedback on field blur
-  const handleBlur = (fieldName: string) => {
-    const fieldValue = values[fieldName as keyof GeneralContactInput];
-    if (!fieldValue && ['name', 'email', 'subject', 'message', 'consent'].includes(fieldName)) {
-      setErrors(prev => ({ ...prev, [fieldName]: 'This field is required' }));
-    } else if (errors[fieldName]) {
-      setErrors(prev => ({ ...prev, [fieldName]: '' }));
-    }
+
+
+  // Handle input blur for validation
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    validateField(name, value);
   };
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value, type, checked } = e.target as HTMLInputElement;
-    setValues((prev) => ({
+  // Handle input change
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value, type } = e.target;
+    const newValue = type === 'checkbox' ? (e.target as HTMLInputElement).checked : value;
+
+    setValues(prev => ({
       ...prev,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: newValue
     }));
+
+    // Clear error when user starts typing again
+    if (errors[name]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
+    }
   };
 
-  const validate = (data: GeneralContactInput) => {
-    const result = generalContactSchema.safeParse(data);
-    if (!result.success) {
-      const fieldErrors: Record<string, string> = {};
-      const fl = result.error.flatten();
-      Object.entries(fl.fieldErrors).forEach(([k, v]) => {
-        if (v && v.length) fieldErrors[k] = v[0] as string;
+  // Handle phone number change
+  const handlePhoneChange = (value: string | undefined) => {
+    setValues(prev => ({
+      ...prev,
+      phone: value || ''
+    }));
+
+    // Clear error when user starts typing again
+    if (errors.phone) {
+      setErrors(prev => ({
+        ...prev,
+        phone: ''
+      }));
+    }
+  };
+
+  // Handle country selection from dropdown
+  const handleCountrySelect = (country: string) => {
+    setValues(prev => ({
+      ...prev,
+      country
+    }));
+    
+    // Clear error when user selects a country
+    if (errors.country) {
+      setErrors(prev => ({
+        ...prev,
+        country: ''
+      }));
+    }
+  };
+
+
+
+  // Validate a single field
+  const validateField = (name: string, value: any) => {
+    try {
+      // Create a partial schema for just this field
+      const fieldSchema = z.object({
+        [name]: contactFormSchema.shape[name as keyof typeof contactFormSchema.shape]
       });
-      setErrors(fieldErrors);
       
-      // Show specific error toast for validation
-      const missingFields = Object.keys(fieldErrors).map(field => {
-        const fieldNames: Record<string, string> = {
-          name: 'Name',
-          email: 'Email',
-          subject: 'Subject', 
-          message: 'Message',
-          consent: 'Privacy Policy Agreement',
-          phone: 'Phone',
-          country: 'Country',
-          postalCode: 'Postal Code',
-          linkedin: 'LinkedIn'
-        };
-        return fieldNames[field] || field;
-      });
+      // Validate just this field
+      fieldSchema.parse({ [name]: value });
       
-      const errorMessage = missingFields.length === 1 
-        ? `❌ Please fill in: ${missingFields[0]}`
-        : `❌ Please fill in: ${missingFields.join(', ')}`;
-      
-      toast.error(errorMessage, {
-        duration: 6000,
-        position: 'top-right',
-        style: {
-          background: '#EF4444',
-          color: '#fff',
-          fontWeight: '500'
+      // Clear error if validation passes
+      setErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        // Set the error message for this field
+        const fieldError = error.issues.find((err: any) => err.path[0] === name);
+        if (fieldError) {
+          setErrors(prev => ({
+            ...prev,
+            [name]: fieldError.message
+          }));
         }
-      });
-      
-      // Scroll to first error field
-      const firstErrorField = Object.keys(fieldErrors)[0];
-      const errorElement = document.querySelector(`[name="${firstErrorField}"]`) as HTMLElement;
-      if (errorElement) {
-        errorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        errorElement.focus();
       }
-      
-      return false;
     }
-    setErrors({});
-    return true;
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('General form submission started', { values, isModal });
-    
-    setStatus("submitting");
-    setServerError(null);
-
-    const payload: GeneralContactInput = { ...values };
-    console.log('General form payload prepared:', payload);
-    
-    if (!validate(payload)) {
-      console.log('General form validation failed');
-      setStatus("error");
-      return;
-    }
-    
-    // Check CAPTCHA
-    if (!captchaValue) {
-      toast.error('❌ Please complete the CAPTCHA verification', {
-        duration: 4000,
-        position: 'top-right',
-        style: {
-          background: '#EF4444',
-          color: '#fff',
-          fontWeight: '500'
-        }
-      });
-      setStatus("error");
-      return;
-    }
-    
-    console.log('General form validation passed, sending request');
+  // Validate all fields
+  const validateForm = () => {
+    const formData = {
+      ...values,
+      // Combine fields as needed for validation
+    };
 
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      
-      console.log('General form response received:', res.status, res.statusText);
-      const json = await res.json();
-      console.log('General form response JSON:', json);
-      
-      if (!res.ok || !json.success) {
-        throw new Error(json.error || "Submission failed");
+      contactFormSchema.parse(formData);
+      setErrors({});
+      return true;
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        const newErrors: Record<string, string> = {};
+        error.issues.forEach((err: any) => {
+          const path = err.path[0] as string;
+          newErrors[path] = err.message;
+        });
+        setErrors(newErrors);
+
+        // Show toast for first error
+        const firstError = error.issues[0];
+        toast.error(`Please check: ${String(firstError.message)}`);
+
+        // Scroll to first error field
+        const firstErrorField = document.querySelector(`[name="${String(firstError.path[0])}"]`);
+        if (firstErrorField) {
+          firstErrorField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
       }
-      
-      console.log('General form submitted successfully');
-      setStatus("success");
-      setValues({ name: "", email: "", subject: "", message: "", phone: "", country: "", postalCode: "", linkedin: "", consent: false } as GeneralContactInput);
-      setCaptchaValue(null);
-      recaptchaRef.current?.reset();
-      
-      // Show success toast
-      toast.success('✅ Message sent successfully! We\'ll get back to you soon.', {
-        duration: 5000,
-        position: 'top-right',
-        style: {
-          background: '#10B981',
-          color: '#fff',
-          fontWeight: '500'
-        }
+      return false;
+    }
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('submitting');
+    setServerError(null);
+
+    // Validate captcha
+    if (!captchaValue) {
+      setCaptchaError('Please verify that you are not a robot');
+      setStatus('idle');
+      toast.error('Please complete the CAPTCHA verification');
+      return;
+    } else {
+      setCaptchaError(null);
+    }
+
+    // Validate form
+    if (!validateForm()) {
+      setStatus('idle');
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...values,
+          captchaToken: captchaValue
+        }),
       });
-      
-      onSuccess?.();
-    } catch (err: any) {
-      console.error('General form submission error:', err);
-      setServerError(err.message || "Something went wrong");
-      setStatus("error");
-      
-      // Show error toast
-      toast.error(`❌ Failed to send message: ${err.message || "Please try again later."}`, {
-        duration: 6000,
-        position: 'top-right',
-        style: {
-          background: '#EF4444',
-          color: '#fff',
-          fontWeight: '500'
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setStatus('success');
+        toast.success('Message sent successfully!');
+        
+        // Reset form
+         setValues({
+           firstName: '',
+           lastName: '',
+           email: '',
+           phone: '',
+           country: '',
+           postalCode: '',
+           linkedin: '',
+           subject: '',
+           message: '',
+           consent: false,
+         });
+        
+        // Reset captcha
+        if (recaptchaRef.current) {
+          recaptchaRef.current.reset();
         }
-      });
+        setCaptchaValue(null);
+        
+        // Call onSuccess callback if provided
+        if (onSuccess) {
+          onSuccess();
+        }
+      } else {
+        setStatus('error');
+        setServerError(data.error || 'Something went wrong. Please try again.');
+        toast.error(data.error || 'Failed to send message. Please try again.');
+      }
+    } catch (error) {
+      setStatus('error');
+      setServerError('Network error. Please check your connection and try again.');
+      toast.error('Network error. Please check your connection and try again.');
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-6 max-w-3xl mx-auto">
+      {/* First Name and Last Name (side by side) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700">
-            Name <span className="text-red-500">*</span>
+          <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">
+            First Name *
           </label>
           <input
             type="text"
-            name="name"
-            value={values.name}
+            id="firstName"
+            name="firstName"
+            value={values.firstName}
             onChange={handleChange}
-            onBlur={() => handleBlur('name')}
-            className={`mt-1 block w-full rounded-md shadow-sm focus:border-amber-600 focus:ring-amber-600 ${
-              errors.name ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'border-gray-300'
-            }`}
-            placeholder="Your full name"
-            required
+            onBlur={handleBlur}
+            className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-opacity-50 ${errors.firstName ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-200'}`}
+            placeholder="Your first name"
           />
-          {errors.name && <p className="text-sm text-red-600 mt-1 flex items-center"><span className="mr-1">⚠️</span>{errors.name}</p>}
+          {errors.firstName && <p className="mt-1 text-sm text-red-600">{errors.firstName}</p>}
         </div>
-
+        
         <div>
-          <label className="block text-sm font-medium text-gray-700">
-            Email <span className="text-red-500">*</span>
+          <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">
+            Last Name *
           </label>
           <input
-            type="email"
-            name="email"
-            value={values.email}
-            onChange={handleChange}
-            onBlur={() => handleBlur('email')}
-            className={`mt-1 block w-full rounded-md shadow-sm focus:border-amber-600 focus:ring-amber-600 ${
-              errors.email ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'border-gray-300'
-            }`}
-            placeholder="your.email@example.com"
-            required
-          />
-          {errors.email && <p className="text-sm text-red-600 mt-1 flex items-center"><span className="mr-1">⚠️</span>{errors.email}</p>}
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-700">Phone</label>
-          <input
-            type="tel"
-            name="phone"
-            value={values.phone || ""}
-            onChange={handleChange}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-600 focus:ring-amber-600"
-            placeholder="+91 98117 89665"
-          />
-          {errors.phone && <p className="text-sm text-red-600 mt-1">{errors.phone}</p>}
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-700">Country</label>
-          <input
             type="text"
-            name="country"
-            value={values.country || ""}
+            id="lastName"
+            name="lastName"
+            value={values.lastName}
             onChange={handleChange}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-600 focus:ring-amber-600"
-            placeholder="India"
+            onBlur={handleBlur}
+            className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-opacity-50 ${errors.lastName ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-200'}`}
+            placeholder="Your last name"
           />
-          {errors.country && <p className="text-sm text-red-600 mt-1">{errors.country}</p>}
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-700">Postal Code / ZIP Code</label>
-          <input
-            type="text"
-            name="postalCode"
-            value={values.postalCode || ""}
-            onChange={handleChange}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-600 focus:ring-amber-600"
-            placeholder="110001"
-          />
-          {errors.postalCode && <p className="text-sm text-red-600 mt-1">{errors.postalCode}</p>}
+          {errors.lastName && <p className="mt-1 text-sm text-red-600">{errors.lastName}</p>}
         </div>
       </div>
 
+      {/* Email */}
       <div>
-        <label className="block text-sm font-medium text-gray-700">LinkedIn</label>
+        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+          Email Address *
+        </label>
         <input
-          type="url"
-          name="linkedin"
-          value={values.linkedin || ""}
+          type="email"
+          id="email"
+          name="email"
+          value={values.email}
           onChange={handleChange}
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-600 focus:ring-amber-600"
-          placeholder="https://www.linkedin.com/in/username"
+          onBlur={handleBlur}
+          className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-opacity-50 ${errors.email ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-200'}`}
+          placeholder="your.email@example.com"
         />
-        {errors.linkedin && <p className="text-sm text-red-600 mt-1">{errors.linkedin}</p>}
+        {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
       </div>
 
+      {/* Phone Number with Country Code */}
       <div>
-        <label className="block text-sm font-medium text-gray-700">
-          Subject <span className="text-red-500">*</span>
+        <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+          Phone Number *
+        </label>
+        <PhoneInput
+          international
+          countryCallingCodeEditable={false}
+          defaultCountry="US"
+          value={values.phone}
+          onChange={handlePhoneChange}
+          className={`w-full ${errors.phone ? 'phone-input-error' : ''}`}
+          style={{
+            '--PhoneInputCountryFlag-height': '1em',
+            '--PhoneInput-color--focus': '#2563eb',
+          } as React.CSSProperties}
+        />
+        {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone}</p>}
+      </div>
+
+      {/* Country with Searchable Dropdown */}
+      <div>
+        <label htmlFor="country" className="block text-sm font-medium text-gray-700 mb-1">
+          Country *
+        </label>
+        <CountryDropdown 
+          selectedCountry={values.country}
+          onSelectCountry={handleCountrySelect}
+          error={!!errors.country}
+        />
+        {errors.country && <p className="mt-1 text-sm text-red-600">{errors.country}</p>}
+      </div>
+
+      {/* Postal/Zip Code */}
+      <div>
+        <label htmlFor="postalCode" className="block text-sm font-medium text-gray-700 mb-1">
+          Postal/Zip Code *
         </label>
         <input
           type="text"
+          id="postalCode"
+          name="postalCode"
+          value={values.postalCode}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-opacity-50 ${errors.postalCode ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-200'}`}
+          placeholder="Postal/Zip code"
+        />
+        {errors.postalCode && <p className="mt-1 text-sm text-red-600">{errors.postalCode}</p>}
+      </div>
+
+      {/* LinkedIn ID */}
+      <div>
+        <label htmlFor="linkedin" className="block text-sm font-medium text-gray-700 mb-1">
+          LinkedIn Profile URL *
+        </label>
+        <input
+          type="url"
+          id="linkedin"
+          name="linkedin"
+          value={values.linkedin}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-opacity-50 ${errors.linkedin ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-200'}`}
+          placeholder="https://www.linkedin.com/in/priyaviratsingh/"
+        />
+        {errors.linkedin && <p className="mt-1 text-sm text-red-600">{errors.linkedin}</p>}
+      </div>
+
+      {/* Subject */}
+      <div>
+        <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
+          Subject *
+        </label>
+        <input
+          type="text"
+          id="subject"
           name="subject"
           value={values.subject}
           onChange={handleChange}
-          onBlur={() => handleBlur('subject')}
-          className={`mt-1 block w-full rounded-md shadow-sm focus:border-amber-600 focus:ring-amber-600 ${
-            errors.subject ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'border-gray-300'
-          }`}
-          placeholder="How can we help?"
-          required
+          onBlur={handleBlur}
+          className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-opacity-50 ${errors.subject ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-200'}`}
+          placeholder="What is your enquiry about?"
         />
-        {errors.subject && <p className="text-sm text-red-600 mt-1 flex items-center"><span className="mr-1">⚠️</span>{errors.subject}</p>}
+        {errors.subject && <p className="mt-1 text-sm text-red-600">{errors.subject}</p>}
       </div>
 
+      {/* Message */}
       <div>
-        <label className="block text-sm font-medium text-gray-700">
-          Message <span className="text-red-500">*</span>
+        <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+          Message *
         </label>
         <textarea
+          id="message"
           name="message"
+          rows={5}
           value={values.message}
           onChange={handleChange}
-          onBlur={() => handleBlur('message')}
-          rows={5}
-          className={`mt-1 block w-full rounded-md shadow-sm focus:border-amber-600 focus:ring-amber-600 ${
-            errors.message ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'border-gray-300'
-          }`}
-          placeholder="Write your message..."
-          required
+          onBlur={handleBlur}
+          className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-opacity-50 ${errors.message ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-200'}`}
+          placeholder="Please provide details about your enquiry..."
         />
-        {errors.message && <p className="text-sm text-red-600 mt-1 flex items-center"><span className="mr-1">⚠️</span>{errors.message}</p>}
+        {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
       </div>
 
-      <div className="flex items-start gap-2">
-        <input
-          id="consent"
-          type="checkbox"
-          name="consent"
-          checked={values.consent}
-          onChange={handleChange}
-          onBlur={() => handleBlur('consent')}
-          className={`mt-1 h-4 w-4 rounded text-amber-700 focus:ring-amber-600 ${
-            errors.consent ? 'border-red-300' : 'border-gray-300'
-          }`}
-          required
-        />
-        <label htmlFor="consent" className="text-sm text-gray-700">
-          I agree to the processing of my personal data according to the Privacy Policy. <span className="text-red-500">*</span>
-        </label>
+      {/* Consent Checkbox */}
+      <div className="flex items-start">
+        <div className="flex items-center h-5">
+          <input
+            id="consent"
+            name="consent"
+            type="checkbox"
+            checked={values.consent}
+            onChange={handleChange}
+            className="w-4 h-4 border-gray-300 rounded text-blue-600 focus:ring-blue-500"
+          />
+        </div>
+        <div className="ml-3 text-sm">
+          <label htmlFor="consent" className="font-medium text-gray-700">
+            I consent to having my data processed *
+          </label>
+          <p className="text-gray-500 text-xs mt-1">
+            Your personal information will be used to process your request and support your experience throughout this website.
+          </p>
+          {errors.consent && <p className="mt-1 text-sm text-red-600">{errors.consent}</p>}
+        </div>
       </div>
-      {errors.consent && <p className="text-sm text-red-600 mt-1 flex items-center"><span className="mr-1">⚠️</span>{errors.consent}</p>}
 
-      {/* CAPTCHA */}
-      <div className="flex justify-center">
+      {/* reCAPTCHA */}
+      <div className="flex flex-col items-center">
         <ReCAPTCHA
           ref={recaptchaRef}
-          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"}
-          onChange={(value) => setCaptchaValue(value)}
-          onExpired={() => setCaptchaValue(null)}
+          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+          onChange={(value) => {
+            setCaptchaValue(value);
+            setCaptchaError(null);
+          }}
+          onExpired={() => {
+            setCaptchaValue(null);
+            setCaptchaError("CAPTCHA has expired, please verify again");
+          }}
+          onErrored={() => {
+            setCaptchaError("Error loading CAPTCHA, please refresh the page");
+          }}
         />
+        {captchaError && <p className="mt-2 text-sm text-red-600">{captchaError}</p>}
+        <p className="text-xs text-gray-500 mt-2">This site is protected by reCAPTCHA.</p>
       </div>
 
-      <button
-        type="submit"
-        disabled={status === "submitting"}
-        className="w-full rounded-full bg-[#61714D] px-6 py-3 text-white font-medium hover:bg-[#4D5A3E] transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-      >
-        {status === "submitting" && (
-          <svg className="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-            <path className="opacity-75" fill="currentColor" d="m4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-          </svg>
-        )}
-        {status === "submitting" ? "Sending..." : submitLabel}
-      </button>
+      {/* Submit Button */}
+      <div className="flex justify-center">
+        <button
+          type="submit"
+          disabled={status === 'submitting'}
+          className={`px-6 py-3 text-white font-medium rounded-md shadow-sm ${status === 'submitting' ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'} focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200`}
+        >
+          {status === 'submitting' ? (
+            <>
+              <span className="inline-block animate-spin mr-2">⟳</span> Sending...
+            </>
+          ) : (
+            submitLabel
+          )}
+        </button>
+      </div>
 
-      {/* Legacy status messages (keeping as fallback) */}
-      {status === "success" && (
-        <p className="text-green-700 text-sm">Thank you! Your message has been sent.</p>
+      {/* Success/Error Messages */}
+      {status === 'success' && (
+        <div className="p-4 bg-green-50 border border-green-200 rounded-md">
+          <p className="text-green-700 font-medium">Thank you for your message! We&apos;ll be in touch soon.</p>
+        </div>
       )}
-      {status === "error" && serverError && (
-        <p className="text-red-700 text-sm">{serverError}</p>
+
+      {status === 'error' && (
+        <div className="p-4 bg-red-50 border border-red-200 rounded-md">
+          <p className="text-red-700 font-medium">{serverError || 'Something went wrong. Please try again.'}</p>
+        </div>
       )}
-      
-      {/* Toast notifications */}
-      <Toaster />
     </form>
   );
 }

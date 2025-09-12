@@ -203,14 +203,12 @@ export default function Header() {
               >
                 Video Conferencing
               </Link>
-              <Link
-                href="https://trae.ai/login?redirect_url=https://trae.ai/account-setting?user_id=7540946285680296967&username=Shivam%2520Shukla253#usage"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => setQuickEnquiryOpen(true)}
                 className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50 transition-colors"
               >
                 Quick Enquiry
-              </Link>
+              </button>
               <Link
                 href="https://wa.me/919811789665"
                 target="_blank"

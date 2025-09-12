@@ -2,6 +2,61 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Phone Input Styles */
+.PhoneInput {
+  display: flex;
+  align-items: center;
+}
+
+.PhoneInputInput {
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  width: 100%;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.PhoneInputInput:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.PhoneInputCountrySelect {
+  border: 1px solid #d1d5db;
+  border-right: none;
+  border-radius: 0.375rem 0 0 0.375rem;
+  padding: 0.5rem;
+  background-color: #f9fafb;
+  font-size: 1rem;
+}
+
+.PhoneInputCountrySelect:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.PhoneInputCountrySelectArrow {
+  border-top-color: #6b7280;
+  opacity: 0.8;
+}
+
+.phone-input-error .PhoneInputInput {
+  border-color: #ef4444;
+}
+
+.phone-input-error .PhoneInputInput:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.phone-input-error .PhoneInputCountrySelect {
+  border-color: #ef4444;
+}
+
 /* Custom animations for Hero banner */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }

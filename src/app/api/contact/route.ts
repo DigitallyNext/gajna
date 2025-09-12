@@ -20,6 +20,36 @@ export async function POST(req: NextRequest) {
   if (!body) {
     return NextResponse.json({ success: false, error: "Invalid JSON" }, { status: 400 });
   }
+  
+  // Verify reCAPTCHA
+  const captchaToken = body.captchaToken;
+  if (!captchaToken) {
+    return NextResponse.json({ success: false, error: "reCAPTCHA verification failed" }, { status: 400 });
+  }
+  
+  try {
+    // Verify the captcha token with Google's reCAPTCHA API
+    const recaptchaResponse = await fetch(
+      `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${captchaToken}`,
+      { method: "POST" }
+    );
+    
+    const recaptchaResult = await recaptchaResponse.json();
+    
+    if (!recaptchaResult.success) {
+      log("reCAPTCHA verification failed", recaptchaResult);
+      return NextResponse.json(
+        { success: false, error: "reCAPTCHA verification failed" },
+        { status: 400 }
+      );
+    }
+  } catch (error) {
+    log("reCAPTCHA verification error", error);
+    return NextResponse.json(
+      { success: false, error: "reCAPTCHA verification error" },
+      { status: 500 }
+    );
+  }
 
   // Validate against schema
   const parse = contactFormSchema.safeParse(body);
@@ -79,7 +109,12 @@ export async function POST(req: NextRequest) {
     </style>
   `;
 
-  const plainText = `New contact form submission\n\nName: ${data.name}\nEmail: ${data.email}${data.phone ? `\nPhone: ${data.phone}` : ''}${data.country ? `\nCountry: ${data.country}` : ''}${data.postalCode ? `\nPostal Code: ${data.postalCode}` : ''}${data.linkedin ? `\nLinkedIn: ${data.linkedin}` : ''}\nSubject: ${data.subject}\nMessage: ${data.message}${data.product ? `\n\nProduct Enquiry:\nProduct: ${data.product}` : ''}${data.grade ? `\nGrade: ${data.grade}` : ''}${data.quantity ? `\nQuantity: ${data.quantity} MT` : ''}\nConsent: ${data.consent ? "Yes" : "No"}`;
+  // Get full name from either name field or firstName + lastName fields
+  const fullName = data.name || (data.firstName && data.lastName ? `${data.firstName} ${data.lastName}` : '');
+  // Phone is already formatted with country code from PhoneInput component
+  const formattedPhone = data.phone;
+
+  const plainText = `New contact form submission\n\nName: ${fullName}\nEmail: ${data.email}\nPhone: ${formattedPhone}\nCountry: ${data.country}\nPostal Code: ${data.postalCode}\nLinkedIn: ${data.linkedin}\nSubject: ${data.subject}\nMessage: ${data.message}${data.product ? `\n\nProduct Enquiry:\nProduct: ${data.product}` : ''}${data.grade ? `\nGrade: ${data.grade}` : ''}${data.quantity ? `\nQuantity: ${data.quantity} MT` : ''}\nConsent: ${data.consent ? "Yes" : "No"}`;
 
   const adminHtml = `
     ${baseStyles}
@@ -97,12 +132,12 @@ export async function POST(req: NextRequest) {
           
           <div class="section">
             <div class="section-title">Contact Information</div>
-            <div class="row"><div class="label">Name:</div><div class="value">${data.name}</div></div>
+            <div class="row"><div class="label">Name:</div><div class="value">${fullName}</div></div>
             <div class="row"><div class="label">Email:</div><div class="value">${data.email}</div></div>
-            ${data.phone ? `<div class="row"><div class="label">Phone:</div><div class="value">${data.phone}</div></div>` : ''}
-             ${data.country ? `<div class="row"><div class="label">Country:</div><div class="value">${data.country}</div></div>` : ''}
-             ${data.postalCode ? `<div class="row"><div class="label">Postal Code:</div><div class="value">${data.postalCode}</div></div>` : ''}
-             ${data.linkedin ? `<div class="row"><div class="label">LinkedIn:</div><div class="value">${data.linkedin}</div></div>` : ''}
+            <div class="row"><div class="label">Phone:</div><div class="value">${formattedPhone}</div></div>
+            <div class="row"><div class="label">Country:</div><div class="value">${data.country}</div></div>
+            <div class="row"><div class="label">Postal Code:</div><div class="value">${data.postalCode}</div></div>
+            <div class="row"><div class="label">LinkedIn:</div><div class="value">${data.linkedin}</div></div>
           </div>
           
           <div class="section">
@@ -142,7 +177,7 @@ export async function POST(req: NextRequest) {
           <div class="tagline">Gajna Overseas - Coffee Export Excellence</div>
         </div>
         <div class="content">
-          <div class="greeting">Dear ${data.name},</div>
+          <div class="greeting">Dear ${data.firstName},</div>
           
           <div class="section">
             <p class="value" style="line-height: 1.6; margin-bottom: 15px;">Thank you for contacting Gajna Overseas! We've successfully received your enquiry and our team will review it carefully.</p>
@@ -185,7 +220,7 @@ export async function POST(req: NextRequest) {
   if ((!user || !pass) && DRY_RUN) {
     log("EMAIL DRY RUN: Missing SMTP env; emails will be logged instead.");
     console.log("ADMIN EMAIL (DRY RUN)", { to: ADMIN_EMAIL, subject: `[Contact] ${data.subject}`, text: plainText, htmlPreview: adminHtml.slice(0, 180) + "..." });
-    console.log("USER EMAIL (DRY RUN)", { to: data.email, subject: "We got your message", text: `Hi ${data.name},\n\nThank you for contacting us. We’ll be in touch soon.`, htmlPreview: userHtml.slice(0, 180) + "..." });
+    console.log("USER EMAIL (DRY RUN)", { to: data.email, subject: "We got your message", text: `Hi ${data.firstName},\n\nThank you for contacting us. We'll be in touch soon.`, htmlPreview: userHtml.slice(0, 180) + "..." });
     return NextResponse.json({ success: true, dryRun: true });
   }
 
@@ -214,7 +249,7 @@ export async function POST(req: NextRequest) {
       from: { name: "Gajna Overseas", address: user },
       to: data.email,
       subject: "We got your message",
-      text: `Hi ${data.name},\n\nThank you for contacting us. We’ll be in touch soon.\n\n– Gajna Overseas`,
+      text: `Hi ${data.firstName},\n\nThank you for contacting us. We'll be in touch soon.\n\n– Gajna Overseas`,
       html: userHtml,
     });
 

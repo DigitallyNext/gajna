@@ -146,7 +146,13 @@ export default function LanguageSwitcher() {
       <div id="google_translate_element" className="h-0 overflow-hidden" />
 
       {/* Flags */}
-      
+      {selected && (
+        <div className="flex items-center">
+          <span className="mr-2 text-lg">
+            {LANGUAGES.find(l => l.code === selected)?.emoji}
+          </span>
+        </div>
+      )}
 
       {/* Custom select */}
       <select
@@ -160,7 +166,7 @@ export default function LanguageSwitcher() {
         </option>
         {LANGUAGES.map((l) => (
           <option key={l.code} value={l.code}>
-            {l.label}
+            {l.emoji} {l.label}
           </option>
         ))}
       </select>

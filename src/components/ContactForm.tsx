@@ -3,7 +3,10 @@ import { useState, useEffect, useRef } from "react";
 import { z } from "zod";
 import toast, { Toaster } from 'react-hot-toast';
 import ReCAPTCHA from 'react-google-recaptcha';
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
 import { contactFormSchema, type ContactFormInput } from "@/lib/validation";
+import { CountryDropdown } from "@/components/CountryDropdown";
 
 type ContactFormProps = {
   initial?: Partial<ContactFormInput>;
@@ -15,6 +18,8 @@ type ContactFormProps = {
 export default function ContactForm({ initial, submitLabel = "Send Message", onSuccess, isModal = false }: ContactFormProps) {
   const [values, setValues] = useState<ContactFormInput>({
     name: "",
+    firstName: "",
+    lastName: "",
     email: "",
     subject: "",
     message: "",
@@ -38,11 +43,32 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
   // Add validation feedback on field blur
   const handleBlur = (fieldName: string) => {
     const fieldValue = values[fieldName as keyof ContactFormInput];
-    if (!fieldValue && ['name', 'email', 'subject', 'message', 'consent'].includes(fieldName)) {
-      setErrors(prev => ({ ...prev, [fieldName]: 'This field is required' }));
-    } else if (errors[fieldName]) {
-      setErrors(prev => ({ ...prev, [fieldName]: '' }));
+    
+    try {
+      // Extract just this field's schema
+      const fieldSchema = z.object({ [fieldName]: contactFormSchema.shape[fieldName as keyof typeof contactFormSchema.shape] });
+      fieldSchema.parse({ [fieldName]: fieldValue });
+      
+      // Clear error if validation passes
+      if (errors[fieldName]) {
+        setErrors(prev => ({ ...prev, [fieldName]: "" }));
+      }
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        const fieldErrors = error.flatten().fieldErrors as Record<string, string[]>;
+        if (fieldErrors[fieldName]) {
+          setErrors(prev => ({ ...prev, [fieldName]: fieldErrors[fieldName][0] }));
+        }
+      } else if (!fieldValue && ['name', 'firstName', 'lastName', 'email', 'subject', 'message', 'phone', 'country', 'postalCode', 'linkedin', 'consent'].includes(fieldName)) {
+        setErrors(prev => ({ ...prev, [fieldName]: 'This field is required' }));
+      }
     }
+  };
+  
+  // Handle blur for input elements
+  const handleInputBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name } = e.target;
+    handleBlur(name);
   };
 
   const handleChange = (
@@ -85,6 +111,8 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
       const missingFields = Object.keys(fieldErrors).map(field => {
         const fieldNames: Record<string, string> = {
           name: 'Name',
+          firstName: 'First Name',
+          lastName: 'Last Name',
           email: 'Email',
           subject: 'Subject', 
           message: 'Message',
@@ -135,6 +163,7 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
     const payload: ContactFormInput = { ...values };
     if (!validate(payload)) {
       setStatus("error");
+      // Toast notification is already handled in validate() function
       return;
     }
     
@@ -154,17 +183,24 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
     }
 
     try {
+      // Prepare form data with name field for backward compatibility
+      const formData = {
+        ...payload,
+        name: values.firstName && values.lastName ? `${values.firstName} ${values.lastName}` : values.name,
+        captchaToken: captchaValue
+      };
+      
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(formData),
       });
       const json = await res.json();
       if (!res.ok || !json.success) {
         throw new Error(json.error || "Submission failed");
       }
       setStatus("success");
-      setValues({ name: "", email: "", subject: "", message: "", phone: "", country: "", postalCode: "", linkedin: "", product: "", grade: "", quantity: undefined, consent: false } as ContactFormInput);
+      setValues({ name: "", firstName: "", lastName: "", email: "", subject: "", message: "", phone: "", country: "", postalCode: "", linkedin: "", product: "", grade: "", quantity: undefined, consent: false } as ContactFormInput);
       setCaptchaValue(null);
       recaptchaRef.current?.reset();
       
@@ -202,7 +238,7 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
       {/* Product Enquiry Context (when provided) */}
       {(values.product || values.grade) && (
         <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-4">
-          <h3 className="text-sm font-medium text-amber-800 mb-2">Product Enquiry</h3>
+          <h3 className="text-lg font-medium text-green-600 mb-2">Green Coffee Beans</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
             {values.product && (
               <div>
@@ -237,21 +273,40 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium text-gray-700">
-            Name <span className="text-red-500">*</span>
+            First Name <span className="text-red-500">*</span>
           </label>
           <input
             type="text"
-            name="name"
-            value={values.name}
+            name="firstName"
+            value={values.firstName}
             onChange={handleChange}
-            onBlur={() => handleBlur('name')}
+            onBlur={() => handleBlur('firstName')}
             className={`mt-1 block w-full rounded-md shadow-sm focus:border-amber-600 focus:ring-amber-600 ${
-              errors.name ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'border-gray-300'
+              errors.firstName ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'border-gray-300'
             }`}
-            placeholder="Your full name"
+            placeholder="Your first name"
             required
           />
-          {errors.name && <p className="text-sm text-red-600 mt-1 flex items-center"><span className="mr-1">⚠️</span>{errors.name}</p>}
+          {errors.firstName && <p className="text-sm text-red-600 mt-1 flex items-center"><span className="mr-1">⚠️</span>{errors.firstName}</p>}
+        </div>
+        
+        <div>
+          <label className="block text-sm font-medium text-gray-700">
+            Last Name <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            name="lastName"
+            value={values.lastName}
+            onChange={handleChange}
+            onBlur={() => handleBlur('lastName')}
+            className={`mt-1 block w-full rounded-md shadow-sm focus:border-amber-600 focus:ring-amber-600 ${
+              errors.lastName ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'border-gray-300'
+            }`}
+            placeholder="Your last name"
+            required
+          />
+          {errors.lastName && <p className="text-sm text-red-600 mt-1 flex items-center"><span className="mr-1">⚠️</span>{errors.lastName}</p>}
         </div>
 
         <div>
@@ -267,7 +322,7 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
             className={`mt-1 block w-full rounded-md shadow-sm focus:border-amber-600 focus:ring-amber-600 ${
               errors.email ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'border-gray-300'
             }`}
-            placeholder="your.email@example.com"
+            placeholder="you@example.com"
             required
           />
           {errors.email && <p className="text-sm text-red-600 mt-1 flex items-center"><span className="mr-1">⚠️</span>{errors.email}</p>}
@@ -275,53 +330,70 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
 
         <div>
           <label className="block text-sm font-medium text-gray-700">Phone</label>
-          <input
-            type="tel"
+          <PhoneInput
+            international
+            defaultCountry="IN"
             name="phone"
-            value={values.phone || ""}
-            onChange={handleChange}
+            value={values.phone}
+            onChange={(value: string | undefined) => {
+              setValues((prev) => ({
+                ...prev,
+                phone: value || "",
+              }));
+              if (errors.phone) {
+                setErrors((prev) => ({ ...prev, phone: "" }));
+              }
+            }}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-600 focus:ring-amber-600"
-            placeholder="+91 98117 89665"
           />
           {errors.phone && <p className="text-sm text-red-600 mt-1">{errors.phone}</p>}
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">Country</label>
-          <input
-            type="text"
-            name="country"
-            value={values.country || ""}
-            onChange={handleChange}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-600 focus:ring-amber-600"
-            placeholder="India"
+          <label className="block text-sm font-medium text-gray-700">Country *</label>
+          <CountryDropdown
+            selectedCountry={values.country}
+            onSelectCountry={(val) => {
+              setValues((prev) => ({
+                ...prev,
+                country: val,
+              }));
+              if (errors.country) {
+                setErrors((prev) => ({ ...prev, country: "" }));
+              }
+            }}
+            error={!!errors.country}
           />
           {errors.country && <p className="text-sm text-red-600 mt-1">{errors.country}</p>}
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">Postal Code / ZIP Code</label>
+          <label className="block text-sm font-medium text-gray-700">Postal Code / ZIP Code *</label>
           <input
             type="text"
             name="postalCode"
             value={values.postalCode || ""}
             onChange={handleChange}
+            onBlur={handleInputBlur}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-600 focus:ring-amber-600"
             placeholder="110001"
+            required
           />
           {errors.postalCode && <p className="text-sm text-red-600 mt-1">{errors.postalCode}</p>}
         </div>
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700">LinkedIn</label>
+        <label className="block text-sm font-medium text-gray-700">LinkedIn *</label>
         <input
           type="url"
           name="linkedin"
           value={values.linkedin || ""}
           onChange={handleChange}
+          onBlur={handleInputBlur}
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-600 focus:ring-amber-600"
-          placeholder="https://www.linkedin.com/in/username"
+          placeholder="https://www.linkedin.com/in/priyaviratsingh/"
+          required
         />
         {errors.linkedin && <p className="text-sm text-red-600 mt-1">{errors.linkedin}</p>}
       </div>
@@ -339,7 +411,7 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
           className={`mt-1 block w-full rounded-md shadow-sm focus:border-amber-600 focus:ring-amber-600 ${
             errors.subject ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'border-gray-300'
           }`}
-          placeholder="How can we help?"
+          placeholder="What is your enquiry about?"
           required
         />
         {errors.subject && <p className="text-sm text-red-600 mt-1 flex items-center"><span className="mr-1">⚠️</span>{errors.subject}</p>}
@@ -358,7 +430,7 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
           className={`mt-1 block w-full rounded-md shadow-sm focus:border-amber-600 focus:ring-amber-600 ${
             errors.message ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'border-gray-300'
           }`}
-          placeholder="Write your message..."
+          placeholder="Please provide details about your enquiry"
           required
         />
         {errors.message && <p className="text-sm text-red-600 mt-1 flex items-center"><span className="mr-1">⚠️</span>{errors.message}</p>}
@@ -387,7 +459,7 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
       <div className="flex justify-center">
         <ReCAPTCHA
           ref={recaptchaRef}
-          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"}
+          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
           onChange={(value) => setCaptchaValue(value)}
           onExpired={() => setCaptchaValue(null)}
         />
