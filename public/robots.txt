@@ -1,9 +1,9 @@
-# robots.txt for Gajna Overseas
+# robots.txt for Gajna Coffee
 User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://gajnaoverseas.com/sitemap.xml
+Sitemap: https://gajna.vercel.app/sitemap.xml
 
 # Disallow admin or private areas if they exist
 Disallow: /admin/

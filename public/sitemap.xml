@@ -2,206 +2,206 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Main Pages -->
   <url>
-    <loc>https://gajnaoverseas.com/</loc>
+    <loc>https://gajna.vercel.app/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/products</loc>
+    <loc>https://gajna.vercel.app/products</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/certificates</loc>
+    <loc>https://gajna.vercel.app/certificates</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/blog</loc>
+    <loc>https://gajna.vercel.app/blog</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/trade-enquiry</loc>
+    <loc>https://gajna.vercel.app/trade-enquiry</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/about</loc>
+    <loc>https://gajna.vercel.app/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/become-supplier</loc>
+    <loc>https://gajna.vercel.app/become-supplier</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/contact</loc>
+    <loc>https://gajna.vercel.app/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/arabica</loc>
+    <loc>https://gajna.vercel.app/arabica</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/robusta</loc>
+    <loc>https://gajna.vercel.app/robusta</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/registrations</loc>
+    <loc>https://gajna.vercel.app/registrations</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <!-- Product Pages -->
   <url>
-    <loc>https://gajnaoverseas.com/products/plantation-pb</loc>
+    <loc>https://gajna.vercel.app/products/plantation-pb</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/products/plantation-a</loc>
+    <loc>https://gajna.vercel.app/products/plantation-a</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/products/plantation-b</loc>
+    <loc>https://gajna.vercel.app/products/plantation-b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/products/plantation-c</loc>
+    <loc>https://gajna.vercel.app/products/plantation-c</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/products/monsooned-malabar-robusta-triage</loc>
+    <loc>https://gajna.vercel.app/products/monsooned-malabar-robusta-triage</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/products/liberia-bulk</loc>
+    <loc>https://gajna.vercel.app/products/liberia-bulk</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/products/excelsia-bulk</loc>
+    <loc>https://gajna.vercel.app/products/excelsia-bulk</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/products/arabica-cherry-blacks-browns</loc>
+    <loc>https://gajna.vercel.app/products/arabica-cherry-blacks-browns</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/products/robusta-parchment-blacks-browns</loc>
+    <loc>https://gajna.vercel.app/products/robusta-parchment-blacks-browns</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/products/robusta-cherry-blacks-browns</loc>
+    <loc>https://gajna.vercel.app/products/robusta-cherry-blacks-browns</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/products/plantation-aa</loc>
+    <loc>https://gajna.vercel.app/products/plantation-aa</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/products/plantation-pb-bold</loc>
+    <loc>https://gajna.vercel.app/products/plantation-pb-bold</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/products/arabica-cherry-aa</loc>
+    <loc>https://gajna.vercel.app/products/arabica-cherry-aa</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/products/arabica-cherry-a</loc>
+    <loc>https://gajna.vercel.app/products/arabica-cherry-a</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/products/arabica-cherry-pb-bold</loc>
+    <loc>https://gajna.vercel.app/products/arabica-cherry-pb-bold</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/products/robusta-parchment-a</loc>
+    <loc>https://gajna.vercel.app/products/robusta-parchment-a</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/products/robusta-parchment-pb-bold</loc>
+    <loc>https://gajna.vercel.app/products/robusta-parchment-pb-bold</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/products/robusta-cherry-aa</loc>
+    <loc>https://gajna.vercel.app/products/robusta-cherry-aa</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/products/robusta-cherry-a</loc>
+    <loc>https://gajna.vercel.app/products/robusta-cherry-a</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/products/robusta-cherry-pb-bold</loc>
+    <loc>https://gajna.vercel.app/products/robusta-cherry-pb-bold</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/products/mysore-nuggets-extra-bold</loc>
+    <loc>https://gajna.vercel.app/products/mysore-nuggets-extra-bold</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/products/monsooned-malabar-aaa</loc>
+    <loc>https://gajna.vercel.app/products/monsooned-malabar-aaa</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/products/monsooned-malabar-aa</loc>
+    <loc>https://gajna.vercel.app/products/monsooned-malabar-aa</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/products/monsooned-malabar-arabica-triage</loc>
+    <loc>https://gajna.vercel.app/products/monsooned-malabar-arabica-triage</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/products/robusta-kaapi-royale</loc>
+    <loc>https://gajna.vercel.app/products/robusta-kaapi-royale</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/products/monsooned-malabar-robusta-pr</loc>
+    <loc>https://gajna.vercel.app/products/monsooned-malabar-robusta-pr</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <!-- Blog Pages -->
   <url>
-    <loc>https://gajnaoverseas.com/blog/coffee-plantations-in-india</loc>
+    <loc>https://gajna.vercel.app/blog/coffee-plantations-in-india</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/blog/gi-tagged-coffees-of-india</loc>
+    <loc>https://gajna.vercel.app/blog/gi-tagged-coffees-of-india</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://gajnaoverseas.com/blog/intercropping-in-coffee-farming</loc>
+    <loc>https://gajna.vercel.app/blog/intercropping-in-coffee-farming</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

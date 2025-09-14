@@ -1,114 +1,99 @@
-# Gajna Overseas Website Pages List
+# Gajna Coffee Website Pages List
 
 ## Main Pages
 
 | Page Name | Category | URL |
 |-----------|----------|-----|
-| Home | Main | https://gajnaoverseas.com/ |
-| Products | Main | https://gajnaoverseas.com/products |
-| Registrations & Certificates | Main | https://gajnaoverseas.com/certificates |
-| Blogs | Main | https://gajnaoverseas.com/blog |
-| Trade Enquiry | Main | https://gajnaoverseas.com/trade-enquiry |
-| About Us | Main | https://gajnaoverseas.com/about |
-| Become a Supplier | Main | https://gajnaoverseas.com/become-supplier |
-| Contact Us | Main | https://gajnaoverseas.com/contact |
-| Arabica | Coffee Type | https://gajnaoverseas.com/arabica |
-| Robusta | Coffee Type | https://gajnaoverseas.com/robusta |
-| Registrations | Certificates | https://gajnaoverseas.com/registrations |
+| Home | Main | https://gajna.vercel.app/ |
+| Products | Main | https://gajna.vercel.app/products |
+| Registrations & Certificates | Main | https://gajna.vercel.app/certificates |
+| Blogs | Main | https://gajna.vercel.app/blog |
+| Trade Enquiry | Main | https://gajna.vercel.app/trade-enquiry |
+| About Us | Main | https://gajna.vercel.app/about |
+| Become a Supplier | Main | https://gajna.vercel.app/become-supplier |
+| Contact Us | Main | https://gajna.vercel.app/contact |
+| Arabica | Coffee Type | https://gajna.vercel.app/arabica |
+| Robusta | Coffee Type | https://gajna.vercel.app/robusta |
+| Registrations | Certificates | https://gajna.vercel.app/registrations |
 
 ## Product Pages
 
-### Arabica Products
+### Arabica Coffee
 
-| Product Name | Category | URL |
-|--------------|----------|-----|
-| Plantation PB | Commercial Grade - Arabica | https://gajnaoverseas.com/products/plantation-pb |
-| Plantation A | Commercial Grade - Arabica | https://gajnaoverseas.com/products/plantation-a |
-| Plantation B | Commercial Grade - Arabica | https://gajnaoverseas.com/products/plantation-b |
-| Plantation C | Commercial Grade - Arabica | https://gajnaoverseas.com/products/plantation-c |
-| Plantation AA | Commercial Grade - Arabica | https://gajnaoverseas.com/products/plantation-aa |
-| Plantation PB Bold | Commercial Grade - Arabica | https://gajnaoverseas.com/products/plantation-pb-bold |
-| Arabica Cherry AA | Commercial Grade - Arabica | https://gajnaoverseas.com/products/arabica-cherry-aa |
-| Arabica Cherry A | Commercial Grade - Arabica | https://gajnaoverseas.com/products/arabica-cherry-a |
-| Arabica Cherry PB Bold | Commercial Grade - Arabica | https://gajnaoverseas.com/products/arabica-cherry-pb-bold |
-| Arabica Cherry Blacks/Browns | Commercial Grade - Arabica | https://gajnaoverseas.com/products/arabica-cherry-blacks-browns |
-| Mysore Nuggets Extra bold- Washed | Specialty Grade - Arabica | https://gajnaoverseas.com/products/mysore-nuggets-extra-bold |
-| Monsooned Malabar AAA - Unwashed | Specialty Grade - Arabica | https://gajnaoverseas.com/products/monsooned-malabar-aaa |
-| Monsooned Malabar AA - unwashed | Specialty Grade - Arabica | https://gajnaoverseas.com/products/monsooned-malabar-aa |
-| Monsooned Malabar arabica Triage - Unwashed | Specialty Grade - Arabica | https://gajnaoverseas.com/products/monsooned-malabar-arabica-triage |
+#### Commercial Grade
 
-### Robusta Products
+| Page Name | Category | URL |
+|-----------|----------|-----|
+| Plantation PB | Commercial Grade - Arabica | https://gajna.vercel.app/products/plantation-pb |
+| Plantation A | Commercial Grade - Arabica | https://gajna.vercel.app/products/plantation-a |
+| Plantation B | Commercial Grade - Arabica | https://gajna.vercel.app/products/plantation-b |
+| Plantation C | Commercial Grade - Arabica | https://gajna.vercel.app/products/plantation-c |
+| Plantation AA | Commercial Grade - Arabica | https://gajna.vercel.app/products/plantation-aa |
+| Plantation PB Bold | Commercial Grade - Arabica | https://gajna.vercel.app/products/plantation-pb-bold |
+| Arabica Cherry AA | Commercial Grade - Arabica | https://gajna.vercel.app/products/arabica-cherry-aa |
+| Arabica Cherry A | Commercial Grade - Arabica | https://gajna.vercel.app/products/arabica-cherry-a |
+| Arabica Cherry PB Bold | Commercial Grade - Arabica | https://gajna.vercel.app/products/arabica-cherry-pb-bold |
+| Arabica Cherry Blacks/Browns | Commercial Grade - Arabica | https://gajna.vercel.app/products/arabica-cherry-blacks-browns |
 
-| Product Name | Category | URL |
-|--------------|----------|-----|
-| Robusta Parchment A | Commercial Grade - Robusta | https://gajnaoverseas.com/products/robusta-parchment-a |
-| Robusta Parchment PB Bold | Commercial Grade - Robusta | https://gajnaoverseas.com/products/robusta-parchment-pb-bold |
-| Robusta Cherry AA | Commercial Grade - Robusta | https://gajnaoverseas.com/products/robusta-cherry-aa |
-| Robusta Cherry A | Commercial Grade - Robusta | https://gajnaoverseas.com/products/robusta-cherry-a |
-| Robusta Cherry PB Bold | Commercial Grade - Robusta | https://gajnaoverseas.com/products/robusta-cherry-pb-bold |
-| Robusta Parchment Blacks/Browns | Commercial Grade - Robusta | https://gajnaoverseas.com/products/robusta-parchment-blacks-browns |
-| Robusta Cherry Blacks/Browns | Commercial Grade - Robusta | https://gajnaoverseas.com/products/robusta-cherry-blacks-browns |
-| Robusta Kaapi Royale- Washed Coffee | Specialty Grade - Robusta | https://gajnaoverseas.com/products/robusta-kaapi-royale |
-| Monsooned Malabar Robusta PR - Unwashed | Specialty Grade - Robusta | https://gajnaoverseas.com/products/monsooned-malabar-robusta-pr |
-| Monsooned Malabar Robusta Triage - Unwashed | Specialty Grade - Robusta | https://gajnaoverseas.com/products/monsooned-malabar-robusta-triage |
+#### Specialty Grade
 
-### Other Coffee Products
+| Page Name | Category | URL |
+|-----------|----------|-----|
+| Mysore Nuggets Extra bold- Washed | Specialty Grade - Arabica | https://gajna.vercel.app/products/mysore-nuggets-extra-bold |
+| Monsooned Malabar AAA - Unwashed | Specialty Grade - Arabica | https://gajna.vercel.app/products/monsooned-malabar-aaa |
+| Monsooned Malabar AA - unwashed | Specialty Grade - Arabica | https://gajna.vercel.app/products/monsooned-malabar-aa |
+| Monsooned Malabar arabica Triage - Unwashed | Specialty Grade - Arabica | https://gajna.vercel.app/products/monsooned-malabar-arabica-triage |
 
-| Product Name | Category | URL |
-|--------------|----------|-----|
-| Liberia Bulk | Other Coffee Types | https://gajnaoverseas.com/products/liberia-bulk |
-| Excelsia Bulk | Other Coffee Types | https://gajnaoverseas.com/products/excelsia-bulk |
+### Robusta Coffee
+
+#### Commercial Grade
+
+| Page Name | Category | URL |
+|-----------|----------|-----|
+| Robusta Parchment A | Commercial Grade - Robusta | https://gajna.vercel.app/products/robusta-parchment-a |
+| Robusta Parchment PB Bold | Commercial Grade - Robusta | https://gajna.vercel.app/products/robusta-parchment-pb-bold |
+| Robusta Cherry AA | Commercial Grade - Robusta | https://gajna.vercel.app/products/robusta-cherry-aa |
+| Robusta Cherry A | Commercial Grade - Robusta | https://gajna.vercel.app/products/robusta-cherry-a |
+| Robusta Cherry PB Bold | Commercial Grade - Robusta | https://gajna.vercel.app/products/robusta-cherry-pb-bold |
+| Robusta Parchment Blacks/Browns | Commercial Grade - Robusta | https://gajna.vercel.app/products/robusta-parchment-blacks-browns |
+| Robusta Cherry Blacks/Browns | Commercial Grade - Robusta | https://gajna.vercel.app/products/robusta-cherry-blacks-browns |
+
+#### Specialty Grade
+
+| Page Name | Category | URL |
+|-----------|----------|-----|
+| Robusta Kaapi Royale- Washed Coffee | Specialty Grade - Robusta | https://gajna.vercel.app/products/robusta-kaapi-royale |
+| Monsooned Malabar Robusta PR - Unwashed | Specialty Grade - Robusta | https://gajna.vercel.app/products/monsooned-malabar-robusta-pr |
+| Monsooned Malabar Robusta Triage - Unwashed | Specialty Grade - Robusta | https://gajna.vercel.app/products/monsooned-malabar-robusta-triage |
+
+### Other Coffee Types
+
+| Page Name | Category | URL |
+|-----------|----------|-----|
+| Liberia Bulk | Other Coffee Types | https://gajna.vercel.app/products/liberia-bulk |
+| Excelsia Bulk | Other Coffee Types | https://gajna.vercel.app/products/excelsia-bulk |
 
 ## Blog Pages
 
-| Blog Title | Category | URL |
-|------------|----------|-----|
-| Coffee Plantations in India | Blog | https://gajnaoverseas.com/blog/coffee-plantations-in-india |
-| GI Tagged Coffees of India | Blog | https://gajnaoverseas.com/blog/gi-tagged-coffees-of-india |
-| Intercropping in Coffee Farming | Blog | https://gajnaoverseas.com/blog/intercropping-in-coffee-farming |
+| Page Name | Category | URL |
+|-----------|----------|-----|
+| Coffee Plantations in India | Blog | https://gajna.vercel.app/blog/coffee-plantations-in-india |
+| GI Tagged Coffees of India | Blog | https://gajna.vercel.app/blog/gi-tagged-coffees-of-india |
+| Intercropping in Coffee Farming | Blog | https://gajna.vercel.app/blog/intercropping-in-coffee-farming |
 
-## CSV Format for Google Sheets Import
+## CSV Format (For Google Sheets Import)
 
 ```
 Page Name,Category,URL
-Home,Main,https://gajnaoverseas.com/
-Products,Main,https://gajnaoverseas.com/products
-Registrations & Certificates,Main,https://gajnaoverseas.com/certificates
-Blogs,Main,https://gajnaoverseas.com/blog
-Trade Enquiry,Main,https://gajnaoverseas.com/trade-enquiry
-About Us,Main,https://gajnaoverseas.com/about
-Become a Supplier,Main,https://gajnaoverseas.com/become-supplier
-Contact Us,Main,https://gajnaoverseas.com/contact
-Arabica,Coffee Type,https://gajnaoverseas.com/arabica
-Robusta,Coffee Type,https://gajnaoverseas.com/robusta
-Registrations,Certificates,https://gajnaoverseas.com/registrations
-Plantation PB,Commercial Grade - Arabica,https://gajnaoverseas.com/products/plantation-pb
-Plantation A,Commercial Grade - Arabica,https://gajnaoverseas.com/products/plantation-a
-Plantation B,Commercial Grade - Arabica,https://gajnaoverseas.com/products/plantation-b
-Plantation C,Commercial Grade - Arabica,https://gajnaoverseas.com/products/plantation-c
-Plantation AA,Commercial Grade - Arabica,https://gajnaoverseas.com/products/plantation-aa
-Plantation PB Bold,Commercial Grade - Arabica,https://gajnaoverseas.com/products/plantation-pb-bold
-Arabica Cherry AA,Commercial Grade - Arabica,https://gajnaoverseas.com/products/arabica-cherry-aa
-Arabica Cherry A,Commercial Grade - Arabica,https://gajnaoverseas.com/products/arabica-cherry-a
-Arabica Cherry PB Bold,Commercial Grade - Arabica,https://gajnaoverseas.com/products/arabica-cherry-pb-bold
-Arabica Cherry Blacks/Browns,Commercial Grade - Arabica,https://gajnaoverseas.com/products/arabica-cherry-blacks-browns
-Mysore Nuggets Extra bold- Washed,Specialty Grade - Arabica,https://gajnaoverseas.com/products/mysore-nuggets-extra-bold
-Monsooned Malabar AAA - Unwashed,Specialty Grade - Arabica,https://gajnaoverseas.com/products/monsooned-malabar-aaa
-Monsooned Malabar AA - unwashed,Specialty Grade - Arabica,https://gajnaoverseas.com/products/monsooned-malabar-aa
-Monsooned Malabar arabica Triage - Unwashed,Specialty Grade - Arabica,https://gajnaoverseas.com/products/monsooned-malabar-arabica-triage
-Robusta Parchment A,Commercial Grade - Robusta,https://gajnaoverseas.com/products/robusta-parchment-a
-Robusta Parchment PB Bold,Commercial Grade - Robusta,https://gajnaoverseas.com/products/robusta-parchment-pb-bold
-Robusta Cherry AA,Commercial Grade - Robusta,https://gajnaoverseas.com/products/robusta-cherry-aa
-Robusta Cherry A,Commercial Grade - Robusta,https://gajnaoverseas.com/products/robusta-cherry-a
-Robusta Cherry PB Bold,Commercial Grade - Robusta,https://gajnaoverseas.com/products/robusta-cherry-pb-bold
-Robusta Parchment Blacks/Browns,Commercial Grade - Robusta,https://gajnaoverseas.com/products/robusta-parchment-blacks-browns
-Robusta Cherry Blacks/Browns,Commercial Grade - Robusta,https://gajnaoverseas.com/products/robusta-cherry-blacks-browns
-Robusta Kaapi Royale- Washed Coffee,Specialty Grade - Robusta,https://gajnaoverseas.com/products/robusta-kaapi-royale
-Monsooned Malabar Robusta PR - Unwashed,Specialty Grade - Robusta,https://gajnaoverseas.com/products/monsooned-malabar-robusta-pr
-Monsooned Malabar Robusta Triage - Unwashed,Specialty Grade - Robusta,https://gajnaoverseas.com/products/monsooned-malabar-robusta-triage
-Liberia Bulk,Other Coffee Types,https://gajnaoverseas.com/products/liberia-bulk
-Excelsia Bulk,Other Coffee Types,https://gajnaoverseas.com/products/excelsia-bulk
-Coffee Plantations in India,Blog,https://gajnaoverseas.com/blog/coffee-plantations-in-india
-GI Tagged Coffees of India,Blog,https://gajnaoverseas.com/blog/gi-tagged-coffees-of-india
-Intercropping in Coffee Farming,Blog,https://gajnaoverseas.com/blog/intercropping-in-coffee-farming
+Home,Main,https://gajna.vercel.app/
+Products,Main,https://gajna.vercel.app/products
+Registrations & Certificates,Main,https://gajna.vercel.app/certificates
+Blogs,Main,https://gajna.vercel.app/blog
+Trade Enquiry,Main,https://gajna.vercel.app/trade-enquiry
+About Us,Main,https://gajna.vercel.app/about
+Become a Supplier,Main,https://gajna.vercel.app/become-supplier
+Contact Us,Main,https://gajna.vercel.app/contact
+Arabica,Coffee Type,https://gajna.vercel.app/arabica
+Robusta,Coffee Type,https://gajna.vercel.app/robusta
+Registrations,Certificates,https://gajna.vercel.app/registrations
 ```
