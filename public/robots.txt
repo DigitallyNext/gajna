@@ -1,0 +1,17 @@
+# robots.txt for Gajna Overseas
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://gajnaoverseas.com/sitemap.xml
+
+# Disallow admin or private areas if they exist
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+
+# Allow search engines to crawl all product pages
+Allow: /products/
+
+# Allow search engines to crawl all blog pages
+Allow: /blog/
