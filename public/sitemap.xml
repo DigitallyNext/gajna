@@ -94,6 +94,21 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://gajna.vercel.app/products/plantation-blacks</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gajna.vercel.app/products/plantation-bits</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gajna.vercel.app/products/plantation-bulk</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://gajna.vercel.app/products/arabica-cherry-blacks-browns</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -129,12 +144,57 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://gajna.vercel.app/products/arabica-cherry-pb</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gajna.vercel.app/products/arabica-cherry-ab</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gajna.vercel.app/products/arabica-cherry-c</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gajna.vercel.app/products/arabica-cherry-bits</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gajna.vercel.app/products/arabica-cherry-bulk</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://gajna.vercel.app/products/arabica-cherry-pb-bold</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://gajna.vercel.app/products/robusta-parchment-a</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gajna.vercel.app/products/robusta-parchment-pb</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gajna.vercel.app/products/robusta-parchment-ab</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gajna.vercel.app/products/robusta-parchment-c</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gajna.vercel.app/products/robusta-parchment-bits</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -150,6 +210,11 @@
   </url>
   <url>
     <loc>https://gajna.vercel.app/products/robusta-cherry-a</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gajna.vercel.app/products/robusta-cherry-pb</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

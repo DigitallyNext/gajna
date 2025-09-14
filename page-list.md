@@ -30,10 +30,18 @@
 | Plantation C | Commercial Grade - Arabica | https://gajna.vercel.app/products/plantation-c |
 | Plantation AA | Commercial Grade - Arabica | https://gajna.vercel.app/products/plantation-aa |
 | Plantation PB Bold | Commercial Grade - Arabica | https://gajna.vercel.app/products/plantation-pb-bold |
+| Plantation Blacks | Commercial Grade - Arabica | https://gajna.vercel.app/products/plantation-blacks |
+| Plantation Bits | Commercial Grade - Arabica | https://gajna.vercel.app/products/plantation-bits |
+| Plantation Bulk | Commercial Grade - Arabica | https://gajna.vercel.app/products/plantation-bulk |
 | Arabica Cherry AA | Commercial Grade - Arabica | https://gajna.vercel.app/products/arabica-cherry-aa |
 | Arabica Cherry A | Commercial Grade - Arabica | https://gajna.vercel.app/products/arabica-cherry-a |
+| Arabica Cherry PB | Commercial Grade - Arabica | https://gajna.vercel.app/products/arabica-cherry-pb |
 | Arabica Cherry PB Bold | Commercial Grade - Arabica | https://gajna.vercel.app/products/arabica-cherry-pb-bold |
+| Arabica Cherry AB | Commercial Grade - Arabica | https://gajna.vercel.app/products/arabica-cherry-ab |
+| Arabica Cherry C | Commercial Grade - Arabica | https://gajna.vercel.app/products/arabica-cherry-c |
 | Arabica Cherry Blacks/Browns | Commercial Grade - Arabica | https://gajna.vercel.app/products/arabica-cherry-blacks-browns |
+| Arabica Cherry Bits | Commercial Grade - Arabica | https://gajna.vercel.app/products/arabica-cherry-bits |
+| Arabica Cherry Bulk | Commercial Grade - Arabica | https://gajna.vercel.app/products/arabica-cherry-bulk |
 
 #### Specialty Grade
 
@@ -51,11 +59,16 @@
 | Page Name | Category | URL |
 |-----------|----------|-----|
 | Robusta Parchment A | Commercial Grade - Robusta | https://gajna.vercel.app/products/robusta-parchment-a |
+| Robusta Parchment PB | Commercial Grade - Robusta | https://gajna.vercel.app/products/robusta-parchment-pb |
+| Robusta Parchment AB | Commercial Grade - Robusta | https://gajna.vercel.app/products/robusta-parchment-ab |
+| Robusta Parchment C | Commercial Grade - Robusta | https://gajna.vercel.app/products/robusta-parchment-c |
 | Robusta Parchment PB Bold | Commercial Grade - Robusta | https://gajna.vercel.app/products/robusta-parchment-pb-bold |
+| Robusta Parchment Blacks/Browns | Commercial Grade - Robusta | https://gajna.vercel.app/products/robusta-parchment-blacks-browns |
+| Robusta Parchment Bits | Commercial Grade - Robusta | https://gajna.vercel.app/products/robusta-parchment-bits |
 | Robusta Cherry AA | Commercial Grade - Robusta | https://gajna.vercel.app/products/robusta-cherry-aa |
 | Robusta Cherry A | Commercial Grade - Robusta | https://gajna.vercel.app/products/robusta-cherry-a |
+| Robusta Cherry PB | Commercial Grade - Robusta | https://gajna.vercel.app/products/robusta-cherry-pb |
 | Robusta Cherry PB Bold | Commercial Grade - Robusta | https://gajna.vercel.app/products/robusta-cherry-pb-bold |
-| Robusta Parchment Blacks/Browns | Commercial Grade - Robusta | https://gajna.vercel.app/products/robusta-parchment-blacks-browns |
 | Robusta Cherry Blacks/Browns | Commercial Grade - Robusta | https://gajna.vercel.app/products/robusta-cherry-blacks-browns |
 
 #### Specialty Grade
