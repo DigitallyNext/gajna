@@ -323,21 +323,40 @@ const SupplierRegistrationModal = ({ isOpen, onClose }: SupplierRegistrationModa
     }
   };
 
+  const validateEmail = (email: string): boolean => {
+    // Accept all valid email addresses
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!validateForm()) {
+      toast.error('Please fill all required fields correctly.');
       return;
     }
 
+    // Validate email format
+     if (!validateEmail(formValues.email)) {
+       toast.error('Please enter a valid email address.');
+       setErrors(prev => ({
+         ...prev,
+         email: 'Please enter a valid email address.'
+       }));
+       return;
+     }
+
     setFormStatus('submitting');
+    toast.loading('Submitting your registration...');
 
     try {
       // Here you would typically send the form data to your API
       // For now, we'll simulate a successful submission
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      toast.success('Registration submitted successfully!');
+      toast.dismiss();
+      toast.success('Registration submitted successfully! Thank you for your interest.');
       setFormStatus('success');
       onClose();
       
@@ -345,7 +364,7 @@ const SupplierRegistrationModal = ({ isOpen, onClose }: SupplierRegistrationModa
       setFormValues({
         // Common fields
         email: '',
-        country: 'India ',
+        country: 'India',
         mobileNumber: '',
         userType: 'Coffee Estate Owner' as UserType,
         productsAvailable: '',
@@ -374,6 +393,7 @@ const SupplierRegistrationModal = ({ isOpen, onClose }: SupplierRegistrationModa
       });
     } catch (error) {
       console.error('Error submitting form:', error);
+      toast.dismiss();
       toast.error('Failed to submit registration. Please try again.');
       setFormStatus('error');
     }
