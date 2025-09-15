@@ -261,7 +261,7 @@ export default function Header() {
             </div>
 
             <Link
-              href="/certificates"
+              href="/registrations"
               className="block text-black text-base font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors"
             >
               Registrations & Certificates
