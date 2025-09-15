@@ -3,6 +3,9 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { BsWhatsapp } from "react-icons/bs";
+import Link from "next/link";
+import { Mail, MapPin, MessageCircle, Phone, Smartphone, Video } from "lucide-react";
 
 export default function RegistrationCertification() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -55,20 +58,128 @@ export default function RegistrationCertification() {
 
   return (
     <section ref={sectionRef} className="bg-gray-50 ">
-      <div className="relative bg-[url('/banners/bgreg.webp')] bg-cover bg-center h-[50vh] w-full text-white px-8 pt-[7vw] flex flex-col items-center justify-start">
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/20"></div>
+            {/* Clean Contact Us Layout */}
+      <section className="py-16 mt-40 bg-white">
+        <main className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-center items-center ">
+          {/* column 1 */}
+          <div className="flex flex-col ">
+            <div
+              
+              className="w-full md:w-[15vw] h-[200px] md:h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
+            >
+              <Image 
+                  src="/registration/apeda.webp"
+                  alt="location"
+                  width={1200}
+                  height={100}
+                  className="w-[32px] h-[32px] md:w-[10vw] md:h-[10vw] "
+                  />
+            </div>
 
-        {/* Content */}
-        <div className="relative z-10 text-center">
-          <h1 className="text-4xl md:text-5xl  font-bold mb-4">
-            Registrations & Certifications
-          </h1>
-          <p className="text-xl md:text-2xl font-light">
-            Certified to Export. Committed to Standards.
-          </p>
-        </div>
-      </div>
+            <div
+              className="w-full md:w-[15vw] h-[200px] md:h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
+            >
+           <Image 
+                  src="/registration/7.webp"
+                  alt="location"
+                  width={1200}
+                  height={100}
+                  className="w-[32px] h-[32px] md:w-[10vw] md:h-[10vw] "
+                  />
+            </div>
+          </div>
+
+          {/* column 2 */}
+          <div className="flex flex-col ">
+            <div className="flex flex-col md:flex-row ">
+              <div
+                className="p-6 h-[150px] md:h-[20vh] w-full md:w-[20vw] bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
+              >
+               <Image 
+                  src="/registration/9.webp"
+                  alt="location"
+                  width={1200}
+                  height={100}
+                  className="w-[32px] h-[32px] md:w-[10vw] md:h-[10vw] "
+                  />
+              </div>
+
+              <div
+                className="p-6 h-[150px] md:h-[20vh] w-full md:w-[20vw] bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
+              >
+              <Image 
+                  src="/registration/ccri.webp"
+                  alt="location"
+                  width={1200}
+                  height={100}
+                  className="w-[32px] h-[32px] md:w-[8vw] md:h-[8vw] "
+                  />
+              </div>
+            </div>
+
+       
+              <h1 className="text-4xl md:text-6xl leading-tight font-bold text-white text-center font-serif p-6 h-[150px] md:h-[20vh] w-full md:w-[40vw]  bg-green-700 border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition ">
+                Registration & Certification
+              </h1>
+          
+
+            <div
+              className="h-[150px] md:h-[20vh] w-full bg-white border-2 gap-10 border-gray-300 flex flex-row justify-center items-center hover:shadow-lg transition "
+            >
+              <Image 
+                  src="/registration/1.webp"
+                  alt="location"
+                  width={1200}
+                  height={100}
+                  className="w-[32px] h-[32px] md:w-[10vw] md:h-[10vw] "
+                  />
+                   <Image 
+                  src="/registration/4.webp"
+                  alt="location"
+                  width={1200}
+                  height={100}
+                  className="w-[32px] h-[32px] md:w-[10vw] md:h-[10vw] "
+                  />
+                     <Image 
+                  src="/registration/3.webp"
+                  alt="location"
+                  width={1200}
+                  height={100}
+                  className="w-[32px] h-[32px] md:w-[6vw] md:h-[8vw] "
+                  />
+            </div>
+          </div>
+
+          {/* column 3 */}
+          <div className="flex flex-col ">
+            <div
+              
+              className="w-full md:w-[15vw] h-[200px] md:h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
+            >
+             <Image 
+                  src="/registration/ECGC.webp"
+                  alt="location"
+                  width={1200}
+                  height={100}
+                  className="w-[32px] h-[32px] md:w-[10vw] md:h-[10vw] "
+                  />
+            </div>
+
+            <div
+           
+              className="w-full md:w-[15vw] h-[200px] md:h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
+            >
+                 <Image 
+                  src="/registration/6.webp"
+                  alt="location"
+                  width={1200}
+                  height={100}
+                  className="w-[32px] h-[32px] md:w-[10vw] md:h-[10vw] "
+                  />
+            </div>
+          </div>
+        </main>
+      </section>
 
       <div className="max-w-5xl mx-auto px-4">
         {/* Hero Section */}
@@ -76,8 +187,8 @@ export default function RegistrationCertification() {
 
         {/* Main Content */}
         <div ref={contentRef} className=" gap-12 mb-16">
-          {/* Left Column - Text Content */}
-          <div className="space-y-8">
+        
+          {/* <div className="space-y-8">
             <div>
               <h2 className="text-3xl md:text-4xl text-center  font-bold text-coffee-brown mb-6">
                 <span className="inline-flex items-center gap-2">
@@ -112,7 +223,7 @@ export default function RegistrationCertification() {
                 </p>
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* Right Column - Images */}
           {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -155,7 +266,7 @@ export default function RegistrationCertification() {
       {/* Certifications Section */}
       <div
         ref={certificatesRef}
-        className="bg-coffee-brown  shadow-lg p-8"
+        className="bg-coffee-brown  shadow-lg p-8 mt-[-2vw]"
       >
         <div className="text-center py-10">
           <h3 className="text-4xl  font-bold text-white mb-4">

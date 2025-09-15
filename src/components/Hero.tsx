@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import bannerData, { BannerSlide } from "../data/bannerData";
 import { BiSolidCoffeeBean } from "react-icons/bi";
 import { useMediaQuery } from "react-responsive";

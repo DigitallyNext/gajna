@@ -158,14 +158,11 @@ export default function ContactPage() {
               </Link>
             </div>
 
-            <Link
-              href="/contact"
-              className="p-6 h-[150px] md:h-[20vh] w-full md:w-[40vw]  bg-green-700 border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
-            >
-              <h1 className="text-4xl md:text-7xl leading-tight font-bold text-white text-center font-serif">
+           
+              <h1 className="text-4xl md:text-7xl leading-tight font-bold text-white text-center font-serif p-6 h-[150px] md:h-[20vh] w-full md:w-[40vw]  bg-green-700 border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition">
                 Contact Us
               </h1>
-            </Link>
+            
 
             <Link
               href="/video-conferencing"
@@ -300,7 +297,7 @@ export default function ContactPage() {
               </div>
 
               <div className="bg-white rounded-2xl p-8 shadow-lg font-semibold text-xl">
-                Corporate Identity Number (CIN): 
+                Corporate Identity Number (CIN): U51909HR2021OPC098737
               </div>
 
               {/* Connect With Us */}
