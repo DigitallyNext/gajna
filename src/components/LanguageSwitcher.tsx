@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useCallback, useMemo, useState } from "react";
+import "flag-icon-css/css/flag-icons.min.css";
 
 // We use Google Translate Website widget to provide automatic translation without
 // maintaining our own dictionaries. This component injects the script and offers
@@ -16,32 +17,46 @@ declare global {
 type Lang = {
   code: string; // e.g., 'en'
   label: string; // e.g., 'English'
-  emoji: string; // flag emoji for simple, zero-asset UI
+  countryCode: string; // country code for flag (GB, FR, etc.)
 };
 
 const LANGUAGES: Lang[] = [
-  { code: "en", label: "English", emoji: "🇬🇧" },
-  { code: "fr", label: "Français", emoji: "🇫🇷" },
-  { code: "de", label: "Deutsch", emoji: "🇩🇪" },
-  { code: "hi", label: "हिन्दी", emoji: "🇮🇳" },
-  { code: "es", label: "Español", emoji: "🇪🇸" },
-  { code: "it", label: "Italiano", emoji: "🇮🇹" },
-  { code: "pt", label: "Português", emoji: "🇵🇹" },
-  { code: "ar", label: "العربية", emoji: "🇸🇦" },
-  { code: "ar-JO", label: "العربية (الأردن)", emoji: "🇯🇴" },
-  { code: "ru", label: "Русский", emoji: "🇷🇺" },
-  { code: "zh-CN", label: "简体中文", emoji: "🇨🇳" },
-  { code: "ja", label: "日本語", emoji: "🇯🇵" },
-  { code: "ko", label: "한국어", emoji: "🇰🇷" },
-  { code: "tr", label: "Türkçe", emoji: "🇹🇷" },
-  { code: "id", label: "Bahasa Indonesia", emoji: "🇮🇩" },
-  { code: "vi", label: "Tiếng Việt", emoji: "🇻🇳" },
-  { code: "th", label: "ไทย", emoji: "🇹🇭" },
-  { code: "ur", label: "اردو", emoji: "🇵🇰" },
-  { code: "fa", label: "فارسی", emoji: "🇮🇷" },
-  { code: "bn", label: "বাংলা", emoji: "🇧🇩" },
-  { code: "ta", label: "தமிழ்", emoji: "🇮🇳" },
+  { code: "en", label: "English", countryCode: "GB" },
+  { code: "fr", label: "Français", countryCode: "FR" },
+  { code: "de", label: "Deutsch", countryCode: "DE" },
+  { code: "hi", label: "हिन्दी", countryCode: "IN" },
+  { code: "es", label: "Español", countryCode: "ES" },
+  { code: "it", label: "Italiano", countryCode: "IT" },
+  { code: "pt", label: "Português", countryCode: "PT" },
+  { code: "ar", label: "العربية", countryCode: "SA" },
+  { code: "ar-JO", label: "العربية (الأردن)", countryCode: "JO" },
+  { code: "ru", label: "Русский", countryCode: "RU" },
+  { code: "zh-CN", label: "简体中文", countryCode: "CN" },
+  { code: "ja", label: "日本語", countryCode: "JP" },
+  { code: "ko", label: "한국어", countryCode: "KR" },
+  { code: "tr", label: "Türkçe", countryCode: "TR" },
+  { code: "id", label: "Bahasa Indonesia", countryCode: "ID" },
+  { code: "vi", label: "Tiếng Việt", countryCode: "VN" },
+  { code: "th", label: "ไทย", countryCode: "TH" },
+  { code: "ur", label: "اردو", countryCode: "PK" },
+  { code: "fa", label: "فارسی", countryCode: "IR" },
+  { code: "bn", label: "বাংলা", countryCode: "BD" },
+  { code: "ta", label: "தமிழ்", countryCode: "IN" },
 ];
+
+// Function to convert country code to Unicode flag
+function getCountryFlag(countryCode: string): string {
+  // Convert country code to regional indicator symbols
+  // Each letter A-Z is represented by a Unicode character from U+1F1E6 to U+1F1FF
+  if (!countryCode || countryCode.length !== 2) return '';
+  
+  const codePoints = countryCode
+    .toUpperCase()
+    .split('')
+    .map(char => 127397 + char.charCodeAt(0));
+  
+  return String.fromCodePoint(...codePoints);
+}
 
 function getCookie(name: string) {
   if (typeof document === "undefined") return "";
@@ -148,8 +163,15 @@ export default function LanguageSwitcher() {
       {/* Flags */}
       {selected && (
         <div className="flex items-center">
-          <span className="mr-2 text-lg">
-            {LANGUAGES.find(l => l.code === selected)?.emoji}
+          <span className="mr-2">
+            <span 
+              className={`flag-icon flag-icon-${LANGUAGES.find(l => l.code === selected)?.countryCode.toLowerCase() || 'gb'}`}
+              style={{
+                width: '1.5em',
+                height: '1.5em',
+                display: 'inline-block'
+              }}
+            ></span>
           </span>
         </div>
       )}
@@ -165,8 +187,8 @@ export default function LanguageSwitcher() {
           Select Language
         </option>
         {LANGUAGES.map((l) => (
-          <option key={l.code} value={l.code}>
-            {l.emoji} {l.label}
+          <option key={l.code} value={l.code} className="flex items-center">
+            {l.label}
           </option>
         ))}
       </select>
