@@ -15,7 +15,7 @@ export default function GalleryPage() {
   // Load images from the gallery directory
   useEffect(() => {
     // Generate array of image paths from 1 to 65
-    const imageArray = Array.from({ length: 65 }, (_, i) => `/gallery/${i + 1}.webp`);
+    const imageArray = Array.from({ length: 72 }, (_, i) => `/gallery/${i + 1}.webp`);
     setImages(imageArray);
     setLoading(false);
   }, []);
@@ -55,7 +55,7 @@ export default function GalleryPage() {
   };
 
   return (
-    <div className="pt-32 pb-16 px-4 md:px-8 max-w-7xl mx-auto mt-24">
+    <div className="lg:pt-32 pt-24 pb-16 px-4 md:px-8 max-w-7xl mx-auto lg:mt-24">
       <h1 className="text-3xl md:text-7xl font-serif text-coffee-brown text-center mb-8">
         Our Gallery
       </h1>

@@ -105,7 +105,7 @@ export default function ContactPage() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-orange-50">
       {/* Clean Contact Us Layout */}
-      <section className="py-16 mt-40 bg-white">
+      <section className="py-16 mt-40 bg-white lg:block hidden">
         <main className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-center items-center ">
           {/* column 1 */}
           <div className="flex flex-col ">
@@ -199,6 +199,216 @@ export default function ContactPage() {
           </div>
         </main>
       </section>
+
+      {/* Mobile Layout (sm and below) - Single Column Grid */}
+          <div className="block sm:hidden mt-20">
+            <div className="grid grid-cols-1 gap-4">
+              {/* Contact Us Title Card - Mobile */}
+              <div className="bg-gradient-to-r from-green-700 to-green-800 rounded-xl shadow-lg p-6 text-center transform hover:scale-105 transition-all duration-300">
+                <h1 className="text-3xl font-bold text-white font-serif">
+                  Contact Us
+                </h1>
+                <p className="text-green-100 mt-2 text-sm">Get in touch with us</p>
+              </div>
+
+              {/* Contact Methods - Mobile */}
+              <div className="grid grid-cols-2 gap-3">
+                <Link
+                  href="/location"
+                  className="bg-white rounded-xl border-2 border-gray-200 p-4 flex flex-col items-center justify-center hover:shadow-lg hover:border-green-300 transition-all duration-300 group"
+                >
+                  <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-green-200 rounded-full flex items-center justify-center mb-3 group-hover:from-green-200 group-hover:to-green-300 transition-all duration-300">
+                    <MapPin className="w-6 h-6 text-[#6F4E37]" />
+                  </div>
+                  <span className="text-sm font-medium text-[#6F4E37] text-center">
+                    Location
+                  </span>
+                </Link>
+
+                <Link
+                  href="/phone"
+                  className="bg-white rounded-xl border-2 border-gray-200 p-4 flex flex-col items-center justify-center hover:shadow-lg hover:border-green-300 transition-all duration-300 group"
+                >
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center mb-3 group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-300">
+                    <Phone className="w-6 h-6 text-[#6F4E37]" />
+                  </div>
+                  <span className="text-sm font-medium text-[#6F4E37] text-center">
+                    Phone
+                  </span>
+                </Link>
+
+                <Link
+                  href="/email"
+                  className="bg-white rounded-xl border-2 border-gray-200 p-4 flex flex-col items-center justify-center hover:shadow-lg hover:border-green-300 transition-all duration-300 group"
+                >
+                  <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-purple-200 rounded-full flex items-center justify-center mb-3 group-hover:from-purple-200 group-hover:to-purple-300 transition-all duration-300">
+                    <Mail className="w-6 h-6 text-[#6F4E37]" />
+                  </div>
+                  <span className="text-sm font-medium text-[#6F4E37] text-center">
+                    Email
+                  </span>
+                </Link>
+
+                <Link
+                  href="/whatsapp"
+                  className="bg-white rounded-xl border-2 border-gray-200 p-4 flex flex-col items-center justify-center hover:shadow-lg hover:border-green-300 transition-all duration-300 group"
+                >
+                  <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-green-200 rounded-full flex items-center justify-center mb-3 group-hover:from-green-200 group-hover:to-green-300 transition-all duration-300">
+                    <BsWhatsapp className="w-6 h-6 text-[#6F4E37]" />
+                  </div>
+                  <span className="text-sm font-medium text-[#6F4E37] text-center">
+                    WhatsApp
+                  </span>
+                </Link>
+
+                <Link
+                  href="/enquiry"
+                  className="bg-white rounded-xl border-2 border-gray-200 p-4 flex flex-col items-center justify-center hover:shadow-lg hover:border-green-300 transition-all duration-300 group"
+                >
+                  <div className="w-12 h-12 bg-gradient-to-br from-orange-100 to-orange-200 rounded-full flex items-center justify-center mb-3 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
+                    <MessageCircle className="w-6 h-6 text-[#6F4E37]" />
+                  </div>
+                  <span className="text-sm font-medium text-[#6F4E37] text-center">
+                    Enquiry
+                  </span>
+                </Link>
+
+                <Link
+                  href="/sms"
+                  className="bg-white rounded-xl border-2 border-gray-200 p-4 flex flex-col items-center justify-center hover:shadow-lg hover:border-green-300 transition-all duration-300 group"
+                >
+                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-100 to-indigo-200 rounded-full flex items-center justify-center mb-3 group-hover:from-indigo-200 group-hover:to-indigo-300 transition-all duration-300">
+                    <Smartphone className="w-6 h-6 text-[#6F4E37]" />
+                  </div>
+                  <span className="text-sm font-medium text-[#6F4E37] text-center">
+                    SMS
+                  </span>
+                </Link>
+              </div>
+
+              <Link
+                href="/video-conferencing"
+                className="bg-white rounded-xl border-2 border-gray-200 p-6 flex flex-col items-center justify-center hover:shadow-lg hover:border-green-300 transition-all duration-300 group"
+              >
+                <div className="w-16 h-16 bg-gradient-to-br from-red-100 to-red-200 rounded-full flex items-center justify-center mb-4 group-hover:from-red-200 group-hover:to-red-300 transition-all duration-300">
+                  <Video className="w-8 h-8 text-[#6F4E37]" />
+                </div>
+                <span className="text-base font-medium text-[#6F4E37] text-center">
+                  Video Conferencing
+                </span>
+              </Link>
+            </div>
+          </div>
+
+          {/* Tablet Layout (sm to lg) - 2x3 Grid */}
+          <div className="hidden sm:block lg:hidden mt-80 px-16">
+            <div className="grid grid-cols-3 gap-4 max-w-4xl mx-auto">
+              {/* Row 1 */}
+              <Link
+                href="/location"
+                className="bg-white rounded-xl border-2 border-gray-200 p-6 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-40"
+              >
+                <div className="w-14 h-14 bg-gradient-to-br from-green-100 to-green-200 rounded-full flex items-center justify-center mb-3 group-hover:from-green-200 group-hover:to-green-300 transition-all duration-300">
+                  <MapPin className="w-7 h-7 text-[#6F4E37]" />
+                </div>
+                <span className="text-base font-medium text-[#6F4E37] text-center">
+                  Location
+                </span>
+              </Link>
+
+              <div className="bg-gradient-to-r from-green-700 to-green-800 rounded-xl shadow-lg p-6 flex flex-col items-center justify-center transform hover:scale-105 transition-all duration-300 h-40">
+                <h1 className="text-4xl font-bold text-white font-serif text-center leading-tight">
+                  Contact Us
+                </h1>
+                <p className="text-green-100 mt-2 text-sm">Get in touch</p>
+              </div>
+
+              <Link
+                href="/phone"
+                className="bg-white rounded-xl border-2 border-gray-200 p-6 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-40"
+              >
+                <div className="w-14 h-14 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center mb-3 group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-300">
+                  <Phone className="w-7 h-7 text-[#6F4E37]" />
+                </div>
+                <span className="text-base font-medium text-[#6F4E37] text-center">
+                  Phone
+                </span>
+              </Link>
+
+              {/* Row 2 */}
+              <Link
+                href="/email"
+                className="bg-white rounded-xl border-2 border-gray-200 p-6 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-40"
+              >
+                <div className="w-14 h-14 bg-gradient-to-br from-purple-100 to-purple-200 rounded-full flex items-center justify-center mb-3 group-hover:from-purple-200 group-hover:to-purple-300 transition-all duration-300">
+                  <Mail className="w-7 h-7 text-[#6F4E37]" />
+                </div>
+                <span className="text-base font-medium text-[#6F4E37] text-center">
+                  Email
+                </span>
+              </Link>
+
+              <Link
+                href="/video-conferencing"
+                className="bg-white rounded-xl border-2 border-gray-200 p-6 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-40"
+              >
+                <div className="w-14 h-14 bg-gradient-to-br from-red-100 to-red-200 rounded-full flex items-center justify-center mb-3 group-hover:from-red-200 group-hover:to-red-300 transition-all duration-300">
+                  <Video className="w-7 h-7 text-[#6F4E37]" />
+                </div>
+                <span className="text-base font-medium text-[#6F4E37] text-center">
+                  Video Call
+                </span>
+              </Link>
+
+              <Link
+                href="/whatsapp"
+                className="bg-white rounded-xl border-2 border-gray-200 p-6 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-40"
+              >
+                <div className="w-14 h-14 bg-gradient-to-br from-green-100 to-green-200 rounded-full flex items-center justify-center mb-3 group-hover:from-green-200 group-hover:to-green-300 transition-all duration-300">
+                  <BsWhatsapp className="w-7 h-7 text-[#6F4E37]" />
+                </div>
+                <span className="text-base font-medium text-[#6F4E37] text-center">
+                  WhatsApp
+                </span>
+              </Link>
+
+              {/* Row 3 - Centered */}
+              <Link
+                href="/enquiry"
+                className="bg-white rounded-xl border-2 border-gray-200 p-6 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-40"
+              >
+                <div className="w-14 h-14 bg-gradient-to-br from-orange-100 to-orange-200 rounded-full flex items-center justify-center mb-3 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
+                  <MessageCircle className="w-7 h-7 text-[#6F4E37]" />
+                </div>
+                <span className="text-base font-medium text-[#6F4E37] text-center">
+                  Enquiry Form
+                </span>
+              </Link>
+
+              <Link
+                href="/sms"
+                className="bg-white rounded-xl border-2 border-gray-200 p-6 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-40"
+              >
+                <div className="w-14 h-14 bg-gradient-to-br from-indigo-100 to-indigo-200 rounded-full flex items-center justify-center mb-3 group-hover:from-indigo-200 group-hover:to-indigo-300 transition-all duration-300">
+                  <Smartphone className="w-7 h-7 text-[#6F4E37]" />
+                </div>
+                <span className="text-base font-medium text-[#6F4E37] text-center">
+                  SMS
+                </span>
+              </Link>
+
+              <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl border-2 border-amber-200 p-6 flex flex-col items-center justify-center h-40">
+                <div className="w-14 h-14 bg-gradient-to-br from-amber-100 to-amber-200 rounded-full flex items-center justify-center mb-3">
+                  <svg className="w-7 h-7 text-amber-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <span className="text-base font-medium text-amber-700 text-center">
+                  More Options
+                </span>
+              </div>
+            </div>
+          </div>
 
       {/* Main Contact Section */}
       <section className="py-16 bg-[url('/blog-bg.webp')] bg-cover bg-no-repeat">

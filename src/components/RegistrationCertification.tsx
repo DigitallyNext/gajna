@@ -58,127 +58,302 @@ export default function RegistrationCertification() {
 
   return (
     <section ref={sectionRef} className="bg-gray-50 ">
-            {/* Clean Contact Us Layout */}
-      <section className="py-16 mt-40 bg-white">
-        <main className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-center items-center ">
-          {/* column 1 */}
-          <div className="flex flex-col ">
-            <div
-              
-              className="w-full md:w-[15vw] h-[200px] md:h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
-            >
-              <Image 
+            {/* Responsive Registration & Certification Layout */}
+      <section className="py-8 sm:py-12 lg:py-16 mt-20 sm:mt-32 lg:mt-40 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Title - Mobile First */}
+          <div className="text-center mb-8 sm:mb-12 lg:hidden">
+            <h1 className="text-2xl sm:text-3xl font-bold text-green-700 font-serif">
+              Registration & Certification
+            </h1>
+          </div>
+
+          {/* Mobile Layout (sm and below) */}
+          <div className="block sm:hidden">
+            <div className="grid grid-cols-2 gap-3">
+              {/* Row 1 */}
+              <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+                <Image 
                   src="/registration/apeda.webp"
-                  alt="location"
-                  width={1200}
-                  height={100}
-                  className="w-[32px] h-[32px] md:w-[10vw] md:h-[10vw] "
-                  />
-            </div>
-
-            <div
-              className="w-full md:w-[15vw] h-[200px] md:h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
-            >
-           <Image 
-                  src="/registration/7.webp"
-                  alt="location"
-                  width={1200}
-                  height={100}
-                  className="w-[32px] h-[32px] md:w-[10vw] md:h-[10vw] "
-                  />
-            </div>
-          </div>
-
-          {/* column 2 */}
-          <div className="flex flex-col ">
-            <div className="flex flex-col md:flex-row ">
-              <div
-                className="p-6 h-[150px] md:h-[20vh] w-full md:w-[20vw] bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
-              >
-               <Image 
+                  alt="APEDA Registration"
+                  width={80}
+                  height={80}
+                  className="w-16 h-16 object-contain"
+                />
+              </div>
+              <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+                <Image 
                   src="/registration/9.webp"
-                  alt="location"
-                  width={1200}
-                  height={100}
-                  className="w-[32px] h-[32px] md:w-[10vw] md:h-[10vw] "
-                  />
+                  alt="Registration Certificate"
+                  width={80}
+                  height={80}
+                  className="w-16 h-16 object-contain"
+                />
               </div>
-
-              <div
-                className="p-6 h-[150px] md:h-[20vh] w-full md:w-[20vw] bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
-              >
-              <Image 
-                  src="/registration/ccri.webp"
-                  alt="location"
-                  width={1200}
-                  height={100}
-                  className="w-[32px] h-[32px] md:w-[8vw] md:h-[8vw] "
-                  />
-              </div>
-            </div>
-
-       
-              <h1 className="text-4xl md:text-6xl leading-tight font-bold text-white text-center font-serif p-6 h-[150px] md:h-[20vh] w-full md:w-[40vw]  bg-green-700 border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition ">
-                Registration & Certification
-              </h1>
-          
-
-            <div
-              className="h-[150px] md:h-[20vh] w-full bg-white border-2 gap-10 border-gray-300 flex flex-row justify-center items-center hover:shadow-lg transition "
-            >
-              <Image 
-                  src="/registration/1.webp"
-                  alt="location"
-                  width={1200}
-                  height={100}
-                  className="w-[32px] h-[32px] md:w-[10vw] md:h-[10vw] "
-                  />
-                   <Image 
-                  src="/registration/4.webp"
-                  alt="location"
-                  width={1200}
-                  height={100}
-                  className="w-[32px] h-[32px] md:w-[10vw] md:h-[10vw] "
-                  />
-                     <Image 
-                  src="/registration/3.webp"
-                  alt="location"
-                  width={1200}
-                  height={100}
-                  className="w-[32px] h-[32px] md:w-[6vw] md:h-[8vw] "
-                  />
-            </div>
-          </div>
-
-          {/* column 3 */}
-          <div className="flex flex-col ">
-            <div
               
-              className="w-full md:w-[15vw] h-[200px] md:h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
-            >
-             <Image 
+              {/* Row 2 */}
+              <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+                <Image 
+                  src="/registration/ccri.webp"
+                  alt="CCRI Certificate"
+                  width={80}
+                  height={80}
+                  className="w-14 h-14 object-contain"
+                />
+              </div>
+              <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+                <Image 
                   src="/registration/ECGC.webp"
-                  alt="location"
-                  width={1200}
-                  height={100}
-                  className="w-[32px] h-[32px] md:w-[10vw] md:h-[10vw] "
-                  />
-            </div>
-
-            <div
-           
-              className="w-full md:w-[15vw] h-[200px] md:h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
-            >
-                 <Image 
+                  alt="ECGC Registration"
+                  width={80}
+                  height={80}
+                  className="w-16 h-16 object-contain"
+                />
+              </div>
+              
+              {/* Row 3 */}
+              <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+                <Image 
+                  src="/registration/7.webp"
+                  alt="Certificate"
+                  width={80}
+                  height={80}
+                  className="w-16 h-16 object-contain"
+                />
+              </div>
+              <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+                <Image 
                   src="/registration/6.webp"
-                  alt="location"
-                  width={1200}
-                  height={100}
-                  className="w-[32px] h-[32px] md:w-[10vw] md:h-[10vw] "
-                  />
+                  alt="Registration Document"
+                  width={80}
+                  height={80}
+                  className="w-16 h-16 object-contain"
+                />
+              </div>
+              
+              {/* Row 4 - Bottom certificates in a single row */}
+              <div className="col-span-2 bg-white border-2 border-gray-300 rounded-lg p-4 flex justify-center items-center gap-6 hover:shadow-lg transition-shadow duration-300">
+                <Image 
+                  src="/registration/1.webp"
+                  alt="Certificate 1"
+                  width={60}
+                  height={60}
+                  className="w-12 h-12 object-contain"
+                />
+                <Image 
+                  src="/registration/4.webp"
+                  alt="Certificate 4"
+                  width={60}
+                  height={60}
+                  className="w-12 h-12 object-contain"
+                />
+                <Image 
+                  src="/registration/3.webp"
+                  alt="Certificate 3"
+                  width={60}
+                  height={60}
+                  className="w-10 h-12 object-contain"
+                />
+              </div>
             </div>
           </div>
-        </main>
+
+          {/* Tablet Layout (sm to lg) */}
+          <div className="hidden sm:block lg:hidden">
+            <div className="grid grid-cols-3 gap-4">
+              {/* Top Row */}
+              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+                <Image 
+                  src="/registration/apeda.webp"
+                  alt="APEDA Registration"
+                  width={120}
+                  height={120}
+                  className="w-20 h-20 object-contain"
+                />
+              </div>
+              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+                <Image 
+                  src="/registration/9.webp"
+                  alt="Registration Certificate"
+                  width={120}
+                  height={120}
+                  className="w-20 h-20 object-contain"
+                />
+              </div>
+              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+                <Image 
+                  src="/registration/ccri.webp"
+                  alt="CCRI Certificate"
+                  width={120}
+                  height={120}
+                  className="w-18 h-18 object-contain"
+                />
+              </div>
+              
+              {/* Middle Row - Title */}
+              <div className="col-span-3 bg-green-700 border-2 border-gray-300 rounded-lg p-8 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+                <h1 className="text-3xl md:text-4xl font-bold text-white text-center font-serif">
+                  Registration & Certification
+                </h1>
+              </div>
+              
+              {/* Bottom Row */}
+              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+                <Image 
+                  src="/registration/ECGC.webp"
+                  alt="ECGC Registration"
+                  width={120}
+                  height={120}
+                  className="w-20 h-20 object-contain"
+                />
+              </div>
+              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+                <Image 
+                  src="/registration/7.webp"
+                  alt="Certificate"
+                  width={120}
+                  height={120}
+                  className="w-20 h-20 object-contain"
+                />
+              </div>
+              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+                <Image 
+                  src="/registration/6.webp"
+                  alt="Registration Document"
+                  width={120}
+                  height={120}
+                  className="w-20 h-20 object-contain"
+                />
+              </div>
+              
+              {/* Bottom certificates row */}
+              <div className="col-span-3 bg-white border-2 border-gray-300 rounded-lg p-6 flex justify-center items-center gap-8 hover:shadow-lg transition-shadow duration-300">
+                <Image 
+                  src="/registration/1.webp"
+                  alt="Certificate 1"
+                  width={100}
+                  height={100}
+                  className="w-16 h-16 object-contain"
+                />
+                <Image 
+                  src="/registration/4.webp"
+                  alt="Certificate 4"
+                  width={100}
+                  height={100}
+                  className="w-16 h-16 object-contain"
+                />
+                <Image 
+                  src="/registration/3.webp"
+                  alt="Certificate 3"
+                  width={100}
+                  height={100}
+                  className="w-14 h-16 object-contain"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Desktop Layout (lg and above) - Original Design Enhanced */}
+          <div className="hidden lg:flex justify-center items-center">
+            {/* Column 1 */}
+            <div className="flex flex-col">
+              <div className="w-[15vw] h-[30vh] p-6 bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <Image 
+                  src="/registration/apeda.webp"
+                  alt="APEDA Registration"
+                  width={1200}
+                  height={100}
+                  className="w-[8vw] h-[8vw] object-contain"
+                />
+              </div>
+              <div className="w-[15vw] h-[30vh] p-6 bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <Image 
+                  src="/registration/7.webp"
+                  alt="Certificate"
+                  width={1200}
+                  height={100}
+                  className="w-[8vw] h-[8vw] object-contain"
+                />
+              </div>
+            </div>
+
+            {/* Column 2 */}
+            <div className="flex flex-col">
+              <div className="flex flex-row">
+                <div className="p-6 h-[20vh] w-[20vw] bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
+                  <Image 
+                    src="/registration/9.webp"
+                    alt="Registration Certificate"
+                    width={1200}
+                    height={100}
+                    className="w-[8vw] h-[8vw] object-contain"
+                  />
+                </div>
+                <div className="p-6 h-[20vh] w-[20vw] bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
+                  <Image 
+                    src="/registration/ccri.webp"
+                    alt="CCRI Certificate"
+                    width={1200}
+                    height={100}
+                    className="w-[7vw] h-[7vw] object-contain"
+                  />
+                </div>
+              </div>
+
+              <div className="p-6 h-[20vh] w-[40vw] bg-green-700 border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <h1 className="text-4xl xl:text-6xl leading-tight font-bold text-white text-center font-serif">
+                  Registration & Certification
+                </h1>
+              </div>
+
+              <div className="h-[20vh] w-[40vw] bg-white border-2 border-gray-300 rounded-lg flex flex-row justify-center items-center gap-10 hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <Image 
+                  src="/registration/1.webp"
+                  alt="Certificate 1"
+                  width={1200}
+                  height={100}
+                  className="w-[8vw] h-[8vw] object-contain"
+                />
+                <Image 
+                  src="/registration/4.webp"
+                  alt="Certificate 4"
+                  width={1200}
+                  height={100}
+                  className="w-[8vw] h-[8vw] object-contain"
+                />
+                <Image 
+                  src="/registration/3.webp"
+                  alt="Certificate 3"
+                  width={1200}
+                  height={100}
+                  className="w-[6vw] h-[7vw] object-contain"
+                />
+              </div>
+            </div>
+
+            {/* Column 3 */}
+            <div className="flex flex-col">
+              <div className="w-[15vw] h-[30vh] p-6 bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <Image 
+                  src="/registration/ECGC.webp"
+                  alt="ECGC Registration"
+                  width={1200}
+                  height={100}
+                  className="w-[8vw] h-[8vw] object-contain"
+                />
+              </div>
+              <div className="w-[15vw] h-[30vh] p-6 bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <Image 
+                  src="/registration/6.webp"
+                  alt="Registration Document"
+                  width={1200}
+                  height={100}
+                  className="w-[8vw] h-[8vw] object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <div className="max-w-5xl mx-auto px-4">
