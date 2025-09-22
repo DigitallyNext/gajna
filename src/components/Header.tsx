@@ -5,7 +5,8 @@ import { useState, useEffect } from "react";
 import MegaMenu from "@/components/MegaMenu";
 import GeneralContactForm from "@/components/GeneralContactForm";
 import  SupplierRegistrationModal from "@/components/SupplierRegistrationModal";
-import { allProducts } from "@/data/products";
+import TradeEnquiryModal from "@/components/TradeEnquiryModal";
+// import { allProducts } from "@/data/products";
 import { ChevronDown, X } from "lucide-react";
 
 import LanguageSwitcher from "@/components/LanguageSwitcher";
@@ -16,6 +17,7 @@ export default function Header() {
   const [mobileMegaMenuOpen, setMobileMegaMenuOpen] = useState(false);
   const [quickEnquiryOpen, setQuickEnquiryOpen] = useState(false);
   const [supplierModalOpen, setSupplierModalOpen] = useState(false);
+  const [tradeEnquiryOpen, setTradeEnquiryOpen] = useState(false);
 
   // Prevent page scroll when mobile menu open
   useEffect(() => {
@@ -145,12 +147,16 @@ export default function Header() {
               >
                 Gallery
               </Link>
-              <Link
-                href="/trade-enquiry"
-                className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200"
+           
+              <button
+                onClick={() => {
+                  setTradeEnquiryOpen(true);
+                  setMobileMenuOpen(false);
+                }}
+                className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 w-full text-left"
               >
                 Trade Enquiry
-              </Link>
+              </button>
               <Link
                 href="/about"
                 className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200"
@@ -206,12 +212,7 @@ export default function Header() {
               >
                 Video Conferencing
               </Link>
-              <button
-                onClick={() => setQuickEnquiryOpen(true)}
-                className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50 transition-colors"
-              >
-                Quick Enquiry
-              </button>
+              
               <Link
                 href="https://wa.me/919811789665"
                 target="_blank"
@@ -278,12 +279,13 @@ export default function Header() {
             >
               Gallery
             </Link>
-            <Link
-              href="/trade-enquiry"
+
+            <button
+              onClick={() => setTradeEnquiryOpen(true)}
               className="block text-black text-base font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors"
             >
-              Trade Enquiry
-            </Link>
+              Trade Enquiry 
+            </button>
             <Link
               href="/about"
               className="block text-black text-base font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors"
@@ -341,6 +343,12 @@ export default function Header() {
         <SupplierRegistrationModal 
           isOpen={supplierModalOpen} 
           onClose={() => setSupplierModalOpen(false)} 
+        />
+        
+        {/* Trade Enquiry Modal */}
+        <TradeEnquiryModal
+          isOpen={tradeEnquiryOpen}
+          onClose={() => setTradeEnquiryOpen(false)}
         />
       </div>
     </header>

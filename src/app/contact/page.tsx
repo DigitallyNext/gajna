@@ -15,10 +15,12 @@ import {
 import { BsWhatsapp } from "react-icons/bs";
 import ReCAPTCHA from "react-google-recaptcha";
 import GeneralContactForm from "@/components/GeneralContactForm";
+import TradeEnquiryModal from "@/components/TradeEnquiryModal";
 import Link from "next/link";
 
 export default function ContactPage() {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+  const [isTradeModalOpen, setIsTradeModalOpen] = useState(false);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   const contactMethods = [
@@ -397,7 +399,10 @@ export default function ContactPage() {
                 </span>
               </Link>
 
-              <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl border-2 border-amber-200 p-6 flex flex-col items-center justify-center h-40">
+              <button
+                onClick={() => setIsTradeModalOpen(true)}
+                className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl border-2 border-amber-200 p-6 flex flex-col items-center justify-center h-40 hover:from-amber-100 hover:to-orange-100 transition-all duration-300 transform hover:scale-105 cursor-pointer"
+              >
                 <div className="w-14 h-14 bg-gradient-to-br from-amber-100 to-amber-200 rounded-full flex items-center justify-center mb-3">
                   <svg className="w-7 h-7 text-amber-600" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
@@ -406,7 +411,7 @@ export default function ContactPage() {
                 <span className="text-base font-medium text-amber-700 text-center">
                   More Options
                 </span>
-              </div>
+              </button>
             </div>
           </div>
 
@@ -693,6 +698,12 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      {/* Trade Enquiry Modal */}
+      <TradeEnquiryModal
+        isOpen={isTradeModalOpen}
+        onClose={() => setIsTradeModalOpen(false)}
+      />
     </main>
   );
 }
