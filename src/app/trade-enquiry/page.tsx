@@ -639,7 +639,7 @@ const TradeEnquiryPage: React.FC = () => {
             Back to Home
           </Link>
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Trade Enquiry</h1>
-          <p className="text-gray-600">Submit your coffee trade requirements and we'll get back to you soon.</p>
+          <p className="text-gray-600">Submit your coffee trade requirements and we&apos;ll get back to you soon.</p>
         </div>
 
         {/* Progress Steps */}
