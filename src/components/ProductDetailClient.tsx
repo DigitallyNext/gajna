@@ -127,9 +127,9 @@ export default function ProductDetailClient({ product }: Props) {
       </div>
 
       {/* Right: specs */}
-      <div className="mx-4 ">
-            <h2 className="text-2xl text-green-700 font-semibold mb-6 ml-2">Quality Specifications </h2>
-        <div className="divide-y border rounded-xl overflow-hidden">
+      <div className="mx-4 text-center">
+            <h2 className="text-2xl text-green-700 font-semibold mb-6 text-center">Quality Specifications</h2>
+        <div className="divide-y border rounded-xl overflow-hidden max-w-3xl mx-auto">
     
             <div className="px-4 py-3 flex justify-between items-center bg-amber-50">
               <span className="text-gray-600 text-sm">Grade Designation</span>
