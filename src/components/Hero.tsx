@@ -66,7 +66,7 @@ export default function Hero() {
       {/* Heading pill */}
       <div className="absolute md:top-48 top-28 left-1/2 -translate-x-1/2 z-20  text-coffee-brown text-center">
       <h2 className=" text-4xl md:text-3xl font-serif text-center w-[500px] bg-white rounded-full border border-black mb-6 mt-4">
-        Uniqueness of Indian Coffee Bean
+        Uniqueness of Indian Coffee 
       </h2>
       </div>
       <div className="container mx-auto px-4 py-16 md:py-20 relative z-10 h-full flex flex-col justify-center">

@@ -12,7 +12,7 @@ const bannerData: BannerSlide[] = [
     title: "Shade Grown",
     background: "/banners/b1.webp",
     mobileBackground: "/banners/b1.webp", // Using same image for mobile for now
-    description: "Grown under India's forest canopy"
+    description: "100% of Indian Coffee is grown under India's forest canopy"
   },
   
   {
@@ -35,7 +35,7 @@ const bannerData: BannerSlide[] = [
    },
    {
     title: "High Grown",
-    background: "/banners/b4.webp", // Using placeholder until proper image is added
+    background: "/banners/b5.webp", // Using placeholder until proper image is added
     mobileBackground: "/banners/b5.webp",
     description: "Mostly high grown at altitudes above 1000m"
    },
