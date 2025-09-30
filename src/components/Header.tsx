@@ -181,7 +181,7 @@ export default function Header() {
 
         {/* Desktop Top Info Bar */}
         <div className="hidden md:block border-t border-gray-200">
-          <nav className="flex items-center justify-center px-6 py-1 bg-[#434d35]">
+          <nav className="flex items-center justify-center px-6 py-1 bg-[#15803D]">
             <div className="flex flex-wrap justify-center items-center gap-2 lg:gap-4 xl:gap-6 font-semibold max-w-7xl mx-auto">
               <Link
                 href="https://maps.google.com/?q=Gajna+Overseas"

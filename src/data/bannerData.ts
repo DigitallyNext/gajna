@@ -51,6 +51,12 @@ const bannerData: BannerSlide[] = [
     mobileBackground: "/banners/b6.webp",
     description: "Eco-friendly cultivation techniques"
    },
+   {
+    title: "Dense Beans",
+    background: "/banners/b10.webp", // Using placeholder until proper image is added   
+    mobileBackground: "/banners/b10.webp",
+    description: "Full-bodied, slightly acidic with exciting aroma"
+   },
  ];
 
 export default bannerData;

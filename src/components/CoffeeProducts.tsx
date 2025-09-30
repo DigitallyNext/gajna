@@ -72,7 +72,7 @@ export default function CoffeeProducts() {
             style={{ visibility: "visible", opacity: 1 }}
           >
             <div
-              className="overflow-hidden group w-full max-w-sm cursor-pointer flex-1 flex flex-col"
+              className="overflow-hidden group w-full max-w-sm  flex-1 flex flex-col"
             >
               <div className="relative flex flex-col items-center h-full">
                 {/* Coffee bean image */}
@@ -129,7 +129,7 @@ export default function CoffeeProducts() {
             style={{ visibility: "visible", opacity: 1 }}
           >
             <div
-              className="overflow-hidden group w-full max-w-sm cursor-pointer flex-1 flex flex-col"
+              className="overflow-hidden group w-full max-w-sm  flex-1 flex flex-col"
             >
               <div className="relative flex flex-col items-center h-full">
                 {/* Coffee bean image */}

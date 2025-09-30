@@ -119,7 +119,7 @@ export async function POST(req: NextRequest) {
       .value { font-size: 16px; color: #1e293b; flex: 1; font-weight: 500; }
       .trade-highlight { background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%); border: 2px solid #16a34a; border-radius: 15px; padding: 25px; margin: 25px 0; position: relative; }
       .trade-highlight::before { content: '🚢'; position: absolute; top: -10px; left: 20px; background: #16a34a; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; }
-      .trade-title { color: #15803d; font-weight: 700; font-size: 18px; margin-bottom: 15px; margin-left: 30px; }
+      .trade-title { color: #434d35; font-weight: 700; font-size: 18px; margin-bottom: 15px; margin-left: 30px; }
       .footer { background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%); color: #64748b; font-size: 14px; text-align: center; padding: 30px; border-top: 1px solid #e2e8f0; }
       .footer-brand { font-weight: 700; color: #7D4B3C; font-size: 16px; margin-bottom: 10px; }
       .footer-contact { margin-top: 15px; }

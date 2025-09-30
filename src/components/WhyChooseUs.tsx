@@ -105,7 +105,7 @@ export default function WhyChooseUs() {
         </div>
 
         {/* Quote Icons */}
-        <div className="relative mb-12">
+        {/* <div className="relative mb-12">
           <div className="absolute left-8 md:left-16 -top-16 w-12 h-12 md:w-16 md:h-16 ">
             <Image
               src="/l-quotes.webp"
@@ -122,14 +122,24 @@ export default function WhyChooseUs() {
               height={124}
             />
           </div>
-        </div>
+        </div> */}
 
         {/* Quote Text */}
-        <div className="text-center mb-16">
-          <p className="quote-text text-lg md:text-xl text-black max-w-5xl mx-auto leading-relaxed font-serif italic">
-            By choosing Gajna Overseas, you choose an expert in Coffee Sourcing,
-            Coffee Packaging, Coffee Logistics, and documentation of Green Coffee Export. 
+        <div className="text-center mb-10">
+          <p className=" text-lg md:text-xl mt-[-3vw] pb-4 text-black max-w-5xl mx-auto leading-relaxed font-serif italic font-semibold">
+  By choosing Gajna Overseas, you choose an expert in:
+</p>
+          <p className="quote-text text-lg md:text-xl text-black max-w-5xl mx-auto leading-relaxed font-serif italic flex flex-wrap gap-10 justify-center">
+            <span>•Coffee Sourcing</span>
+           
+            <span>•Coffee Packaging</span>
+           
+            <span>•Coffee Logistics</span>
+          
+            <span>•Documentation of Green Coffee Export</span>
           </p>
+
+
         </div>
 
         {/* Features Grid */}
@@ -142,7 +152,7 @@ export default function WhyChooseUs() {
               >
                 {/* Title and Subtitle */}
                 <div className="mb-6">
-                  <h3 className="text-lg md:text-2xl font-bold text-[#562F23] mb-3 whitespace-pre-line">
+                  <h3 className="text-lg md:text-xl font-bold text-[#562F23] mb-3 whitespace-pre-line">
                     {feature.title}
                   </h3>
                   <p className="text-base md:text-lg text-[#562F23] whitespace-pre-line">
