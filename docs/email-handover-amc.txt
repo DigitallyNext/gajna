@@ -1,0 +1,50 @@
+Subject: Website Handover and AMC (3 Months) Start – Oct 1, 2025
+
+Dear [Client Name],
+
+We’re pleased to confirm your website will go live on Oct 1, 2025, and the AMC will start the same day for a 3‑month period, ending Dec 31, 2025.
+
+Summary of the Site
+- Total pages: 53 (counts individual dynamic pages)
+- Dynamic templates: 2 (/blog/[id], /products/[slug])
+- Dynamic page instances: 42 (39 product detail pages, 3 blog posts)
+- API routes: 2 (Contact, Trade Enquiry)
+- Public assets, sitemap.xml, and robots.txt are in place
+
+Handover Deliverables
+- Repository access and deployment documentation
+- Environment variables record and backup/rollback plan
+- Baseline checks: accessibility, performance
+- Support channels for AMC requests
+
+AMC Scope (Oct–Dec 2025)
+Included (no new page creation):
+- Basic content edits, link tweaks, banner/image swaps, minor bug fixes
+- Hygiene improvements (alt text corrections, small meta updates)
+- Minor dependency patching (non‑breaking)
+
+Excluded (quoted separately):
+- New page creation or route additions
+- Major features or redesigns
+- New integrations or complex workflows
+
+Turnaround & Communication
+- Acknowledgement within 1 business day
+- Minor updates typically in 1–3 business days
+- Banner swaps generally within 1–2 business days
+
+How to Request Changes
+Please email requests with the subject: “AMC Request – [Page/Section] – [Date]” and include:
+- Page URL(s) and exact location of the change
+- Final text and image assets (with alt text)
+- Any deadlines or constraints
+
+Next Steps
+- Please review the attached handover checklist and confirm acceptance
+- Share any immediate banner updates you’d like scheduled for October
+
+Thank you,
+[Your Name]
+[Company]
+[Email] | [Phone]
+Attachments: Handover Checklist (PDF/MD), Site Inventory, Access Details
