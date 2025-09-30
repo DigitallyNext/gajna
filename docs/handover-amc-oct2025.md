@@ -54,6 +54,7 @@ Included (no new page creation):
 - Hygiene improvements (alt text corrections, small meta updates)
 - Minor dependency patching that does not break the site
 - Uptime observation after deploys
+- Website Audit Weekly.
 
 Excluded (quoted separately):
 - New page creation or new route segments
@@ -73,54 +74,4 @@ Change Request Flow:
 3. We confirm scope under AMC, provide ETA, note risks (if any)
 4. Execute changes and share a short changelog
 
-## 8) Acceptance Checklist (Client Sign‑off)
-Mark with [x] when completed.
 
-
-### Go‑Live and Access
-- [ ] Site is live on Oct 1, 2025
-- [ ] Hosting access verified
-- [ ] Domain/DNS verified
-- [ ] SSL certificate active
-
-### Repository & CI/CD
-- [ ] Repo access granted
-- [ ] Main branch protected
-- [ ] Build/deploy pipeline documented
-
-### Environment & Config
-- [ ] .env variables documented
-- [ ] Deployment/rollback steps documented
-- [ ] Backup plan defined
-
-### Site Inventory (counts)
-- [x] Pages total: 53 (counts individual dynamic pages)
-- [x] Dynamic templates: 2 (/blog/[id], /products/[slug])
-- [x] Dynamic page instances: 42 (39 product detail pages, 3 blog posts)
-- [x] API routes: 2
-- [ ] Public assets audited
-
-### Quality Gates
-- [ ] Accessibility spot‑check completed
-- [ ] Performance baseline recorded
-- [ ] SEO baseline verified (sitemap, robots, titles/meta)
-- [ ] Mobile/desktop responsive spot‑check
-
-### Functional Checks
-- [ ] Navigation verified (mobile/desktop)
-- [ ] Forms tested (contact, trade‑enquiry)
-- [ ] Internal links validated
-- [ ] Back‑to‑Top behavior verified
-
-### Training & Support
-- [ ] Admin usage guide shared
-- [ ] Support channels confirmed
-- [ ] Acceptance sign‑off received
-
-## 9) Changelog Template (for AMC updates)
-- Date:
-- Request:
-- Pages affected:
-- Assets:
-- Deployed by:
-- Notes:
