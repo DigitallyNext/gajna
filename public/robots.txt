@@ -1,17 +1,44 @@
-# robots.txt for Gajna Coffee
+# robots.txt for Gajna Overseas - Coffee Export Excellence
+# https://gajna.vercel.app
+
 User-agent: *
 Allow: /
 
 # Sitemaps
 Sitemap: https://gajna.vercel.app/sitemap.xml
 
-# Disallow admin or private areas if they exist
+# Disallow private areas and API endpoints
 Disallow: /admin/
 Disallow: /private/
 Disallow: /api/
+Disallow: /_next/
+Disallow: /node_modules/
 
-# Allow search engines to crawl all product pages
+# Allow important pages for SEO
 Allow: /products/
-
-# Allow search engines to crawl all blog pages
 Allow: /blog/
+Allow: /arabica
+Allow: /robusta
+Allow: /about
+Allow: /contact
+Allow: /certificates
+Allow: /trade-enquiry
+Allow: /become-supplier
+Allow: /registrations
+
+# Crawl delay (optional - helps prevent server overload)
+Crawl-delay: 1
+
+# Additional directives for specific bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Block unwanted bots (optional)
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /

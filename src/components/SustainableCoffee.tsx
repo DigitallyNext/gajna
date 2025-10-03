@@ -31,7 +31,7 @@ export default function SustainableCoffee() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <div className="bg-white rounded-2xl p-8 shadow-2xl flex flex-col mb-10">
+            <div className="bg-white rounded-2xl px-8 py-4 shadow-2xl flex flex-col mb-4">
               <Image
                 src="/treeimage.webp"
                 alt="Sustainable Coffee Cultivation in India"
@@ -40,7 +40,9 @@ export default function SustainableCoffee() {
                 className="w-full h-auto rounded-lg "
                 priority
               />
-
+              <p className="text-sm leading-relaxed text-black opacity-90 p-4  rounded-xl overflow-hidden font-semibold">
+                Diagramatic representation of Two tier shade pattern in coffee plantation
+              </p>
             </div>
             <p className="text-lg leading-relaxed text-black opacity-90 p-4 bg-[#F9C977] rounded-xl overflow-hidden mb-10">
               At Araku Valley, a coffee growing region in the Indian state of Andhra Pradesh,

@@ -258,83 +258,99 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
           ref={menuRef}
           className="absolute top-0 left-0 w-full bg-white shadow-lg max-h-screen overflow-y-auto"
         >
-          <div className="p-6">
+          <div className="p-4">
             {/* Header */}
-            <div className="bg-gradient-to-r from-[#7D4B3C] to-[#61714D] text-white p-4 mb-6 rounded-lg flex items-center justify-center">
+            <div className="bg-gradient-to-r from-[#7D4B3C] to-[#61714D] text-white p-3 mb-4 rounded-lg flex items-center justify-center">
               <Image
                 src="/slogo.webp"
                 alt="Gajna Logo"
-                width={40}
-                height={40}
-                className="w-10 h-10 mr-3"
+                width={32}
+                height={32}
+                className="w-8 h-8 mr-2"
               />
-              <h2 className="text-xl font-bold text-center">Our Coffee Grades</h2>
+              <h2 className="text-lg font-bold text-center">Our Coffee Grades</h2>
             </div>
 
             {/* All Products Link */}
             <Link
               href="/products"
               onClick={onClose}
-              className="block w-full text-left p-4 mb-4 bg-[#E1A694] text-[#562F23] rounded-lg font-semibold hover:bg-[#d19a85] transition-colors"
+              className="block w-full text-center p-3 mb-4 bg-[#E1A694] text-[#562F23] rounded-lg font-medium hover:bg-[#d19a85] transition-colors text-sm"
             >
               View All Products →
             </Link>
 
-            {/* Full grade list per Figma */}
-            <div className="space-y-8">
+            {/* Clean mobile layout */}
+            <div className="space-y-6">
               {gradesData.map((section) => (
-                <div key={section.title} className="mb-2">
-                  <h3 className="text-lg font-semibold text-red-700 mb-4 text-center">{section.title}</h3>
+                <div key={section.title} className="bg-gray-50 rounded-lg p-4">
+                  <h3 className="text-base font-bold text-red-700 mb-3 text-center border-b border-red-200 pb-2">
+                    {section.title}
+                  </h3>
+                  
                   {/* Special layout for Miscellaneous */}
                   {section.title === "Miscellaneous Grades" ? (
-                    <div>
+                    <div className="space-y-3">
                       {(section.blocks[0]?.groups || []).map((g, i) => (
-                        <div key={i} className="mt-2">
-                          {g.subheading ? (
-                            <p className="text-sm text-[#7D4B3C] font-medium mb-1">{g.subheading}</p>
-                          ) : null}
-                          <ol className="list-decimal pl-5 space-y-1">
-                            {g.items.map((name) => {
+                        <div key={i}>
+                          {g.subheading && (
+                            <p className="text-sm font-medium text-[#7D4B3C] mb-2">{g.subheading}</p>
+                          )}
+                          <div className="space-y-2">
+                            {g.items.map((name, idx) => {
                               const slug = slugMap[name] || slugifyGrade(name);
                               const href = `/products/${slug}`;
                               return (
-                                <li key={name}>
-                                  <Link href={href} onClick={onClose} className="text-sm text-[#562F23] hover:text-[#7D4B3C]">
-                                    {name}
+                                <div key={name} className="bg-white rounded-md p-2 border border-gray-200">
+                                  <Link 
+                                    href={href} 
+                                    onClick={onClose} 
+                                    className="text-sm text-[#562F23] hover:text-[#7D4B3C] font-medium block"
+                                  >
+                                    {idx + 1}. {name}
                                   </Link>
-                                </li>
+                                </div>
                               );
                             })}
-                          </ol>
+                          </div>
                         </div>
                       ))}
                     </div>
                   ) : (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="space-y-4">
                       {section.blocks.map((block, idx) => (
                         <div key={idx}>
-                          {block.heading ? (
-                            <h4 className="text-base font-semibold text-green-700 text-center mb-2">{block.heading}</h4>
-                          ) : null}
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+                          {block.heading && (
+                            <h4 className="text-sm font-semibold text-green-700 text-center mb-3 bg-green-50 py-1 rounded">
+                              {block.heading}
+                            </h4>
+                          )}
+                          
+                          <div className="grid grid-cols-1 gap-3">
                             {block.groups.map((g, gIdx) => (
-                              <div key={gIdx}>
-                                {g.subheading ? (
-                                  <p className="text-sm text-green-600 font-medium mb-1 text-center">{g.subheading}</p>
-                                ) : null}
-                                <ol className="list-decimal pl-5 space-y-1">
-                                  {g.items.map((name) => {
+                              <div key={gIdx} className="bg-white rounded-md p-3 border border-gray-200">
+                                {g.subheading && (
+                                  <p className="text-sm font-medium text-green-600 mb-2 text-center bg-green-50 py-1 rounded">
+                                    {g.subheading}
+                                  </p>
+                                )}
+                                <div className="space-y-2">
+                                  {g.items.map((name, idx) => {
                                     const slug = slugMap[name] || slugifyGrade(name);
                                     const href = `/products/${slug}`;
                                     return (
-                                      <li key={name}>
-                                        <Link href={href} onClick={onClose} className="text-sm text-[#562F23] hover:text-[#7D4B3C]">
-                                          {name}
+                                      <div key={name} className="border-l-2 border-green-200 pl-3">
+                                        <Link 
+                                          href={href} 
+                                          onClick={onClose} 
+                                          className="text-sm text-[#562F23] hover:text-[#7D4B3C] font-medium block"
+                                        >
+                                          {idx + 1}. {name}
                                         </Link>
-                                      </li>
+                                      </div>
                                     );
                                   })}
-                                </ol>
+                                </div>
                               </div>
                             ))}
                           </div>

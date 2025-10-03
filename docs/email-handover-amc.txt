@@ -22,6 +22,7 @@ Included (no new page creation):
 - Basic content edits, link tweaks, banner/image swaps, minor bug fixes
 - Hygiene improvements (alt text corrections, small meta updates)
 - Minor dependency patching (non‑breaking)
+- Weekly Audit
 
 Excluded (quoted separately):
 - New page creation or route additions
@@ -34,7 +35,7 @@ Turnaround & Communication
 - Banner swaps generally within 1–2 business days
 
 How to Request Changes
-Please email requests with the subject: “AMC Request – [Page/Section] – [Date]” and include:
+Please email requests with the subject: “AMC Request – [Page/Section] – [Date]”  with point of contact - sudhanshu@digitallynext.com and CC: manpreet@digitallynext.com and include:
 - Page URL(s) and exact location of the change
 - Final text and image assets (with alt text)
 - Any deadlines or constraints
