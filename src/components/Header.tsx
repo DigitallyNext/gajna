@@ -255,10 +255,10 @@ export default function Header() {
             >
               <Link
                 href="/products"
-                className=" text-black text-xl font-medium  hover:bg-coffee-brown hover:text-white hover:pl-[12px] hover:rounded-lg transition-colors flex flex-row"
+                className={`text-xl font-medium hover:bg-coffee-brown hover:text-white hover:pl-[12px] hover:rounded-lg transition-colors flex flex-row ${isActivePath(["/products", "/arabica", "/robusta"]) ? "bg-coffee-brown text-white pl-[12px] rounded-lg" : "text-black"}`}
               >
                 Products
-                <ChevronDown className="text-coffee-brown hover:text-white " />
+                <ChevronDown className={`${isActivePath(["/products", "/arabica", "/robusta"]) ? "text-white" : "text-coffee-brown hover:text-white"}`} />
               </Link>
               {megaMenuOpen && (
                 <MegaMenu
@@ -271,43 +271,46 @@ export default function Header() {
 
             <Link
               href="/registrations"
-              className="block text-black text-xl font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors"
+              className={`block text-xl font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors ${isActivePath("/registrations") ? "bg-coffee-brown text-white" : "text-black"}`}
             >
               Registrations & Certificates
             </Link>
             <Link
               href="/blog"
-              className="block text-black text-xl font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors"
+              className={`block text-xl font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors ${isActivePath("/blog") ? "bg-coffee-brown text-white" : "text-black"}`}
             >
               Blogs
             </Link>
             <Link
               href="/gallery"
-              className="block text-black text-xl font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors"
+              className={`block text-xl font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors ${isActivePath("/gallery") ? "bg-coffee-brown text-white" : "text-black"}`}
             >
               Gallery
             </Link>
 
             <Link
               href="/trade-enquiry"
-              className="block text-black text-xl font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors"
+              className={`block text-xl font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors ${isActivePath("/trade-enquiry") ? "bg-coffee-brown text-white" : "text-black"}`}
             >
               Trade Enquiry
             </Link>
             <Link
               href="/about"
-              className="block text-black text-xl font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors"
+              className={`block text-xl font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors ${isActivePath("/about") ? "bg-coffee-brown text-white" : "text-black"}`}
             >
               About Us
             </Link>
             <Link
               href="/coffee-suppliers"
-              className={`block text-black no-underline text-lg font-medium py-3  hover:text-amber-200 hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors ${isActivePath("/coffee-suppliers") ? "text-amber-200" : ""}`}
+              className={`block text-xl font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors ${isActivePath("/coffee-suppliers") ? "bg-coffee-brown text-white" : "text-black"}`}
             >
               Become a Supplier with us
             </Link>
 
-            <Link href="/contact" className={`block text-xl text-base font-medium px-2 rounded-lg transition-colors hover:bg-coffee-brown hover:text-white ${isActivePath("/contact") ? "bg-coffee-brown text-white" : ""}`}>
+            <Link 
+              href="/contact" 
+              className={`block text-xl font-medium px-2 rounded-lg transition-colors hover:bg-coffee-brown hover:text-white ${isActivePath("/contact") ? "bg-coffee-brown text-white" : "text-black"}`}
+            >
               Contact Us
             </Link>
           </div>

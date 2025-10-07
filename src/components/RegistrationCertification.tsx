@@ -61,13 +61,6 @@ export default function RegistrationCertification() {
             {/* Responsive Registration & Certification Layout */}
       <section className="py-8 sm:py-12 lg:py-16 mt-20 sm:mt-32 lg:mt-40 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Title - Mobile First */}
-          <div className="text-center mb-8 sm:mb-12 lg:hidden">
-            <h1 className="text-2xl sm:text-3xl font-bold text-green-700 font-serif">
-              Registration & Certification
-            </h1>
-          </div>
-
           {/* Mobile Layout (sm and below) */}
           <div className="block sm:hidden">
             <div className="grid grid-cols-2 gap-3">
@@ -154,6 +147,13 @@ export default function RegistrationCertification() {
                   height={60}
                   className="w-10 h-12 object-contain"
                 />
+                <Image 
+                  src="/registration/10.webp"
+                  alt="Certificate 2"
+                  width={1200}
+                  height={100}
+                  className="w-[6vw] h-[7vw] object-contain rounded-2xl"
+                />
               </div>
             </div>
           </div>
@@ -227,7 +227,7 @@ export default function RegistrationCertification() {
               </div>
               
               {/* Bottom certificates row */}
-              <div className="col-span-3 bg-white border-2 border-gray-300 rounded-lg p-6 flex justify-center items-center gap-8 hover:shadow-lg transition-shadow duration-300">
+              <div className="col-span-3 bg-white border-2 border-gray-300 rounded-lg p-2 flex justify-center items-center gap-8 hover:shadow-lg transition-shadow duration-300">
                 <Image 
                   src="/registration/1.webp"
                   alt="Certificate 1"
@@ -248,6 +248,13 @@ export default function RegistrationCertification() {
                   width={100}
                   height={100}
                   className="w-14 h-16 object-contain"
+                />
+                <Image 
+                  src="/registration/10.webp"
+                  alt="Certificate 2"
+                  width={1200}
+                  height={100}
+                  className="w-[10vw] h-[10vw] object-contain rounded-2xl"
                 />
               </div>
             </div>
@@ -327,6 +334,13 @@ export default function RegistrationCertification() {
                   width={1200}
                   height={100}
                   className="w-[6vw] h-[7vw] object-contain"
+                />
+                 <Image 
+                  src="/registration/10.webp"
+                  alt="Certificate 2"
+                  width={1200}
+                  height={100}
+                  className="w-[6vw] h-[7vw] object-contain rounded-2xl"
                 />
               </div>
             </div>

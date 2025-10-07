@@ -135,6 +135,29 @@ export default function ProductDetailClient({ product }: Props) {
               <span className="text-gray-600 text-sm">Grade Designation</span>
               <h3 className="text-sm text-black">{product.name}</h3>
             </div>
+            
+            {/* Specialty Coffee Line - Only for Mysore Nuggets Extra Bold and Robusta Kaapi Royale */}
+            {(product.slug === "mysore-nuggets-extra-bold" || product.slug === "robusta-kaapi-royale") && (
+              <div className="px-4 py-3 bg-green-50 border-l-4 border-green-500">
+                <p className="text-green-800 font-medium text-sm italic">
+                  It is a grade-specific speciality coffee.
+                </p>
+              </div>
+            )}
+            
+            {/* Special line for process-specific specialty coffee (Monsooned Malabar) */}
+            {(product.slug === "monsooned-malabar-robusta-triage" || 
+              product.slug === "monsooned-malabar-aaa" || 
+              product.slug === "monsooned-malabar-aa" || 
+              product.slug === "monsooned-malabar-a" || 
+              product.slug === "monsooned-malabar-arabica-triage" || 
+              product.slug === "monsooned-malabar-robusta-pr") && (
+              <div className="px-4 py-3 bg-blue-50 border-l-4 border-blue-500">
+                <p className="text-blue-800 font-medium text-sm italic">
+                  It is a process-specific specialty coffee.
+                </p>
+              </div>
+            )}
             <div className="px-4 py-3 flex justify-between items-center bg-white">
               <span className="text-gray-600 text-sm">HSN Code</span>
               <h3 className="text-sm text-black">090111</h3>

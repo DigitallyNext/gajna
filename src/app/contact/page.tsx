@@ -599,6 +599,105 @@ export default function ContactPage() {
         </div>
       </section>
 
+      {/* Map Section */}
+      <section className="py-16 bg-gradient-to-br from-amber-50 via-white to-orange-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
+              Find Us Here
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Visit our office located in the heart of Gurugram, Haryana. We're easily accessible and ready to welcome you.
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="bg-white rounded-2xl shadow-xl overflow-hidden"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            {/* Map Container */}
+             <div className="relative h-96 md:h-[500px] w-full">
+               <iframe
+                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.8234567890123!2d77.026344!3d28.457523!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d229b1b1b1b1b%3A0x1b1b1b1b1b1b1b1b!2sSector%2056%2C%20Gurugram%2C%20Haryana%20122011!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                 width="100%"
+                 height="100%"
+                 style={{ border: 0 }}
+                 allowFullScreen={true}
+                 loading="lazy"
+                 referrerPolicy="no-referrer-when-downgrade"
+                 title="Gajna Overseas Office Location"
+                 className="rounded-t-2xl"
+               ></iframe>
+             </div>
+
+            {/* Map Info Card */}
+            <div className="p-6 md:p-8 bg-gradient-to-r from-green-50 to-blue-50">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-3">
+                    <div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0">
+                      <MapPin className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-800 text-lg">Our Address</h3>
+                      <p className="text-gray-600 leading-relaxed">
+                        505, Park Royal Apartments, GH-80,<br />
+                        Sector-56, Gurugram, Haryana, India<br />
+                        Pin Code: 122011
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-3">
+                    <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Phone className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-800 text-lg">Contact Info</h3>
+                      <p className="text-gray-600">
+                        Phone: +91 9811789665<br />
+                        Email: info@gajnaoverseas.com
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="mt-6 pt-6 border-t border-gray-200">
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <a
+                    href="https://www.google.com/maps/dir/?api=1&destination=Sector+56,+Gurugram,+Haryana,+India"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium text-center transition-colors duration-300 flex items-center justify-center space-x-2"
+                  >
+                    <MapPin className="w-5 h-5" />
+                    <span>Get Directions</span>
+                  </a>
+                  <a
+                    href="tel:+919811789665"
+                    className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium text-center transition-colors duration-300 flex items-center justify-center space-x-2"
+                  >
+                    <Phone className="w-5 h-5" />
+                    <span>Call Us</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* FAQ Section */}
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4">

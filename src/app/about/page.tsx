@@ -202,8 +202,11 @@ export default function AboutUs() {
                 <p className="lg:text-4xl text-2xl font-bold text-coffee-brown lg:mt-6 mt-4 lg:ml-20">
                   Priyavirat Singh
                 </p>
-                <p className="lg:text-lg text-sm font-bold text-green-700 lg:ml-32">
+                <p className="lg:text-sm text-sm font-bold text-green-700 lg:ml-6 mt-2">
                   Director at Gajna Overseas
+                </p>
+                <p className="lg:text-lg text-sm font-bold text-black lg:ml-2 mt-1">
+                  DIN No - 09373886
                 </p>
               </div>
             </div>
