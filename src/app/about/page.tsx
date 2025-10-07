@@ -213,6 +213,7 @@ export default function AboutUs() {
         </div>
       </section>
 
+
       {/* Mentors Section */}
         {/* <section ref={mentorsRef} className="py-16 bg-white">
           <div className="container mx-auto px-4">
