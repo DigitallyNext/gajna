@@ -193,7 +193,7 @@ export default function AboutUs() {
               </div>
               <div className="flex justify-center flex-col items-center">
                 <Image
-                  src="/about/owner.webp"
+                  src="/about/owner1.webp"
                   alt="Priyavirat Singh"
                   width={1200}
                   height={200}
