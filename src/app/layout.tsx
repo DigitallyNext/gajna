@@ -23,7 +23,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Gajna Coffee - Exporter of Green Coffee Beans of Indian Origin.",
+  title: "Gajna Overseas - Exporter of Green Coffee Beans of Indian Origin.",
   description: "Discover premium Indian coffee beans from Gajna Coffee. We export high-quality Arabica and Robusta coffee beans from India's finest coffee-growing regions.",
   keywords: "Indian coffee, coffee export, Arabica coffee, Robusta coffee, premium coffee beans, coffee trading",
   authors: [{ name: "Gajna Coffee" }],

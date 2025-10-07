@@ -5,6 +5,7 @@ import { z } from "zod";
 import toast, { Toaster } from "react-hot-toast";
 import { CountryDropdown } from "@/components/CountryDropdown";
 import type { ZodIssue } from "zod";
+import Image from "next/image";
 
 // Helper: country name to phone code
 const getCountryPhoneCode = (countryName: string): string => {
@@ -346,10 +347,98 @@ export default function CoffeeSuppliersPage() {
     <main className="min-h-screen bg-gray-50">
       <Toaster />
       <section className="max-w-2xl mx-auto bg-white shadow-sm rounded-lg mt-28 mb-12">
-        <div className="px-6 py-6 border-b">
-          <h1 className="text-2xl font-semibold text-gray-900">BECOME A SUPPLIER WITH US</h1>
-          <p className="mt-1 text-sm text-gray-600">Fill out the form below and we will get back to you.</p>
+ 
+      <section className="py-8  lg:py-16 mt-10  lg:mt-40 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Mobile Layout (sm and below) */}
+        
+
+          {/* Tablet Layout (sm to lg) */}
+          <div className="hidden sm:block lg:hidden ">
+            <div className="grid grid-cols-3 gap-4">
+              {/* Top Row */}
+              <div className=" bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+                Coffee Brokers.
+              </div>
+              <div className=" bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+                Coffee Curing Works.
+              </div>
+              <div className=" bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+                Coffee Estate Owners.
+              </div>
+              
+              {/* Middle Row - Title */}
+              <div className="col-span-3 bg-green-700 border-2 border-gray-300 rounded-lg p-8 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+                <h1 className="text-3xl md:text-4xl font-bold text-white text-center font-serif">
+                  Become a Coffee Supplies with Us
+                </h1>
+              </div>
+              
+              {/* Bottom Row */}
+              <div className=" bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+                Coffee Traders.
+              </div>
+              <div className=" bg-white text-sm  border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+                Coffee Farmer Producer Company.
+              </div>
+              <div className=" bg-white border-2 text-sm border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+                 Coffee Co-operatives.
+              </div>
+              
+              {/* Bottom certificates row */}
+              <div className="col-span-3 bg-white border-2 text-center border-gray-300 rounded-lg p-6 flex justify-center items-center gap-8 hover:shadow-lg transition-shadow duration-300">
+               
+                Coffee Farmer Producer Organisation.
+              </div>
+            </div>
+          </div>
+
+          {/* Desktop Layout (lg and above) - Original Design Enhanced */}
+          <div className="hidden lg:flex justify-center items-center">
+            {/* Column 1 */}
+            <div className="flex flex-col">
+              <div className="w-[15vw] h-[30vh] text-xl text-black font-semibold p-6 bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
+                Coffee Brokers.
+              </div>
+              <div className="w-[15vw] h-[30vh] text-xl text-black font-semibold p-6 bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
+              Coffee Farmer Producer Company.
+              </div>
+            </div>
+
+            {/* Column 2 */}
+            <div className="flex flex-col">
+              <div className="flex flex-row">
+                <div className="p-6 h-[20vh] w-[20vw] text-xl text-black font-semibold bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
+                  Coffee Curing Works.
+                </div>
+                <div className="p-6 h-[20vh] w-[20vw] text-xl text-black font-semibold bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
+                 Coffee Estate Owners
+                </div>
+              </div>
+
+              <div className="p-6 h-[20vh] w-[40vw] bg-green-700 border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <h1 className="text-4xl xl:text-6xl leading-tight font-bold text-white text-center font-serif">
+                     Become a Coffee Supplies with Us
+                </h1>
+              </div>
+
+              <div className="h-[20vh] w-[40vw] bg-white border-2 text-xl text-black font-semibold border-gray-300 rounded-lg flex flex-row justify-center items-center gap-10 hover:shadow-xl transition-all duration-300 hover:scale-105">
+                Coffee Farmer Producer Organisation.
+              </div>
+            </div>
+
+            {/* Column 3 */}
+            <div className="flex flex-col">
+              <div className="w-[15vw] h-[30vh] text-xl text-black font-semibold p-6 bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
+                Coffee Traders.
+              </div>
+              <div className="w-[15vw] h-[30vh] text-xl text-black font-semibold p-6 bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
+                Coffee<br/> Co-operatives.
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
 
         <form onSubmit={handleSubmit} className="p-6 space-y-6">
           {/* Full Name */}
