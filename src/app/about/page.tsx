@@ -171,9 +171,7 @@ export default function AboutUs() {
           <div className="max-w-6xl mx-auto">
             <div className="flex flex-col lg:flex-row-reverse gap-12 items-center">
               <div className="space-y-6">
-                <h2 className="text-4xl font-semibold text-coffee-brown mb-6 font-serif">
-                  Introduction
-                </h2>
+            
                 <p className="text-lg text-gray-700 leading-relaxed">
                   Priyavirat Singh, the{" "}
                   <span className="font-bold text-coffee-brown">
@@ -200,13 +198,13 @@ export default function AboutUs() {
                   height={200}
                   className="rounded-full"
                 />
-                <p className="lg:text-4xl text-2xl font-bold text-coffee-brown lg:mt-6 mt-4 lg:ml-20">
+                <p className="lg:text-2xl text-2xl font-bold text-coffee-brown lg:mt-6 mt-4">
                   Priyavirat Singh
                 </p>
-                <p className="lg:text-sm text-sm font-bold text-green-700 lg:ml-6 mt-2">
+                <p className="lg:text-sm text-sm font-bold text-green-700  mt-2">
                   Director at Gajna Overseas
                 </p>
-                <p className="lg:text-lg text-sm font-bold text-black lg:ml-2 mt-1">
+                <p className="lg:text-lg text-sm font-bold text-black  mt-1">
                   DIN No - 09373886
                 </p>
               </div>

@@ -433,10 +433,10 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
 
   // ✅ Desktop version
   return (
-    <div className="absolute top-full w-[80vw]  max-h-[80vh] overflow-y-auto bg-white shadow-lg border-t border-gray-200 z-[9999] hidden md:block">
+    <div className="absolute top-full w-[80vw]  max-h-[80vh] overflow-y-auto bg-white shadow-lg  border-2 border-black z-[9999] rounded-2xl hidden md:block">
       <div ref={menuRef} className="max-w-7xl mx-auto p-8">
         {/* Header */}
-        <div className="shadow-2xl text-coffee-brown p-4 mb-6 rounded-lg flex items-center w-[70%] mx-auto  justify-center">
+        <div className="shadow-2xl text-coffee-brown p-4 mb-6 rounded-lg flex items-center border border-black  w-[70%] mx-auto  justify-center">
           <Image
             src="/logos/1.webp"
             alt="Gajna Logo"
@@ -444,7 +444,7 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
             height={40}
             className="w-10 h-10 mr-3"
           />
-          <h2 className="text-2xl font-bold text-center">Classification of Indian Coffee by Coffee board of India</h2>
+          <h2 className="text-2xl font-bold text-center">Classification and Grading of Indian Coffees as per the Coffee Board of India</h2>
         </div>
         
         <div className="grid grid-cols-12 gap-8">
