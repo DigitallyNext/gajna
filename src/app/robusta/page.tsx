@@ -35,7 +35,7 @@ export default function RobustaPage() {
 
         <div className="relative max-w-7xl mt-36 mx-auto px-4 text-center text-white">
           <div className="mb-8">
-            <img
+            <Image
               src="/coffee-beans/robusta.webp"
               alt="Robusta Coffee Bean"
               width={120}
