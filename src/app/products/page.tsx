@@ -18,6 +18,55 @@ const getProcessingMethod = (product: Product): string => {
 
 const processingMethods = [...new Set(allProducts.map(getProcessingMethod))] as string[];
 
+// Predefined quick-select filters grouped into rows as requested
+const quickFilterRows: Array<
+  { label: string; params: { category?: string; variety?: string; processing?: string } }[]
+> = [
+  [
+    { label: "All Arabica Commercial Grades", params: { category: "Commercial Grade", variety: "Arabica" } },
+    { label: "Washed Arabica - Commercial Grade", params: { category: "Commercial Grade", variety: "Arabica", processing: "Washed Arabica" } },
+    { label: "Unwashed Arabica - Commercial Grade", params: { category: "Commercial Grade", variety: "Arabica", processing: "Unwashed Arabica" } },
+    { label: "All Arabica Premium Grades", params: { category: "Premium Grade", variety: "Arabica" } },
+    { label: "Washed Arabica - Premium Grade", params: { category: "Premium Grade", variety: "Arabica", processing: "Washed Arabica" } },
+    { label: "Unwashed Arabica - Premium Grade", params: { category: "Premium Grade", variety: "Arabica", processing: "Unwashed Arabica" } },
+    { label: "Arabica Specialty Grades", params: { category: "Specialty Coffee", variety: "Arabica" } },
+  ],
+  [
+    { label: "All Robusta Commercial Grades", params: { category: "Commercial Grade", variety: "Robusta" } },
+    { label: "Washed Robusta - Commercial Grades", params: { category: "Commercial Grade", variety: "Robusta", processing: "Washed Robusta" } },
+    { label: "Unwashed Robusta - Commercial Grades", params: { category: "Commercial Grade", variety: "Robusta", processing: "Unwashed Robusta" } },
+    { label: "All Robusta Premium Grades", params: { category: "Premium Grade", variety: "Robusta" } },
+    { label: "Washed Robusta - Premium Grades", params: { category: "Premium Grade", variety: "Robusta", processing: "Washed Robusta" } },
+    { label: "Unwashed Robusta - Premium Grades", params: { category: "Premium Grade", variety: "Robusta", processing: "Unwashed Robusta" } },
+    { label: "Robusta Specialty Grades", params: { category: "Specialty Coffee", variety: "Robusta" } },
+  ],
+  [
+    { label: "Miscellaneous Grades", params: { category: "Miscellaneous Grade" } },
+  ],
+];
+
+// Helper to build a link for given params
+const buildLink = (params: { category?: string; variety?: string; processing?: string }) => {
+  const qs = new URLSearchParams();
+  if (params.category) qs.set("category", params.category);
+  if (params.variety) qs.set("variety", params.variety);
+  if (params.processing) qs.set("processing", params.processing);
+  const query = qs.toString();
+  return query ? `/products?${query}` : "/products";
+};
+
+// Helper to determine active state for a chip
+const isActive = (
+  current: { category?: string; variety?: string; processing?: string },
+  selected: { category?: string; variety?: string; processing?: string }
+) => {
+  return (
+    (current.category || "") === (selected.category || "") &&
+    (current.variety || "") === (selected.variety || "") &&
+    (current.processing || "") === (selected.processing || "")
+  );
+};
+
 export default function ProductsIndexPage({ searchParams }: { searchParams: { category?: string; variety?: string; processing?: string; search?: string } }) {
   // Filter products based on query parameters and search term
   const filteredProducts = allProducts.filter(product => {
@@ -98,49 +147,42 @@ export default function ProductsIndexPage({ searchParams }: { searchParams: { ca
                 Search
               </button>
             </form>
-          </div>
-          
-          {/* Filter Options */}
-          <div className="mt-4 flex flex-wrap gap-2">
-            <Link 
-              href="/products" 
-              className={`px-3 py-1 rounded-full text-sm ${!searchParams.category && !searchParams.variety && !searchParams.processing ? 'bg-amber-700 text-white' : 'bg-gray-200 text-gray-800 hover:bg-gray-300'}`}
-            >
-              All
-            </Link>
-            
-            {/* Category Filters */}
-            {categories.map(category => (
-              <Link 
-                key={category}
-                href={`/products?category=${encodeURIComponent(category)}`}
-                className={`px-3 py-1 rounded-full text-sm ${searchParams.category === category ? 'bg-amber-700 text-white' : 'bg-gray-200 text-gray-800 hover:bg-gray-300'}`}
-              >
-                {category}
-              </Link>
-            ))}
-            
-            {/* Variety Filters */}
-            {varieties.map(variety => (
-              <Link 
-                key={variety}
-                href={`/products?variety=${encodeURIComponent(variety)}`}
-                className={`px-3 py-1 rounded-full text-sm ${searchParams.variety === variety ? 'bg-amber-700 text-white' : 'bg-gray-200 text-gray-800 hover:bg-gray-300'}`}
-              >
-                {variety}
-              </Link>
-            ))}
-            
-            {/* Processing Method Filters */}
-            {processingMethods.map(method => (
-              <Link 
-                key={method}
-                href={`/products?processing=${encodeURIComponent(method)}`}
-                className={`px-3 py-1 rounded-full text-sm ${searchParams.processing === method ? 'bg-amber-700 text-white' : 'bg-gray-200 text-gray-800 hover:bg-gray-300'}`}
-              >
-                {method}
-              </Link>
-            ))}
+
+            {/* Quick-select grade categories (inside search bar) */}
+            <div className="mt-4">
+              <p className="text-sm text-gray-700 mb-2">Select coffee grade category from below by clicking on it.</p>
+              {/* All reset */}
+              <div className="mb-3">
+                <Link 
+                  href="/products"
+                  className={`px-3 py-1 rounded-full text-sm ${!searchParams.category && !searchParams.variety && !searchParams.processing ? 'bg-amber-700 text-white' : 'bg-gray-200 text-gray-800 hover:bg-gray-300'}`}
+                >
+                  All
+                </Link>
+              </div>
+              {/* Rows: 1-7, 8-14, 15- */}
+              {quickFilterRows.map((row, idx) => (
+                <div key={idx} className="flex flex-wrap gap-2 mb-2">
+                  {row.map(({ label, params }) => {
+                    const href = buildLink(params);
+                    const active = isActive(params, {
+                      category: searchParams.category,
+                      variety: searchParams.variety,
+                      processing: searchParams.processing,
+                    });
+                    return (
+                      <Link
+                        key={label}
+                        href={href}
+                        className={`px-3 py-1 rounded-full text-sm ${active ? 'bg-amber-700 text-white' : 'bg-gray-200 text-gray-800 hover:bg-gray-300'}`}
+                      >
+                        {label}
+                      </Link>
+                    );
+                  })}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

@@ -1,99 +1,10 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import Image from "next/image";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import AboutBanner from "@/components/AboutBanner";
 
 export default function AboutUs() {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const introRef = useRef<HTMLDivElement>(null);
-  const mentorsRef = useRef<HTMLDivElement>(null);
-  const visionRef = useRef<HTMLDivElement>(null);
-  const partnersRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Hero section animation
-      gsap.fromTo(
-        heroRef.current,
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
-      );
-
-      // Introduction section animation
-      gsap.fromTo(
-        introRef.current,
-        { opacity: 0, x: -50 },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 1,
-          scrollTrigger: {
-            trigger: introRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      // Mentors section animation
-      gsap.fromTo(
-        mentorsRef.current,
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          scrollTrigger: {
-            trigger: mentorsRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      // Vision section animation
-      gsap.fromTo(
-        visionRef.current,
-        { opacity: 0, scale: 0.9 },
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 1,
-          scrollTrigger: {
-            trigger: visionRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      // Partners section animation
-      gsap.fromTo(
-        partnersRef.current,
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          scrollTrigger: {
-            trigger: partnersRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-    });
-
-    return () => ctx.revert();
-  }, []);
 
   const mentors = [
     {
@@ -153,20 +64,10 @@ export default function AboutUs() {
   return (
     <div className="min-h-screen bg-white lg:mt-36 mt-14">
       {/* Hero Section */}
-      <section
-        ref={heroRef}
-        className="relative bg-gradient-to-r from-coffee-brown to-amber-800 text-white lg:py-20 py-10"
-      >
-   
-          <h1 className="text-5xl md:text-7xl font-serif font-semibold lg:mb-6 text-center">
-            About Us
-          </h1>
-
-       
-      </section>
+      <AboutBanner />
 
       {/* Introduction Section */}
-      <section ref={introRef} className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="flex flex-col lg:flex-row-reverse gap-12 items-center">
@@ -248,7 +149,7 @@ export default function AboutUs() {
         </section> */}
 
       {/* Vision, Mission & Core Values Section */}
-      <section ref={visionRef} className="py-16 bg-[#7B2A0F] text-white">
+      <section className="py-16 bg-[#7B2A0F] text-white">
         <div className="container mx-auto px-4 bg-[#7B2A0F]">
           <div className="max-w-6xl mx-auto text-center">
             <h2 className="text-4xl font-semibold mb-12 font-serif">

@@ -14,9 +14,12 @@ export default function GalleryPage() {
 
   // Load images from the gallery directory
   useEffect(() => {
-    // Generate array of image paths from 1 to 65
-    const imageArray = Array.from({ length: 72 }, (_, i) => `/gallery/${i + 1}.webp`);
-    setImages(imageArray);
+    // Generate array of image paths from 1 to 72 and place 71st first
+    const totalImages = 72;
+    const imageArray = Array.from({ length: totalImages }, (_, i) => `/gallery/${i + 1}.webp`);
+    const preferredFirst = `/gallery/71.webp`;
+    const reordered = [preferredFirst, ...imageArray.filter((img) => img !== preferredFirst)];
+    setImages(reordered);
     setLoading(false);
   }, []);
 
