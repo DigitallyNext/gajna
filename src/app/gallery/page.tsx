@@ -30,7 +30,6 @@ export default function GalleryPage() {
     setZoomLevel(1); // Reset zoom level when opening modal
     document.body.style.overflow = "hidden"; // Prevent scrolling when modal is open
   };
-
   const closeModal = () => {
     setSelectedImage(null);
     setModalOpen(false);
