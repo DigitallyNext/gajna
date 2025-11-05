@@ -250,38 +250,42 @@ export default function RegistrationCertification() {
                 />
               </div>
 
-              {/* Row 4 - Bottom certificates in a single row */}
-              <div className="lg:col-span-2  bg-white border-2 border-gray-300 rounded-lg p-4 flex justify-center items-center gap-6 hover:shadow-lg transition-shadow duration-300">
-                <Image
-                  src="/registration/1.webp"
-                  alt="Certificate 1"
-                  width={60}
-                  height={60}
-                  className="w-12 h-12 object-contain"
-                />
-                <Image
-                  src="/registration/4.webp"
-                  alt="Certificate 4"
-                  width={60}
-                  height={60}
-                  className="w-12 h-12 object-contain"
-                />
-                <Image
-                  src="/registration/3.webp"
-                  alt="Certificate 3"
-                  width={60}
-                  height={60}
-                  className="w-10 h-12 object-contain"
-                />
-                <div>
+              {/* Row 4 - Mobile-friendly two-column grid (logos + text) */}
+              <div className="col-span-2 bg-white border-2 border-gray-300 rounded-lg p-3 grid grid-cols-2 items-center gap-3 hover:shadow-lg transition-shadow duration-300">
+                {/* Left: three logos evenly spaced */}
+                <div className="flex items-center justify-between px-2">
+                  <Image
+                    src="/registration/1.webp"
+                    alt="Certificate 1"
+                    width={60}
+                    height={60}
+                    className="w-10 h-10 object-contain"
+                  />
+                  <Image
+                    src="/registration/4.webp"
+                    alt="Certificate 4"
+                    width={60}
+                    height={60}
+                    className="w-10 h-10 object-contain"
+                  />
+                  <Image
+                    src="/registration/3.webp"
+                    alt="Certificate 3"
+                    width={60}
+                    height={60}
+                    className="w-9 h-10 object-contain"
+                  />
+                </div>
+                {/* Right: seal + compact multi-line text */}
+                <div className="flex items-center justify-center gap-2">
                   <Image
                     src="/registration/10.webp"
                     alt="Certificate 2"
-                    width={1200}
-                    height={100}
-                    className="w-[4vw] h-[5vw] object-contain rounded-2xl"
+                    width={60}
+                    height={60}
+                    className="w-10 h-10 object-contain rounded-2xl"
                   />
-                  <p className="text-center text-xs text-black">
+                  <p className="text-xs text-black leading-snug">
                     Directorate of Plant Protection, Quarantine & Storage
                   </p>
                 </div>
