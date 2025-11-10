@@ -344,6 +344,7 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
               if (errors.phone) {
                 setErrors((prev) => ({ ...prev, phone: "" }));
               }
+              
             }}
             countrySelectComponent={SearchableCountrySelect}
             countryCallingCodeEditable={true}
