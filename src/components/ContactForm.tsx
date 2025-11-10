@@ -309,7 +309,6 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
           />
           {errors.lastName && <p className="text-sm text-red-600 mt-1 flex items-center"><span className="mr-1">⚠️</span>{errors.lastName}</p>}
         </div>
-
         <div>
           <label className="block text-sm font-medium text-gray-700">
             Email <span className="text-red-500">*</span>
@@ -344,7 +343,7 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
               if (errors.phone) {
                 setErrors((prev) => ({ ...prev, phone: "" }));
               }
-              
+
             }}
             countrySelectComponent={SearchableCountrySelect}
             countryCallingCodeEditable={true}
