@@ -2,8 +2,17 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import MegaMenu from "@/components/MegaMenu";
-import GeneralContactForm from "@/components/GeneralContactForm";
+import dynamic from "next/dynamic";
+// Lazy-load heavy components to reduce header bundle size and speed up navigation
+const MegaMenuLazy = dynamic(() => import("@/components/MegaMenu"), {
+  ssr: false,
+  loading: () => (
+    <div className="absolute left-0 right-0 mx-auto p-4 text-sm text-gray-600">Loading menu…</div>
+  ),
+});
+const GeneralContactFormLazy = dynamic(() => import("@/components/GeneralContactForm"), {
+  ssr: false,
+});
 import { ChevronDown, X, Search, Phone, Mail, MessageCircle } from "lucide-react";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { usePathname } from "next/navigation";
@@ -364,7 +373,7 @@ export default function Header() {
                 <ChevronDown className={`ml-1 ${isActivePath(["/products", "/arabica", "/robusta"]) ? "text-white" : "text-coffee-brown hover:text-white"}`} />
               </button>
               {megaMenuOpen && (
-                <MegaMenu
+                <MegaMenuLazy
                   isOpen={megaMenuOpen}
                   onClose={() => setMegaMenuOpen(false)}
                   isMobile={false}
@@ -421,7 +430,7 @@ export default function Header() {
         </nav>
 
         {/* Mobile MegaMenu (modal-style) */}
-        <MegaMenu
+        <MegaMenuLazy
           isOpen={mobileMegaMenuOpen}
           onClose={() => setMobileMegaMenuOpen(false)}
           isMobile={true}
@@ -448,7 +457,7 @@ export default function Header() {
                 </button>
               </div>
               <div className="p-6 bg-[#15803D]/20">
-                <GeneralContactForm
+                <GeneralContactFormLazy
                   initial={{ subject: "Quick Enquiry" }}
                   submitLabel="Send Enquiry"
                   onSuccess={() => setQuickEnquiryOpen(false)}
