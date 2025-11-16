@@ -27,6 +27,21 @@ const normalizeCategory = (category?: string): string => {
   return category;
 };
 
+// Display-friendly category label (pluralize to match filter chips)
+const displayCategory = (category?: string): string => {
+  const normalized = normalizeCategory(category);
+  switch (normalized) {
+    case "Commercial Grade":
+      return "Commercial Grades";
+    case "Premium Grade":
+      return "Premium Grades";
+    case "Miscellaneous Grade":
+      return "Miscellaneous Grades";
+    default:
+      return normalized;
+  }
+};
+
 // Extract processing methods from specs
 const getProcessingMethod = (product: Product): string => {
   const processingSpec = product.specs.find(spec => spec.label === "Processing");
@@ -123,10 +138,13 @@ export default function SearchCoffeeGradesPage({ searchParams }: { searchParams:
 
   // Determine the title based on filters
   let pageTitle = "Search Coffee Grades";
-  if (searchParams.category && searchParams.variety) {
-    pageTitle = `${searchParams.variety} - ${searchParams.category}`;
+  if (searchParams.category && searchParams.processing) {
+    // When processing is selected, prioritize it in the title and match chip wording
+    pageTitle = `${searchParams.processing} - ${displayCategory(searchParams.category)}`;
+  } else if (searchParams.category && searchParams.variety) {
+    pageTitle = `${searchParams.variety} - ${displayCategory(searchParams.category)}`;
   } else if (searchParams.category) {
-    pageTitle = searchParams.category;
+    pageTitle = displayCategory(searchParams.category);
   } else if (searchParams.variety) {
     pageTitle = searchParams.variety;
   } else if (searchParams.processing) {

@@ -209,21 +209,24 @@ export default function ProductDetailClient({ product }: Props) {
                 className={`flex items-start justify-between gap-4 px-4 py-2 text-sm ${(i + 2) % 2 === 0 ? 'bg-amber-50' : 'bg-white'}`}
               >
                 <span className="text-gray-600">{s.label}</span>
-                {s.label === "Sieve Standards" ? (
+                {s.label.includes("Sieve Standard") ? (
                   <div className="text-right max-w-[70%]">
                     <div className="flex items-start justify-start">
                       <div className="text-gray-900 font-medium text-left">
-                        {typeof s.value === "string" &&
-                          s.value.includes("\n") ? (
-                          s.value.split("\n").map((point, idx) => (
-                            <div
-                              key={idx}
-                              className="flex items-start mb-1 last:mb-0"
-                            >
-                              <span className="mr-2">•</span>
-                              <span>{point.trim()}</span>
-                            </div>
-                          ))
+                        {typeof s.value === "string" ? (
+                          s.value
+                            .split(/\n|;|•|\.\s+(?=[A-Z0-9])/)
+                            .map((point) => point.trim())
+                            .filter(Boolean)
+                            .map((point, idx) => (
+                              <div
+                                key={idx}
+                                className="flex items-start mb-1 last:mb-0"
+                              >
+                                <span className="mr-2">•</span>
+                                <span>{point}</span>
+                              </div>
+                            ))
                         ) : (
                           <span>{s.value}</span>
                         )}

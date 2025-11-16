@@ -18,26 +18,10 @@ const certificationsData: Certification[] = [
     title: "Coffee Board",
     desc: "Registration-Cum-Membership Certificate",
     hasViewButton: true,
-    certificateImages: ["/certificates/Certificate1.webp",],
+    certificateImages: ["/certificates/RCMC - Coffee Board.pdf"],
   },
-  {
-    name: "Coffee Board",
-    logo: "/logos/1.webp",
-    alt: "Indian Coffee Association logo",
-    title: "Coffee Board",
-    desc: "Coffee Entrepreneurship Certificate of Participation",
-    hasViewButton: true,
-    certificateImages: ["/certificates/Certificate2.webp"],
-  },
-  {
-    name: "Coffee Board",
-    logo: "/logos/1.webp",
-    alt: "Indian Coffee Association logo",
-    title: "Coffee Board",
-    desc: "Coffee Exporter’s Training Programme",
-    hasViewButton: true,
-    certificateImages: ["/certificates/Certificate3.webp"],
-  },
+
+  
   {
     name: "Federation of Indian Export Organizations",
     logo: "/logos/7.webp",
@@ -45,12 +29,31 @@ const certificationsData: Certification[] = [
     desc: "",
     title: "Federation of Indian Export Organizations",
   },
+    {
+    name: "Coffee Board",
+    logo: "/logos/1.webp",
+    alt: "Indian Coffee Association logo",
+    title: "Coffee Board",
+    desc: "Coffee Entrepreneurship Certificate of Participation",
+    hasViewButton: true,
+    certificateImages: ["/certificates/Coffee Entrepreneurship - Certificate of Participation By Coffee Board Of India.pdf"],
+  },
   {
     name: "Directorate General of Foreign Trade",
     logo: "/logos/6.webp",
     alt: "Directorate General of Foreign Trade logo",
     title: "Directorate General of Foreign Trade",
     desc: "",
+  },
+  
+  {
+    name: "Coffee Board",
+    logo: "/logos/1.webp",
+    alt: "Indian Coffee Association logo",
+    title: "Coffee Board",
+    desc: "Coffee Exporter’s Training Programme",
+    hasViewButton: true,
+    certificateImages: ["/certificates/Certificate - Coffee Exporters Training Programme.pdf"],
   },
   //   {
   //   name: "Certificate of Participation, VIKRAYAM, Coffee Entrepreneurship",
@@ -86,7 +89,7 @@ const certificationsData: Certification[] = [
     title: "Certificate of Incorporation",
     desc: "",
     hasViewButton: true,
-    certificateImages: ["/certificates/Certificate4.webp", "/certificates/Certificate5.webp"],
+    certificateImages: ["/certificates/CERTIFICATE-OF-INCORPORATION.pdf"],
   },
   {
     name: "MSME",
@@ -102,7 +105,7 @@ const certificationsData: Certification[] = [
     title: "Importer-Exporter Code",
     desc: "", 
     hasViewButton: true,
-    certificateImages: ["/certificates/Certificate6.webp"],
+    certificateImages: ["/certificates/IEC-GajnaOverseas(OPC)PrivateLimited.pdf"],
   },
 
   {
@@ -112,7 +115,7 @@ const certificationsData: Certification[] = [
     title: "GST Registration Certificate",
     desc: "",
     hasViewButton: true,
-    certificateImages: ["/certificates/Certificate5.webp"],
+    certificateImages: ["/certificates/GST-Registration-Certificate.pdf"],
   },
   {
     name: "PAN Card",
@@ -120,7 +123,7 @@ const certificationsData: Certification[] = [
     alt: "PAN Card logo",
     desc: "PAN Card",
     hasViewButton: true,
-    certificateImages: ["/certificates/Certificate7.webp"],
+    certificateImages: ["/certificates/PAN - Gajna Overseas (OPC) Private Limited.pdf"],
     title: "Income Tax Department",
   },
    {
@@ -130,7 +133,7 @@ const certificationsData: Certification[] = [
     title: "Coffee Board",
     desc: "Training Programme On Coffee Roasting & Brewing",
     hasViewButton: true,
-    certificateImages: ["/certificates/Certificate8.webp"],
+    certificateImages: ["/certificates/Kaapi Shastra - Training Program on Coffee Roasting Brewing..pdf"],
   },
 ];
 

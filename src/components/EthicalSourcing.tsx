@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import certificationsData from "../data/certificationsData";
@@ -17,10 +17,14 @@ import { Button } from "@/components/ui/button";
 export default function EthicalSourcing() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const logosRef = useRef<HTMLDivElement>(null);
-  const [selectedCertificate, setSelectedCertificate] = useState<{
-    name: string;
-    images: string[];
-  } | null>(null);
+  // Removed popup viewer; PDFs open directly in a new tab.
+
+  // Prefer a PDF link if available; otherwise fall back to the first asset.
+  const pickPrimaryCertificateUrl = (assets?: string[]) => {
+    if (!assets || assets.length === 0) return undefined;
+    const pdf = assets.find((a) => a.toLowerCase().endsWith(".pdf"));
+    return pdf ?? assets[0];
+  };
 
   useEffect(() => {
     // Register the ScrollTrigger plugin
@@ -131,25 +135,23 @@ export default function EthicalSourcing() {
                       </div>
 
                       {/* View Certificate Button (outside border box) */}
-                      {/* {cert.hasViewButton &&
-                        cert.certificateImages &&
-                        cert.certificateImages.length > 0 && (
-                          <button
-                            onClick={(e) => {
-                              e.preventDefault();
-                              e.stopPropagation();
-                              setSelectedCertificate({
-                               name: cert.name,
-                               images: cert.certificateImages!,
-                             });
-                            }}
-                            className="my-5 bg-[#15803D] p-1 rounded-lg text-white text-xs transition-colors duration-300 underline cursor-pointer"
-                            type="button"
-                          >
-                            View Certificate
-                            {cert.certificateImages.length > 1 ? "s" : ""}
-                          </button>
-                        )} */}
+                      {(() => {
+                        const url = pickPrimaryCertificateUrl(cert.certificateImages);
+                        if (cert.hasViewButton && url) {
+                          const isPdf = url.toLowerCase().endsWith(".pdf");
+                          return (
+                            <Link
+                              href={encodeURI(url)}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="my-5 bg-[#15803D] px-3 py-1 rounded-full text-white text-xs hover:bg-[#4D5A3E] transition-colors duration-300"
+                            >
+                              {isPdf ? "View PDF" : "View Certificate"}
+                            </Link>
+                          );
+                        }
+                        return null;
+                      })()}
                        
                     </div>
                      
@@ -161,75 +163,11 @@ export default function EthicalSourcing() {
             </Carousel>
           </div>
 
-          <div className="text-center mt-8">
-            <Link href="/registrations" className="certificates-button hover:shadow-xl bg-[#15803D] text-white px-6 py-1  rounded-full hover:bg-[#4D5A3E] transition-colors duration-300">
-              Click to view registrations
-            </Link>
-          </div>
+          {/* Removed global CTA. Each card now has its own View Certificate button. */}
         </div>
       </div>
 
-      {/* Certificate Modal - Simple Image Viewer */}
-      {selectedCertificate && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-[60] p-4"
-          onClick={() => setSelectedCertificate(null)}
-        >
-          <div
-            className="relative max-w-4xl w-full bg-white rounded-lg shadow-2xl overflow-hidden"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Modal Header */}
-            <div className="flex justify-between items-center p-4 border-b">
-              <h3 className="text-lg font-semibold text-gray-900">
-                {selectedCertificate.name} Certificate
-                {selectedCertificate.images.length > 1 ? "s" : ""}
-              </h3>
-              <button
-                onClick={() => setSelectedCertificate(null)}
-                className="h-8 w-8 p-0 hover:bg-gray-100 rounded transition-colors"
-                type="button"
-              >
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-            </div>
-
-            {/* Image Container */}
-            <div className="p-6">
-              <div className="relative w-full h-[60vh] bg-gray-50 rounded-lg overflow-hidden">
-                <Image
-                  src={selectedCertificate.images[0]}
-                  alt={`${selectedCertificate.name} Certificate`}
-                  fill
-                  className="object-contain p-4"
-                  onError={() => {
-                    console.log("Image failed to load:", selectedCertificate.images[0]);
-                  }}
-                />
-              </div>
-              
-              {/* Image Counter */}
-              {selectedCertificate.images.length > 1 && (
-                <div className="text-center mt-4 text-sm text-gray-600">
-                  {selectedCertificate.images.length} certificate{selectedCertificate.images.length > 1 ? 's' : ''} available
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
+      {/* No popup; each card opens the certificate in a new tab. */}
     </section>
   );
 }

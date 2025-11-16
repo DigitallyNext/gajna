@@ -25,6 +25,7 @@ export default function SitemapPage() {
         { label: "Registrations & Certificates", href: "/registrations" },
         { label: "Blog", href: "/blog" },
         { label: "Gallery", href: "/gallery" },
+        { label: "Coming Soon", href: "/coming-soon" },
       ],
     },
     {

@@ -55,7 +55,7 @@ export default function Footer() {
   <div className="text-center mb-16">
     <div className="flex justify-center space-x-2 flex-wrap gap-2">
       {[
-        { icon: 'linkedin', component: Linkedin, href: 'https://www.linkedin.com/company/gajna-overseas-opc-private-limited/?viewAsMember=true' },
+        { icon: 'linkedin', component: Linkedin, href: 'https://www.linkedin.com/company/gajna-overseas-private-limited/about/?viewAsMember=true' },
         { icon: 'whatsapp', component: BsWhatsapp, href: 'https://wa.me/9811789665' },
       ].map((social, index) => {
         const IconComponent = social.component;
@@ -138,12 +138,12 @@ export default function Footer() {
                   Trade enquiry
                 </Link>
               </li>
-              {/* <li className="flex items-center">
+              <li className="flex items-center">
                 <FaCheck className="mr-2" />
                 <Link href="/careers" className="hover:text-coffee-gold">
                   Careers (Work with us)
                 </Link>
-              </li> */}
+              </li>
               <li className="flex items-center">
                 <FaCheck className="mr-2" />
                 <Link

@@ -772,7 +772,7 @@ export default function ContactPage() {
           <h2 className="text-3xl font-bold mb-8">Follow Us On Social Media</h2>
           <div className="flex justify-center space-x-6">
             <a
-              href="https://www.linkedin.com/in/priyaviratsingh/"
+              href="https://www.linkedin.com/company/gajna-overseas-private-limited/about/?viewAsMember=true"
               className="w-12 h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors"
             >
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
