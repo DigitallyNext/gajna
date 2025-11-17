@@ -16,6 +16,20 @@ const getProcessingMethod = (product: Product): string => {
   return processingSpec ? processingSpec.value.split('–')[0].trim() : "Unknown";
 };
 
+// Normalize processing strings to canonical labels for filtering
+const normalizeProcessing = (value?: string): string => {
+  if (!value) return "";
+  const v = value.toLowerCase();
+  // Check specific cases first to avoid substring collisions (e.g., "unwashed" contains "washed")
+  if (v.includes("unwashed arabica")) return "Unwashed Arabica";
+  if (v.includes("washed arabica")) return "Washed Arabica";
+  if (v.includes("unwashed robusta")) return "Unwashed Robusta";
+  if (v.includes("washed robusta")) return "Washed Robusta";
+  if (v.includes("monsooned")) return "Monsooned";
+  // Fallback to the part before en dash if present
+  return value.split('–')[0].trim();
+};
+
 const processingMethods = [...new Set(allProducts.map(getProcessingMethod))] as string[];
 
 // Predefined quick-select filters grouped into rows as requested
@@ -82,8 +96,10 @@ export default function ProductsIndexPage({ searchParams }: { searchParams: { ca
     
     // Filter by processing method
     if (searchParams.processing) {
-      const processingMethod = getProcessingMethod(product);
-      if (!processingMethod.toLowerCase().includes(searchParams.processing.toLowerCase())) {
+      const processingSpec = product.specs.find(spec => spec.label === "Processing");
+      const productProc = normalizeProcessing(processingSpec?.value);
+      const queryProc = normalizeProcessing(searchParams.processing);
+      if (productProc !== queryProc) {
         return false;
       }
     }
@@ -102,12 +118,29 @@ export default function ProductsIndexPage({ searchParams }: { searchParams: { ca
     return true;
   });
 
+  // Helper to display-friendly category label (pluralize common ones)
+  const displayCategory = (category?: string): string => {
+    if (!category) return "";
+    switch (category) {
+      case "Commercial Grade":
+        return "Commercial Grades";
+      case "Premium Grade":
+        return "Premium Grades";
+      case "Miscellaneous Grade":
+        return "Miscellaneous Grades";
+      default:
+        return category;
+    }
+  };
+
   // Determine the title based on filters
   let pageTitle = "Our Coffee Grades";
-  if (searchParams.category && searchParams.variety) {
-    pageTitle = `${searchParams.variety} - ${searchParams.category}`;
+  if (searchParams.processing && searchParams.category) {
+    pageTitle = `${searchParams.processing} – ${displayCategory(searchParams.category)}`;
+  } else if (searchParams.category && searchParams.variety) {
+    pageTitle = `${searchParams.variety} – ${displayCategory(searchParams.category)}`;
   } else if (searchParams.category) {
-    pageTitle = searchParams.category;
+    pageTitle = displayCategory(searchParams.category);
   } else if (searchParams.variety) {
     pageTitle = searchParams.variety;
   } else if (searchParams.processing) {
@@ -211,7 +244,7 @@ export default function ProductsIndexPage({ searchParams }: { searchParams: { ca
                         <span className="inline-block px-2 py-1 bg-amber-100 text-amber-800 text-xs rounded">{p.variety}</span>
                         {p.specs.find(spec => spec.label === "Processing") && (
                           <span className="inline-block px-2 py-1 bg-amber-100 text-amber-800 text-xs rounded">
-                            {getProcessingMethod(p)}
+                            {normalizeProcessing(p.specs.find(spec => spec.label === "Processing")?.value)}
                           </span>
                         )}
                       </div>

@@ -146,7 +146,7 @@ export default function EthicalSourcing() {
                               rel="noopener noreferrer"
                               className="my-5 bg-[#15803D] px-3 py-1 rounded-full text-white text-xs hover:bg-[#4D5A3E] transition-colors duration-300"
                             >
-                              {isPdf ? "View PDF" : "View Certificate"}
+                              {isPdf ? "View Certificate" : "View Details"}
                             </Link>
                           );
                         }

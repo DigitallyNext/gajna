@@ -50,6 +50,20 @@ const getProcessingMethod = (product: Product): string => {
 
 const processingMethods = [...new Set(allProducts.map(getProcessingMethod))] as string[];
 
+// Normalize processing strings to canonical labels for filtering and chip display
+const normalizeProcessing = (value?: string): string => {
+  if (!value) return "";
+  const v = value.toLowerCase();
+  // Specific checks first to avoid substring collisions
+  if (v.includes("unwashed arabica")) return "Unwashed Arabica";
+  if (v.includes("washed arabica")) return "Washed Arabica";
+  if (v.includes("unwashed robusta")) return "Unwashed Robusta";
+  if (v.includes("washed robusta")) return "Washed Robusta";
+  if (v.includes("monsooned")) return "Monsooned";
+  // Fallback to the left of en dash
+  return value.split('–')[0].trim();
+};
+
 // Predefined quick-select filters grouped into rows as requested
 const quickFilterRows: Array<
   { label: string; params: { category?: string; variety?: string; processing?: string } }[]
@@ -95,7 +109,7 @@ const isActive = (
   return (
     normalizeCategory(current.category) === normalizeCategory(selected.category) &&
     (current.variety || "") === (selected.variety || "") &&
-    (current.processing || "") === (selected.processing || "")
+    normalizeProcessing(current.processing) === normalizeProcessing(selected.processing)
   );
 };
 
@@ -116,8 +130,10 @@ export default function SearchCoffeeGradesPage({ searchParams }: { searchParams:
     
     // Filter by processing method
     if (searchParams.processing) {
-      const processingMethod = getProcessingMethod(product);
-      if (!processingMethod.toLowerCase().includes(searchParams.processing.toLowerCase())) {
+      const processingSpec = product.specs.find(spec => spec.label === "Processing");
+      const productProc = normalizeProcessing(processingSpec?.value);
+      const queryProc = normalizeProcessing(searchParams.processing);
+      if (productProc !== queryProc) {
         return false;
       }
     }
@@ -252,7 +268,7 @@ export default function SearchCoffeeGradesPage({ searchParams }: { searchParams:
                         <span className="inline-block px-2 py-1 bg-amber-100 text-amber-800 text-xs rounded">{p.variety}</span>
                         {p.specs.find(spec => spec.label === "Processing") && (
                           <span className="inline-block px-2 py-1 bg-amber-100 text-amber-800 text-xs rounded">
-                            {getProcessingMethod(p)}
+                            {normalizeProcessing(p.specs.find(spec => spec.label === "Processing")?.value)}
                           </span>
                         )}
                       </div>
