@@ -21,7 +21,6 @@ const certificationsData: Certification[] = [
     certificateImages: ["/certificates/RCMC - Coffee Board.pdf"],
   },
 
-  
   {
     name: "Federation of Indian Export Organizations",
     logo: "/logos/7.webp",
@@ -29,14 +28,16 @@ const certificationsData: Certification[] = [
     desc: "",
     title: "Federation of Indian Export Organizations",
   },
-    {
+  {
     name: "Coffee Board",
     logo: "/logos/1.webp",
     alt: "Indian Coffee Association logo",
     title: "Coffee Board",
     desc: "Coffee Entrepreneurship Certificate of Participation",
     hasViewButton: true,
-    certificateImages: ["/certificates/Coffee Entrepreneurship - Certificate of Participation By Coffee Board Of India.pdf"],
+    certificateImages: [
+      "/certificates/Coffee Entrepreneurship - Certificate of Participation By Coffee Board Of India.pdf",
+    ],
   },
   {
     name: "Directorate General of Foreign Trade",
@@ -44,8 +45,12 @@ const certificationsData: Certification[] = [
     alt: "Directorate General of Foreign Trade logo",
     title: "Directorate General of Foreign Trade",
     desc: "",
+    hasViewButton: true,
+    certificateImages: [
+      "/certificates/IEC-GajnaOverseas(OPC)PrivateLimited.pdf",
+    ],
   },
-  
+
   {
     name: "Coffee Board",
     logo: "/logos/1.webp",
@@ -53,7 +58,9 @@ const certificationsData: Certification[] = [
     title: "Coffee Board",
     desc: "Coffee Exporter’s Training Programme",
     hasViewButton: true,
-    certificateImages: ["/certificates/Certificate - Coffee Exporters Training Programme.pdf"],
+    certificateImages: [
+      "/certificates/Certificate - Coffee Exporters Training Programme.pdf",
+    ],
   },
   //   {
   //   name: "Certificate of Participation, VIKRAYAM, Coffee Entrepreneurship",
@@ -98,15 +105,17 @@ const certificationsData: Certification[] = [
     title: "Micro, Small, and Medium Enterprises",
     desc: "",
   },
-  {
-    name: "Importer-Exporter Code",
-    logo: "/logos/11.webp",
-    alt: "Importer-Exporter Code logo",
-    title: "Importer-Exporter Code",
-    desc: "", 
-    hasViewButton: true,
-    certificateImages: ["/certificates/IEC-GajnaOverseas(OPC)PrivateLimited.pdf"],
-  },
+  // {
+  //   name: "Importer-Exporter Code",
+  //   logo: "/logos/11.webp",
+  //   alt: "Importer-Exporter Code logo",
+  //   title: "Importer-Exporter Code",
+  //   desc: "",
+  //   hasViewButton: true,
+  //   certificateImages: [
+  //     "/certificates/IEC-GajnaOverseas(OPC)PrivateLimited.pdf",
+  //   ],
+  // },
 
   {
     name: "GST Registration Certificate",
@@ -123,17 +132,21 @@ const certificationsData: Certification[] = [
     alt: "PAN Card logo",
     desc: "PAN Card",
     hasViewButton: true,
-    certificateImages: ["/certificates/PAN - Gajna Overseas (OPC) Private Limited.pdf"],
+    certificateImages: [
+      "/certificates/PAN - Gajna Overseas (OPC) Private Limited.pdf",
+    ],
     title: "Income Tax Department",
   },
-   {
+  {
     name: "Coffee Board",
     logo: "/logos/1.webp",
     alt: "Indian Coffee Association logo",
     title: "Coffee Board",
     desc: "Training Programme On Coffee Roasting & Brewing",
     hasViewButton: true,
-    certificateImages: ["/certificates/Kaapi Shastra - Training Program on Coffee Roasting Brewing..pdf"],
+    certificateImages: [
+      "/certificates/Kaapi Shastra - Training Program on Coffee Roasting Brewing..pdf",
+    ],
   },
 ];
 
