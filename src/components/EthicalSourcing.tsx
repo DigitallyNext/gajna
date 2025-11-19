@@ -117,7 +117,7 @@ export default function EthicalSourcing() {
                   <CarouselItem key={index} className="pl-2 md:pl-4 px-10 md:basis-1/3 lg:basis-1/5">
                     <div className="flex flex-col items-center">
                       {/* Card Box with equal height */}
-                      <div className="logo-item flex flex-col items-center justify-between mx-0 border-2 border-coffee-brown shadow-lg rounded-2xl p-4 h-60 w-full">
+                      <div className="logo-item flex flex-col items-center justify-between mx-0 border-2 border-coffee-brown shadow-lg rounded-2xl p-4 h-[295px] w-full">
                         <div className="w-32 h-32 relative mb-4">
                           <Image
                             src={cert.logo}

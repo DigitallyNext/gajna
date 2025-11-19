@@ -44,7 +44,7 @@ const certificationsData: Certification[] = [
     logo: "/logos/6.webp",
     alt: "Directorate General of Foreign Trade logo",
     title: "Directorate General of Foreign Trade",
-    desc: "",
+    desc: "Importer-Exporter Code",
     hasViewButton: true,
     certificateImages: [
       "/certificates/IEC-GajnaOverseas(OPC)PrivateLimited.pdf",
