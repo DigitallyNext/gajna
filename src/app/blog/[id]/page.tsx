@@ -35,7 +35,7 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
 
   return (
     <main className="min-h-screen bg-[#F9F5F0]">
-      <div className="pt-32 pb-16 bg-[#F2F7E8]">
+      <div className="pt-32 pb-8 bg-[#F2F7E8]">
         <div className="max-w-4xl mx-auto px-4">
           <Link href="/blog" className="inline-block mb-6 text-coffee-brown hover:underline">
             &larr; Back to all articles
@@ -48,7 +48,7 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
       </div>
       
       <div className="max-w-4xl mx-auto px-4 ">
-        <div className="relative h-96 w-full mb-8 rounded-lg overflow-hidden">
+        <div className="relative h-[70vh] w-full mb-8 rounded-lg overflow-hidden">
           <Image 
             src={post.featureImage} 
             alt={post.title} 
@@ -62,7 +62,7 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
           <div dangerouslySetInnerHTML={{ __html: renderMarkdown(post.content) }} />
         </article>
         
-        <div className="mt-12 pt-8 border-t border-gray-200">
+        <div className="my-12 pt-8 border-t border-gray-200">
           <h3 className="text-2xl font-serif mb-6 text-coffee-brown">Read more articles</h3>
           <div className="grid md:grid-cols-3 gap-6">
             {blogData
