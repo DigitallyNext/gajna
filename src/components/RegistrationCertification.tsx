@@ -217,7 +217,7 @@ export default function RegistrationCertification() {
                   alt="CCRI Certificate"
                   width={80}
                   height={80}
-                  className="w-14 h-14 object-contain"
+                  className="w-20 h-20 object-contain"
                 />
               </div>
               <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
@@ -322,7 +322,7 @@ export default function RegistrationCertification() {
                   alt="CCRI Certificate"
                   width={120}
                   height={120}
-                  className="w-18 h-18 object-contain"
+                  className="w-20 h-20 object-contain"
                 />
               </div>
 
@@ -387,15 +387,15 @@ export default function RegistrationCertification() {
                 />
                 <div>
                   <Image
-                    src="/registration/10.webp"
+                    src="/registration/directorate.webp"
                     alt="Certificate 2"
                     width={1200}
                     height={100}
-                    className="w-[4vw] h-[5vw] object-contain rounded-2xl"
+                    className="w-[65vw] h-[10vh] object-contain rounded-2xl"
                   />
-                  <p className="text-center text-xs text-black">
+                  {/* <p className="text-center text-xs text-black">
                     Directorate of Plant Protection, Quarantine & Storage
-                  </p>
+                  </p> */}
                 </div>
               </div>
             </div>
@@ -446,7 +446,7 @@ export default function RegistrationCertification() {
                       height={100}
                       className="w-[4vw] h-[5vw] object-contain rounded-2xl"
                     />
-                    <p className="text-center text-xs text-black">
+                    <p className="text-center text-[10px] text-black font-bold max-w-[120px]">
                       Directorate of Plant Protection, Quarantine & Storage
                     </p>
                   </div>

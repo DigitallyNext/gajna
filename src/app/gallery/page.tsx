@@ -57,7 +57,7 @@ export default function GalleryPage() {
   };
 
   return (
-    <div className="lg:pt-32 pt-24 pb-16 px-4 md:px-8 max-w-7xl mx-auto lg:mt-24">
+    <div className="pt-32  pb-16 px-4 md:px-8 max-w-7xl mx-auto lg:mt-24">
       <h1 className="text-3xl md:text-7xl font-serif text-coffee-brown text-center mb-8">
         Photo Gallery
       </h1>
@@ -68,7 +68,7 @@ export default function GalleryPage() {
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-coffee-brown"></div>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1  md:grid-cols-3 lg:grid-cols-4 gap-4">
           {images.map((image, index) => (
             <div
               key={index}
