@@ -151,7 +151,7 @@ export default function Header() {
               Call Us
             </Link>
             <Link
-              href="mailto:info@gajnaoverseas.com"
+              href="mailto:priyavirat@zohomail.in"
               className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 whitespace-nowrap"
               aria-label="Send Us Email"
             >
@@ -306,7 +306,7 @@ export default function Header() {
                 Mobile
               </Link> */}
               <Link
-                href="mailto:info@gajnaoverseas.com"
+                href="mailto:priyavirat@zohomail.in"
                 className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50 transition-colors"
               >
                 Send Us Email
@@ -376,7 +376,7 @@ export default function Header() {
                   isOpen={megaMenuOpen}
                   onClose={() => setMegaMenuOpen(false)}
                   isMobile={false}
-                  
+
                 />
               )}
             </div>

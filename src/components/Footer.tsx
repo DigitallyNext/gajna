@@ -166,7 +166,7 @@ export default function Footer() {
                 <div>
                   <h4 className="font-medium text-lg">Mail Us</h4>
                   <p className="text-sm md:text-base text-gray-200">
-                    info@gajnaoverseas.com
+                    priyavirat@zohomail.in
                   </p>
                 </div>
               </div>

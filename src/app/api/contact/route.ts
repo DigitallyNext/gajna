@@ -158,7 +158,7 @@ export async function POST(req: NextRequest) {
            <div class="footer-brand">Gajna Overseas</div>
            <p>This email was sent automatically from your website</p>
            <div class="footer-contact">
-             <p>📧 <a href="mailto:info@gajnaoverseas.com">info@gajnaoverseas.com</a> | 📞 <a href="tel:+919811789665">+91 9811789665</a></p>
+             <p>📧 <a href="mailto:priyavirat@zohomail.in">priyavirat@zohomail.in</a> | 📞 <a href="tel:+919811789665">+91 9811789665</a></p>
              <p style="margin-top: 10px; font-size: 12px; opacity: 0.8;">Coffee Export Excellence Since Inception</p>
            </div>
          </div>
@@ -207,7 +207,7 @@ export async function POST(req: NextRequest) {
            <div class="footer-brand">Gajna Overseas</div>
            <p><span class="highlight">Your Trusted Coffee Export Partner</span></p>
            <div class="footer-contact">
-             <p>📧 <a href="mailto:info@gajnaoverseas.com">info@gajnaoverseas.com</a> | 📞 <a href="tel:+919811789665">+91 9811789665</a></p>
+             <p>📧 <a href="mailto:priyavirat@zohomail.in">priyavirat@zohomail.in</a> | 📞 <a href="tel:+919811789665">+91 9811789665</a></p>
              <p style="margin-top: 15px; font-size: 12px; opacity: 0.8;">Premium Indian Coffee Beans • Direct from Source • Global Export Excellence</p>
              <p style="margin-top: 10px; font-size: 11px; opacity: 0.6;">If you didn't send this enquiry, please ignore this email.</p>
            </div>

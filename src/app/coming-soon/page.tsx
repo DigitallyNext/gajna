@@ -65,10 +65,10 @@ export default function ComingSoonPage() {
               Want to be notified? Send us a note at
               {" "}
               <a
-                href="mailto:info@gajnaoverseas.com?subject=Notify%20me%20about%20new%20pages"
+                href="mailto:priyavirat@zohomail.in?subject=Notify%20me%20about%20new%20pages"
                 className="text-coffee-brown hover:underline"
               >
-                info@gajnaoverseas.com
+                priyavirat@zohomail.in
               </a>
             </p>
           </div>
