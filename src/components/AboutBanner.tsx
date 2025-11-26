@@ -69,13 +69,13 @@ export default function AboutBanner() {
   return (
     <section ref={sectionRef} className="bg-gray-50 ">
       {/* Responsive Registration & Certification Layout */}
-      <section className="py-8 sm:py-12 lg:py-16 mt-20 sm:mt-32 lg:mt-40 bg-white">
+      <section className="pt-8 sm:pt-12 lg:pt-16 pb-2 sm:pb-2 lg:pb-16 mt-20 sm:mt-32 lg:mt-40 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Mobile Layout (sm and below) */}
           <div className="block sm:hidden">
             <div className="grid grid-cols-2 gap-3">
               {/* Row 1 */}
-              <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300 text-sm">
+              <div className=" bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300 text-sm text-center leading-tight text-[#562F23] font-medium">
                 {/* <Image 
                   src="/registration/apeda.webp"
                   alt="APEDA Registration"
@@ -83,9 +83,9 @@ export default function AboutBanner() {
                   height={80}
                   className="w-16 h-16 object-contain"
                 /> */}
-                Company Mission
+                Company Mission 
               </div>
-              <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300 text-sm">
+              <div className=" bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300 text-sm text-center leading-tight text-[#562F23] font-medium">
                 {/* <Image 
                   src="/registration/9.webp"
                   alt="Registration Certificate"
@@ -97,7 +97,7 @@ export default function AboutBanner() {
               </div>
 
               {/* Row 2 */}
-              <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300 text-sm">
+              <div className=" bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300 text-sm text-center leading-tight text-[#562F23] font-medium">
                 {/* <Image 
                   src="/registration/ccri.webp"
                   alt="CCRI Certificate"
@@ -107,7 +107,7 @@ export default function AboutBanner() {
                 /> */}
                 Coffee Logistics Expert
               </div>
-              <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300 text-sm">
+              <div className=" bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300 text-sm text-center leading-tight text-[#562F23] font-medium">
                 {/* <Image 
                   src="/registration/ECGC.webp"
                   alt="ECGC Registration"
@@ -115,13 +115,11 @@ export default function AboutBanner() {
                   height={80}
                   className="w-16 h-16 object-contain"
                 /> */}
-                Company Vision
-                Company
-                Values
+                Company Values
               </div>
 
               {/* Row 3 */}
-              <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300 text-sm">
+              <div className="e bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300 text-sm text-center leading-tight text-[#562F23] font-medium">
                 {/* <Image 
                   src="/registration/7.webp"
                   alt="Certificate"
@@ -131,19 +129,10 @@ export default function AboutBanner() {
                 /> */}
                 Know the team
               </div>
-              <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300 text-sm">
-                {/* <Image 
-                  src="/registration/6.webp"
-                  alt="Registration Document"
-                  width={80}
-                  height={80}
-                  className="w-16 h-16 object-contain"
-                /> */}
-                Company Vision
-              </div>
+              
 
               {/* Row 4 - Bottom certificates in a single row */}
-              <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+              <div className=" bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300 text-sm text-center leading-tight text-[#562F23] font-medium">
                 {/* <Image 
                   src="/registration/1.webp"
                   alt="Certificate 1"
@@ -181,15 +170,10 @@ export default function AboutBanner() {
           <div className="hidden sm:block lg:hidden">
             <div className="grid grid-cols-3 gap-4">
               {/* Top Row */}
-              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
-                {/* <Image 
-                  src="/registration/apeda.webp"
-                  alt="APEDA Registration"
-                  width={120}
-                  height={120}
-                  className="w-20 h-20 object-contain"
-                /> */}
-                Company Mission
+              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex flex-col text-center items-center justify-center hover:shadow-lg transition-shadow duration-300">
+              
+                Company Mission 
+                <p className="text-white">Less</p>
               </div>
               <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 {/* <Image 
@@ -220,7 +204,7 @@ export default function AboutBanner() {
               </div>
 
               {/* Bottom Row */}
-              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 {/* <Image 
                   src="/registration/ECGC.webp"
                   alt="ECGC Registration"
@@ -229,6 +213,7 @@ export default function AboutBanner() {
                   className="w-20 h-20 object-contain"
                 /> */}
                 Company Values
+                <p className="text-white">Less</p>
               </div>
               <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 {/* <Image 
@@ -251,37 +236,10 @@ export default function AboutBanner() {
                 Know the company founder
               </div>
 
-              {/* Bottom certificates row */}
-              <div className="col-span-3 bg-white border-2 border-gray-300 rounded-lg p-2 flex justify-center items-center gap-8 hover:shadow-lg transition-shadow duration-300">
-                {/* <Image 
-                  src="/registration/1.webp"
-                  alt="Certificate 1"
-                  width={100}
-                  height={100}
-                  className="w-16 h-16 object-contain"
-                />
-                <Image 
-                  src="/registration/4.webp"
-                  alt="Certificate 4"
-                  width={100}
-                  height={100}
-                  className="w-16 h-16 object-contain"
-                />
-                <Image 
-                  src="/registration/3.webp"
-                  alt="Certificate 3"
-                  width={100}
-                  height={100}
-                  className="w-14 h-16 object-contain"
-                />
-                <Image 
-                  src="/registration/10.webp"
-                  alt="Certificate 2"
-                  width={1200}
-                  height={100}
-                  className="w-[10vw] h-[10vw] object-contain rounded-2xl"
-                /> */}
-              </div>
+              {/* Bottom certificates row (hidden until assets are used) */}
+              {/* <div className="col-span-3 bg-white border-2 border-gray-300 rounded-lg p-2 flex justify-center items-center gap-8 hover:shadow-lg transition-shadow duration-300">
+                ...images here when available...
+              </div> */}
             </div>
           </div>
 
@@ -405,11 +363,11 @@ export default function AboutBanner() {
       </section>
 
       <div className="max-w-5xl mx-auto px-4">
-        {/* Hero Section */}
-        <div className="text-center mb-16"></div>
+        {/* Hero Section (hidden on mobile to remove extra spacing) */}
+        <div className="hidden sm:block text-center mb-16"></div>
 
         {/* Main Content */}
-        <div ref={contentRef} className=" gap-12 mb-16">
+        <div ref={contentRef} className=" gap-12 sm:mb-16 mb-4">
 
           {/* <div className="space-y-8">
             <div>
