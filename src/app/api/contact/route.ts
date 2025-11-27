@@ -13,7 +13,7 @@ function log(message: string, meta?: unknown) {
 // GMAIL_USER=youraddress@gmail.com
 // GMAIL_PASS=app_specific_password
 
-const ADMIN_EMAIL = "PRIYAVIRAT@GMAIL.COM";
+const ADMIN_EMAIL = "PRIYAVIRAT@GMAIL.COM, priyavirat@zohomail.in";
 
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => null);

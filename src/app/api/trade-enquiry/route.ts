@@ -7,7 +7,7 @@ function log(message: string, meta?: unknown) {
   console.log(`[trade-enquiry] ${new Date().toISOString()} - ${message}`, (meta ?? ""));
 }
 
-const ADMIN_EMAIL = "priyavirat@zohomail.in";
+const ADMIN_EMAIL = "PRIYAVIRAT@GMAIL.COM, priyavirat@zohomail.in";
 
 // Trade Enquiry form validation schema
 const tradeEnquirySchema = z.object({
