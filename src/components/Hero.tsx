@@ -74,7 +74,7 @@ export default function Hero() {
         <div className="flex flex-col lg:flex-row lg:items-center mt-16 md:mt-40">
           <div className="lg:w-1/2 w-full mb-8 lg:mb-0 px-2 md:px-0">
             {/* Title with enhanced animation */}
-            <h2 className=" text-5xl lg:text-6xl text-center lg:text-left font-serif font-bold mb-4 md:mb-6 text-white leading-tight">
+            <h2 className=" text-4xl lg:text-6xl text-center lg:text-left font-serif font-bold mb-4 md:mb-6 text-white leading-tight">
               <AnimatePresence mode="wait">
                 {currentSlideData.title.split("\n").map((line, i) => (
                   <motion.span
