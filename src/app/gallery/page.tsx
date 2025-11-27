@@ -14,13 +14,24 @@ export default function GalleryPage() {
 
   // Load images from the gallery directory
   useEffect(() => {
-    // Generate array of image paths from 1 to 72 and place 71st first
-    const totalImages = 71;
-    const imageArray = Array.from({ length: totalImages }, (_, i) => `/gallery/${i + 1}.webp`);
-    const preferredFirst = `/gallery/71.webp`;
-    const reordered = [preferredFirst, ...imageArray.filter((img) => img !== preferredFirst)];
-    setImages(reordered);
-    setLoading(false);
+    const load = async () => {
+      try {
+        const res = await fetch('/api/gallery-images');
+        const json = await res.json();
+        let list: string[] = Array.isArray(json.images) ? json.images : [];
+        // Put 71.webp first only if it exists
+        const preferred = '/gallery/71.webp';
+        if (list.includes(preferred)) {
+          list = [preferred, ...list.filter((i) => i !== preferred)];
+        }
+        setImages(list);
+      } catch (e) {
+        setImages([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+    load();
   }, []);
 
   const openModal = (image: string, index: number) => {
@@ -81,8 +92,8 @@ export default function GalleryPage() {
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
-                priority={index < 8} // Prioritize loading for first 8 images
-                loading={index < 8 ? "eager" : "lazy"} // Lazy load images beyond the first 8
+                priority={index < 8}
+                loading={index < 8 ? "eager" : "lazy"}
               />
               <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
                 <div className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
