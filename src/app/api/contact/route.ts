@@ -61,6 +61,7 @@ export async function POST(req: NextRequest) {
   // Validate against schema
   const parse = contactFormSchema.safeParse(body);
   if (!parse.success) {
+    console.error("Validation failed:", JSON.stringify(parse.error.flatten(), null, 2));
     return NextResponse.json(
       { success: false, error: "Validation failed", issues: parse.error.flatten() },
       { status: 422 }
@@ -266,6 +267,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: true });
   } catch (err) {
     log("Email send failed", err);
-    return NextResponse.json({ success: false, error: "Failed to send email" }, { status: 500 });
+    return NextResponse.json({ success: false, error: `Failed to send email: ${err instanceof Error ? err.message : String(err)}` }, { status: 500 });
   }
 }

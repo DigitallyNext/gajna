@@ -130,7 +130,7 @@ export default function GeneralContactForm({
     }));
     const code = getCountryCodeFromName(country);
     if (code) setPhoneCountry(code);
-    
+
     // Clear error when user selects a country
     if (errors.country) {
       setErrors(prev => ({
@@ -149,10 +149,10 @@ export default function GeneralContactForm({
       const fieldSchema = z.object({
         [name]: contactFormSchema.shape[name as keyof typeof contactFormSchema.shape]
       });
-      
+
       // Validate just this field
       fieldSchema.parse({ [name]: value });
-      
+
       // Clear error if validation passes
       setErrors(prev => ({
         ...prev,
@@ -245,35 +245,40 @@ export default function GeneralContactForm({
       if (response.ok) {
         setStatus('success');
         toast.success('Message sent successfully!');
-        
+
         // Reset form
-         setValues({
-           firstName: '',
-           lastName: '',
-           email: '',
-           phone: '',
-           country: '',
-           postalCode: '',
-           linkedin: '',
-           subject: '',
-           message: '',
-           consent: false,
-         });
-        
+        setValues({
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          country: '',
+          postalCode: '',
+          linkedin: '',
+          subject: '',
+          message: '',
+          consent: false,
+        });
+
         // Reset captcha
         if (recaptchaRef.current) {
           recaptchaRef.current.reset();
         }
         setCaptchaValue(null);
-        
+
         // Call onSuccess callback if provided
         if (onSuccess) {
           onSuccess();
         }
       } else {
         setStatus('error');
-        setServerError(data.error || 'Something went wrong. Please try again.');
-        toast.error(data.error || 'Failed to send message. Please try again.');
+        const errorMessage = data.issues
+          ? `Validation failed: ${Object.entries(data.issues.fieldErrors || {}).map(([key, val]) => `${key}: ${val}`).join(', ')}`
+          : (data.error || 'Something went wrong. Please try again.');
+
+        setServerError(errorMessage);
+        console.error('Form submission error:', data);
+        toast.error(errorMessage);
       }
     } catch (error) {
       setStatus('error');
@@ -284,153 +289,153 @@ export default function GeneralContactForm({
 
   return (
     <div className='relative'>
-    {status === 'submitting' && (
-      <div className="absolute inset-0 z-10 bg-white/70 backdrop-blur-sm flex items-center justify-center rounded-lg">
-        <div className="flex items-center gap-3 text-[#562F23]">
-          <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
-            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"></circle>
-            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
-          </svg>
-          <span className="font-medium">Sending your enquiry…</span>
+      {status === 'submitting' && (
+        <div className="absolute inset-0 z-10 bg-white/70 backdrop-blur-sm flex items-center justify-center rounded-lg">
+          <div className="flex items-center gap-3 text-[#562F23]">
+            <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"></circle>
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+            </svg>
+            <span className="font-medium">Sending your enquiry…</span>
+          </div>
         </div>
-      </div>
-    )}
-    <form onSubmit={handleSubmit} className="space-y-6 max-w-3xl w-full mx-auto" aria-busy={status === 'submitting'}>
-      {/* First Name and Last Name (side by side) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
+      )}
+      <form onSubmit={handleSubmit} className="space-y-6 max-w-3xl w-full mx-auto" aria-busy={status === 'submitting'}>
+        {/* First Name and Last Name (side by side) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
+          <div>
+            <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">
+              First Name <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              value={values.firstName}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-opacity-50 ${errors.firstName ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-200'}`}
+              placeholder="Your first name"
+            />
+            {errors.firstName && <p className="mt-1 text-sm text-red-600">{errors.firstName}</p>}
+          </div>
+
+          <div>
+            <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">
+              Last Name <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              value={values.lastName}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-opacity-50 ${errors.lastName ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-200'}`}
+              placeholder="Your last name"
+            />
+            {errors.lastName && <p className="mt-1 text-sm text-red-600">{errors.lastName}</p>}
+          </div>
+        </div>
+
+        {/* Email */}
         <div>
-          <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">
-            First Name <span className="text-red-500">*</span>
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+            Email Address <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={values.email}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-opacity-50 ${errors.email ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-200'}`}
+            placeholder="your.email@example.com"
+          />
+          {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
+        </div>
+
+        {/* Phone Number with Country Code */}
+        <div>
+          <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+            Phone Number <span className="text-red-500">*</span>
+          </label>
+          <PhoneInput
+            international
+            countryCallingCodeEditable={true}
+            defaultCountry="US"
+            country={phoneCountry}
+            value={values.phone}
+            onChange={handlePhoneChange}
+            onCountryChange={(code?: CountryCode) => {
+              setPhoneCountry(code);
+              const name = getCountryNameFromCode(code);
+              if (name) setValues(prev => ({ ...prev, country: name }));
+              if (errors.country) setErrors(prev => ({ ...prev, country: '' }));
+            }}
+            countrySelectComponent={SearchableCountrySelect}
+            className={`w-full ${errors.phone ? 'phone-input-error' : ''}`}
+            style={{
+              '--PhoneInputCountryFlag-height': '1em',
+              '--PhoneInput-color--focus': '#2563eb',
+              maxWidth: '100%',
+            } as React.CSSProperties}
+          />
+          {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone}</p>}
+        </div>
+
+        {/* Country with Searchable Dropdown */}
+        <div className=''>
+          <label htmlFor="country" className="block text-sm  font-medium text-gray-700 mb-1">
+            Country <span className="text-red-500">*</span>
+          </label>
+          <CountryDropdown
+            selectedCountry={values.country}
+            onSelectCountry={handleCountrySelect}
+            error={!!errors.country}
+          />
+          {errors.country && <p className="mt-1 text-sm text-red-600">{errors.country}</p>}
+        </div>
+
+        {/* Postal/Zip Code */}
+        <div>
+          <label htmlFor="postalCode" className="block text-sm font-medium text-gray-700 mb-1">
+            Postal/Zip Code <span className="text-red-500">*</span>
           </label>
           <input
             type="text"
-            id="firstName"
-            name="firstName"
-            value={values.firstName}
+            id="postalCode"
+            name="postalCode"
+            value={values.postalCode}
             onChange={handleChange}
             onBlur={handleBlur}
-            className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-opacity-50 ${errors.firstName ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-200'}`}
-            placeholder="Your first name"
+            className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-opacity-50 ${errors.postalCode ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-200'}`}
+            placeholder="Postal/Zip code"
           />
-          {errors.firstName && <p className="mt-1 text-sm text-red-600">{errors.firstName}</p>}
+          {errors.postalCode && <p className="mt-1 text-sm text-red-600">{errors.postalCode}</p>}
         </div>
-        
+
+        {/* LinkedIn ID */}
         <div>
-          <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">
-            Last Name <span className="text-red-500">*</span>
+          <label htmlFor="linkedin" className="block text-sm font-medium text-gray-700 mb-1">
+            LinkedIn Profile URL <span className="text-red-500">*</span>
           </label>
           <input
-            type="text"
-            id="lastName"
-            name="lastName"
-            value={values.lastName}
+            type="url"
+            id="linkedin"
+            name="linkedin"
+            value={values.linkedin}
             onChange={handleChange}
             onBlur={handleBlur}
-            className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-opacity-50 ${errors.lastName ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-200'}`}
-            placeholder="Your last name"
+            className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-opacity-50 ${errors.linkedin ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-200'}`}
+            placeholder="URL of your LinkedIn profile"
           />
-          {errors.lastName && <p className="mt-1 text-sm text-red-600">{errors.lastName}</p>}
+          {errors.linkedin && <p className="mt-1 text-sm text-red-600">{errors.linkedin}</p>}
         </div>
-      </div>
 
-      {/* Email */}
-      <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-          Email Address <span className="text-red-500">*</span>
-        </label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={values.email}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-opacity-50 ${errors.email ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-200'}`}
-          placeholder="your.email@example.com"
-        />
-        {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
-      </div>
-
-      {/* Phone Number with Country Code */}
-      <div>
-        <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-          Phone Number <span className="text-red-500">*</span>
-        </label>
-        <PhoneInput
-          international
-          countryCallingCodeEditable={true}
-          defaultCountry="US"
-          country={phoneCountry}
-          value={values.phone}
-          onChange={handlePhoneChange}
-          onCountryChange={(code?: CountryCode) => {
-            setPhoneCountry(code);
-            const name = getCountryNameFromCode(code);
-            if (name) setValues(prev => ({ ...prev, country: name }));
-            if (errors.country) setErrors(prev => ({ ...prev, country: '' }));
-          }}
-          countrySelectComponent={SearchableCountrySelect}
-          className={`w-full ${errors.phone ? 'phone-input-error' : ''}`}
-          style={{
-            '--PhoneInputCountryFlag-height': '1em',
-            '--PhoneInput-color--focus': '#2563eb',
-            maxWidth: '100%',
-          } as React.CSSProperties}
-        />
-        {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone}</p>}
-      </div>
-
-      {/* Country with Searchable Dropdown */}
-      <div className=''>
-        <label htmlFor="country" className="block text-sm  font-medium text-gray-700 mb-1">
-          Country <span className="text-red-500">*</span>
-        </label>
-        <CountryDropdown 
-          selectedCountry={values.country}
-          onSelectCountry={handleCountrySelect}
-          error={!!errors.country}      
-        />
-        {errors.country && <p className="mt-1 text-sm text-red-600">{errors.country}</p>}
-      </div>
-
-      {/* Postal/Zip Code */}
-      <div>
-        <label htmlFor="postalCode" className="block text-sm font-medium text-gray-700 mb-1">
-          Postal/Zip Code <span className="text-red-500">*</span>
-        </label>
-        <input
-          type="text"
-          id="postalCode"
-          name="postalCode"
-          value={values.postalCode}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-opacity-50 ${errors.postalCode ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-200'}`}
-          placeholder="Postal/Zip code"
-        />
-        {errors.postalCode && <p className="mt-1 text-sm text-red-600">{errors.postalCode}</p>}
-      </div>
-
-      {/* LinkedIn ID */}
-      <div>
-        <label htmlFor="linkedin" className="block text-sm font-medium text-gray-700 mb-1">
-          LinkedIn Profile URL <span className="text-red-500">*</span>
-        </label>
-        <input
-          type="url"
-          id="linkedin"
-          name="linkedin"
-          value={values.linkedin}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-opacity-50 ${errors.linkedin ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-200'}`}
-          placeholder="URL of your LinkedIn profile"
-        />
-        {errors.linkedin && <p className="mt-1 text-sm text-red-600">{errors.linkedin}</p>}
-      </div>
-
-      {/* Subject */}
-      {/* <div>
+        {/* Subject */}
+        {/* <div>
         <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
           Subject *
         </label>
@@ -447,101 +452,101 @@ export default function GeneralContactForm({
         {errors.subject && <p className="mt-1 text-sm text-red-600">{errors.subject}</p>}
       </div> */}
 
-      {/* Message */}
-      <div>
-        <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-          Message <span className="text-red-500">*</span>
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          rows={5}
-          value={values.message}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-opacity-50 ${errors.message ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-200'}`}
-          placeholder="Explain your enquiry in details..."
-        />
-        {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
-      </div>
-
-      {/* Consent Checkbox */}
-      <div className="flex items-start">
-        <div className="flex items-center h-5">
-          <input
-            id="consent"
-            name="consent"
-            type="checkbox"
-            checked={values.consent}
-            onChange={handleChange}
-            className="w-4 h-4 border-gray-300 rounded text-blue-600 focus:ring-blue-500"
-          />
-        </div>
-        <div className="ml-3 text-sm">
-          <label htmlFor="consent" className="font-medium text-gray-700">
-            I consent to having my data processed *
+        {/* Message */}
+        <div>
+          <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+            Message <span className="text-red-500">*</span>
           </label>
-          <p className="text-gray-500 text-xs mt-1">
-            Your personal information will be used to process your request and support your experience throughout this website.
-          </p>
-          {errors.consent && <p className="mt-1 text-sm text-red-600">{errors.consent}</p>}
-        </div>
-      </div>
-
-      {/* reCAPTCHA (only when configured) */}
-      {captchaEnabled && (
-        <div className="flex flex-col items-center">
-          <ReCAPTCHA
-            ref={recaptchaRef}
-            sitekey={captchaSiteKey}
-            size="compact"
-            onChange={(value) => {
-              setCaptchaValue(value);
-              setCaptchaError(null);
-            }}
-            onExpired={() => {
-              setCaptchaValue(null);
-              setCaptchaError("CAPTCHA has expired, please verify again");
-            }}
-            onErrored={() => {
-              setCaptchaError("Error loading CAPTCHA, please refresh the page");
-            }}
+          <textarea
+            id="message"
+            name="message"
+            rows={5}
+            value={values.message}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-opacity-50 ${errors.message ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-200'}`}
+            placeholder="Explain your enquiry in details..."
           />
-          {captchaError && <p className="mt-2 text-sm text-red-600">{captchaError}</p>}
-          <p className="text-xs text-gray-500 mt-2">This site is protected by reCAPTCHA.</p>
+          {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
         </div>
-      )}
 
-      {/* Submit Button */}
-      <div className="flex justify-center">
-        <button
-          type="submit"
-          disabled={status === 'submitting'}
-          className={`px-6 py-3 text-white font-medium rounded-md shadow-sm ${status === 'submitting' ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'} focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200`}
-        >
-          {status === 'submitting' ? (
-            <>
-              <span className="inline-block animate-spin mr-2">⟳</span> Sending...
-            </>
-          ) : (
-            submitLabel
-          )}
-        </button>
-      </div>
-
-      {/* Success/Error Messages */}
-      {status === 'success' && (
-        <div className="p-4 bg-green-50 border border-green-200 rounded-md">
-          <p className="text-green-700 font-medium">Thank you for your message! We&apos;ll be in touch soon.</p>
+        {/* Consent Checkbox */}
+        <div className="flex items-start">
+          <div className="flex items-center h-5">
+            <input
+              id="consent"
+              name="consent"
+              type="checkbox"
+              checked={values.consent}
+              onChange={handleChange}
+              className="w-4 h-4 border-gray-300 rounded text-blue-600 focus:ring-blue-500"
+            />
+          </div>
+          <div className="ml-3 text-sm">
+            <label htmlFor="consent" className="font-medium text-gray-700">
+              I consent to having my data processed *
+            </label>
+            <p className="text-gray-500 text-xs mt-1">
+              Your personal information will be used to process your request and support your experience throughout this website.
+            </p>
+            {errors.consent && <p className="mt-1 text-sm text-red-600">{errors.consent}</p>}
+          </div>
         </div>
-      )}
 
-      {status === 'error' && (
-        <div className="p-4 bg-red-50 border border-red-200 rounded-md">
-          <p className="text-red-700 font-medium">{serverError || 'Something went wrong. Please try again.'}</p>
+        {/* reCAPTCHA (only when configured) */}
+        {captchaEnabled && (
+          <div className="flex flex-col items-center">
+            <ReCAPTCHA
+              ref={recaptchaRef}
+              sitekey={captchaSiteKey}
+              size="compact"
+              onChange={(value) => {
+                setCaptchaValue(value);
+                setCaptchaError(null);
+              }}
+              onExpired={() => {
+                setCaptchaValue(null);
+                setCaptchaError("CAPTCHA has expired, please verify again");
+              }}
+              onErrored={() => {
+                setCaptchaError("Error loading CAPTCHA, please refresh the page");
+              }}
+            />
+            {captchaError && <p className="mt-2 text-sm text-red-600">{captchaError}</p>}
+            <p className="text-xs text-gray-500 mt-2">This site is protected by reCAPTCHA.</p>
+          </div>
+        )}
+
+        {/* Submit Button */}
+        <div className="flex justify-center">
+          <button
+            type="submit"
+            disabled={status === 'submitting'}
+            className={`px-6 py-3 text-white font-medium rounded-md shadow-sm ${status === 'submitting' ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'} focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200`}
+          >
+            {status === 'submitting' ? (
+              <>
+                <span className="inline-block animate-spin mr-2">⟳</span> Sending...
+              </>
+            ) : (
+              submitLabel
+            )}
+          </button>
         </div>
-      )}
-    </form>
+
+        {/* Success/Error Messages */}
+        {status === 'success' && (
+          <div className="p-4 bg-green-50 border border-green-200 rounded-md">
+            <p className="text-green-700 font-medium">Thank you for your message! We&apos;ll be in touch soon.</p>
+          </div>
+        )}
+
+        {status === 'error' && (
+          <div className="p-4 bg-red-50 border border-red-200 rounded-md">
+            <p className="text-red-700 font-medium">{serverError || 'Something went wrong. Please try again.'}</p>
+          </div>
+        )}
+      </form>
     </div>
   );
 }

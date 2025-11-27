@@ -3,7 +3,7 @@ import { z } from "zod";
 // Shared schema for contact form validation (client + server)
 export const contactFormSchema = z.object({
   // reCAPTCHA token (added for server-side validation)
-  captchaToken: z.string().optional(),
+  captchaToken: z.string().nullish(),
   // Support both name field and firstName/lastName fields
   name: z.string().optional(),
   firstName: z
