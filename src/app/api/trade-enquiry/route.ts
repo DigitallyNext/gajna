@@ -7,7 +7,7 @@ function log(message: string, meta?: unknown) {
   console.log(`[trade-enquiry] ${new Date().toISOString()} - ${message}`, (meta ?? ""));
 }
 
-const ADMIN_EMAIL = "sri.sudhanshu1@gmail.com";
+const ADMIN_EMAIL = "priyavirat@zohomail.in";
 
 // Trade Enquiry form validation schema
 const tradeEnquirySchema = z.object({
@@ -235,24 +235,32 @@ Delivery Duration: ${data.deliveryDuration}`;
           <div class="footer-brand">Gajna Overseas</div>
           <p>Premium Coffee Exporters</p>
           <div class="footer-contact">
-            <a href="mailto:info@gajna-overseas.com">info@gajna-overseas.com</a> | 
-            <a href="tel:+91XXXXXXXXXX">+91 XXXX XXXXXX</a>
+            <a href="mailto:priyavirat@zohomail.in">priyavirat@zohomail.in</a> | 
+            <a href="tel:+919811789665">+91 9811789665</a>
           </div>
         </div>
       </div>
     </div>
   `;
 
+  const DRY_RUN = process.env.EMAIL_DRY_RUN === "true" || ((!user || !pass) && process.env.NODE_ENV !== "production");
+
+  if ((!user || !pass) && DRY_RUN) {
+    log("EMAIL DRY RUN: Missing SMTP env; emails will be logged instead.");
+    console.log("ADMIN EMAIL (DRY RUN)", { to: ADMIN_EMAIL, subject: `🚢 New Trade Enquiry from ${data.companyName}`, text: plainText, htmlPreview: adminHtml.slice(0, 180) + "..." });
+    return NextResponse.json({ success: true, message: "Trade enquiry submitted successfully (Dry Run)" });
+  }
+
   if (!user || !pass) {
     log("Missing SMTP credentials");
     return NextResponse.json(
-      { success: false, error: "Server configuration error" },
+      { success: false, error: "Server configuration error: Missing SMTP credentials" },
       { status: 500 }
     );
   }
 
   const transporter = nodemailer.createTransport({
-    service: "gmail",
+    service: "Gmail",
     auth: { user, pass },
   });
 
@@ -271,7 +279,7 @@ Delivery Duration: ${data.deliveryDuration}`;
   } catch (error) {
     log("Failed to send trade enquiry email", error);
     return NextResponse.json(
-      { success: false, error: "Failed to send email" },
+      { success: false, error: `Failed to send email: ${error instanceof Error ? error.message : String(error)}` },
       { status: 500 }
     );
   }
