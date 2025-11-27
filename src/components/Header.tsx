@@ -198,7 +198,7 @@ export default function Header() {
 
         {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
-          <div className="absolute top-full left-0 bg-coffee-brown z-40 w-80 shadow-lg ">
+          <div className="fixed left-0 right-0 top-16 bg-coffee-brown z-[10000] w-full max-h-[80vh] overflow-y-auto shadow-lg">
             <div className="p-6">
               {/* Language switcher (mobile) */}
               <div className="mb-4 ">
