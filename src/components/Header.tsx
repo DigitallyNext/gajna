@@ -213,15 +213,14 @@ export default function Header() {
                 <Search size={18} />
                 Search Coffee Grades
               </Link>
-              <button
-                onClick={() => {
-                  setMobileMegaMenuOpen(true);
-                  setMobileMenuOpen(false);
-                }}
-                className={`block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 w-full text-left ${isActivePath(["/products", "/arabica", "/robusta"]) ? "text-amber-200" : ""}`}
+              <Link
+                href="/products"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 ${isActivePath("/products") ? "text-amber-200" : ""}`}
+               
               >
                 Products
-              </button>
+             </Link>
               <Link
                 href="/registrations"
                 onClick={() => setMobileMenuOpen(false)}
