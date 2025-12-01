@@ -261,25 +261,25 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
           
           <div className="p-4 mt-6">
             {/* Header */}
-            <div className="bg-gradient-to-r from-[#7D4B3C] to-[#61714D] text-white p-3 mb-4 rounded-lg flex items-center justify-center">
+            <div className="bg-white text-[#7D4B3C] p-3 mb-4 rounded-lg flex items-center justify-center border ">
               <Image
-                src="/slogo.webp"
+                src="/registration/1.webp"
                 alt="Gajna Logo"
                 width={32}
                 height={32}
-                className="w-8 h-8 mr-2"
+                className="w-20 h-20 mr-2 bg-white rounded-full"
               />
-              <h2 className="text-lg font-bold text-center">Our Coffee Grades</h2>
+              <h2 className="text-lg font-bold text-coffee-brown text-center">Indian Coffees Grades as per the Coffee Board of India</h2>
             </div>
 
             {/* All Products Link */}
-            <Link
+            {/* <Link
               href="/products"
               onClick={onClose}
               className="block w-full text-center p-3 mb-4 bg-[#E1A694] text-[#562F23] rounded-lg font-medium hover:bg-[#d19a85] transition-colors text-sm"
             >
               View All Products →
-            </Link>
+            </Link> */}
 
             {/* Clean mobile layout */}
             <div className="space-y-6">

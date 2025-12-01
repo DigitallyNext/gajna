@@ -208,19 +208,20 @@ export default function Header() {
               <Link
                 href="/search"
                 onClick={() => setMobileMenuOpen(false)}
-                className={`flex items-center gap-2 text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 ${isActivePath("/search") ? "text-amber-200" : ""}`}
+                className={`md:flex hidden  items-center gap-2 text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 ${isActivePath("/search") ? "text-amber-200" : ""}`}
               >
                 <Search size={18} />
                 Search Coffee Grades
               </Link>
-              <Link
-                href="/products"
-                onClick={() => setMobileMenuOpen(false)}
-                className={`block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 ${isActivePath("/products") ? "text-amber-200" : ""}`}
-               
+              <button
+                onClick={() => {
+                  setMobileMegaMenuOpen(true);
+                  setMobileMenuOpen(false);
+                }}
+                className={`block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 w-full text-left ${isActivePath(["/products", "/arabica", "/robusta"]) ? "text-amber-200" : ""}`}
               >
                 Products
-             </Link>
+              </button>
               <Link
                 href="/registrations"
                 onClick={() => setMobileMenuOpen(false)}
@@ -445,16 +446,16 @@ export default function Header() {
             <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
               <div className="flex lg:flex-row flex-col items-center justify-between p-6 border-b">
                 <div className="flex flex-row justify-between items-center">
-                <Image src="/logo.webp" alt="Gajna Overseas Private Limited" width={100} height={50} />
-                 <button
-                  onClick={() => setQuickEnquiryOpen(false)}
-                  className="text-gray-400 hover:text-gray-600 transition-colors lg:hidden block"
-                  aria-label="Close modal"
-                >
-                  <X className="w-6 h-6" />
-                 
-                </button>
-                 </div>
+                  <Image src="/logo.webp" alt="Gajna Overseas Private Limited" width={100} height={50} />
+                  <button
+                    onClick={() => setQuickEnquiryOpen(false)}
+                    className="text-gray-400 hover:text-gray-600 transition-colors lg:hidden block"
+                    aria-label="Close modal"
+                  >
+                    <X className="w-6 h-6" />
+
+                  </button>
+                </div>
                 <div className="flex flex-col justify-center items-center text-center">
                   <h2 className="text-xl font-semibold text-gray-900">
                     Gajna Overseas Private Limited

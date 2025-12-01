@@ -134,7 +134,7 @@ export default function ProductsIndexPage({ searchParams }: { searchParams: { ca
   };
 
   // Determine the title based on filters
-  let pageTitle = "Our Coffee Grades";
+  let pageTitle = "Indian Coffees as per the Coffee Board of India ";
   if (searchParams.processing && searchParams.category) {
     pageTitle = `${searchParams.processing} – ${displayCategory(searchParams.category)}`;
   } else if (searchParams.category && searchParams.variety) {
