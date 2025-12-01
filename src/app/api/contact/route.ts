@@ -125,104 +125,100 @@ export async function POST(req: NextRequest) {
 
   const plainText = `New contact form submission\n\nName: ${fullName}\nEmail: ${data.email}\nPhone: ${formattedPhone}\nCountry: ${data.country}\nPostal Code: ${data.postalCode}\nLinkedIn: ${data.linkedin}\nSubject: ${subject}\nMessage: ${data.message}${data.product ? `\n\nProduct Enquiry:\nProduct: ${data.product}` : ''}${data.grade ? `\nGrade: ${data.grade}` : ''}${data.quantity ? `\nQuantity: ${data.quantity} MT` : ''}\nConsent: ${data.consent ? "Yes" : "No"}`;
 
+  const row = (label: string, value?: string) => `
+    <div style="margin-bottom:10px; display:flex; align-items:flex-start; padding:8px 0; border-bottom:1px solid #e2e8f0;">
+      <div style="color:#64748b; font-size:14px; font-weight:600; min-width:140px;">${label}:</div>
+      <div style="font-size:15px; color:#1e293b; flex:1;">${value || 'NA'}</div>
+    </div>
+  `;
+
   const adminHtml = `
-    ${baseStyles}
-    <div class="email-wrapper">
-      <div class="container">
-        <div class="header">
-          <div class="logo">
-            <img src="https://gajna-overseas.vercel.app/logo.webp" alt="Gajna Overseas" style="width: 60px; height: 60px; object-fit: contain;" />
-          </div>
-          <div class="brand">New Contact Submission</div>
-          <div class="tagline">Gajna Overseas - Coffee Export Excellence</div>
+  <div style="background:#f5f7fa; padding:24px;">
+    <div style="max-width:680px; margin:0 auto; background:#ffffff; border-radius:12px; overflow:hidden; border:1px solid #e1e5e9;">
+      <div style="background:linear-gradient(135deg,#7D4B3C 0%, #8B5A3C 25%, #61714D 75%, #4A5D3A 100%); color:#fff; padding:24px; text-align:center;">
+        <div style="margin:0 auto 12px; background:#fff; border-radius:50%; width:60px; height:60px; display:flex; align-items:center; justify-content:center;">
+          // <img src="https://gajna-overseas.vercel.app/logo.webp" alt="Gajna Overseas" style="width:40px; height:40px; object-fit:contain;" />
         </div>
-        <div class="content">
-          <div class="greeting">📧 New Enquiry Received</div>
-          
-          <div class="section">
-            <div class="section-title">Contact Information</div>
-            <div class="row"><div class="label">Name:</div><div class="value">${fullName}</div></div>
-            <div class="row"><div class="label">Email:</div><div class="value">${data.email}</div></div>
-            <div class="row"><div class="label">Phone:</div><div class="value">${formattedPhone}</div></div>
-            <div class="row"><div class="label">Country:</div><div class="value">${data.country}</div></div>
-            <div class="row"><div class="label">Postal Code:</div><div class="value">${data.postalCode}</div></div>
-            <div class="row"><div class="label">LinkedIn:</div><div class="value">${data.linkedin}</div></div>
-          </div>
-          
-          <div class="section">
-            <div class="section-title">Enquiry Details</div>
-            <div class="row"><div class="label">Subject:</div><div class="value">${data.subject}</div></div>
-            <div class="row"><div class="label">Message:</div><div class="value">${data.message.replace(/\n/g, "<br/>")}</div></div>
-          </div>
-          
-          ${(data.product || data.grade || data.quantity) ? `
-          <div class="product-enquiry">
-            <div class="product-title">☕ Product Enquiry Details</div>
-            ${data.product ? `<div class="row"><div class="label">Product:</div><div class="value">${data.product}</div></div>` : ''}
-            ${data.grade ? `<div class="row"><div class="label">Grade:</div><div class="value">${data.grade}</div></div>` : ''}
-            ${data.quantity ? `<div class="row"><div class="label">Quantity:</div><div class="value">${data.quantity} MT</div></div>` : ''}
-          </div>` : ''}
-        </div>
-        <div class="footer">
-           <div class="footer-brand">Gajna Overseas</div>
-           <p>This email was sent automatically from your website</p>
-           <div class="footer-contact">
-             <p>📧 <a href="mailto:priyavirat@zohomail.in">priyavirat@zohomail.in</a> | 📞 <a href="tel:+919811789665">+91 9811789665</a></p>
-             <p style="margin-top: 10px; font-size: 12px; opacity: 0.8;">Coffee Export Excellence Since Inception</p>
-           </div>
-         </div>
+        <div style="font-size:22px; font-weight:700; margin-bottom:4px;">New Contact Submission</div>
+        <div style="font-size:14px; opacity:.95;">Gajna Overseas - Coffee Export Excellence</div>
       </div>
-    </div>`;
+      <div style="padding:24px;">
+        <div style="font-size:18px; font-weight:600; color:#2d3748; margin-bottom:16px; text-align:center;">📧 New Enquiry Received</div>
+
+        <div style="margin-bottom:20px; background:#f8fafc; border-radius:12px; padding:20px; border-left:4px solid #7D4B3C;">
+          <div style="font-size:16px; font-weight:700; color:#7D4B3C; margin-bottom:12px;">Contact Information</div>
+          ${row('Name', fullName)}
+          ${row('Email', data.email)}
+          ${row('Phone', formattedPhone)}
+          ${row('Country', data.country)}
+          ${row('Postal Code', data.postalCode)}
+          ${row('LinkedIn', data.linkedin)}
+        </div>
+
+        <div style="margin-bottom:20px; background:#f8fafc; border-radius:12px; padding:20px; border-left:4px solid #7D4B3C;">
+          <div style="font-size:16px; font-weight:700; color:#7D4B3C; margin-bottom:12px;">Enquiry Details</div>
+          ${row('Subject', subject)}
+          ${row('Message', data.message.replace(/\n/g, '<br/>'))}
+        </div>
+
+        ${(data.product || data.grade || data.quantity) ? `
+        <div style="margin-bottom:20px; background:#fef3c7; border:2px solid #f59e0b; border-radius:15px; padding:20px;">
+          <div style="color:#92400e; font-weight:700; font-size:16px; margin-bottom:12px;">☕ Product Enquiry Details</div>
+          ${data.product ? row('Product', data.product) : ''}
+          ${data.grade ? row('Grade', data.grade) : ''}
+          ${data.quantity ? row('Quantity', `${data.quantity} MT`) : ''}
+        </div>` : ''}
+
+        <div style="height:2px; background:linear-gradient(90deg,#7D4B3C 0%, #61714D 100%); margin:20px 0;"></div>
+        <p style="text-align:center; color:#64748b;">This email was sent automatically from your website</p>
+      </div>
+      <div style="background:#f1f5f9; color:#64748b; text-align:center; padding:16px; border-top:1px solid #e2e8f0;">
+        <div style="font-weight:700; color:#7D4B3C; margin-bottom:8px;">Gajna Overseas</div>
+        <div><a href="mailto:priyavirat@zohomail.in" style="color:#7D4B3C; text-decoration:none;">priyavirat@zohomail.in</a> | <a href="tel:+919811789665" style="color:#7D4B3C; text-decoration:none;">+91 9811789665</a></div>
+      </div>
+    </div>
+  </div>`;
 
   const userHtml = `
-    ${baseStyles}
-    <div class="email-wrapper">
-      <div class="container">
-        <div class="header">
-          <div class="logo">
-            <img src="https://gajna-overseas.vercel.app/logo.webp" alt="Gajna Overseas" style="width: 60px; height: 60px; object-fit: contain;" />
-          </div>
-          <div class="brand">Thank You for Your Enquiry!</div>
-          <div class="tagline">Gajna Overseas - Coffee Export Excellence</div>
+  <div style="background:#f5f7fa; padding:24px;">
+    <div style="max-width:680px; margin:0 auto; background:#ffffff; border-radius:12px; overflow:hidden; border:1px solid #e1e5e9;">
+      <div style="background:linear-gradient(135deg,#7D4B3C 0%, #8B5A3C 25%, #61714D 75%, #4A5D3A 100%); color:#fff; padding:24px; text-align:center;">
+        <div style="margin:0 auto 12px; background:#fff; border-radius:50%; width:60px; height:60px; display:flex; align-items:center; justify-content:center;">
+          <img src="https://gajna-overseas.vercel.app/logo.webp" alt="Gajna Overseas" style="width:40px; height:40px; object-fit:contain;" />
         </div>
-        <div class="content">
-          <div class="greeting">Dear ${data.firstName},</div>
-          
-          <div class="section">
-            <p class="value" style="line-height: 1.6; margin-bottom: 15px;">Thank you for contacting Gajna Overseas! We've successfully received your enquiry and our team will review it carefully.</p>
-            <p class="value" style="line-height: 1.6; margin-bottom: 15px;">We typically respond to all enquiries within 24 hours during business days. Our coffee export specialists will get back to you with detailed information.</p>
-            ${(data.product || data.grade) ? `<p class="value" style="line-height: 1.6; margin-bottom: 15px;">📋 <strong>Your Enquiry:</strong> ${data.product ? data.product : 'Coffee products'}${data.grade ? ` (${data.grade})` : ''}${data.quantity ? ` - Quantity: ${data.quantity} MT` : ''}</p>` : ''}
-          </div>
-          
-          <div class="section">
-            <div class="section-title">Your Message Summary</div>
-            <div class="row"><div class="label">Subject:</div><div class="value">${data.subject}</div></div>
-            <div class="row"><div class="label">Message:</div><div class="value">${data.message.replace(/\n/g, "<br/>")}</div></div>
-          </div>
-          
-          <div class="divider"></div>
-          
-          <div class="section">
-            <p class="value" style="line-height: 1.6; margin-bottom: 15px;">🌟 <strong>Why Choose Gajna Overseas?</strong></p>
-            <ul style="margin: 0; padding-left: 20px; line-height: 1.6;">
-              <li>Premium quality Indian coffee beans</li>
-              <li>Direct sourcing from certified plantations</li>
-              <li>Competitive pricing and reliable supply</li>
-              <li>Expert guidance on coffee grades and specifications</li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer">
-           <div class="footer-brand">Gajna Overseas</div>
-           <p><span class="highlight">Your Trusted Coffee Export Partner</span></p>
-           <div class="footer-contact">
-             <p>📧 <a href="mailto:priyavirat@zohomail.in">priyavirat@zohomail.in</a> | 📞 <a href="tel:+919811789665">+91 9811789665</a></p>
-             <p style="margin-top: 15px; font-size: 12px; opacity: 0.8;">Premium Indian Coffee Beans • Direct from Source • Global Export Excellence</p>
-             <p style="margin-top: 10px; font-size: 11px; opacity: 0.6;">If you didn't send this enquiry, please ignore this email.</p>
-           </div>
-         </div>
+        <div style="font-size:22px; font-weight:700; margin-bottom:4px;">Thank You for Your Enquiry!</div>
+        <div style="font-size:14px; opacity:.95;">Gajna Overseas - Coffee Export Excellence</div>
       </div>
-    </div>`;
+      <div style="padding:24px;">
+        <div style="font-size:16px; color:#1e293b; margin-bottom:12px;">Dear ${data.firstName},</div>
+        <p style="line-height:1.6; margin-bottom:12px;">Thank you for contacting Gajna Overseas! We've successfully received your enquiry and our team will review it carefully.</p>
+        <p style="line-height:1.6; margin-bottom:12px;">We typically respond within 24 hours during business days.</p>
+        ${(data.product || data.grade) ? `<p style="line-height:1.6; margin-bottom:12px;">📋 <strong>Your Enquiry:</strong> ${data.product ? data.product : 'Coffee products'}${data.grade ? ` (${data.grade})` : ''}${data.quantity ? ` - Quantity: ${data.quantity} MT` : ''}</p>` : ''}
+
+        <div style="margin-top:16px; background:#f8fafc; border-radius:12px; padding:20px; border-left:4px solid #7D4B3C;">
+          <div style="font-size:16px; font-weight:700; color:#7D4B3C; margin-bottom:12px;">Your Message Summary</div>
+          ${row('Subject', subject)}
+          ${row('Message', data.message.replace(/\n/g, '<br/>'))}
+        </div>
+
+        <div style="height:2px; background:linear-gradient(90deg,#7D4B3C 0%, #61714D 100%); margin:20px 0;"></div>
+        <div style="background:#f8fafc; border-radius:12px; padding:20px;">
+          <p style="line-height:1.6; margin-bottom:12px;">🌟 <strong>Why Choose Gajna Overseas?</strong></p>
+          <ul style="margin:0; padding-left:20px; line-height:1.6; color:#374151;">
+            <li>Premium quality Indian coffee beans</li>
+            <li>Direct sourcing from certified plantations</li>
+            <li>Competitive pricing and reliable supply</li>
+            <li>Expert guidance on coffee grades and specifications</li>
+          </ul>
+        </div>
+      </div>
+      <div style="background:#f1f5f9; color:#64748b; text-align:center; padding:16px; border-top:1px solid #e2e8f0;">
+        <div style="font-weight:700; color:#7D4B3C; margin-bottom:8px;">Gajna Overseas</div>
+        <div><a href="mailto:priyavirat@zohomail.in" style="color:#7D4B3C; text-decoration:none;">priyavirat@zohomail.in</a> | <a href="tel:+919811789665" style="color:#7D4B3C; text-decoration:none;">+91 9811789665</a></div>
+        <p style="margin-top:10px; font-size:11px; opacity:.6;">If you didn't send this enquiry, please ignore this email.</p>
+      </div>
+    </div>
+  </div>`;
 
   const DRY_RUN = process.env.EMAIL_DRY_RUN === "true" || ((!user || !pass) && process.env.NODE_ENV !== "production");
 

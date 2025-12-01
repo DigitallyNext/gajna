@@ -178,69 +178,70 @@ Pre-shipment Agency: ${data.preshipmentAgency || 'Not provided'}
 Pre-shipment Requirements: ${data.preshipmentRequirements || 'Not provided'}
 Delivery Duration: ${data.deliveryDuration}`;
 
+  // Helper to render label/value rows with inline styles for better email client support
+  const row = (label: string, value?: string) => `
+    <div style="margin-bottom:10px; display:flex; align-items:flex-start; padding:8px 0; border-bottom:1px solid #e2e8f0;">
+      <div style="color:#64748b; font-size:14px; font-weight:600; min-width:140px;">${label}:</div>
+      <div style="font-size:15px; color:#1e293b; flex:1;">${value || 'NA'}</div>
+    </div>
+  `;
+
   const adminHtml = `
-    ${baseStyles}
-    <div class="email-wrapper">
-      <div class="container">
-        <div class="header">
-          <div class="logo">
-            <img src="https://gajna-overseas.vercel.app/logo.webp" alt="Gajna Overseas" style="width: 60px; height: 60px; object-fit: contain;" />
-          </div>
-          <div class="brand">New Trade Enquiry</div>
-          <div class="tagline">Gajna Overseas - Coffee Export Excellence</div>
+  <div style="background:#f5f7fa; padding:24px;">
+    <div style="max-width:680px; margin:0 auto; background:#ffffff; border-radius:12px; overflow:hidden; border:1px solid #e1e5e9;">
+      <div style="background:linear-gradient(135deg,#7D4B3C 0%, #8B5A3C 25%, #61714D 75%, #4A5D3A 100%); color:#fff; padding:24px; text-align:center;">
+        <div style="margin:0 auto 12px; background:#fff; border-radius:50%; width:60px; height:60px; display:flex; align-items:center; justify-content:center;">
+          // <img src="https://gajna-overseas.vercel.app/logo.webp" alt="Gajna Overseas" style="width:40px; height:40px; object-fit:contain;" />
         </div>
-        <div class="content">
-          <div class="greeting">🚢 New Trade Enquiry Received</div>
-          
-          <div class="section">
-            <div class="section-title">Company Information</div>
-            <div class="row"><div class="label">Company Name:</div><div class="value">${data.companyName}</div></div>
-            <div class="row"><div class="label">Address:</div><div class="value">${data.companyAddress}</div></div>
-            <div class="row"><div class="label">Country:</div><div class="value">${data.countryName}</div></div>
-            <div class="row"><div class="label">Phone:</div><div class="value">${data.companyPhone}</div></div>
-            ${data.companyFax ? `<div class="row"><div class="label">Fax:</div><div class="value">${data.companyFax}</div></div>` : ''}
-            ${data.companyMobile ? `<div class="row"><div class="label">Mobile:</div><div class="value">${data.companyMobile}</div></div>` : ''}
-            <div class="row"><div class="label">Email:</div><div class="value">${data.companyEmail}</div></div>
-            ${data.companyWebsite ? `<div class="row"><div class="label">Website:</div><div class="value">${data.companyWebsite}</div></div>` : ''}
-            ${data.companyLinkedIn ? `<div class="row"><div class="label">LinkedIn:</div><div class="value">${data.companyLinkedIn}</div></div>` : ''}
-          </div>
-          
-          <div class="section">
-            <div class="section-title">Contact Person</div>
-            <div class="row"><div class="label">Name:</div><div class="value">${data.contactName}</div></div>
-            <div class="row"><div class="label">Mobile:</div><div class="value">${data.contactMobile}</div></div>
-            <div class="row"><div class="label">Email:</div><div class="value">${data.contactEmail}</div></div>
-            ${data.contactLinkedIn ? `<div class="row"><div class="label">LinkedIn:</div><div class="value">${data.contactLinkedIn}</div></div>` : ''}
-          </div>
-          
-          <div class="trade-highlight">
-            <div class="trade-title">Logistics & Trade Details</div>
-            <div class="row"><div class="label">Coffee Grade:</div><div class="value">${data.coffeeGrade}</div></div>
-            <div class="row"><div class="label">HSN Code:</div><div class="value">${data.hsnCode}</div></div>
-            <div class="row"><div class="label">Quantity:</div><div class="value">${data.estimatedQuantity}</div></div>
-            <div class="row"><div class="label">Port of Loading:</div><div class="value">${data.portOfLoading}</div></div>
-            <div class="row"><div class="label">Port of Dispatch:</div><div class="value">${data.portOfDispatch}</div></div>
-            <div class="row"><div class="label">Delivery Duration:</div><div class="value">${data.deliveryDuration}</div></div>
-            <div class="row"><div class="label">Packaging:</div><div class="value">${data.packagingRequirements}</div></div>
-            ${data.preshipmentAgency ? `<div class="row"><div class="label">Pre-shipment Agency:</div><div class="value">${data.preshipmentAgency}</div></div>` : ''}
-            ${data.preshipmentRequirements ? `<div class="row"><div class="label">Pre-shipment Req:</div><div class="value">${data.preshipmentRequirements}</div></div>` : ''}
-          </div>
-          
-          <div class="divider"></div>
-          <p style="text-align: center; color: #64748b; font-style: italic;">
-            Please respond to this trade enquiry promptly to maintain business relationships.
-          </p>
+        <div style="font-size:22px; font-weight:700; margin-bottom:4px;">New Trade Enquiry</div>
+        <div style="font-size:14px; opacity:.95;">Gajna Overseas - Coffee Export Excellence</div>
+      </div>
+      <div style="padding:24px;">
+        <div style="font-size:18px; font-weight:600; color:#2d3748; margin-bottom:16px; text-align:center;">🚢 New Trade Enquiry Received</div>
+
+        <div style="margin-bottom:20px; background:#f8fafc; border-radius:12px; padding:20px; border-left:4px solid #7D4B3C;">
+          <div style="font-size:16px; font-weight:700; color:#7D4B3C; margin-bottom:12px;">Company Information</div>
+          ${row('Company Name', data.companyName)}
+          ${row('Address', data.companyAddress)}
+          ${row('Country', data.countryName)}
+          ${row('Phone', data.companyPhone)}
+          ${data.companyFax ? row('Fax', data.companyFax) : ''}
+          ${data.companyMobile ? row('Mobile', data.companyMobile) : ''}
+          ${row('Email', data.companyEmail)}
+          ${data.companyWebsite ? row('Website', data.companyWebsite) : ''}
+          ${data.companyLinkedIn ? row('LinkedIn', data.companyLinkedIn) : ''}
         </div>
-        <div class="footer">
-          <div class="footer-brand">Gajna Overseas</div>
-          <p>Premium Coffee Exporters</p>
-          <div class="footer-contact">
-            <a href="mailto:priyavirat@zohomail.in">priyavirat@zohomail.in</a> | 
-            <a href="tel:+919811789665">+91 9811789665</a>
-          </div>
+
+        <div style="margin-bottom:20px; background:#f8fafc; border-radius:12px; padding:20px; border-left:4px solid #7D4B3C;">
+          <div style="font-size:16px; font-weight:700; color:#7D4B3C; margin-bottom:12px;">Contact Person</div>
+          ${row('Name', data.contactName)}
+          ${row('Mobile', data.contactMobile)}
+          ${row('Email', data.contactEmail)}
+          ${data.contactLinkedIn ? row('LinkedIn', data.contactLinkedIn) : ''}
         </div>
+
+        <div style="margin-bottom:20px; background:#dcfce7; border:2px solid #16a34a; border-radius:15px; padding:20px;">
+          <div style="font-size:16px; font-weight:700; color:#166534; margin-bottom:12px;">Logistics & Trade Details</div>
+          ${row('Coffee Grade', data.coffeeGrade)}
+          ${row('HSN Code', data.hsnCode)}
+          ${row('Quantity', data.estimatedQuantity)}
+          ${row('Port of Loading', data.portOfLoading)}
+          ${row('Port of Dispatch', data.portOfDispatch)}
+          ${row('Delivery Duration', data.deliveryDuration)}
+          ${row('Packaging', data.packagingRequirements)}
+          ${data.preshipmentAgency ? row('Pre-shipment Agency', data.preshipmentAgency) : ''}
+          ${data.preshipmentRequirements ? row('Pre-shipment Req', data.preshipmentRequirements) : ''}
+        </div>
+
+        <div style="height:2px; background:linear-gradient(90deg,#7D4B3C 0%, #61714D 100%); margin:20px 0;"></div>
+        <p style="text-align:center; color:#64748b; font-style:italic;">Please respond to this trade enquiry promptly to maintain business relationships.</p>
+      </div>
+      <div style="background:#f1f5f9; color:#64748b; text-align:center; padding:16px; border-top:1px solid #e2e8f0;">
+        <div style="font-weight:700; color:#7D4B3C; margin-bottom:8px;">Gajna Overseas</div>
+        <div><a href="mailto:priyavirat@zohomail.in" style="color:#7D4B3C; text-decoration:none;">priyavirat@zohomail.in</a> | <a href="tel:+919811789665" style="color:#7D4B3C; text-decoration:none;">+91 9811789665</a></div>
       </div>
     </div>
+  </div>
   `;
 
   const DRY_RUN = process.env.EMAIL_DRY_RUN === "true" || ((!user || !pass) && process.env.NODE_ENV !== "production");
