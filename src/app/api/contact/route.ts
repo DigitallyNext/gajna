@@ -126,9 +126,9 @@ export async function POST(req: NextRequest) {
   const plainText = `New contact form submission\n\nName: ${fullName}\nEmail: ${data.email}\nPhone: ${formattedPhone}\nCountry: ${data.country}\nPostal Code: ${data.postalCode}\nLinkedIn: ${data.linkedin}\nSubject: ${subject}\nMessage: ${data.message}${data.product ? `\n\nProduct Enquiry:\nProduct: ${data.product}` : ''}${data.grade ? `\nGrade: ${data.grade}` : ''}${data.quantity ? `\nQuantity: ${data.quantity} MT` : ''}\nConsent: ${data.consent ? "Yes" : "No"}`;
 
   const row = (label: string, value?: string) => `
-    <div style="margin-bottom:10px; display:flex; align-items:flex-start; padding:8px 0; border-bottom:1px solid #e2e8f0;">
-      <div style="color:#64748b; font-size:14px; font-weight:600; min-width:140px;">${label}:</div>
-      <div style="font-size:15px; color:#1e293b; flex:1; word-wrap:break-word; word-break:break-word; overflow-wrap:break-word;">${value || 'NA'}</div>
+    <div style="margin-bottom:15px; padding:12px 0; border-bottom:1px solid #e2e8f0;">
+      <div style="color:#64748b; font-size:13px; font-weight:600; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.5px;">${label}:</div>
+      <div style="font-size:15px; color:#1e293b; line-height:1.6; word-wrap:break-word; word-break:break-word; overflow-wrap:break-word; max-width:100%;">${value || 'NA'}</div>
     </div>
   `;
 
