@@ -93,7 +93,7 @@ export async function POST(req: NextRequest) {
       .row { margin-bottom: 15px; display: flex; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid #e2e8f0; }
       .row:last-child { border-bottom: none; }
       .label { color: #64748b; font-size: 14px; font-weight: 600; min-width: 140px; text-transform: uppercase; letter-spacing: 0.5px; }
-      .value { font-size: 16px; color: #1e293b; flex: 1; font-weight: 500; }
+      .value { font-size: 16px; color: #1e293b; flex: 1; font-weight: 500; word-wrap: break-word; word-break: break-word; overflow-wrap: break-word; }
       .product-enquiry { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border: 2px solid #f59e0b; border-radius: 15px; padding: 25px; margin: 25px 0; position: relative; }
       .product-enquiry::before { content: '☕'; position: absolute; top: -10px; left: 20px; background: #f59e0b; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; }
       .product-title { color: #92400e; font-weight: 700; font-size: 18px; margin-bottom: 15px; margin-left: 30px; }
@@ -128,7 +128,7 @@ export async function POST(req: NextRequest) {
   const row = (label: string, value?: string) => `
     <div style="margin-bottom:10px; display:flex; align-items:flex-start; padding:8px 0; border-bottom:1px solid #e2e8f0;">
       <div style="color:#64748b; font-size:14px; font-weight:600; min-width:140px;">${label}:</div>
-      <div style="font-size:15px; color:#1e293b; flex:1;">${value || 'NA'}</div>
+      <div style="font-size:15px; color:#1e293b; flex:1; word-wrap:break-word; word-break:break-word; overflow-wrap:break-word;">${value || 'NA'}</div>
     </div>
   `;
 
@@ -183,9 +183,6 @@ export async function POST(req: NextRequest) {
   <div style="background:#f5f7fa; padding:24px;">
     <div style="max-width:680px; margin:0 auto; background:#ffffff; border-radius:12px; overflow:hidden; border:1px solid #e1e5e9;">
       <div style="background:linear-gradient(135deg,#7D4B3C 0%, #8B5A3C 25%, #61714D 75%, #4A5D3A 100%); color:#fff; padding:24px; text-align:center;">
-        <div style="margin:0 auto 12px; background:#fff; border-radius:50%; width:60px; height:60px; display:flex; align-items:center; justify-content:center;">
-          <img src="https://gajna-overseas.vercel.app/logo.webp" alt="Gajna Overseas" style="width:40px; height:40px; object-fit:contain;" />
-        </div>
         <div style="font-size:22px; font-weight:700; margin-bottom:4px;">Thank You for Your Enquiry!</div>
         <div style="font-size:14px; opacity:.95;">Gajna Overseas - Coffee Export Excellence</div>
       </div>
