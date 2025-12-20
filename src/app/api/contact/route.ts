@@ -136,9 +136,6 @@ export async function POST(req: NextRequest) {
   <div style="background:#f5f7fa; padding:24px;">
     <div style="max-width:680px; margin:0 auto; background:#ffffff; border-radius:12px; overflow:hidden; border:1px solid #e1e5e9;">
       <div style="background:linear-gradient(135deg,#7D4B3C 0%, #8B5A3C 25%, #61714D 75%, #4A5D3A 100%); color:#fff; padding:24px; text-align:center;">
-        <div style="margin:0 auto 12px; background:#fff; border-radius:50%; width:60px; height:60px; display:flex; align-items:center; justify-content:center;">
-          // <img src="https://gajna-overseas.vercel.app/logo.webp" alt="Gajna Overseas" style="width:40px; height:40px; object-fit:contain;" />
-        </div>
         <div style="font-size:22px; font-weight:700; margin-bottom:4px;">New Contact Submission</div>
         <div style="font-size:14px; opacity:.95;">Gajna Overseas - Coffee Export Excellence</div>
       </div>
