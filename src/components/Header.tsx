@@ -87,11 +87,11 @@ export default function Header() {
           {/* Right small logo (desktop only) */}
           <div className="hidden lg:block">
             <Image
-              src="/slogo.webp"
+              src="/logobean.webp"
               alt="Small Logo"
               width={50}
               height={50}
-              className="w-12 h-12 lg:w-16 lg:h-16"
+              className="w-12 h-12 lg:w-20 lg:h-20"
             />
           </div>
 

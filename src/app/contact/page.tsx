@@ -119,7 +119,7 @@ export default function ContactPage() {
           <div className="flex flex-col ">
             <Link
               href="https://www.google.com/maps/dir/?api=1&destination=Gajna+Overseas+(OPC)+Private+Limited,+505,+Park+Royal+Apartments,+GH-80,+Block+C,+Sector-56,+Gurugram,+Haryana,+India+122011"
-              className="w-full md:w-[15vw] h-[200px] md:h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col hover:scale-110 justify-center items-center hover:shadow-lg transition "
+              className="w-full md:w-[15vw] h-[200px] md:h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col hover:scale-110 justify-center items-center hover:shadow-lg transition rounded-[10px]"
             >
               <div className="flex items-center justify-center text-[#6F4E37] ">
                 <MapPin className="w-[32px] h-[32px] md:w-[2vw] md:h-[2vw]" />
@@ -131,7 +131,7 @@ export default function ContactPage() {
 
             <Link
               href="sms:+919811789665"
-              className="w-full md:w-[15vw] hover:scale-110 h-[200px] md:h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
+              className="w-full md:w-[15vw] hover:scale-110 h-[200px] md:h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition rounded-[10px]"
             >
               <div className="flex items-center justify-center text-[#6F4E37] ">
                 <Smartphone className="w-[32px] h-[32px] md:w-[2vw] md:h-[2vw]" />
@@ -147,7 +147,7 @@ export default function ContactPage() {
             <div className="flex flex-col md:flex-row ">
               <Link
                 href="tel:+919811789665"
-                className="p-6 h-[150px] hover:scale-110 md:h-[20vh] w-full md:w-[20vw] bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
+                className="p-6 h-[150px] hover:scale-110 md:h-[20vh] w-full md:w-[20vw] bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition rounded-[10px]"
               >
                 <Phone className="w-[32px] h-[32px] md:w-[2vw] md:h-[2vw] text-[#6F4E37]" />
                 <span className="mt-3 block text-sm md:text-[1.2vw] font-medium text-[#6F4E37] text-center">
@@ -157,7 +157,7 @@ export default function ContactPage() {
 
               <Link
                 href="mailto:priyavirat@zohomail.in"
-                className="p-6 h-[150px] hover:scale-110 md:h-[20vh] w-full md:w-[20vw] bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
+                className="p-6 h-[150px] hover:scale-110 md:h-[20vh] w-full md:w-[20vw] bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition rounded-[10px]"
               >
                 <Mail className="w-[32px] h-[32px] md:w-[2vw] md:h-[2vw] text-[#6F4E37]" />
                 <span className="mt-3 block text-sm md:text-[1.2vw] font-medium text-[#6F4E37] text-center">
@@ -167,7 +167,7 @@ export default function ContactPage() {
             </div>
 
 
-            <h1 className="text-4xl hover:scale-110 md:text-7xl leading-tight font-bold text-white text-center font-serif p-6 h-[150px] md:h-[20vh] w-full md:w-[40vw]  bg-green-700 border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition">
+            <h1 className="text-4xl hover:scale-110 md:text-7xl leading-tight font-bold text-white text-center font-serif p-6 h-[150px] md:h-[20vh] w-full md:w-[40vw]  bg-green-700 border-2 border-gray-300 rounded-[10px] flex flex-col justify-center items-center hover:shadow-lg transition">
               Contact Us
             </h1>
 
@@ -176,7 +176,7 @@ export default function ContactPage() {
               href="https://meet.google.com/new"
               target="_blank"
               rel="noopener noreferrer"
-              className="h-[150px] hover:scale-110 md:h-[20vh] w-full bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
+              className="h-[150px] hover:scale-110 md:h-[20vh] w-full bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition rounded-[10px]"
             >
               <Video className="w-[32px] h-[32px] md:w-[2vw] md:h-[2vw] text-[#6F4E37]" />
               <span className="mt-3 block text-sm md:text-[1.2vw] font-medium text-[#6F4E37] text-center">
@@ -189,7 +189,7 @@ export default function ContactPage() {
           <div className="flex flex-col ">
             <button
               onClick={() => setIsEnquiryModalOpen(true)}
-              className="w-full hover:scale-110 md:w-[15vw] h-[200px] md:h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
+              className="w-full hover:scale-110 md:w-[15vw] h-[200px] md:h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition rounded-[10px]"
             >
               <MessageCircle className="w-[32px] h-[32px] md:w-[2vw] md:h-[2vw] text-[#6F4E37]" />
               <span className="mt-3 block text-sm md:text-[1.2vw] font-medium text-[#6F4E37] text-center">

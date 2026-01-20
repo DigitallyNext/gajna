@@ -8,9 +8,8 @@ import { motion, AnimatePresence } from "framer-motion";
 // Coffee bean icon for the slide indicators
 const CoffeeBeanIcon = ({ active }: { active: boolean }) => (
   <div
-    className={`w-4 h-4 mx-1 transition-all duration-300 ${
-      active ? "opacity-100 scale-110" : "opacity-50"
-    }`}
+    className={`w-4 h-4 mx-1 transition-all duration-300 ${active ? "opacity-100 scale-110" : "opacity-50"
+      }`}
   >
     <BiSolidCoffeeBean className="text-coffee-gold" />
   </div>
@@ -51,9 +50,8 @@ export default function Hero() {
       {slides.map((slide, index) => (
         <div
           key={index}
-          className={`absolute inset-0 bg-no-repeat bg-center transition-opacity duration-1000 ${
-            index === currentSlide ? "opacity-80" : "opacity-0"
-          }`}
+          className={`absolute inset-0 bg-no-repeat bg-center transition-opacity duration-1000 ${index === currentSlide ? "opacity-80" : "opacity-0"
+            }`}
           style={{
             backgroundImage: isMounted
               ? `url(${isMobile ? slide.mobileBackground : slide.background})`
@@ -64,10 +62,10 @@ export default function Hero() {
       ))}
 
       {/* Heading pill */}
-      <div className="absolute md:top-48 top-28 left-1/2 -translate-x-1/2 z-20  text-coffee-brown text-center">
-      <h2 className=" text-xl md:text-3xl font-serif text-center lg:w-[500px] w-[300px] bg-white rounded-full border border-black mb-6 mt-4">
-        Uniqueness of Indian Coffee 
-      </h2>
+      <div className="absolute md:top-48 top-28 left-0 translate-x-6 lg:left-1/2 lg:-translate-x-1/2 z-20  text-coffee-brown text-center ">
+        <h2 className=" text-xl md:text-3xl font-serif text-center w-[100%] md:w-fit px-8 md:px-12 bg-white rounded-full border border-black mb-8 mt-4">
+          Uniqueness of Indian Coffee
+        </h2>
       </div>
       <div className="container mx-auto px-4 py-16 md:py-20 relative z-10 h-full flex flex-col justify-center">
         {/* Main content section */}
