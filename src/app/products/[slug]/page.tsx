@@ -29,7 +29,7 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
             <p className="text-sm text-black mb-6">Home › Products › {product.category} › {product.variety} › {product.subtitle || product.name}</p>
 
 
-            <h1 className="text-3xl md:text-5xl font-semibold text-[#562F23]">{product.name}</h1>
+            <h1 className="text-3xl md:text-5xl font-semibold text-coffee-brown">{product.name}</h1>
 
 
           </div>
@@ -47,9 +47,9 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
       </section>
 
       {/* Related products */}
-      {/* {related.length ? (
+          {/* {related.length ? (
         <section className="max-w-6xl mx-auto px-4 pb-12">
-          <h3 className="text-4xl font-semibold  text-[#562F23] mb-6">{product.groupTitle || 'Related Products'}</h3>
+          <h3 className="text-4xl font-semibold  text-coffee-brown mb-6">{product.groupTitle || 'Related Products'}</h3>
           <div className="grid sm:grid-cols-1 lg:grid-cols-3 gap-6">
             {related.map((rp) => (
               <Link key={rp!.slug} href={`/products/${rp!.slug}`} className="group rounded-2xl border border-gray-200 overflow-hidden bg-white hover:shadow-md transition-shadow">
@@ -57,7 +57,7 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
                   <Image src={rp!.heroImage} alt={rp!.name} fill className="object-contain p-6" />
                 </div>
                 <div className="p-4">
-                  <h4 className="text-2xl  text-[#562F23]">{rp!.name}</h4>
+                  <h4 className="text-2xl  text-coffee-brown">{rp!.name}</h4>
                   <p className="text-lg text-gray-600">{rp!.subtitle }</p>
                   <p className="text-lg  text-gray-600">{rp!.category}</p>
                 </div>

@@ -161,7 +161,7 @@ export default function ProductsIndexPage({ searchParams }: { searchParams: { ca
             {searchParams.processing && ` › ${searchParams.processing}`}
             {searchParams.search && ` › Search: ${searchParams.search}`}
           </p>
-          <h1 className="text-3xl md:text-5xl font-semibold text-[#562F23] mb-2">{pageTitle}</h1>
+          <h1 className="text-3xl md:text-5xl font-semibold text-coffee-brown mb-2">{pageTitle}</h1>
           
           {/* Search Bar */}
           <div className="mt-6 mb-4">
@@ -237,7 +237,7 @@ export default function ProductsIndexPage({ searchParams }: { searchParams: { ca
                 {filteredProducts.map((p) => (
                   <Link key={p.slug} href={`/products/${p.slug}`} className="group hover:shadow-md transition-shadow rounded-2xl border-2">
                     <div className="p-4">
-                      <h3 className="text-xl mb-2 text-[#562F23]">{p.name}</h3>
+                      <h3 className="text-xl mb-2 text-coffee-brown">{p.name}</h3>
                       <p className="text-sm text-gray-600 mb-1">{p.subtitle}</p>
                       <div className="flex flex-wrap gap-2 mt-2">
                         <span className="inline-block px-2 py-1 bg-amber-100 text-amber-800 text-xs rounded">{p.category}</span>

@@ -261,7 +261,7 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
           
           <div className="p-4 mt-6">
             {/* Header */}
-            <div className="bg-white text-[#7D4B3C] p-3 mb-4 rounded-lg flex items-center justify-center border ">
+            <div className="bg-white text-coffee-brown p-3 mb-4 rounded-lg flex items-center justify-center border ">
               <Image
                 src="/registration/1.webp"
                 alt="Gajna Logo"
@@ -295,7 +295,7 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
                       {(section.blocks[0]?.groups || []).map((g, i) => (
                         <div key={i}>
                           {g.subheading && (
-                            <p className="text-sm font-medium text-[#7D4B3C] mb-2">{g.subheading}</p>
+                            <p className="text-sm font-medium text-coffee-brown mb-2">{g.subheading}</p>
                           )}
                           <div className="space-y-2">
                             {g.items.map((name, idx) => {
@@ -306,7 +306,7 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
                                   <Link 
                                     href={href} 
                                     onClick={onClose} 
-                                    className="text-sm text-[#562F23] hover:text-[#7D4B3C] font-medium block"
+                                    className="text-sm text-coffee-brown hover:text-coffee-brown font-medium block"
                                   >
                                     {idx + 1}. {name}
                                   </Link>
@@ -344,7 +344,7 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
                                         <Link 
                                           href={href} 
                                           onClick={onClose} 
-                                          className="text-sm text-[#562F23] hover:text-[#7D4B3C] font-medium block"
+                                          className="text-sm text-coffee-brown hover:text-coffee-brown font-medium block"
                                         >
                                           {idx + 1}. {name}
                                         </Link>
@@ -365,7 +365,7 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
             {/* Legacy mobile product previews disabled per Figma spec */}
             {false && arabicaProducts.length > 0 && (
                <div className="mb-8">
-                 <h3 className="text-lg font-semibold text-[#562F23] mb-4 border-b border-gray-200 pb-2">
+                 <h3 className="text-lg font-semibold text-coffee-brown mb-4 border-b border-gray-200 pb-2">
                    Arabica Coffee
                  </h3>
                  <div className="space-y-3">
@@ -385,7 +385,7 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
                          />
                        </div>
                        <div>
-                         <h4 className="font-medium text-[#562F23]">{product.name}</h4>
+                         <h4 className="font-medium text-coffee-brown">{product.name}</h4>
                          <p className="text-sm text-gray-600">{product.subtitle}</p>
                        </div>
                      </Link>
@@ -397,7 +397,7 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
              {/* Robusta Products */}
             {false && robustaProducts.length > 0 && (
                <div className="mb-8">
-                 <h3 className="text-lg font-semibold text-[#562F23] mb-4 border-b border-gray-200 pb-2">
+                 <h3 className="text-lg font-semibold text-coffee-brown mb-4 border-b border-gray-200 pb-2">
                    Robusta Coffee
                  </h3>
                  <div className="space-y-3">
@@ -417,7 +417,7 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
                          />
                        </div>
                        <div>
-                         <h4 className="font-medium text-[#562F23]">{product.name}</h4>
+                         <h4 className="font-medium text-coffee-brown">{product.name}</h4>
                          <p className="text-sm text-gray-600">{product.subtitle}</p>
                        </div>
                      </Link>
@@ -433,7 +433,7 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
 
   // ✅ Desktop version
   return (
-    <div className="absolute left-1/2 -translate-x-[57%] top-full w-[90vw] md:w-[80vw] max-h-[75vh] overflow-y-auto bg-white shadow-xl border border-[#562F23] ring-1 ring-[#562F23]/20 z-[9999] rounded-2xl hidden md:block -mt-1">
+    <div className="absolute left-1/2 -translate-x-[57%] top-full w-[90vw] md:w-[80vw] max-h-[75vh] overflow-y-auto bg-white shadow-xl border border-coffee-brown ring-1 ring-coffee-brown/20 z-[9999] rounded-2xl hidden md:block -mt-1">
       <div ref={menuRef} className="max-w-7xl mx-auto p-8">
         {/* Header */}
         <div className="shadow-2xl text-coffee-brown p-4 mb-6 rounded-lg flex items-center border border-black  w-[85%] mx-auto  justify-center">
@@ -458,15 +458,15 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
                     {(section.blocks[0]?.groups || []).map((g, i) => (
                       <div key={i} className="mb-4">
                         {g.subheading ? (
-                          <p className="text-sm text-[#7D4B3C] font-medium mb-1">{g.subheading}</p>
+                          <p className="text-sm text-coffee-brown font-medium mb-1">{g.subheading}</p>
                         ) : null}
-                        <ol className="list-decimal pl-5 space-y-1 text-sm text-[#562F23]">
+                        <ol className="list-decimal pl-5 space-y-1 text-sm text-coffee-brown">
                           {g.items.map((name) => {
                             const slug = slugMap[name];
                             const href = slug ? `/products/${slug}` : "/products";
                             return (
                               <li key={name}>
-                                <Link href={href} onClick={onClose} className="hover:text-[#7D4B3C]">
+                                <Link href={href} onClick={onClose} className="hover:text-coffee-brown">
                                   {name}
                                 </Link>
                               </li>
@@ -489,13 +489,13 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
                               {g.subheading ? (
                                 <p className="text-sm text-green-700 font-semibold mb-1 text-center">{g.subheading}</p>
                               ) : null}
-                              <ol className="list-decimal pl-20 space-y-1 text-sm text-[#562F23]">
+                              <ol className="list-decimal pl-20 space-y-1 text-sm text-coffee-brown">
                                 {g.items.map((name) => {
                                   const slug = slugMap[name] || slugifyGrade(name);
                                   const href = `/products/${slug}`;
                                   return (
                                     <li key={name}>
-                                      <Link href={href} onClick={onClose} className="hover:text-[#7D4B3C] text-xs">
+                                      <Link href={href} onClick={onClose} className="hover:text-coffee-brown text-xs">
                                         {name}
                                       </Link>
                                     </li>

@@ -104,7 +104,7 @@ export default function ProductDetailClient({ product }: Props) {
                   onClick={() => setSelectedImage(src)}
                   className={`relative w-20 h-16 rounded-md bg-[#FFF7F2] border overflow-hidden transition ring-offset-2 focus:outline-none focus:ring-2 ${
                     isActive
-                      ? "ring-2 ring-[#7D4B3C] border-[#7D4B3C]"
+                      ? "ring-2 ring-coffee-brown border-coffee-brown"
                       : "border-gray-200 hover:ring-1 hover:ring-gray-300"
                   }`}
                   aria-label={`Show image ${idx + 1}`}
@@ -302,7 +302,7 @@ export default function ProductDetailClient({ product }: Props) {
             </button>
           </div> */}
           <button
-            className="ml-4 px-6 py-3 bg-[#7D4B3C] text-white rounded-full hover:bg-[#6e4236]"
+            className="ml-4 px-6 py-3 bg-coffee-brown text-white rounded-full hover:bg-coffee-brown/90"
             type="button"
             onClick={() => {
               setEnquiryModalOpen(true);

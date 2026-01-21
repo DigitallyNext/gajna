@@ -99,7 +99,7 @@ export default function WhyChooseUs() {
       <div className="max-w-7xl mx-auto px-4">
         {/* Title */}
         <div className="text-center mb-16">
-          <h2 className="main-title text-4xl md:text-6xl font-serif text-[#562F23] mb-8">
+          <h2 className="main-title text-4xl md:text-6xl font-serif text-coffee-brown mb-8">
             Why Choose Gajna Overseas?
           </h2>
         </div>
@@ -172,10 +172,10 @@ export default function WhyChooseUs() {
               >
                 {/* Title and Subtitle */}
                 <div className="mb-6">
-                  <h3 className="text-lg md:text-xl font-bold text-[#562F23] mb-3 whitespace-pre-line">
+                  <h3 className="text-lg md:text-xl font-bold text-coffee-brown mb-3 whitespace-pre-line">
                     {feature.title}
                   </h3>
-                  <p className="text-base md:text-lg text-[#562F23] whitespace-pre-line">
+                  <p className="text-base md:text-lg text-coffee-brown whitespace-pre-line">
                     {feature.subtitle}
                   </p>
                 </div>

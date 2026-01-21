@@ -24,7 +24,7 @@ const config: Config = {
   		},
   		colors: {
   			coffee: {
-  				brown: '#562F23',
+  				brown: '#863B0E',
   				green: '#61714D',
   				lightGreen: '#90AE94',
   				gold: '#DFAF5D',

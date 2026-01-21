@@ -68,7 +68,7 @@ export default function Header() {
               className="text-xl font-bold text-coffee-brown flex items-center"
             >
               <Image
-                src="/logo.webp"
+                src="/newlogo.webp"
                 alt="Gaina Overseas Logo"
                 width={150}
                 height={80}
@@ -446,7 +446,7 @@ export default function Header() {
             <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
               <div className="flex lg:flex-row flex-col items-center justify-between p-6 border-b">
                 <div className="flex flex-row justify-between items-center">
-                  <Image src="/logo.webp" alt="Gajna Overseas Private Limited" width={100} height={50} />
+                  <Image src="/newlogo.webp" alt="Gajna Overseas Private Limited" width={100} height={50} />
                   <button
                     onClick={() => setQuickEnquiryOpen(false)}
                     className="text-gray-400 hover:text-gray-600 transition-colors lg:hidden block"

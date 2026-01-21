@@ -37,14 +37,14 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-2 lg:col-span-1">
             <Link href="/" className="text-white font-bold text-xl md:text-2xl mb-4 flex justify-center md:justify-start items-center">
               <Image
-                src="/logo.webp"
+                src="/newlogo.webp"
                 alt="Gaina Overseas Logo"
                 width={180}
                 height={80}
                 className="w-40 md:w-48 h-auto rounded-2xl p-2 bg-white mb-4"
               />
               {/* <Image
-                src="/slogo.webp"
+                src="/snewlogo.webp"
                 alt="Gaina Overseas Logo"
                 width={200}
                 height={200}

@@ -286,13 +286,13 @@ export default function SearchCoffeeGradesPage({ searchParams }: { searchParams:
             </div>
           ) : (
             <>
-              <h1 className="text-3xl md:text-5xl font-semibold text-[#562F23] mb-2 text-center">{pageTitle}</h1>
+              <h1 className="text-3xl md:text-5xl font-semibold text-coffee-brown mb-2 text-center">{pageTitle}</h1>
               <p className="mb-4 text-gray-700">{filteredProducts.length} coffee grades found</p>
               <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredProducts.map((p) => (
                   <Link key={p.slug} href={`/products/${p.slug}`} className="group hover:shadow-md transition-shadow rounded-2xl border-2">
                     <div className="p-4">
-                      <h3 className="text-xl mb-2 text-[#562F23]">{p.name}</h3>
+                      <h3 className="text-xl mb-2 text-coffee-brown">{p.name}</h3>
                       <p className="text-sm text-gray-600 mb-1">{p.subtitle}</p>
                       <div className="flex flex-wrap gap-2 mt-2">
                         <span className="inline-block px-2 py-1 bg-amber-100 text-amber-800 text-xs rounded">{p.category}</span>

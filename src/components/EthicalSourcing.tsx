@@ -106,7 +106,7 @@ export default function EthicalSourcing() {
       {/* Registrations & Certifications */}
       <div className="bg-white border-t-2 border-coffee-brown pt-6">
         <div className="max-w-7xl mx-auto px-4 py-8">
-         <h2 className="main-title text-center text-4xl md:text-6xl font-serif text-[#562F23] mb-20">
+         <h2 className="main-title text-center text-4xl md:text-6xl font-serif text-coffee-brown mb-20">
             Registrations & Certificates
           </h2>
 

@@ -80,15 +80,15 @@ export async function POST(req: NextRequest) {
       body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #1a1a1a; margin: 0; padding: 0; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); line-height: 1.6; }
       .email-wrapper { background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); padding: 40px 20px; min-height: 100vh; }
       .container { max-width: 680px; margin: 0 auto; background: #ffffff; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); border: 1px solid #e1e5e9; }
-      .header { background: linear-gradient(135deg, #7D4B3C 0%, #8B5A3C 25%, #61714D 75%, #4A5D3A 100%); color: white; padding: 40px 30px; text-align: center; position: relative; }
+      .header { background: linear-gradient(135deg, #863B0E 0%, #863B0E 25%, #61714D 75%, #4A5D3A 100%); color: white; padding: 40px 30px; text-align: center; position: relative; }
       .header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="coffee" patternUnits="userSpaceOnUse" width="20" height="20"><circle cx="10" cy="10" r="1" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23coffee)"/></svg>') repeat; }
       .logo { width: 90px; height: 90px; margin: 0 auto 20px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(0,0,0,0.15); position: relative; z-index: 1; }
       .brand { font-size: 28px; font-weight: 700; margin-bottom: 8px; text-shadow: 0 2px 4px rgba(0,0,0,0.1); position: relative; z-index: 1; }
       .tagline { font-size: 16px; opacity: 0.95; font-weight: 300; position: relative; z-index: 1; }
       .content { padding: 40px 30px; background: #ffffff; }
       .greeting { font-size: 20px; font-weight: 600; color: #2d3748; margin-bottom: 25px; text-align: center; }
-      .section { margin-bottom: 30px; background: #f8fafc; border-radius: 12px; padding: 25px; border-left: 4px solid #7D4B3C; }
-      .section-title { font-size: 18px; font-weight: 700; color: #7D4B3C; margin-bottom: 20px; display: flex; align-items: center; }
+      .section { margin-bottom: 30px; background: #f8fafc; border-radius: 12px; padding: 25px; border-left: 4px solid #863B0E; }
+      .section-title { font-size: 18px; font-weight: 700; color: #863B0E; margin-bottom: 20px; display: flex; align-items: center; }
       .section-title::before { content: '📋'; margin-right: 10px; font-size: 20px; }
       .row { margin-bottom: 15px; display: flex; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid #e2e8f0; }
       .row:last-child { border-bottom: none; }
@@ -98,11 +98,11 @@ export async function POST(req: NextRequest) {
       .product-enquiry::before { content: '☕'; position: absolute; top: -10px; left: 20px; background: #f59e0b; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; }
       .product-title { color: #92400e; font-weight: 700; font-size: 18px; margin-bottom: 15px; margin-left: 30px; }
       .footer { background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%); color: #64748b; font-size: 14px; text-align: center; padding: 30px; border-top: 1px solid #e2e8f0; }
-      .footer-brand { font-weight: 700; color: #7D4B3C; font-size: 16px; margin-bottom: 10px; }
+      .footer-brand { font-weight: 700; color: #863B0E; font-size: 16px; margin-bottom: 10px; }
       .footer-contact { margin-top: 15px; }
-      .footer-contact a { color: #7D4B3C; text-decoration: none; font-weight: 600; }
-      .divider { height: 2px; background: linear-gradient(90deg, #7D4B3C 0%, #61714D 100%); margin: 25px 0; border-radius: 1px; }
-      .highlight { background: linear-gradient(135deg, #7D4B3C 0%, #61714D 100%); color: white; padding: 3px 8px; border-radius: 6px; font-weight: 600; }
+      .footer-contact a { color: #863B0E; text-decoration: none; font-weight: 600; }
+      .divider { height: 2px; background: linear-gradient(90deg, #863B0E 0%, #61714D 100%); margin: 25px 0; border-radius: 1px; }
+      .highlight { background: linear-gradient(135deg, #863B0E 0%, #61714D 100%); color: white; padding: 3px 8px; border-radius: 6px; font-weight: 600; }
       @media (max-width: 600px) { 
         .container { margin: 10px; border-radius: 15px; } 
         .content { padding: 25px 20px; } 
@@ -135,15 +135,15 @@ export async function POST(req: NextRequest) {
   const adminHtml = `
   <div style="background:#f5f7fa; padding:24px;">
     <div style="max-width:680px; margin:0 auto; background:#ffffff; border-radius:12px; overflow:hidden; border:1px solid #e1e5e9;">
-      <div style="background:linear-gradient(135deg,#7D4B3C 0%, #8B5A3C 25%, #61714D 75%, #4A5D3A 100%); color:#fff; padding:24px; text-align:center;">
+      <div style="background:linear-gradient(135deg,#863B0E 0%, #863B0E 25%, #61714D 75%, #4A5D3A 100%); color:#fff; padding:24px; text-align:center;">
         <div style="font-size:22px; font-weight:700; margin-bottom:4px;">New Contact Submission</div>
         <div style="font-size:14px; opacity:.95;">Gajna Overseas - Coffee Export Excellence</div>
       </div>
       <div style="padding:24px;">
         <div style="font-size:18px; font-weight:600; color:#2d3748; margin-bottom:16px; text-align:center;">📧 New Enquiry Received</div>
 
-        <div style="margin-bottom:20px; background:#f8fafc; border-radius:12px; padding:20px; border-left:4px solid #7D4B3C;">
-          <div style="font-size:16px; font-weight:700; color:#7D4B3C; margin-bottom:12px;">Contact Information</div>
+        <div style="margin-bottom:20px; background:#f8fafc; border-radius:12px; padding:20px; border-left:4px solid #863B0E;">
+          <div style="font-size:16px; font-weight:700; color:#863B0E; margin-bottom:12px;">Contact Information</div>
           ${row('Name', fullName)}
           ${row('Email', data.email)}
           ${row('Phone', formattedPhone)}
@@ -152,8 +152,8 @@ export async function POST(req: NextRequest) {
           ${row('LinkedIn', data.linkedin)}
         </div>
 
-        <div style="margin-bottom:20px; background:#f8fafc; border-radius:12px; padding:20px; border-left:4px solid #7D4B3C;">
-          <div style="font-size:16px; font-weight:700; color:#7D4B3C; margin-bottom:12px;">Enquiry Details</div>
+        <div style="margin-bottom:20px; background:#f8fafc; border-radius:12px; padding:20px; border-left:4px solid #863B0E;">
+          <div style="font-size:16px; font-weight:700; color:#863B0E; margin-bottom:12px;">Enquiry Details</div>
           ${row('Subject', subject)}
           ${row('Message', data.message.replace(/\n/g, '<br/>'))}
         </div>
@@ -166,12 +166,12 @@ export async function POST(req: NextRequest) {
           ${data.quantity ? row('Quantity', `${data.quantity} MT`) : ''}
         </div>` : ''}
 
-        <div style="height:2px; background:linear-gradient(90deg,#7D4B3C 0%, #61714D 100%); margin:20px 0;"></div>
+        <div style="height:2px; background:linear-gradient(90deg,#863B0E 0%, #61714D 100%); margin:20px 0;"></div>
         <p style="text-align:center; color:#64748b;">This email was sent automatically from your website</p>
       </div>
       <div style="background:#f1f5f9; color:#64748b; text-align:center; padding:16px; border-top:1px solid #e2e8f0;">
-        <div style="font-weight:700; color:#7D4B3C; margin-bottom:8px;">Gajna Overseas</div>
-        <div><a href="mailto:priyavirat@zohomail.in" style="color:#7D4B3C; text-decoration:none;">priyavirat@zohomail.in</a> | <a href="tel:+919811789665" style="color:#7D4B3C; text-decoration:none;">+91 9811789665</a></div>
+        <div style="font-weight:700; color:#863B0E; margin-bottom:8px;">Gajna Overseas</div>
+        <div><a href="mailto:priyavirat@zohomail.in" style="color:#863B0E; text-decoration:none;">priyavirat@zohomail.in</a> | <a href="tel:+919811789665" style="color:#863B0E; text-decoration:none;">+91 9811789665</a></div>
       </div>
     </div>
   </div>`;
@@ -179,7 +179,7 @@ export async function POST(req: NextRequest) {
   const userHtml = `
   <div style="background:#f5f7fa; padding:24px;">
     <div style="max-width:680px; margin:0 auto; background:#ffffff; border-radius:12px; overflow:hidden; border:1px solid #e1e5e9;">
-      <div style="background:linear-gradient(135deg,#7D4B3C 0%, #8B5A3C 25%, #61714D 75%, #4A5D3A 100%); color:#fff; padding:24px; text-align:center;">
+      <div style="background:linear-gradient(135deg,#863B0E 0%, #863B0E 25%, #61714D 75%, #4A5D3A 100%); color:#fff; padding:24px; text-align:center;">
         <div style="font-size:22px; font-weight:700; margin-bottom:4px;">Thank You for Your Enquiry!</div>
         <div style="font-size:14px; opacity:.95;">Gajna Overseas - Coffee Export Excellence</div>
       </div>
@@ -189,13 +189,13 @@ export async function POST(req: NextRequest) {
         <p style="line-height:1.6; margin-bottom:12px;">We typically respond within 24 hours during business days.</p>
         ${(data.product || data.grade) ? `<p style="line-height:1.6; margin-bottom:12px;">📋 <strong>Your Enquiry:</strong> ${data.product ? data.product : 'Coffee products'}${data.grade ? ` (${data.grade})` : ''}${data.quantity ? ` - Quantity: ${data.quantity} MT` : ''}</p>` : ''}
 
-        <div style="margin-top:16px; background:#f8fafc; border-radius:12px; padding:20px; border-left:4px solid #7D4B3C;">
-          <div style="font-size:16px; font-weight:700; color:#7D4B3C; margin-bottom:12px;">Your Message Summary</div>
+        <div style="margin-top:16px; background:#f8fafc; border-radius:12px; padding:20px; border-left:4px solid #863B0E;">
+          <div style="font-size:16px; font-weight:700; color:#863B0E; margin-bottom:12px;">Your Message Summary</div>
           ${row('Subject', subject)}
           ${row('Message', data.message.replace(/\n/g, '<br/>'))}
         </div>
 
-        <div style="height:2px; background:linear-gradient(90deg,#7D4B3C 0%, #61714D 100%); margin:20px 0;"></div>
+        <div style="height:2px; background:linear-gradient(90deg,#863B0E 0%, #61714D 100%); margin:20px 0;"></div>
         <div style="background:#f8fafc; border-radius:12px; padding:20px;">
           <p style="line-height:1.6; margin-bottom:12px;">🌟 <strong>Why Choose Gajna Overseas?</strong></p>
           <ul style="margin:0; padding-left:20px; line-height:1.6; color:#374151;">
@@ -207,8 +207,8 @@ export async function POST(req: NextRequest) {
         </div>
       </div>
       <div style="background:#f1f5f9; color:#64748b; text-align:center; padding:16px; border-top:1px solid #e2e8f0;">
-        <div style="font-weight:700; color:#7D4B3C; margin-bottom:8px;">Gajna Overseas</div>
-        <div><a href="mailto:priyavirat@zohomail.in" style="color:#7D4B3C; text-decoration:none;">priyavirat@zohomail.in</a> | <a href="tel:+919811789665" style="color:#7D4B3C; text-decoration:none;">+91 9811789665</a></div>
+        <div style="font-weight:700; color:#863B0E; margin-bottom:8px;">Gajna Overseas</div>
+        <div><a href="mailto:priyavirat@zohomail.in" style="color:#863B0E; text-decoration:none;">priyavirat@zohomail.in</a> | <a href="tel:+919811789665" style="color:#863B0E; text-decoration:none;">+91 9811789665</a></div>
         <p style="margin-top:10px; font-size:11px; opacity:.6;">If you didn't send this enquiry, please ignore this email.</p>
       </div>
     </div>

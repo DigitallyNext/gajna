@@ -58,7 +58,7 @@ export default function CoffeeProducts() {
       />
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-           <h2 className="main-title text-4xl md:text-6xl font-serif text-[#562F23] mb-8">
+           <h2 className="main-title text-4xl md:text-6xl font-serif text-coffee-brown mb-8">
             Explore Our Coffees
           </h2>
           <p className="text-black text-xl font-semibold mt-[3vw] mb-[-3vw]">Our 2 core offerings</p>
@@ -90,7 +90,7 @@ export default function CoffeeProducts() {
 
                 {/* Card with content */}
                 <div
-                  className="bg-[#7D4B3C] text-white px-6 py-4 rounded-2xl w-full shadow-lg mt-[-80px] relative overflow-hidden min-h-[280px]"
+                  className="bg-coffee-brown text-white px-6 py-4 rounded-2xl w-full shadow-lg mt-[-80px] relative overflow-hidden min-h-[280px]"
                 >
                   <div className="text-center pt-12 h-full flex flex-col justify-start">
                     {/* Title */}
@@ -147,7 +147,7 @@ export default function CoffeeProducts() {
 
                 {/* Card with content */}
                 <div
-                  className="bg-[#7D4B3C] text-white px-6 py-4 rounded-2xl w-full shadow-lg mt-[-80px] relative overflow-hidden min-h-[280px]"
+                  className="bg-coffee-brown text-white px-6 py-4 rounded-2xl w-full shadow-lg mt-[-80px] relative overflow-hidden min-h-[280px]"
                 >
                   <div className="text-center pt-12 h-full flex flex-col justify-start">
                     {/* Title */}
