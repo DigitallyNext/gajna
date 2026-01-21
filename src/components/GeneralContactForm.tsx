@@ -270,6 +270,9 @@ export default function GeneralContactForm({
         if (onSuccess) {
           onSuccess();
         }
+
+        // Redirect to Thank You page
+        window.location.href = '/thank-you';
       } else {
         setStatus('error');
         const errorMessage = data.issues

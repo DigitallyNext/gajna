@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Preloader from "@/components/Preloader";
 import { ChevronUp } from "lucide-react";
+import FloatingContactButton from "@/components/FloatingContactButton";
 
 interface ClientWrapperProps {
   children: React.ReactNode;
@@ -82,8 +83,8 @@ const ClientWrapper: React.FC<ClientWrapperProps> = ({ children }) => {
   return (
     <>
       {isLoading && (
-        <Preloader 
-          onLoadingComplete={handleLoadingComplete} 
+        <Preloader
+          onLoadingComplete={handleLoadingComplete}
           contentLoaded={contentLoaded}
         />
       )}
@@ -100,6 +101,9 @@ const ClientWrapper: React.FC<ClientWrapperProps> = ({ children }) => {
           >
             <ChevronUp className="w-6 h-6" />
           </button>
+
+          <FloatingContactButton />
+
           <Footer />
         </>
       )}

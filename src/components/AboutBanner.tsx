@@ -5,7 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { BsWhatsapp } from "react-icons/bs";
 import Link from "next/link";
-import { Mail, MapPin, MessageCircle, Phone, Smartphone, Video } from "lucide-react";
+import { Mail, MapPin, MessageCircle, Phone, Smartphone, Video, Target, Sprout, Truck, Heart, Users, User, Eye } from "lucide-react";
 import CertificateViewer from "./CertificateViewer";
 
 export default function AboutBanner() {
@@ -73,11 +73,11 @@ export default function AboutBanner() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Mobile Layout (sm and below) */}
           <div className="block sm:hidden mt-12">
-           <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-3 gap-4">
               {/* Top Row */}
               <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex flex-col text-center items-center justify-center hover:shadow-lg transition-shadow duration-300">
-              
-                Company Mission 
+
+                Company Mission
                 <p className="text-white">Less</p>
               </div>
               <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
@@ -153,8 +153,8 @@ export default function AboutBanner() {
             <div className="grid grid-cols-3 gap-4">
               {/* Top Row */}
               <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex flex-col text-center items-center justify-center hover:shadow-lg transition-shadow duration-300">
-              
-                Company Mission 
+
+                Company Mission
                 <p className="text-white">Less</p>
               </div>
               <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
@@ -228,116 +228,53 @@ export default function AboutBanner() {
           {/* Desktop Layout (lg and above) - Original Design Enhanced */}
           <div className="hidden lg:flex justify-center items-center">
             {/* Column 1 */}
-            <div className="flex flex-col">
-              <div className="w-[15vw] h-[30vh] p-6 text-coffee-brown font-bold bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
-                {/* <Image 
-                  src="/registration/apeda.webp"
-                  alt="APEDA Registration"
-                  width={1200}
-                  height={100}
-                  className="w-[8vw] h-[8vw] object-contain"
-                /> */}
-                Company Mission
+            <div className="flex flex-col gap-4">
+              <div className="w-[15vw] h-[30vh] p-6 text-coffee-brown font-bold bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105 gap-4">
+                <Target className="w-16 h-16 text-coffee-brown" />
+                <span className="text-lg">Company Mission</span>
               </div>
-              <div className="w-[15vw] h-[30vh] p-6 text-coffee-brown font-bold bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
-                {/* <Image 
-                  src="/registration/7.webp"
-                  alt="Certificate"
-                  width={1200}
-                  height={100}
-                  className="w-[8vw] h-[8vw] object-contain"
-                /> */}
-                Company Vision
+              <div className="w-[15vw] h-[30vh] p-6 text-coffee-brown font-bold bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105 gap-4">
+                <Eye className="w-16 h-16 text-coffee-brown" />
+                <span className="text-lg">Company Vision</span>
               </div>
             </div>
 
             {/* Column 2 */}
-            <div className="flex flex-col">
-              <div className="flex flex-row">
-                <div className="p-6 h-[20vh] w-[20vw] text-coffee-brown font-bold bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
-                  {/* <Image 
-                    src="/registration/9.webp"
-                    alt="Registration Certificate"
-                    width={1200}
-                    height={100}
-                    className="w-[8vw] h-[8vw] object-contain"
-                  /> */}
-                  Coffee Sourcing Expert
+            <div className="flex flex-col gap-4 mx-4">
+              <div className="flex flex-row gap-4">
+                <div className="p-6 h-[20vh] w-[20vw] text-coffee-brown font-bold bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105 gap-3">
+                  <Sprout className="w-12 h-12 text-coffee-brown" />
+                  <span className="text-lg">Sourcing Expert</span>
                 </div>
-                <div className="p-6 h-[20vh] w-[20vw] text-coffee-brown font-bold bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
-                  {/* <Image 
-                    src="/registration/ccri.webp"
-                    alt="CCRI Certificate"
-                    width={1200}
-                    height={100}
-                    className="w-[7vw] h-[7vw] object-contain"
-                  /> */}
-                  Coffee Logistics Expert
+                <div className="p-6 h-[20vh] w-[20vw] text-coffee-brown font-bold bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105 gap-3">
+                  <Truck className="w-12 h-12 text-coffee-brown" />
+                  <span className="text-lg">Logistics Expert</span>
                 </div>
               </div>
 
-              <div className="p-6 h-[20vh] w-[40vw] bg-green-700 border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="p-6 h-[20vh] w-[40vw] + 16px bg-green-700 border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <h1 className="text-4xl xl:text-6xl leading-tight font-bold text-white text-center font-serif">
                   About Us
                 </h1>
               </div>
 
-              <div className="h-[20vh] w-[40vw] text-coffee-brown font-bold bg-white border-2 border-gray-300 rounded-lg flex flex-row justify-center items-center gap-10 hover:shadow-xl transition-all duration-300 hover:scale-105">
-                {/* <Image 
-                  src="/registration/1.webp"
-                  alt="Certificate 1"
-                  width={1200}
-                  height={100}
-                  className="w-[8vw] h-[8vw] object-contain"
-                /> */}
-                {/* <Image 
-                  src="/registration/4.webp"
-                  alt="Certificate 4"
-                  width={1200}
-                  height={100}
-                  className="w-[8vw] h-[8vw] object-contain"
-                />
-                <Image 
-                  src="/registration/3.webp"
-                  alt="Certificate 3"
-                  width={1200}
-                  height={100}
-                  className="w-[6vw] h-[7vw] object-contain"
-                />
-                 <Image 
-                  src="/registration/10.webp"
-                  alt="Certificate 2"
-                  width={1200}
-                  height={100}
-                  className="w-[6vw] h-[7vw] object-contain rounded-2xl"
-                /> */}
-                Know the company founder
-
+              <div className="h-[20vh] w-[40vw] + 16px text-coffee-brown font-bold bg-white border-2 border-gray-300 rounded-lg flex flex-row justify-center items-center gap-10 hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <div className="flex flex-col items-center gap-2">
+                  <User className="w-12 h-12 text-coffee-brown" />
+                  <span className="text-lg">Founder</span>
+                </div>
               </div>
             </div>
 
             {/* Column 3 */}
-            <div className="flex flex-col">
-              <div className="w-[15vw] h-[30vh] p-6 text-coffee-brown font-bold bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
-                {/* <Image 
-                  src="/registration/ECGC.webp"
-                  alt="ECGC Registration"
-                  width={1200}
-                  height={100}
-                  className="w-[8vw] h-[8vw] object-contain"
-                /> */}
-                Company
-                Values
+            <div className="flex flex-col gap-4">
+              <div className="w-[15vw] h-[30vh] p-6 text-coffee-brown font-bold bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105 gap-4">
+                <Heart className="w-16 h-16 text-coffee-brown" />
+                <span className="text-lg">Company Values</span>
               </div>
-              <div className="w-[15vw] h-[30vh] p-6 text-coffee-brown font-bold bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
-                {/* <Image 
-                  src="/registration/6.webp"
-                  alt="Registration Document"
-                  width={1200}
-                  height={100}
-                  className="w-[8vw] h-[8vw] object-contain"
-                /> */}
-                Know the team
+              <div className="w-[15vw] h-[30vh] p-6 text-coffee-brown font-bold bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105 gap-4">
+                <Users className="w-16 h-16 text-coffee-brown" />
+                <span className="text-lg">Meet The Team</span>
               </div>
             </div>
           </div>

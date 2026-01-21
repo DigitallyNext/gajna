@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { allProducts, Product } from "@/data/products";
 import { unstable_noStore as noStore } from "next/cache";
+import GradeSelect from "@/components/GradeSelect";
 
 // Ensure this page renders dynamically so query params work on Vercel
 export const dynamic = "force-dynamic";
@@ -68,28 +69,28 @@ const normalizeProcessing = (value?: string): string => {
 const quickFilterRows: Array<
   { label: string; params: { category?: string; variety?: string; processing?: string } }[]
 > = [
-  [
-    { label: "All Arabica Commercial Grades", params: { category: "Commercial Grade", variety: "Arabica" } },
-    { label: "Washed Arabica - Commercial Grades", params: { category: "Commercial Grade", variety: "Arabica", processing: "Washed Arabica" } },
-    { label: "Unwashed Arabica - Commercial Grades", params: { category: "Commercial Grade", variety: "Arabica", processing: "Unwashed Arabica" } },
-    { label: "All Arabica Premium Grades", params: { category: "Premium Grade", variety: "Arabica" } },
-    { label: "Washed Arabica - Premium Grades", params: { category: "Premium Grade", variety: "Arabica", processing: "Washed Arabica" } },
-    { label: "Unwashed Arabica - Premium Grades", params: { category: "Premium Grade", variety: "Arabica", processing: "Unwashed Arabica" } },
-    { label: "Arabica Specialty Grades", params: { category: "Specialty Coffee", variety: "Arabica" } },
-  ],
-  [
-    { label: "All Robusta Commercial Grades", params: { category: "Commercial Grade", variety: "Robusta" } },
-    { label: "Washed Robusta - Commercial Grades", params: { category: "Commercial Grade", variety: "Robusta", processing: "Washed Robusta" } },
-    { label: "Unwashed Robusta - Commercial Grades", params: { category: "Commercial Grade", variety: "Robusta", processing: "Unwashed Robusta" } },
-    { label: "All Robusta Premium Grades", params: { category: "Premium Grade", variety: "Robusta" } },
-    { label: "Washed Robusta - Premium Grades", params: { category: "Premium Grade", variety: "Robusta", processing: "Washed Robusta" } },
-    { label: "Unwashed Robusta - Premium Grades", params: { category: "Premium Grade", variety: "Robusta", processing: "Unwashed Robusta" } },
-    { label: "Robusta Specialty Grades", params: { category: "Specialty Coffee", variety: "Robusta" } },
-  ],
-  [
-    { label: "Miscellaneous Grades", params: { category: "Miscellaneous Grade" } },
-  ],
-];
+    [
+      { label: "All Arabica Commercial Grades", params: { category: "Commercial Grade", variety: "Arabica" } },
+      { label: "Washed Arabica - Commercial Grades", params: { category: "Commercial Grade", variety: "Arabica", processing: "Washed Arabica" } },
+      { label: "Unwashed Arabica - Commercial Grades", params: { category: "Commercial Grade", variety: "Arabica", processing: "Unwashed Arabica" } },
+      { label: "All Arabica Premium Grades", params: { category: "Premium Grade", variety: "Arabica" } },
+      { label: "Washed Arabica - Premium Grades", params: { category: "Premium Grade", variety: "Arabica", processing: "Washed Arabica" } },
+      { label: "Unwashed Arabica - Premium Grades", params: { category: "Premium Grade", variety: "Arabica", processing: "Unwashed Arabica" } },
+      { label: "Arabica Specialty Grades", params: { category: "Specialty Coffee", variety: "Arabica" } },
+    ],
+    [
+      { label: "All Robusta Commercial Grades", params: { category: "Commercial Grade", variety: "Robusta" } },
+      { label: "Washed Robusta - Commercial Grades", params: { category: "Commercial Grade", variety: "Robusta", processing: "Washed Robusta" } },
+      { label: "Unwashed Robusta - Commercial Grades", params: { category: "Commercial Grade", variety: "Robusta", processing: "Unwashed Robusta" } },
+      { label: "All Robusta Premium Grades", params: { category: "Premium Grade", variety: "Robusta" } },
+      { label: "Washed Robusta - Premium Grades", params: { category: "Premium Grade", variety: "Robusta", processing: "Washed Robusta" } },
+      { label: "Unwashed Robusta - Premium Grades", params: { category: "Premium Grade", variety: "Robusta", processing: "Unwashed Robusta" } },
+      { label: "Robusta Specialty Grades", params: { category: "Specialty Coffee", variety: "Robusta" } },
+    ],
+    [
+      { label: "Miscellaneous Grades", params: { category: "Miscellaneous Grade" } },
+    ],
+  ];
 
 // Helper to build a link for given params
 const buildLink = (params: { category?: string; variety?: string; processing?: string }) => {
@@ -122,12 +123,12 @@ export default function SearchCoffeeGradesPage({ searchParams }: { searchParams:
     if (searchParams.category && normalizeCategory(product.category) !== normalizeCategory(searchParams.category)) {
       return false;
     }
-    
+
     // Filter by variety
     if (searchParams.variety && product.variety !== searchParams.variety) {
       return false;
     }
-    
+
     // Filter by processing method
     if (searchParams.processing) {
       const processingSpec = product.specs.find(spec => spec.label === "Processing");
@@ -137,7 +138,7 @@ export default function SearchCoffeeGradesPage({ searchParams }: { searchParams:
         return false;
       }
     }
-    
+
     // Filter by search term
     if (searchParams.search) {
       const searchTerm = searchParams.search.toLowerCase();
@@ -148,7 +149,7 @@ export default function SearchCoffeeGradesPage({ searchParams }: { searchParams:
         product.variety.toLowerCase().includes(searchTerm)
       );
     }
-    
+
     return true;
   });
 
@@ -171,73 +172,103 @@ export default function SearchCoffeeGradesPage({ searchParams }: { searchParams:
 
   return (
     <main className="min-h-screen bg-white  ">
-      <section className="bg-[#F7F2EE] py-12 md:py-16 md:mt-40 mt-28">
-        <div className="max-w-6xl mx-auto px-4">
-          <p className="text-sm text-black mb-2">
-            <Link href="/" className="hover:underline">Home</Link> › 
-            <Link href="/search" className="hover:underline"> Search Coffee Grades</Link>
-            {searchParams.category && ` › ${searchParams.category}`}
-            {searchParams.variety && ` › ${searchParams.variety}`}
-            {searchParams.processing && ` › ${searchParams.processing}`}
-            {searchParams.search && ` › Search: ${searchParams.search}`}
-          </p>
-          <h1 className="text-3xl md:text-5xl font-semibold text-[#562F23] mb-2 text-center">{pageTitle}</h1>
-          
-          {/* Search + Quick Filters in two columns on desktop */}
-          <div className="mt-6 mb-4 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start lg:items-center">
-            {/* Left: Search Bar */}
-            <div className="flex flex-col justify-center lg:min-h-[220px]">
-              <form className="flex flex-col md:flex-row gap-4" action="/search" method="get">
-                <input 
-                  type="text" 
-                  name="search" 
-                  placeholder="Type the coffee grade name..." 
-                  defaultValue={searchParams.search || ''}
-                  className="flex lg:w-[400px] w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 "
-                />
-                <button 
-                  type="submit" 
-                  className="px-6 py-2 bg-amber-700 text-white rounded-md hover:bg-amber-800 transition-colors"
-                >
-                  Search
-                </button>
-              </form>
-            </div>
+      <section className="bg-[#F7F2EE] py-16 md:py-20 md:mt-32 mt-24 relative overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute top-0 left-0 w-64 h-64 bg-amber-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-coffee-brown rounded-full mix-blend-multiply filter blur-3xl opacity-5 translate-x-1/3 translate-y-1/3"></div>
 
-            {/* Right: Quick-select grade categories */}
-            <div className="lg:pl-4 relative z-10 pointer-events-auto">
-              <p className="text-lg text-black font-semibold mb-2">Select coffee grade category from below by clicking on it.</p>
-              {/* All reset */}
-              <div className="mb-3">
-                <Link 
-                  href="/search"
-                  className={`px-3 py-1 rounded-full text-sm ${!searchParams.category && !searchParams.variety && !searchParams.processing ? 'bg-amber-700 text-white' : 'bg-gray-200 text-gray-800 hover:bg-gray-300'}`}
-                >
-                  All Coffee Grades
-                </Link>
-              </div>
-              {/* Rows: 1-7, 8-14, 15- */}
-              {quickFilterRows.map((row, idx) => (
-                <div key={idx} className="flex flex-wrap gap-2 mb-2">
-                  {row.map(({ label, params }) => {
-                    const href = buildLink(params);
-                    const active = isActive(params, {
-                      category: searchParams.category,
-                      variety: searchParams.variety,
-                      processing: searchParams.processing,
-                    });
-                    return (
-                      <Link
-                        key={label}
-                        href={href}
-                        className={`px-3 py-1 rounded-full text-sm ${active ? 'bg-amber-700 text-white' : 'bg-gray-200 text-gray-800 hover:bg-gray-300'}`}
-                      >
-                        {label}
-                      </Link>
-                    );
-                  })}
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <p className="text-sm text-gray-600 mb-4 font-medium tracking-wide">
+            <Link href="/" className="hover:text-amber-700 transition-colors">Home</Link> <span className="mx-2">›</span>
+            <Link href="/search" className="hover:text-amber-700 transition-colors">Search Coffee Grades</Link>
+            {searchParams.category && <span className="mx-2">› {searchParams.category}</span>}
+            {searchParams.variety && <span className="mx-2">› {searchParams.variety}</span>}
+            {searchParams.processing && <span className="mx-2">› {searchParams.processing}</span>}
+            {searchParams.search && <span className="mx-2">› Search: {searchParams.search}</span>}
+          </p>
+
+          <h1 className="text-4xl md:text-6xl font-bold text-coffee-brown mb-4 text-center font-serif tracking-tight">{pageTitle}</h1>
+          <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12 text-lg">
+            Explore our premium collection of Indian Arabica and Robusta coffee grades. Filter by category or search for specific grades.
+          </p>
+
+          {/* Search + Quick Filters Area */}
+          <div className="bg-white rounded-2xl shadow-xl p-6 md:p-10 border border-amber-50">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+
+              {/* Left Column: Search & Select */}
+              <div className="lg:col-span-5 flex flex-col gap-8 border-b lg:border-b-0 lg:border-r border-gray-100 pb-8 lg:pb-0 lg:pr-10">
+                <div className="w-full">
+                  <label className="block text-sm font-semibold text-gray-700 mb-3 uppercase tracking-wider">Search by Name</label>
+                  <form className="flex gap-2" action="/search" method="get">
+                    <input
+                      type="text"
+                      name="search"
+                      placeholder="e.g. Plantation A..."
+                      defaultValue={searchParams.search || ''}
+                      className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-shadow"
+                    />
+                    <button
+                      type="submit"
+                      className="px-6 py-3 bg-coffee-brown text-white rounded-lg hover:bg-amber-800 transition-colors font-semibold shadow-md hover:shadow-lg"
+                    >
+                      Search
+                    </button>
+                  </form>
                 </div>
-              ))}
+
+                <div className="w-full relative">
+                  <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex items-center">
+                    <div className="w-full border-t border-gray-200"></div>
+                    <span className="bg-white px-3 text-sm text-gray-400 font-medium absolute left-1/2 -translate-x-1/2">OR</span>
+                  </div>
+                </div>
+
+                <div className="w-full">
+                  <label className="block text-sm font-semibold text-gray-700 mb-3 uppercase tracking-wider">Select Grade Directly</label>
+                  <GradeSelect products={allProducts} />
+                </div>
+              </div>
+
+              {/* Right Column: Quick Filters */}
+              <div className="lg:col-span-7">
+                <p className="text-sm font-semibold text-gray-700 mb-4 uppercase tracking-wider">Filter by Category</p>
+
+                {/* All reset */}
+                <div className="mb-4">
+                  <Link
+                    href="/search"
+                    className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${!searchParams.category && !searchParams.variety && !searchParams.processing ? 'bg-coffee-brown text-white shadow-md' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+                  >
+                    All Coffee Grades
+                  </Link>
+                </div>
+
+                <div className="space-y-4">
+                  {quickFilterRows.map((row, idx) => (
+                    <div key={idx} className="flex flex-wrap gap-2">
+                      {row.map(({ label, params }) => {
+                        const href = buildLink(params);
+                        const active = isActive(params, {
+                          category: searchParams.category,
+                          variety: searchParams.variety,
+                          processing: searchParams.processing,
+                        });
+                        return (
+                          <Link
+                            key={label}
+                            href={href}
+                            className={`px-3 py-1.5 rounded-full text-sm transition-all duration-200 ${active ? 'bg-amber-700 text-white shadow-md transform scale-105' : 'bg-[#FDFBF7] border border-amber-100 text-gray-700 hover:border-amber-300 hover:bg-amber-50'}`}
+                          >
+                            {label}
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
             </div>
           </div>
         </div>

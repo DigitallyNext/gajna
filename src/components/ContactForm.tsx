@@ -47,12 +47,12 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
   // Add validation feedback on field blur
   const handleBlur = (fieldName: string) => {
     const fieldValue = values[fieldName as keyof ContactFormInput];
-    
+
     try {
       // Extract just this field's schema
       const fieldSchema = z.object({ [fieldName]: contactFormSchema.shape[fieldName as keyof typeof contactFormSchema.shape] });
       fieldSchema.parse({ [fieldName]: fieldValue });
-      
+
       // Clear error if validation passes
       if (errors[fieldName]) {
         setErrors(prev => ({ ...prev, [fieldName]: "" }));
@@ -68,7 +68,7 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
       }
     }
   };
-  
+
   // Handle blur for input elements
   const handleInputBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name } = e.target;
@@ -88,7 +88,7 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
   const validate = (data: ContactFormInput) => {
     // For product enquiry forms, make product and grade required
     const isProductEnquiry = initial?.product || initial?.grade;
-    
+
     let result;
     if (isProductEnquiry) {
       // Create a schema with required product and grade fields
@@ -102,7 +102,7 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
     } else {
       result = contactFormSchema.safeParse(data);
     }
-    
+
     if (!result.success) {
       const fieldErrors: Record<string, string> = {};
       const fl = result.error.flatten();
@@ -110,7 +110,7 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
         if (v && v.length) fieldErrors[k] = v[0] as string;
       });
       setErrors(fieldErrors);
-      
+
       // Show specific error toast for validation
       const missingFields = Object.keys(fieldErrors).map(field => {
         const fieldNames: Record<string, string> = {
@@ -118,7 +118,7 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
           firstName: 'First Name',
           lastName: 'Last Name',
           email: 'Email',
-          subject: 'Subject', 
+          subject: 'Subject',
           message: 'Message',
           consent: 'Privacy Policy Agreement',
           phone: 'Phone',
@@ -130,11 +130,11 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
         };
         return fieldNames[field] || field;
       });
-      
-      const errorMessage = missingFields.length === 1 
+
+      const errorMessage = missingFields.length === 1
         ? `❌ Please fill in: ${missingFields[0]}`
         : `❌ Please fill in: ${missingFields.join(', ')}`;
-      
+
       toast.error(errorMessage, {
         duration: 6000,
         position: 'top-right',
@@ -144,7 +144,7 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
           fontWeight: '500'
         }
       });
-      
+
       // Scroll to first error field
       const firstErrorField = Object.keys(fieldErrors)[0];
       const errorElement = document.querySelector(`[name="${firstErrorField}"]`) as HTMLElement;
@@ -152,7 +152,7 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
         errorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
         errorElement.focus();
       }
-      
+
       return false;
     }
     setErrors({});
@@ -170,7 +170,7 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
       // Toast notification is already handled in validate() function
       return;
     }
-    
+
     // Check CAPTCHA (only when enabled)
     if (captchaEnabled && !captchaValue) {
       toast.error('❌ Please complete the CAPTCHA verification', {
@@ -193,7 +193,7 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
         name: values.firstName && values.lastName ? `${values.firstName} ${values.lastName}` : values.name,
         captchaToken: captchaValue
       };
-      
+
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -207,10 +207,10 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
       setValues({ name: "", firstName: "", lastName: "", email: "", subject: "", message: "", phone: "", country: "", postalCode: "", linkedin: "", product: "", grade: "", quantity: undefined, consent: false } as ContactFormInput);
       setCaptchaValue(null);
       recaptchaRef.current?.reset();
-      
+
       // Show success toast
-      toast.success('✅ Message sent successfully! We\'ll get back to you soon.', {
-        duration: 5000,
+      toast.success('✅ Message sent successfully! Redirecting...', {
+        duration: 3000,
         position: 'top-right',
         style: {
           background: '#10B981',
@@ -218,12 +218,14 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
           fontWeight: '500'
         }
       });
-      
+
       onSuccess?.();
+      // Redirect to Thank You page
+      window.location.href = '/thank-you';
     } catch (err: any) {
       setServerError(err.message || "Something went wrong");
       setStatus("error");
-      
+
       // Show error toast
       toast.error(`❌ Failed to send message: ${err.message || "Please try again later."}`, {
         duration: 6000,
@@ -273,7 +275,7 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
           </div>
         </div>
       )}
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium text-gray-700">
@@ -285,15 +287,14 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
             value={values.firstName}
             onChange={handleChange}
             onBlur={() => handleBlur('firstName')}
-            className={`mt-1 block w-full rounded-md shadow-sm focus:border-amber-600 focus:ring-amber-600 ${
-              errors.firstName ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'border-gray-300'
-            }`}
+            className={`mt-1 block w-full rounded-md shadow-sm focus:border-amber-600 focus:ring-amber-600 ${errors.firstName ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'border-gray-300'
+              }`}
             placeholder="Your first name"
             required
           />
           {errors.firstName && <p className="text-sm text-red-600 mt-1 flex items-center"><span className="mr-1">⚠️</span>{errors.firstName}</p>}
         </div>
-        
+
         <div>
           <label className="block text-sm font-medium text-gray-700">
             Last Name <span className="text-red-500">*</span>
@@ -304,9 +305,8 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
             value={values.lastName}
             onChange={handleChange}
             onBlur={() => handleBlur('lastName')}
-            className={`mt-1 block w-full rounded-md shadow-sm focus:border-amber-600 focus:ring-amber-600 ${
-              errors.lastName ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'border-gray-300'
-            }`}
+            className={`mt-1 block w-full rounded-md shadow-sm focus:border-amber-600 focus:ring-amber-600 ${errors.lastName ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'border-gray-300'
+              }`}
             placeholder="Your last name"
             required
           />
@@ -322,9 +322,8 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
             value={values.email}
             onChange={handleChange}
             onBlur={() => handleBlur('email')}
-            className={`mt-1 block w-full rounded-md shadow-sm focus:border-amber-600 focus:ring-amber-600 ${
-              errors.email ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'border-gray-300'
-            }`}
+            className={`mt-1 block w-full rounded-md shadow-sm focus:border-amber-600 focus:ring-amber-600 ${errors.email ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'border-gray-300'
+              }`}
             placeholder="you@example.com"
             required
           />
@@ -414,9 +413,8 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
           value={values.subject}
           onChange={handleChange}
           onBlur={() => handleBlur('subject')}
-          className={`mt-1 block w-full rounded-md shadow-sm focus:border-amber-600 focus:ring-amber-600 ${
-            errors.subject ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'border-gray-300'
-          }`}
+          className={`mt-1 block w-full rounded-md shadow-sm focus:border-amber-600 focus:ring-amber-600 ${errors.subject ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'border-gray-300'
+            }`}
           placeholder="What is your enquiry about?"
           required
         />
@@ -433,9 +431,8 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
           onChange={handleChange}
           onBlur={() => handleBlur('message')}
           rows={5}
-          className={`mt-1 block w-full rounded-md shadow-sm focus:border-amber-600 focus:ring-amber-600 ${
-            errors.message ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'border-gray-300'
-          }`}
+          className={`mt-1 block w-full rounded-md shadow-sm focus:border-amber-600 focus:ring-amber-600 ${errors.message ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'border-gray-300'
+            }`}
           placeholder="Please write your instructions here"
           required
         />
@@ -450,9 +447,8 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
           checked={values.consent}
           onChange={handleChange}
           onBlur={() => handleBlur('consent')}
-          className={`mt-1 h-4 w-4 rounded text-amber-700 focus:ring-amber-600 ${
-            errors.consent ? 'border-red-300' : 'border-gray-300'
-          }`}
+          className={`mt-1 h-4 w-4 rounded text-amber-700 focus:ring-amber-600 ${errors.consent ? 'border-red-300' : 'border-gray-300'
+            }`}
           required
         />
         <label htmlFor="consent" className="text-sm text-gray-700">
@@ -494,7 +490,7 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
       {status === "error" && serverError && (
         <p className="text-red-700 text-sm">{serverError}</p>
       )}
-      
+
       {/* Toast notifications */}
       <Toaster />
     </form>
