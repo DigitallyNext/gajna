@@ -6,6 +6,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { CountryDropdown } from "@/components/CountryDropdown";
 import type { ZodIssue } from "zod";
 import Image from "next/image";
+import { Briefcase, Cog, Home, Truck, Building2, Users, Landmark } from "lucide-react";
 
 // Helper: country name to phone code
 const getCountryPhoneCode = (countryName: string): string => {
@@ -411,13 +412,22 @@ export default function CoffeeSuppliersPage() {
             <div className="grid grid-cols-3 gap-4">
               {/* Top Row */}
               <div className=" bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
-                Coffee Brokers.
+                <div className="flex flex-col items-center gap-2">
+                  <Briefcase className="w-8 h-8 text-coffee-brown" />
+                  <span className="text-xs sm:text-sm font-semibold text-black text-center">Coffee Brokers.</span>
+                </div>
               </div>
               <div className=" bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
-                Coffee Curing Works.
+                <div className="flex flex-col items-center gap-2">
+                  <Cog className="w-8 h-8 text-coffee-brown" />
+                  <span className="text-xs sm:text-sm font-semibold text-black text-center">Coffee Curing Works.</span>
+                </div>
               </div>
               <div className=" bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
-                Coffee Estate Owners.
+                <div className="flex flex-col items-center gap-2">
+                  <Home className="w-8 h-8 text-coffee-brown" />
+                  <span className="text-xs sm:text-sm font-semibold text-black text-center">Coffee Estate Owners.</span>
+                </div>
               </div>
 
               {/* Middle Row - Title */}
@@ -429,18 +439,30 @@ export default function CoffeeSuppliersPage() {
 
               {/* Bottom Row */}
               <div className=" bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
-                Coffee Traders.
+                <div className="flex flex-col items-center gap-2">
+                  <Truck className="w-8 h-8 text-coffee-brown" />
+                  <span className="text-xs sm:text-sm font-semibold text-black text-center">Coffee Traders.</span>
+                </div>
               </div>
               <div className=" bg-white text-xs border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
-                Coffee Farmer Producer Company.
+                <div className="flex flex-col items-center gap-2">
+                  <Building2 className="w-8 h-8 text-coffee-brown" />
+                  <span className="text-xs sm:text-sm font-semibold text-black text-center">Coffee Farmer Producer Company.</span>
+                </div>
               </div>
               <div className=" bg-white border-2 text-xs border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
-                 Coffee Co-operatives.
+                 <div className="flex flex-col items-center gap-2">
+                   <Users className="w-8 h-8 text-coffee-brown" />
+                   <span className="text-xs sm:text-sm font-semibold text-black text-center">Coffee Co-operatives.</span>
+                 </div>
               </div>
 
               {/* Bottom certificates row */}
               <div className="col-span-3 bg-white border-2 text-center border-gray-300 rounded-lg p-4 flex justify-center items-center gap-8 hover:shadow-lg transition-shadow duration-300">
-                Coffee Farmer Producer Organisation.
+                <div className="flex flex-col items-center gap-2">
+                  <Landmark className="w-8 h-8 text-coffee-brown" />
+                  <span className="text-xs sm:text-sm font-semibold text-black text-center">Coffee Farmer Producer Organisation.</span>
+                </div>
               </div>
             </div>
           </div>
@@ -450,13 +472,22 @@ export default function CoffeeSuppliersPage() {
             <div className="grid grid-cols-3 gap-4">
               {/* Top Row */}
               <div className=" bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
-                Coffee Brokers.
+                <div className="flex flex-col items-center gap-3">
+                  <Briefcase className="w-10 h-10 text-coffee-brown" />
+                  <span className="text-sm font-semibold text-black text-center">Coffee Brokers.</span>
+                </div>
               </div>
               <div className=" bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
-                Coffee Curing Works.
+                <div className="flex flex-col items-center gap-3">
+                  <Cog className="w-10 h-10 text-coffee-brown" />
+                  <span className="text-sm font-semibold text-black text-center">Coffee Curing Works.</span>
+                </div>
               </div>
               <div className=" bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
-                Coffee Estate Owners.
+                <div className="flex flex-col items-center gap-3">
+                  <Home className="w-10 h-10 text-coffee-brown" />
+                  <span className="text-sm font-semibold text-black text-center">Coffee Estate Owners.</span>
+                </div>
               </div>
               
               {/* Middle Row - Title */}
@@ -468,19 +499,30 @@ export default function CoffeeSuppliersPage() {
               
               {/* Bottom Row */}
               <div className=" bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
-                Coffee Traders.
+                <div className="flex flex-col items-center gap-3">
+                  <Truck className="w-10 h-10 text-coffee-brown" />
+                  <span className="text-sm font-semibold text-black text-center">Coffee Traders.</span>
+                </div>
               </div>
               <div className=" bg-white text-sm  border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
-                Coffee Farmer Producer Company.
+                <div className="flex flex-col items-center gap-3">
+                  <Building2 className="w-10 h-10 text-coffee-brown" />
+                  <span className="text-sm font-semibold text-black text-center">Coffee Farmer Producer Company.</span>
+                </div>
               </div>
               <div className=" bg-white border-2 text-sm border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
-                 Coffee Co-operatives.
+                 <div className="flex flex-col items-center gap-3">
+                   <Users className="w-10 h-10 text-coffee-brown" />
+                   <span className="text-sm font-semibold text-black text-center">Coffee Co-operatives.</span>
+                 </div>
               </div>
               
               {/* Bottom certificates row */}
               <div className="col-span-3 bg-white border-2 text-center border-gray-300 rounded-lg p-6 flex justify-center items-center gap-8 hover:shadow-lg transition-shadow duration-300">
-               
-                Coffee Farmer Producer Organisation.
+                <div className="flex flex-col items-center gap-3">
+                  <Landmark className="w-10 h-10 text-coffee-brown" />
+                  <span className="text-sm font-semibold text-black text-center">Coffee Farmer Producer Organisation.</span>
+                </div>
               </div>
             </div>
           </div>
@@ -490,10 +532,16 @@ export default function CoffeeSuppliersPage() {
             {/* Column 1 */}
             <div className="flex flex-col">
               <div className="w-[15vw] h-[30vh] text-xl text-black font-semibold p-6 bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
-                Coffee Brokers.
+                <div className="flex flex-col items-center gap-4">
+                  <Briefcase className="w-12 h-12 text-coffee-brown" />
+                  <span className="text-lg font-semibold text-black text-center">Coffee Brokers.</span>
+                </div>
               </div>
               <div className="w-[15vw] h-[30vh] text-xl text-black font-semibold p-6 bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
-              Coffee Farmer Producer Company.
+                <div className="flex flex-col items-center gap-4">
+                  <Building2 className="w-12 h-12 text-coffee-brown" />
+                  <span className="text-lg font-semibold text-black text-center">Coffee Farmer Producer Company.</span>
+                </div>
               </div>
             </div>
 
@@ -501,10 +549,16 @@ export default function CoffeeSuppliersPage() {
             <div className="flex flex-col">
               <div className="flex flex-row">
                 <div className="p-6 h-[20vh] w-[20vw] text-xl text-black font-semibold bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
-                  Coffee Curing Works.
+                  <div className="flex flex-col items-center gap-4">
+                    <Cog className="w-12 h-12 text-coffee-brown" />
+                    <span className="text-lg font-semibold text-black text-center">Coffee Curing Works.</span>
+                  </div>
                 </div>
                 <div className="p-6 h-[20vh] w-[20vw] text-xl text-black font-semibold bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
-                 Coffee Estate Owners
+                  <div className="flex flex-col items-center gap-4">
+                    <Home className="w-12 h-12 text-coffee-brown" />
+                    <span className="text-lg font-semibold text-black text-center">Coffee Estate Owners.</span>
+                  </div>
                 </div>
               </div>
 
@@ -515,17 +569,26 @@ export default function CoffeeSuppliersPage() {
               </div>
 
               <div className="h-[20vh] w-[40vw] bg-white border-2 text-xl text-black font-semibold border-gray-300 rounded-lg flex flex-row justify-center items-center gap-10 hover:shadow-xl transition-all duration-300 hover:scale-105">
-                Coffee Farmer Producer Organisation.
+                <div className="flex flex-col items-center gap-4">
+                  <Landmark className="w-12 h-12 text-coffee-brown" />
+                  <span className="text-lg font-semibold text-black text-center">Coffee Farmer Producer Organisation.</span>
+                </div>
               </div>
             </div>
 
             {/* Column 3 */}
             <div className="flex flex-col">
               <div className="w-[15vw] h-[30vh] text-xl text-black font-semibold p-6 bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
-                Coffee Traders.
+                <div className="flex flex-col items-center gap-4">
+                  <Truck className="w-12 h-12 text-coffee-brown" />
+                  <span className="text-lg font-semibold text-black text-center">Coffee Traders.</span>
+                </div>
               </div>
               <div className="w-[15vw] h-[30vh] text-xl text-black font-semibold p-6 bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
-                Coffee<br/> Co-operatives.
+                <div className="flex flex-col items-center gap-4">
+                  <Users className="w-12 h-12 text-coffee-brown" />
+                  <span className="text-lg font-semibold text-black text-center">Coffee Co-operatives.</span>
+                </div>
               </div>
             </div>
           </div>

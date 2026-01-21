@@ -200,17 +200,17 @@ export default function SearchCoffeeGradesPage({ searchParams }: { searchParams:
               <div className="lg:col-span-5 flex flex-col gap-8 border-b lg:border-b-0 lg:border-r border-gray-100 pb-8 lg:pb-0 lg:pr-10">
                 <div className="w-full">
                   <label className="block text-sm font-semibold text-gray-700 mb-3 uppercase tracking-wider">Search by Name</label>
-                  <form className="flex gap-2" action="/search" method="get">
+                  <form className="flex flex-col sm:flex-row items-stretch gap-3 w-full" action="/search" method="get">
                     <input
                       type="text"
                       name="search"
                       placeholder="e.g. Plantation A..."
                       defaultValue={searchParams.search || ''}
-                      className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-shadow"
+                      className="relative z-10 flex-1 w-full min-w-0 px-4 py-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-shadow"
                     />
                     <button
                       type="submit"
-                      className="px-6 py-3 bg-coffee-brown text-white rounded-lg hover:bg-amber-800 transition-colors font-semibold shadow-md hover:shadow-lg"
+                      className="relative z-0 w-full sm:w-auto px-6 py-3 bg-coffee-brown text-white rounded-lg hover:bg-amber-800 transition-colors font-semibold shadow-sm hover:shadow-md"
                     >
                       Search
                     </button>

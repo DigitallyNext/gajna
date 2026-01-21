@@ -75,30 +75,17 @@ export default function AboutBanner() {
           <div className="block sm:hidden mt-12">
             <div className="grid grid-cols-3 gap-4">
               {/* Top Row */}
-              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex flex-col text-center items-center justify-center hover:shadow-lg transition-shadow duration-300">
-
-                Company Mission
-                <p className="text-white">Less</p>
+              <div className="bg-white border-2 border-gray-300 rounded-lg p-6 flex flex-col text-center items-center justify-center hover:shadow-lg transition-shadow duration-300 gap-2 h-36">
+                <Target className="w-10 h-10 text-coffee-brown" />
+                <span className="text-sm font-semibold text-coffee-brown">Company Mission</span>
               </div>
-              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
-                {/* <Image 
-                  src="/registration/9.webp"
-                  alt="Registration Certificate"
-                  width={120}
-                  height={120}
-                  className="w-20 h-20 object-contain"
-                /> */}
-                Coffee Sourcing Expert
+              <div className="bg-white border-2 border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center hover:shadow-lg transition-shadow duration-300 gap-2 h-36">
+                <Sprout className="w-10 h-10 text-coffee-brown" />
+                <span className="text-sm font-semibold text-coffee-brown">Sourcing Expert</span>
               </div>
-              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
-                {/* <Image 
-                  src="/registration/ccri.webp"
-                  alt="CCRI Certificate"
-                  width={120}
-                  height={120}
-                  className="w-18 h-18 object-contain"
-                /> */}
-                Coffee Logistics Expert
+              <div className="bg-white border-2 border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center hover:shadow-lg transition-shadow duration-300 gap-2 h-36">
+                <Truck className="w-10 h-10 text-coffee-brown" />
+                <span className="text-sm font-semibold text-coffee-brown">Logistics Expert</span>
               </div>
 
               {/* Middle Row - Title */}
@@ -109,36 +96,17 @@ export default function AboutBanner() {
               </div>
 
               {/* Bottom Row */}
-              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center hover:shadow-lg transition-shadow duration-300">
-                {/* <Image 
-                  src="/registration/ECGC.webp"
-                  alt="ECGC Registration"
-                  width={120}
-                  height={120}
-                  className="w-20 h-20 object-contain"
-                /> */}
-                Company Values
-                <p className="text-white">Less</p>
+              <div className="bg-white border-2 border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center hover:shadow-lg transition-shadow duration-300 gap-2 h-36">
+                <Heart className="w-10 h-10 text-coffee-brown" />
+                <span className="text-sm font-semibold text-coffee-brown">Company Values</span>
               </div>
-              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
-                {/* <Image 
-                  src="/registration/7.webp"
-                  alt="Certificate"
-                  width={120}
-                  height={120}
-                  className="w-20 h-20 object-contain"
-                /> */}
-                Know the team
+              <div className="bg-white border-2 border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center hover:shadow-lg transition-shadow duration-300 gap-2 h-36">
+                <Users className="w-10 h-10 text-coffee-brown" />
+                <span className="text-sm font-semibold text-coffee-brown">Meet The Team</span>
               </div>
-              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
-                {/* <Image 
-                  src="/registration/6.webp"
-                  alt="Registration Document"
-                  width={120}
-                  height={120}
-                  className="w-20 h-20 object-contain"
-                /> */}
-                Know the company founder
+              <div className="bg-white border-2 border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center hover:shadow-lg transition-shadow duration-300 gap-2 h-36">
+                <User className="w-10 h-10 text-coffee-brown" />
+                <span className="text-sm font-semibold text-coffee-brown">Founder</span>
               </div>
 
               {/* Bottom certificates row (hidden until assets are used) */}
@@ -152,30 +120,17 @@ export default function AboutBanner() {
           <div className="hidden sm:block lg:hidden">
             <div className="grid grid-cols-3 gap-4">
               {/* Top Row */}
-              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex flex-col text-center items-center justify-center hover:shadow-lg transition-shadow duration-300">
-
-                Company Mission
-                <p className="text-white">Less</p>
+              <div className="bg-white border-2 border-gray-300 rounded-lg p-6 flex flex-col text-center items-center justify-center hover:shadow-lg transition-shadow duration-300 gap-3 h-40">
+                <Target className="w-12 h-12 text-coffee-brown" />
+                <span className="text-base font-semibold text-coffee-brown">Company Mission</span>
               </div>
-              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
-                {/* <Image 
-                  src="/registration/9.webp"
-                  alt="Registration Certificate"
-                  width={120}
-                  height={120}
-                  className="w-20 h-20 object-contain"
-                /> */}
-                Coffee Sourcing Expert
+              <div className="bg-white border-2 border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center hover:shadow-lg transition-shadow duration-300 gap-3 h-40">
+                <Sprout className="w-12 h-12 text-coffee-brown" />
+                <span className="text-base font-semibold text-coffee-brown">Sourcing Expert</span>
               </div>
-              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
-                {/* <Image 
-                  src="/registration/ccri.webp"
-                  alt="CCRI Certificate"
-                  width={120}
-                  height={120}
-                  className="w-18 h-18 object-contain"
-                /> */}
-                Coffee Logistics Expert
+              <div className="bg-white border-2 border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center hover:shadow-lg transition-shadow duration-300 gap-3 h-40">
+                <Truck className="w-12 h-12 text-coffee-brown" />
+                <span className="text-base font-semibold text-coffee-brown">Logistics Expert</span>
               </div>
 
               {/* Middle Row - Title */}
@@ -186,36 +141,17 @@ export default function AboutBanner() {
               </div>
 
               {/* Bottom Row */}
-              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center hover:shadow-lg transition-shadow duration-300">
-                {/* <Image 
-                  src="/registration/ECGC.webp"
-                  alt="ECGC Registration"
-                  width={120}
-                  height={120}
-                  className="w-20 h-20 object-contain"
-                /> */}
-                Company Values
-                <p className="text-white">Less</p>
+              <div className="bg-white border-2 border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center hover:shadow-lg transition-shadow duration-300 gap-3 h-40">
+                <Heart className="w-12 h-12 text-coffee-brown" />
+                <span className="text-base font-semibold text-coffee-brown">Company Values</span>
               </div>
-              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
-                {/* <Image 
-                  src="/registration/7.webp"
-                  alt="Certificate"
-                  width={120}
-                  height={120}
-                  className="w-20 h-20 object-contain"
-                /> */}
-                Know the team
+              <div className="bg-white border-2 border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center hover:shadow-lg transition-shadow duration-300 gap-3 h-40">
+                <Users className="w-12 h-12 text-coffee-brown" />
+                <span className="text-base font-semibold text-coffee-brown">Meet The Team</span>
               </div>
-              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
-                {/* <Image 
-                  src="/registration/6.webp"
-                  alt="Registration Document"
-                  width={120}
-                  height={120}
-                  className="w-20 h-20 object-contain"
-                /> */}
-                Know the company founder
+              <div className="bg-white border-2 border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center hover:shadow-lg transition-shadow duration-300 gap-3 h-40">
+                <User className="w-12 h-12 text-coffee-brown" />
+                <span className="text-base font-semibold text-coffee-brown">Founder</span>
               </div>
 
               {/* Bottom certificates row (hidden until assets are used) */}
