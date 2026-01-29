@@ -164,7 +164,7 @@ export default function AboutBanner() {
           {/* Desktop Layout (lg and above) - Original Design Enhanced */}
           <div className="hidden lg:flex justify-center items-center">
             {/* Column 1 */}
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-0">
               <div className="w-[15vw] h-[30vh] p-6 text-coffee-brown font-bold bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105 gap-4">
                 <Target className="w-16 h-16 text-coffee-brown" />
                 <span className="text-lg">Company Mission</span>
@@ -176,8 +176,8 @@ export default function AboutBanner() {
             </div>
 
             {/* Column 2 */}
-            <div className="flex flex-col gap-4 mx-4">
-              <div className="flex flex-row gap-4">
+            <div className="flex flex-col gap-0">
+              <div className="flex flex-row gap-0">
                 <div className="p-6 h-[20vh] w-[20vw] text-coffee-brown font-bold bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105 gap-3">
                   <Sprout className="w-12 h-12 text-coffee-brown" />
                   <span className="text-lg">Sourcing Expert</span>
@@ -203,7 +203,7 @@ export default function AboutBanner() {
             </div>
 
             {/* Column 3 */}
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-0">
               <div className="w-[15vw] h-[30vh] p-6 text-coffee-brown font-bold bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105 gap-4">
                 <Heart className="w-16 h-16 text-coffee-brown" />
                 <span className="text-lg">Company Values</span>
