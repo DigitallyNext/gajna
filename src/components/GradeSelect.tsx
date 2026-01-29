@@ -16,7 +16,6 @@ export default function GradeSelect({ products }: { products: Product[] }) {
 
     // Sort products alphabetically
     const sortedProducts = [...products].sort((a, b) => a.name.localeCompare(b.name));
-
     return (
         <div className="relative w-full lg:w-[400px]">
             <div className="relative">
