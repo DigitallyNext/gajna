@@ -21,7 +21,7 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
   const [mobileMegaMenuOpen, setMobileMegaMenuOpen] = useState(false);
-  const [quickEnquiryOpen, setQuickEnquiryOpen] = useState(false);
+
   // Removed supplierModalOpen state
   const [supplierModalOpen, setSupplierModalOpen] = useState(false);
 
@@ -52,7 +52,6 @@ export default function Header() {
     setMobileMegaMenuOpen(false);
     // Also ensure all header overlays/modals are closed on navigation
     setMegaMenuOpen(false);
-    setQuickEnquiryOpen(false);
     setSupplierModalOpen(false);
   }, [pathname]);
 
@@ -186,13 +185,6 @@ export default function Header() {
             >
               Send Us SMS
             </Link>
-            <button
-              onClick={() => setQuickEnquiryOpen(true)}
-              className="px-3 py-1 bg-white text-[#374151] border border-white rounded-lg text-xs whitespace-nowrap"
-              aria-label="Quick Enquiry"
-            >
-              Quick Enquiry
-            </button>
           </nav>
         </div>
 
@@ -272,15 +264,6 @@ export default function Header() {
               >
                 Become a Supplier with us
               </Link>
-              <button
-                onClick={() => {
-                  setQuickEnquiryOpen(true);
-                  setMobileMenuOpen(false);
-                }}
-                className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 w-full text-left"
-              >
-                Quick Enquiry
-              </button>
 
             </div>
           </div>
@@ -339,12 +322,6 @@ export default function Header() {
               >
                 Send Us SMS
               </Link>
-              <button
-                onClick={() => setQuickEnquiryOpen(true)}
-                className="px-3 py-1 bg-white text-[#374151] border border-white rounded-lg text-xs hover:bg-white/80 transition-colors"
-              >
-                Quick Enquiry
-              </button>
 
               <LanguageSwitcher />
               {/* Search Coffee Grades (desktop) */}
@@ -440,47 +417,7 @@ export default function Header() {
           isMobile={true}
         />
 
-        {/* Quick Enquiry Modal */}
-        {quickEnquiryOpen && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 z-[10000] flex items-center justify-center p-4">
-            <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-              <div className="flex lg:flex-row flex-col items-center justify-between p-6 border-b">
-                <div className="flex flex-row justify-between items-center">
-                  <Image src="/newlogo.webp" alt="Gajna Overseas Private Limited" width={100} height={50} />
-                  <button
-                    onClick={() => setQuickEnquiryOpen(false)}
-                    className="text-gray-400 hover:text-gray-600 transition-colors lg:hidden block"
-                    aria-label="Close modal"
-                  >
-                    <X className="w-6 h-6" />
 
-                  </button>
-                </div>
-                <div className="flex flex-col justify-center items-center text-center">
-                  <h2 className="text-xl font-semibold text-gray-900">
-                    Gajna Overseas Private Limited
-                  </h2>
-                  <p>Exporter of Green Coffee Beans of Indian Origin</p>
-                </div>
-                <button
-                  onClick={() => setQuickEnquiryOpen(false)}
-                  className="text-gray-400 hover:text-gray-600 transition-colors hidden lg:block"
-                  aria-label="Close modal"
-                >
-                  <X className="w-6 h-6" />
-                </button>
-              </div>
-              <div className="p-6 bg-[#15803D]/20">
-                <GeneralContactFormLazy
-                  initial={{ subject: "Quick Enquiry" }}
-                  submitLabel="Send Enquiry"
-                  onSuccess={() => setQuickEnquiryOpen(false)}
-                  isModal={true}
-                />
-              </div>
-            </div>
-          </div>
-        )}
 
 
       </div>
